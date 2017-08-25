@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeColumnsInUsersTable extends Migration
+class TruncateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,7 @@ class ChangeColumnsInUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('email');
-            $table->renameColumn('name', 'username');
-            $table->unique('username');
-        });
+        Schema::table('users', function (Blueprint $table) {});
     }
 
     /**
@@ -28,9 +24,7 @@ class ChangeColumnsInUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropUnique(['username']);
-            $table->string('email')->unique()->after('username');
-            $table->renameColumn('username', 'name');
+            DB::table('users')->delete();
         });
     }
 }

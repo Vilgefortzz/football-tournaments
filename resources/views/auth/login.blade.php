@@ -3,65 +3,65 @@
 @section('content')
 <div class="container navbar-margin">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Login</div>
-                <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+        <div class="col-md-4">
 
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">Username</label>
+            <!-- Form login -->
+            <form method="POST" action="{{ route('login') }}">
+                {{ csrf_field() }}
 
-                            <div class="col-md-6">
-                                <input id="username" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+                <p class="h5 text-center mb-4">Sign in</p>
 
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                    <div class="md-form">
+                        <i class="fa fa-user prefix grey-text"></i>
+                        <input type="text" id="username" name="username" class="form-control" value="{{ old('username') }}" required autofocus>
+                        <label for="username">Your username</label>
+                    </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                    @if ($errors->has('username'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('username') }}</strong>
+                        </span>
+                    @endif
                 </div>
-            </div>
+
+
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix grey-text"></i>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                        <label for="password">Your password</label>
+                    </div>
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                    </label>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-warning">Login</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="pull-right">
+                        <a href="{{ route('password.request') }}">
+                            Forgot Your Password?
+                        </a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

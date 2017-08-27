@@ -11,9 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-4.0.0-beta/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mdbootstrap-4/mdb.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
 <body>
@@ -23,9 +24,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery/jquery-3.2.1.slim.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/popper.js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap-4.0.0-beta/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/mdbootstrap-4/mdb.min.js') }}" type="text/javascript"></script>
     @yield('scripts')
 
 </body>

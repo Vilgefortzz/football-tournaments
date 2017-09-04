@@ -12,6 +12,14 @@
 */
 
 Route::get('/', function () {
+
+    /*
+     * Redirect authenticated user to dashboard
+     */
+    if (Auth::check()){
+        return Redirect::route('home');
+    }
+
     return view('main_page');
 });
 

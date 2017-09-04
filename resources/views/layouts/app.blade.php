@@ -10,6 +10,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- App icon -->
+    <link href="{{{ asset('images/favicon.png') }}}" rel="shortcut icon">
+
     <!-- Styles -->
     <link href="{{ asset('css/font-awesome/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-4.0.0-beta/bootstrap.min.css') }}" rel="stylesheet">
@@ -19,8 +22,12 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.bars.navbar')
-        @yield('content')
+        @if(Auth::check())
+            @include('layouts.bars.navbar')
+        @endif
+            <div class="container navbar-margin">
+                @yield('content')
+            </div>
     </div>
 
     <!-- Scripts -->

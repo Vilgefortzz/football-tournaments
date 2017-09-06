@@ -6,4 +6,14 @@ $(document).ready(function(){
     $('.close').on('click', function() {
         $('.container').stop().removeClass('active');
     });
+
+    $('.caption h3').on('mouseenter', function () {
+
+        $(this).addClass('animated pulse');
+    });
+
+    $('.caption h3').on('mouseleave', function () {
+
+        $(this).removeClass('animated pulse');
+    })
 });

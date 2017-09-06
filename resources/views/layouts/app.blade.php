@@ -22,12 +22,10 @@
 </head>
 <body>
     <div id="app">
-        @if(Auth::check())
-            @include('layouts.bars.navbar')
-        @endif
-            <div class="container navbar-margin">
-                @yield('content')
-            </div>
+        @include('layouts.bars.navbar')
+        <div class="container navbar-margin">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->

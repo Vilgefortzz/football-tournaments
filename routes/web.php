@@ -20,8 +20,9 @@ Route::get('/', function () {
         return Redirect::route('home');
     }
 
-    return view('main_page');
-});
+    return view('main-page');
+
+})->name('main-page');
 
 Auth::routes();
 

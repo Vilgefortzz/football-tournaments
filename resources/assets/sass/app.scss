@@ -3,6 +3,23 @@
 
 // My styles
 
+@import "login-register-panel";
+@import "login-register-panel-checkbox";
+@import "login-register-panel-cards";
+
+body {
+  margin:0;
+  padding:0;
+  background:url("/images/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .navbar-margin{
   margin-top: 80px;
+}
+.navbar-color{
+  background-color: #ec2652;
 }

@@ -9,15 +9,15 @@
 @section('content')
 
     <div class="row justify-content-center">
-
         <div class="col">
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-main-page">
                 <h1 class="h1-responsive">
                     <img src="{{ asset('images/flames.jpg') }}" height="150" class="d-inline-block align-top" alt="" style="float: left">
                 </h1>
-                <p class="lead font-italic">"Create tournaments, join the club,
+                <p class="lead font-italic"><i class="fa fa-quote-left"></i> Create tournaments, join the club,
                     take part in tournaments, sign contracts
-                    but foremost meet other people to together lead your club to victory and win trophies with it."
+                    but foremost meet other people to together lead your club to victory and win trophies with it.
+                    <i class="fa fa-quote-right"></i>
                 </p>
                 <hr class="my-4">
 
@@ -220,6 +220,58 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center wow fadeIn" data-wow-delay="0.8s">
+
+            <div class="col">
+                <div class="jumbotron jumbotron-main-page text-center">
+                    <h1 class="h1-responsive">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                             width="100" height="100" class="img-fluid rounded-circle">
+                    </h1>
+                    <p class="lead font-italic">"The best app I have already used. Lightweight, fast."
+                    </p>
+
+                    <hr class="my-4">
+                    <div class="copy-text font-italic">
+                        @user
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="jumbotron jumbotron-main-page text-center">
+                    <h1 class="h1-responsive">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                             width="100" height="100" class="img-fluid rounded-circle">
+                    </h1>
+                    <p class="lead font-italic">"Creating tournaments is very simple, 2 clicks and done :)"
+                    </p>
+
+                    <hr class="my-4">
+                    <div class="copy-text font-italic">
+                        @user
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="jumbotron jumbotron-main-page text-center">
+                    <h1 class="h1-responsive">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                             width="100" height="100" class="img-fluid rounded-circle">
+                    </h1>
+                    <p class="lead font-italic">"Thanks to this app I can meet other people, together play in club,
+                        and compete in tournaments. It's so exciting"
+                    </p>
+
+                    <hr class="my-4">
+                    <div class="copy-text font-italic">
+                        @user
+                    </div>
                 </div>
             </div>
         </div>

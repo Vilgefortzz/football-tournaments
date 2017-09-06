@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    new WOW().init();
+
     $('.toggle').on('click', function() {
         $('.container').stop().addClass('active');
     });

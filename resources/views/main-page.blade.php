@@ -101,8 +101,8 @@
         </div>
 
         <div class="col">
-            <div class="container container-login-panel">
-                <div class="card">
+            <div class="container container-login-register-panel">
+                <div class="card card-login-register-panel">
                     <h1 class="title"><i class="fa fa-soccer-ball-o"></i> Sign in</h1>
 
                     <!-- Form login -->
@@ -168,7 +168,7 @@
                     </form>
                 </div>
 
-                <div class="card alt">
+                <div class="card card-login-register-panel alt">
                     <div class="toggle"></div>
                     <h1 class="title">Register
                         <div class="close"></div>

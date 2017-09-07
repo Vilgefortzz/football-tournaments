@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -61,10 +62,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        flashy()->success('You have successfully created your account');
+
         return User::create([
             'username' => $data['username'],
             'password' => bcrypt($data['password']),
-            'role_id' => 1
+            'role_id' => Role::Footballer
         ]);
     }
 }

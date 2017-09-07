@@ -60,6 +60,7 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
+        flashy()->error('You are not authorized to get to this location');
         return redirect()->guest(route('main-page'));
     }
 }

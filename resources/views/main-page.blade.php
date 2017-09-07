@@ -110,20 +110,11 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-
                             <div class="input-container">
-                                <input type="text" id="username" name="username" value="{{ old('username') }}" required autofocus>
+                                <input type="text" id="username" name="username" required autofocus>
                                 <label for="username">Username</label>
                                 <div class="bar"></div>
                             </div>
-
-                            @if ($errors->has('username'))
-                                <div class="input-container">
-                            <span class="help-block">
-                                <strong>{{ $errors->first('username') }}</strong>
-                            </span>
-                                </div>
-                            @endif
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -132,14 +123,6 @@
                                 <label for="password">Password</label>
                                 <div class="bar"></div>
                             </div>
-
-                            @if ($errors->has('password'))
-                                <div class="input-container">
-                            <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                                </div>
-                            @endif
                         </div>
 
                         <div class="form-group">
@@ -180,16 +163,10 @@
 
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             <div class="input-container">
-                                <input type="text" id="username" name="username" value="{{ old('username') }}" required autofocus>
+                                <input type="text" id="username" name="username" required autofocus>
                                 <label for="username">Your username</label>
                                 <div class="bar"></div>
                             </div>
-
-                            @if ($errors->has('username'))
-                                <span class="help-block">
-                            <strong>{{ $errors->first('username') }}</strong>
-                        </span>
-                            @endif
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -198,12 +175,6 @@
                                 <label for="password">Your password</label>
                                 <div class="bar"></div>
                             </div>
-
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                            @endif
                         </div>
 
                         <div class="form-group">

@@ -34,7 +34,7 @@
                 </ul>
             @endif
 
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
 
                 @if(Auth::check())
                     <li class="nav-item dropdown">

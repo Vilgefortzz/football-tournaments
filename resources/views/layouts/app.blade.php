@@ -33,7 +33,9 @@
     <script src="{{ asset('js/popper.js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap-4.0.0-beta/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/mdbootstrap-4/mdb.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/flashy.js') }}" type="text/javascript"></script>
     @yield('scripts')
+    @include('layouts.flashy.message')
 
 </body>
 </html>

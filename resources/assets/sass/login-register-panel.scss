@@ -91,7 +91,7 @@
   z-index: 1;
   border-left: 5px solid #ec2652;
   margin: 0 0 35px;
-  padding: 10px 0 10px 50px;
+  padding: 0 0 0 50px;
   color:#ec2652;
   font-size: 35px;
   font-weight: 600;
@@ -100,7 +100,7 @@
 
 .card-login-register-panel .input-container {
   position: relative;
-  margin: 0 60px 40px;
+  margin: 0 60px 22px;
 }
 
 .card-login-register-panel .input-container input {
@@ -183,6 +183,14 @@
   line-height: 1;
   text-transform: uppercase;
   overflow: hidden;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.card-login-register-panel .button-container .radio {
+  position: relative;
+  display: inline-block;
+  margin: 6px 15px 6px;
+  color: #ddd;
   -webkit-transition: .3s ease;
   transition: .3s ease;
 }
@@ -358,10 +366,6 @@
     bottom: 30px;
     opacity: 0;
   }
-}
-
-.input-container .help-block{
-  color: #b80221;
 }
 
 .copy-text{font-size:13px; text-align:center;}

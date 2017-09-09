@@ -30,6 +30,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-bell fa-lg"></i> </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa fa-trophy fa-lg"></i> </a>
+                    </li>
 
                 </ul>
             @endif

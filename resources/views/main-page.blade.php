@@ -164,7 +164,7 @@
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                             <div class="input-container">
                                 <input type="text" id="username" name="username" required autofocus>
-                                <label for="username">Your username</label>
+                                <label for="username">Username</label>
                                 <div class="bar"></div>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <div class="input-container">
                                 <input type="password" id="password" name="password" required>
-                                <label for="password">Your password</label>
+                                <label for="password">Password</label>
                                 <div class="bar"></div>
                             </div>
                         </div>
@@ -182,6 +182,25 @@
                                 <input type="password" id="password-confirm" name="password_confirmation" required>
                                 <label for="password-confirm">Confirm Password</label>
                                 <div class="bar"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="button-container">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="role" value="{{ App\Role::Footballer }}" checked>
+                                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                                        <i class="fa fa-soccer-ball-o"></i> Footballer
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="role" value="{{ App\Role::Organizer }}">
+                                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                                        <i class="fa fa-table"></i> Organizer
+                                    </label>
+                                </div>
                             </div>
                         </div>
 

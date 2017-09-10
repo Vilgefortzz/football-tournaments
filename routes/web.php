@@ -11,6 +11,9 @@
 |
 */
 
+/*
+ * Main page
+ */
 Route::get('/', function () {
 
     /*
@@ -26,4 +29,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*
+ * Routes which need authentication
+ */
+Route::group(['middleware' => 'auth'], function (){
+
+    /*
+     * Dashboard
+     */
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::group(['prefix' => 'clubs'], function (){
+        Route::get('/menu', 'ClubController@menu')->name('clubs-menu');
+    });
+
+});

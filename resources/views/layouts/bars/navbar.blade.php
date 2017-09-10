@@ -14,12 +14,14 @@
 
             @if(Auth::check())
                 <ul class="navbar-nav mr-auto">
-
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/') }}"><i class="fa fa-home fa-lg"></i><span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('home') }}"><i class="fa fa-home fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-list fa-lg"></i> </a>
+                        <a class="nav-link" href="#"><i class="fa fa-trophy fa-lg"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('clubs-menu') }}"><i class="fa fa-users fa-lg"></i> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-soccer-ball-o fa-lg"></i> </a>
@@ -27,13 +29,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-globe fa-lg"></i> </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-bell fa-lg"></i> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-trophy fa-lg"></i> </a>
-                    </li>
-
                 </ul>
             @endif
 

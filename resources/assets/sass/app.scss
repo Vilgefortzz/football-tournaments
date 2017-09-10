@@ -10,6 +10,8 @@
 @import "login-register-panel-radio";
 @import "login-register-panel-cards";
 
+@import "clubs-menu-cards";
+
 body {
   margin:0;
   padding:0;
@@ -21,7 +23,7 @@ body {
 }
 
 .navbar-margin{
-  margin-top: 80px;
+  margin-top: 120px;
 }
 .navbar-color{
   background-color: #ec2652;

@@ -91,4 +91,20 @@ class User extends Authenticatable
     public function notifications(){
         return $this->hasMany('App\Notification');
     }
+
+    public function isFootballer(){
+        return $this->role_id == Role::Footballer ? true : false;
+    }
+
+    public function isClubPresident(){
+        return $this->role_id == Role::ClubPresident ? true : false;
+    }
+
+    public function isOrganizer(){
+        return $this->role_id == Role::Organizer ? true : false;
+    }
+
+    public function isAdmin(){
+        return $this->role_id == Role::Admin ? true : false;
+    }
 }

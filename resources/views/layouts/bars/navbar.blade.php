@@ -24,7 +24,7 @@
                         <a class="nav-link" href="{{ route('clubs-menu') }}"><i class="fa fa-users fa-lg"></i> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-file-text fa-lg"></i> </a>
+                        <a class="nav-link" href="{{ route('contracts-menu') }}"><i class="fa fa-file-text fa-lg"></i> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-bar-chart fa-lg"></i> </a>

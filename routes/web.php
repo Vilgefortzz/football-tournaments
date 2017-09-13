@@ -43,4 +43,17 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/menu', 'ClubController@menu')->name('clubs-menu');
     });
 
+    Route::group(['prefix' => 'contracts'], function (){
+        Route::get('/menu', 'ContractController@menu')->name('contracts-menu');
+    });
+
+    Route::group(['prefix' => 'users'], function (){
+
+        Route::get('/{user}/contracts/created', 'UserController@createdContracts')
+            ->name('user-contracts-created');
+
+        Route::get('/{user}/contracts/signed', 'UserController@signedContracts')
+            ->name('user-contracts-signed');
+    });
+
 });

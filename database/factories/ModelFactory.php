@@ -33,3 +33,22 @@ $factory->define(App\Role::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
     ];
 });
+
+$factory->define(App\Club::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->name,
+        'founded_by' => $faker->unique()->name,
+    ];
+});
+
+$factory->define(App\Contract::class, function (Faker\Generator $faker) {
+
+    return [
+        'duration' => '1 week',
+        'club_name' => $faker->name,
+        'user_name' => $faker->name,
+        'club_id' => 1,
+        'user_id' => 2,
+    ];
+});

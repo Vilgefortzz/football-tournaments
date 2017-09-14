@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scripts')
+    <script src="{{ asset('js/menu-cards-chosen.js') }}" type="text/javascript"></script>
+@endsection
+
 @section('content')
 
     <div class="row justify-content-center">
@@ -7,7 +11,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     @if(Auth::user()->isClubPresident())
-                        <div class="tile">
+                        <div id="contracts-extend" class="tile">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <div class="text text-center">
                                 <h1>Extend contracts</h1>
@@ -17,15 +21,15 @@
                             </div>
                         </div>
                     @elseif(Auth::user()->isFootballer())
-                        <div id="contracts-management" class="tile">
-                            <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-                            <div class="text text-center">
-                                <h1>Binding contract</h1>
-                                <h1><i class="fa fa-star fa-2x"></i></h1>
-                                <h2 class="animate-text">Your signed contract</h2>
-                                <p class="animate-text">See details of your binding contract </p>
+                            <div id="signed-contract" class="tile dropdown">
+                                <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+                                <div class="text text-center">
+                                    <h1>Binding contract</h1>
+                                    <h1><i class="fa fa-star fa-2x"></i></h1>
+                                    <h2 class="animate-text">Your signed contract</h2>
+                                    <p class="animate-text">See details of your binding contract </p>
+                                </div>
                             </div>
-                        </div>
                     @endif
 
                     <div id="contracts-management" class="tile">

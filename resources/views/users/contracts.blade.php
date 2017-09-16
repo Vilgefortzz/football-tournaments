@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="wrap">
             <div class="container">
-                <div class="row justify-content-center">
+                <div id="divLoading"></div>
+                <div id="content" class="row justify-content-center">
                     @foreach($contracts as $contract)
                         <div class="tile tile-contracts">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>

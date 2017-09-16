@@ -5,12 +5,10 @@
     <div class="row justify-content-center">
         <div class="wrap">
             <div class="container">
-                <input type="hidden" id="previous-url" data-previous-url="" data-prev-previous-url="{{ route('contracts-menu') }}">
-                <div id="loading"></div>
+                <div id="divLoading"></div>
                 <div id="content" class="row justify-content-center">
-
                     @if(Auth::user()->isClubPresident())
-                        <div href="#" id="contracts-extend" class="tile">
+                        <div href="#" class="tile">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <div class="text text-center">
                                 <h1>Extend contracts</h1>
@@ -19,8 +17,17 @@
                                 <p class="animate-text">See completed contracts which you want to extend, see all details </p>
                             </div>
                         </div>
+                        <div href="#" id="footballers-list" class="tile">
+                            <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+                            <div class="text text-center">
+                                <h1>Manage footballers</h1>
+                                <h1><i class="fa fa-soccer-ball-o fa-2x"></i></h1>
+                                <h2 class="animate-text">See list of footballers</h2>
+                                <p class="animate-text">Manage footballers, see list, extend contracts, see all details </p>
+                            </div>
+                        </div>
                     @elseif(Auth::user()->isFootballer())
-                        <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" id="signed-contract" class="tile">
+                        <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="tile">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <div class="text text-center">
                                 <h1>Binding contract</h1>
@@ -30,17 +37,6 @@
                             </div>
                         </div>
                     @endif
-
-                    <div href="{{ route('contracts-management-menu') }}" id="contracts-management" class="tile">
-                        <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-                        <div class="text text-center">
-                            <h1>Manage contracts</h1>
-                            <h1><i class="fa fa-file-text fa-2x"></i></h1>
-                            <h2 class="animate-text">Contracts management</h2>
-                            <p class="animate-text">See all contracts you want to sign, their status,
-                                rejected or completed contracts </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

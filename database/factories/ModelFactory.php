@@ -46,6 +46,7 @@ $factory->define(App\Contract::class, function (Faker\Generator $faker) {
 
     return [
         'duration' => '1 week',
+        'status' => 'created',
         'club_name' => $faker->name,
         'user_name' => $faker->name,
         'club_id' => 1,

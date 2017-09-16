@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::group(['prefix' => 'contracts'], function (){
         Route::get('/menu', 'ContractController@menu')->name('contracts-menu');
+        Route::get('/management/menu', 'ContractController@managementMenu')
+            ->name('contracts-management-menu');
     });
 
     Route::group(['prefix' => 'users'], function (){
@@ -52,8 +54,8 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{user}/contracts/created', 'UserController@createdContracts')
             ->name('user-contracts-created');
 
-        Route::get('/{user}/contracts/signed', 'UserController@signedContracts')
-            ->name('user-contracts-signed');
+        Route::get('/{user}/contracts/binding', 'UserController@bindingContract')
+            ->name('user-contracts-binding');
     });
 
 });

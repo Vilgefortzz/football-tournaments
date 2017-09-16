@@ -13,7 +13,7 @@ class ContractsTableSeeder extends Seeder
     public function run()
     {
         /*
-         * Create contracts for test
+         * Create contracts for test - created
          */
         factory(Contract::class)->create([
             'date_and_time_of_signing' => date('Y-m-d H:i:s'),
@@ -38,6 +38,19 @@ class ContractsTableSeeder extends Seeder
             'club_name' => 'XYZ',
             'user_name' => 'Someone',
             'club_id' => 3,
+            'user_id' => 2,
+        ]);
+
+        /*
+         * Create contracts for test - signed
+         */
+        factory(Contract::class)->create([
+            'date_and_time_of_signing' => date('Y-m-d H:i:s'),
+            'duration' => '2 weeks',
+            'status' => 'signed',
+            'club_name' => 'ZYX',
+            'user_name' => 'Test User',
+            'club_id' => 1,
             'user_id' => 2,
         ]);
     }

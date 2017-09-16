@@ -7,7 +7,7 @@
             <div class="wrap">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="tile">
+                        <div class="tile menu-card">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <div class="text text-center">
                                 <h1>Your club</h1>
@@ -18,7 +18,7 @@
                             </div>
                         </div>
 
-                        <div class="tile">
+                        <div class="tile menu-card">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <div class="text text-center">
                                 <h1>Clubs</h1>
@@ -30,7 +30,7 @@
                         </div>
 
                         @if(Auth::user()->isFootballer())
-                            <div class="tile">
+                            <div class="tile menu-card">
                                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                                 <div class="text text-center">
                                     <h1>Start a new club</h1>

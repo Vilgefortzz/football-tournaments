@@ -1,5 +1,5 @@
 @if(Auth::user()->isClubPresident())
-    <div href="#" class="tile">
+    <div href="#" class="tile menu-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <div class="text text-center">
             <h1>Extend contracts</h1>
@@ -8,7 +8,7 @@
             <p class="animate-text">See completed contracts which you want to extend, see all details </p>
         </div>
     </div>
-    <div href="#" id="footballers-list" class="tile">
+    <div href="#" id="footballers-list" class="tile menu-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <div class="text text-center">
             <h1>Manage footballers</h1>
@@ -18,7 +18,7 @@
         </div>
     </div>
 @elseif(Auth::user()->isFootballer())
-    <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="tile">
+    <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="tile menu-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <div class="text text-center">
             <h1>Binding contract</h1>

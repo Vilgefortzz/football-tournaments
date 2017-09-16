@@ -10,7 +10,7 @@
                 <div id="content" class="row justify-content-center">
 
                     @if(Auth::user()->isClubPresident())
-                        <div href="#" id="contracts-extend" class="tile">
+                        <div href="#" id="contracts-extend" class="tile menu-card">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <div class="text text-center">
                                 <h1>Extend contracts</h1>
@@ -20,7 +20,7 @@
                             </div>
                         </div>
                     @elseif(Auth::user()->isFootballer())
-                        <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" id="signed-contract" class="tile">
+                        <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" id="signed-contract" class="tile menu-card">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <div class="text text-center">
                                 <h1>Binding contract</h1>
@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    <div href="{{ route('contracts-management-menu') }}" id="contracts-management" class="tile">
+                    <div href="{{ route('contracts-management-menu') }}" id="contracts-management" class="tile menu-card">
                         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                         <div class="text text-center">
                             <h1>Manage contracts</h1>

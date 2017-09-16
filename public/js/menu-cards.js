@@ -10,8 +10,8 @@ $(function () {
         });
     }
 
-    $(document).on('click', '.tile', function () {
-        displayDynamicContent($(this), $('.tile'));
+    $(document).on('click', '.menu-card', function () {
+        displayDynamicContent($(this), $('.menu-card'));
     });
 });
 
@@ -48,7 +48,7 @@ function handleAjaxRequest(url) {
         success: function (data) {
 
             $('#content').html(data);
-            $('.tile').addClass('animated zoomInUp');
+            $('.menu-card').addClass('animated zoomInUp');
             $('.jumbotron').addClass('animated zoomInUp');
 
             window.setTimeout(function(){
@@ -61,6 +61,6 @@ function handleAjaxRequest(url) {
 }
 
 function removeAnimation() {
-    $('.tile').removeClass('animated zoomInUp');
+    $('.menu-card').removeClass('animated zoomInUp');
     $('.jumbotron').removeClass('animated zoomInUp');
 }

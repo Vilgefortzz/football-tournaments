@@ -16,7 +16,6 @@ class ContractsTableSeeder extends Seeder
          * Create contracts for test - created
          */
         factory(Contract::class)->create([
-            'date_and_time_of_signing' => date('Y-m-d H:i:s'),
             'club_name' => 'FC Barcelona',
             'user_name' => 'Josep Bartomeu',
             'club_id' => 1,
@@ -24,7 +23,6 @@ class ContractsTableSeeder extends Seeder
         ]);
 
         factory(Contract::class)->create([
-            'date_and_time_of_signing' => date('Y-m-d H:i:s'),
             'duration' => '2 weeks',
             'club_name' => 'Real Madrid',
             'user_name' => 'Wilhelm Perez',
@@ -33,7 +31,6 @@ class ContractsTableSeeder extends Seeder
         ]);
 
         factory(Contract::class)->create([
-            'date_and_time_of_signing' => date('Y-m-d H:i:s'),
             'duration' => '1 month',
             'club_name' => 'XYZ',
             'user_name' => 'Someone',
@@ -46,6 +43,7 @@ class ContractsTableSeeder extends Seeder
          */
         factory(Contract::class)->create([
             'date_and_time_of_signing' => date('Y-m-d H:i:s'),
+            'date_and_time_of_end' => date('Y-m-d H:i:s', strtotime(' + 14 days')),
             'duration' => '2 weeks',
             'status' => 'signed',
             'club_name' => 'ZYX',

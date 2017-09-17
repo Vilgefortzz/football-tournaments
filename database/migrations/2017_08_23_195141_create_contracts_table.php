@@ -23,8 +23,10 @@ class CreateContractsTable extends Migration
             $table->integer('club_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
 
-            $table->foreign('club_id')->references('id')->on('clubs');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('club_id')->references('id')->on('clubs')
+                ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });

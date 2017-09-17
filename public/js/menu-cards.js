@@ -6,36 +6,42 @@ $(function () {
     if (window.history && window.history.pushState) {
 
         $(window).on('popstate', function() {
-            displayBackDynamicContent($('#previous-url').attr('data-previous-url'));
+            location.reload();
         });
     }
+
+    $(document).on('click', '.menu-link', function (e) {
+        e.preventDefault();
+
+        $('.navbar-nav > .nav-item').removeClass('active');
+        $(this).parent().addClass('active');
+
+        displayDynamicContent($(this), $('.menu-card'), $('.jumbotron'));
+
+    });
 
     $(document).on('click', '.menu-card', function () {
         displayDynamicContent($(this), $('.menu-card'));
     });
 });
 
-function displayDynamicContent(trigger, tiles) {
+function displayDynamicContent(trigger, tiles, jumbotrons) {
+
+    if (tiles !== undefined) {
+        tiles.hide();
+    }
+
+    if (jumbotrons !== undefined) {
+        jumbotrons.hide();
+    }
 
     $('#loading').css('display', 'block');
 
-    tiles.hide();
     var url = trigger.attr('href');
 
     handleAjaxRequest(url);
 
-    $('#previous-url').attr('data-previous-url', window.location.href);
     window.history.pushState("", "", url);
-}
-
-function displayBackDynamicContent(url) {
-
-    $('#loading').css('display', 'block');
-
-    handleAjaxRequest(url);
-
-    window.history.pushState("", "", url);
-    $('#previous-url').attr('data-previous-url', $('#previous-url').attr('data-prev-previous-url'));
 }
 
 function handleAjaxRequest(url) {

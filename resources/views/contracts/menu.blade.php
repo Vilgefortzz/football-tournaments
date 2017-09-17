@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div class="wrap">
             <div class="container">
-                <input type="hidden" id="previous-url" data-previous-url="" data-prev-previous-url="{{ route('contracts-menu') }}">
                 <div id="loading"></div>
                 <div id="content" class="row justify-content-center">
 

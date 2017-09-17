@@ -21,10 +21,12 @@
                         <a class="nav-link" href="#"><i class="fa fa-trophy fa-lg"></i> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('clubs-menu') }}"><i class="fa fa-users fa-lg"></i> </a>
+                        <a class="nav-link menu-link" href="{{ route('clubs-menu') }}"><i class="fa fa-users fa-lg"></i> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('contracts-menu') }}"><i class="fa fa-file-text fa-lg"></i> </a>
+                        <a class="nav-link menu-link" href="{{ route('contracts-menu') }}">
+                            <i class="fa fa-file-text fa-lg"></i>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fa fa-bar-chart fa-lg"></i> </a>
@@ -48,7 +50,10 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="avatar-dropdown">
-                            <a class="dropdown-item" href="#" style="color: #ec2652 !important;"><i class="fa fa-wrench"></i> Settings</a>
+                            <a class="dropdown-item menu-link"
+                               href="{{ route('user-profile', Auth::user()->id) }}" style="color: #ec2652 !important;">
+                                <i class="fa fa-user-circle-o"></i> Profile
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();" style="color: #ec2652 !important;">
                                 <i class="fa fa-sign-out"></i>

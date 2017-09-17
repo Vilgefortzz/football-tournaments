@@ -42,15 +42,16 @@
 
                         <a class="nav-link" id="avatar-dropdown" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->username }}
                             <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
                                  width="40" height="40" class="img-fluid rounded-circle">
+                            {{ Auth::user()->username }}
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="avatar-dropdown">
-                            <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Settings</a>
+                            <a class="dropdown-item" href="#" style="color: #ec2652 !important;"><i class="fa fa-wrench"></i> Settings</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
+                            document.getElementById('logout-form').submit();" style="color: #ec2652 !important;">
+                                <i class="fa fa-sign-out"></i>
                                 Logout
                             </a>
 

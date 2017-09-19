@@ -51,6 +51,11 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::group(['prefix' => 'users'], function (){
 
+        Route::get('/{user}/profile', 'UserController@profile')
+            ->name('user-profile');
+
+        Route::put('/{user}/update', 'UserController@update')->name('user-update');
+
         Route::get('/{user}/contracts/created', 'UserController@createdContracts')
             ->name('user-contracts-created');
 

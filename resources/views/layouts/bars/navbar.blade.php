@@ -44,7 +44,7 @@
 
                         <a class="nav-link" id="avatar-dropdown" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg"
+                            <img src="{{ asset(Auth::user()->avatar_dir. Auth::user()->avatar) }}"
                                  width="40" height="40" class="img-fluid rounded-circle">
                             {{ Auth::user()->username }}
                         </a>

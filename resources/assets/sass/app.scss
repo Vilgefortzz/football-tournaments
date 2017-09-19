@@ -52,3 +52,10 @@ body {
   right: 0;
   top: 0;
 }
+#avatar:focus{
+  outline: none;
+  border: none;
+}
+.my-button{
+  background-color: #ec2652;
+}

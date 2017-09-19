@@ -107,4 +107,8 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->role_id == Role::Admin ? true : false;
     }
+
+    public function haveClub(){
+        return $this->club ? true : false;
+    }
 }

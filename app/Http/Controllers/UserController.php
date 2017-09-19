@@ -3,10 +3,66 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use File;
+use Image;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function profile(User $user){
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.users.profile', compact('user'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('users.profile', compact('user'));
+        }
+    }
+
+    public function update(User $user, Request $request){
+
+        if ($request->hasFile('avatar')){
+
+            $avatar = $request->file('avatar');
+
+            $directoryName = 'uploads/users/avatars/'. $user->username. '/';
+            $fileName = $user->username. '_'. $user->id. '_avatar.'. $avatar->getClientOriginalExtension();
+
+            if(!File::exists(public_path($directoryName))) {
+                File::makeDirectory(public_path($directoryName));
+            }
+            else{
+                File::deleteDirectory(public_path($directoryName), true);
+            }
+
+            Image::make($avatar)->resize(150, 150)->save(public_path($directoryName. $fileName));
+
+            $user->avatar_dir = $directoryName;
+            $user->avatar = $fileName;
+            $user->save();
+            flashy()->success('Your profile image was successfully updated');
+            return redirect()->back();
+        }
+
+        if ($request->has('password')){
+
+            $this->validate($request, [
+                'password' => 'required|string|min:6|confirmed',
+            ]);
+
+            $user->password = bcrypt($request->password);
+            $user->save();
+            flashy()->success('Your password was changed');
+            return redirect()->back();
+        }
+
+        flashy()->error('Nothing has changed');
+        return redirect()->back();
+    }
+
     public function createdContracts(User $user){
 
         $contracts = $user->contracts->where('status', 'created');

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="wrap">
             <div class="container">
-                <div id="divLoading"></div>
+                <div id="loading"></div>
                 <div id="content" class="row justify-content-center">
 
                 </div>

@@ -21,7 +21,7 @@ $(function () {
     });
 
     $(document).on('click', '.menu-card', function () {
-        displayDynamicContent($(this), $('.menu-card'));
+        displayDynamicContent($(this), $('.menu-card'), $('.jumbotron'));
     });
 });
 

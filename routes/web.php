@@ -56,6 +56,8 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::put('/{user}/update', 'UserController@update')->name('user-update');
 
+        Route::delete('/{user}/destroy', 'UserController@destroy')->name('user-destroy');
+
         Route::get('/{user}/contracts/created', 'UserController@createdContracts')
             ->name('user-contracts-created');
 

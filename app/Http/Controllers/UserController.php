@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Auth;
 use File;
 use Image;
 use Illuminate\Http\Request;
+use Session;
 
 class UserController extends Controller
 {
@@ -61,6 +63,17 @@ class UserController extends Controller
 
         flashy()->error('Nothing has changed');
         return redirect()->back();
+    }
+
+    public function destroy(User $user){
+
+        Session::flush();
+        Auth::logout();
+
+        $user->delete();
+
+        flashy('You have completely removed an account with all data');
+        return redirect()->to(route('main-page'));
     }
 
     public function createdContracts(User $user){

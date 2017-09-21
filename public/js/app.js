@@ -7,4 +7,8 @@ Submit form - upload profile image
         $('#profile-form').submit();
     });
 
+    $(document).on('click', '#user-delete', function () {
+        $('#user-delete-form').submit();
+    });
+
 });

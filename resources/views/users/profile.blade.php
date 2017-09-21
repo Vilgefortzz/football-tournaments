@@ -14,7 +14,8 @@
                                     <div class="tile chosen">
                                         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                                         <h1 class="info-header">
-                                            <a href="#" class="btn btn-circle" role="button"><i class="fa fa-trash"></i></a>
+                                            <a id="delete-account" data-toggle="modal" data-target="#delete-account-modal"
+                                               class="btn btn-circle" role="button"><i class="fa fa-trash"></i></a>
                                         </h1>
                                         <div class="text text-center">
                                             <h1>Your profile</h1>
@@ -26,7 +27,8 @@
                                             <br>
                                             <h5 class="font-italic">Current club: </h5>
                                             @if($user->haveClub())
-                                                <h6><img src="{{ asset($user->club->emblem_dir. $user->club->emblem) }}" width="30" height="30"></h6>
+                                                <h6><img src="{{ asset($user->club->emblem_dir. $user->club->emblem) }}"
+                                                         width="30" height="30"></h6>
                                                 <h6>{{ $user->club->name }}</h6>
                                             @else
                                                 <h6>You don't belong to any club</h6>
@@ -37,7 +39,9 @@
                                 </div>
 
                                 <div class="col">
-                                    <form id="profile-form" enctype="multipart/form-data" method="POST" action="{{ route('user-update', Auth::user()->id) }}">
+                                    <form id="profile-form" enctype="multipart/form-data" method="POST"
+                                          action="{{ route('user-update', Auth::user()->id) }}">
+
                                         {{ csrf_field() }}
                                         {{ method_field('PUT') }}
 
@@ -78,5 +82,7 @@
             </div>
         </div>
     </div>
+
+    @include('layouts.elements.delete-account-modal')
 
 @endsection

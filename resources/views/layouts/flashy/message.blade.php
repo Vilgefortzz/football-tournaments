@@ -1,3 +1,6 @@
+
+{{-- Normal flash messages--}}
+
 @if(Session::has('flashy_notification.message'))
     <script id="flashy-template" type="text/template">
         <div class="flashy flashy--{{ Session::get('flashy_notification.type') }}">
@@ -9,6 +12,10 @@
         flashy("{{ Session::get('flashy_notification.message') }}");
     </script>
 @endif
+
+{{-- Flash messages connected with validation --}}
+
+{{-- Register/Login --}}
 
 @if ($errors->has('username'))
     <script id="flashy-template" type="text/template">
@@ -34,7 +41,9 @@
     </script>
 @endif
 
-@if ($errors->has('name'))
+{{-- Create new club --}}
+
+@if ($errors->has('club_name'))
     <script id="flashy-template" type="text/template">
         <div class="flashy flashy--error">
             <div class="flashy__body"></div>
@@ -42,6 +51,6 @@
     </script>
 
     <script>
-        flashy("{{ $errors->first('name') }}");
+        flashy("{{ $errors->first('club_name') }}");
     </script>
 @endif

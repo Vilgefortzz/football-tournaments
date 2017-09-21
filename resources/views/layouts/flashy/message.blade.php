@@ -33,3 +33,15 @@
         flashy("{{ $errors->first('password') }}");
     </script>
 @endif
+
+@if ($errors->has('name'))
+    <script id="flashy-template" type="text/template">
+        <div class="flashy flashy--error">
+            <div class="flashy__body"></div>
+        </div>
+    </script>
+
+    <script>
+        flashy("{{ $errors->first('name') }}");
+    </script>
+@endif

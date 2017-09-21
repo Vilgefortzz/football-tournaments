@@ -26,7 +26,7 @@
                                             <br>
                                             <h5 class="font-italic">Current club: </h5>
                                             @if($user->haveClub())
-                                                <h6><img src="{{ asset('images/clubs/'. $user->club->logo) }}" width="30" height="30"></h6>
+                                                <h6><img src="{{ asset($user->club->emblem_dir. $user->club->emblem) }}" width="30" height="30"></h6>
                                                 <h6>{{ $user->club->name }}</h6>
                                             @else
                                                 <h6>You don't belong to any club</h6>

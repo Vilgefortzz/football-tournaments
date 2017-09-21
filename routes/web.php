@@ -63,4 +63,13 @@ Route::group(['middleware' => 'auth'], function (){
             ->name('user-contracts-binding');
     });
 
+    Route::group(['prefix' => 'clubs'], function (){
+
+        Route::get('/create', 'ClubController@create')
+            ->name('club-create');
+
+        Route::post('/store', 'ClubController@store')
+            ->name('club-store');
+    });
+
 });

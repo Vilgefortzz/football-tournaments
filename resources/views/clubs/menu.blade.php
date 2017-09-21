@@ -31,10 +31,10 @@
                     </div>
 
                     @if(Auth::user()->isFootballer())
-                        <div class="tile menu-card ">
+                        <div href="{{ route('club-create') }}" class="tile menu-card">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <div class="text text-center">
-                                <h1>Start a new club</h1>
+                                <h1>Create club</h1>
                                 <h1><i class="fa fa-hand-o-right fa-2x"></i></h1>
                                 <h2 class="animate-text">Set up your own club</h2>
                                 <p class="animate-text">Start a new club, become a president of the club, manage club,

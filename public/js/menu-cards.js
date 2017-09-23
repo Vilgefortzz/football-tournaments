@@ -54,19 +54,19 @@ function handleAjaxRequest(url) {
         success: function (data) {
 
             $('#content').html(data);
-            $('.menu-card').addClass('animated zoomInUp');
-            $('.jumbotron').addClass('animated zoomInUp');
+
+            var menuCards = $('.menu-card');
+            var jumbotrons = $('.jumbotron');
+
+            addAnimation(menuCards, 'zoomInUp');
+            addAnimation(jumbotrons, 'zoomInUp');
 
             window.setTimeout(function(){
-                removeAnimation();
+                removeAnimation(menuCards, 'zoomInUp');
+                removeAnimation(jumbotrons, 'zoomInUp');
             }, 800);
 
             $('#loading').hide();
         }
     });
-}
-
-function removeAnimation() {
-    $('.menu-card').removeClass('animated zoomInUp');
-    $('.jumbotron').removeClass('animated zoomInUp');
 }

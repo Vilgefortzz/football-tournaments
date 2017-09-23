@@ -12,3 +12,13 @@ Submit form - upload profile image
     });
 
 });
+
+// Functions
+
+function addAnimation(object, animation) {
+    object.addClass('animated ' + animation);
+}
+
+function removeAnimation(object, animation) {
+    object.removeClass('animated ' + animation);
+}

@@ -1,8 +1,3 @@
-.wrap {
-  width:100%;
-  display:flex;
-}
-
 .tile {
   width:300px;
   height:450px;
@@ -136,11 +131,4 @@
 .tile:hover span, .chosen span {
   opacity:1;
   transform:translateY(0px);
-}
-
-@media (max-width: 1000px) {
-  .wrap {
-    flex-direction: column;
-    width:400px;
-  }
 }

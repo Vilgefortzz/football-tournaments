@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract;
 use App\User;
 use Auth;
 use File;
@@ -78,7 +79,10 @@ class UserController extends Controller
 
     public function createdContracts(User $user){
 
-        $contracts = $user->contracts->where('status', 'created');
+        $contracts = Contract::where('user_id', $user->id)
+            ->where('status', 'created')
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
 
         if (request()->ajax()){
 

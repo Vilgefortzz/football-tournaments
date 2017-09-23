@@ -18,3 +18,5 @@
         </div>
     </div>
 @endforeach
+
+{{ $contracts->links('layouts.pagination.default') }}

@@ -16,18 +16,22 @@ $(function () {
         $('.navbar-nav > .nav-item').removeClass('active');
         $(this).parent().addClass('active');
 
-        displayDynamicContent($(this), $('.menu-card'), $('.jumbotron'), $('.pagination-links'));
+        displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
     });
 
     $(document).on('click', '.menu-card', function () {
-        displayDynamicContent($(this), $('.menu-card'), $('.jumbotron'), $('.pagination-links'));
+        displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
     });
 });
 
-function displayDynamicContent(trigger, tiles, jumbotrons, paginations) {
+function displayDynamicContent(trigger, menuCards, contractCards, jumbotrons, paginations) {
 
-    if (tiles !== undefined) {
-        tiles.hide();
+    if (menuCards !== undefined) {
+        menuCards.hide();
+    }
+
+    if (contractCards !== undefined) {
+        contractCards.hide();
     }
 
     if (jumbotrons !== undefined) {
@@ -59,14 +63,20 @@ function handleAjaxRequestMenuCards(url) {
             $('#content').html(data);
 
             var menuCards = $('.menu-card');
+            var contractCards = $('.contract-card');
             var jumbotrons = $('.jumbotron');
+            var paginations = $('.pagination-links');
 
             addAnimation(menuCards, 'zoomInUp');
+            addAnimation(contractCards, 'zoomInUp');
             addAnimation(jumbotrons, 'zoomInUp');
+            addAnimation(paginations, 'zoomInUp');
 
             window.setTimeout(function(){
                 removeAnimation(menuCards, 'zoomInUp');
+                removeAnimation(contractCards, 'zoomInUp');
                 removeAnimation(jumbotrons, 'zoomInUp');
+                removeAnimation(paginations, 'zoomInUp');
             }, 800);
 
             $('#loading').hide();

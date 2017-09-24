@@ -6,10 +6,10 @@ $(function() {
     });
 });
 
-function displayDynamicContentContractDelete(trigger, tiles, paginations) {
+function displayDynamicContentContractDelete(trigger, contractCards, paginations) {
 
-    if (tiles !== undefined) {
-        tiles.hide();
+    if (contractCards !== undefined) {
+        contractCards.hide();
     }
 
     if (paginations !== undefined) {
@@ -52,11 +52,14 @@ function handleAjaxRequestContractCards(url) {
             $('#content').html(data);
 
             var contractCards = $('.contract-card');
+            var paginations = $('.pagination-links');
 
             addAnimation(contractCards, 'zoomInUp');
+            addAnimation(paginations, 'zoomInUp');
 
             window.setTimeout(function(){
                 removeAnimation(contractCards, 'zoomInUp');
+                removeAnimation(paginations, 'zoomInUp');
             }, 800);
 
             $('#loading').hide();

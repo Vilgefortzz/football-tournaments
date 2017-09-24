@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/menu', 'ContractController@menu')->name('contracts-menu');
         Route::get('/management/menu', 'ContractController@managementMenu')
             ->name('contracts-management-menu');
+        Route::delete('/{contract}/destroy', 'ContractController@destroy')->name('contract-destroy');
     });
 
     Route::group(['prefix' => 'users'], function (){

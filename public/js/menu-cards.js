@@ -16,16 +16,15 @@ $(function () {
         $('.navbar-nav > .nav-item').removeClass('active');
         $(this).parent().addClass('active');
 
-        displayDynamicContent($(this), $('.menu-card'), $('.jumbotron'));
-
+        displayDynamicContent($(this), $('.menu-card'), $('.jumbotron'), $('.pagination-links'));
     });
 
     $(document).on('click', '.menu-card', function () {
-        displayDynamicContent($(this), $('.menu-card'), $('.jumbotron'));
+        displayDynamicContent($(this), $('.menu-card'), $('.jumbotron'), $('.pagination-links'));
     });
 });
 
-function displayDynamicContent(trigger, tiles, jumbotrons) {
+function displayDynamicContent(trigger, tiles, jumbotrons, paginations) {
 
     if (tiles !== undefined) {
         tiles.hide();
@@ -35,16 +34,20 @@ function displayDynamicContent(trigger, tiles, jumbotrons) {
         jumbotrons.hide();
     }
 
+    if (paginations !== undefined) {
+        paginations.hide();
+    }
+
     $('#loading').css('display', 'block');
 
     var url = trigger.attr('href');
 
-    handleAjaxRequest(url);
+    handleAjaxRequestMenuCards(url);
 
     window.history.pushState("", "", url);
 }
 
-function handleAjaxRequest(url) {
+function handleAjaxRequestMenuCards(url) {
 
     $.ajax({
         type: "GET",

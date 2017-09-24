@@ -54,3 +54,11 @@
         flashy("{{ $errors->first('club_name') }}");
     </script>
 @endif
+
+{{-- Dynamic flash messages --}}
+
+<script id="flashy-template" type="text/template" hidden>
+    <div class="flashy flashy--primary">
+        <div class="flashy__body"></div>
+    </div>
+</script>

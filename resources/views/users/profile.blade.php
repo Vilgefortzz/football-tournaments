@@ -12,7 +12,7 @@
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <h1 class="info-header">
                                 <a id="delete-account" data-toggle="modal" data-target="#delete-account-modal"
-                                   class="btn btn-circle" role="button"><i class="fa fa-trash"></i></a>
+                                   class="btn btn-circle btn-danger" role="button"><i class="fa fa-trash"></i></a>
                             </h1>
                             <div class="text text-center">
                                 <h1>Your profile</h1>

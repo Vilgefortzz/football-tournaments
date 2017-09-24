@@ -1,22 +1,27 @@
 @foreach($contracts as $contract)
-    <div class="tile tile-contracts menu-card">
+    <div id="contract-{{$contract->id}}" class="tile tile-contracts contract-card"
+         href="{{ route('user-contracts-created', Auth::user()->id) }}">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-        <button type="button" class="btn btn-circle btn-danger">
-            <i class="fa fa-remove"></i>
-        </button>
-        <h1 class="text-header text-center">Contract(#{{ $contract->id }})</h1>
+        <h1 class="info-header animate-text">
+            <a href="{{ route('contract-destroy', $contract->id) }}"
+               class="btn btn-circle my-button delete-contract" role="button"><i class="fa fa-remove"></i></a>
+        </h1>
+        <h1 class="text-header text-center"><i class="fa fa-file-text fa-5x"></i></h1>
+        <h1 class="text-header text-center">
+            {{ $contract->club->name }}
+        </h1>
+        <h1 class="text-header text-center">
+            <img src="{{ asset($contract->club->emblem_dir. $contract->club->emblem) }}"
+                 width="60" height="60">
+        </h1>
         <div class="text-contracts text-center">
-            <h1><i class="fa fa-file-text fa-4x"></i></h1>
             <p class="animate-text"><i class="fa fa-calendar fa-lg fa-fw"></i>{{ $contract->created_at }}</p>
-            <h2 class="animate-text">
-                <img src="{{ asset($contract->club->emblem_dir. $contract->club->emblem) }}"
-                     width="60" height="60">
-            </h2>
-            <h2 class="animate-text">
-                {{ $contract->club->name }}
-            </h2>
         </div>
     </div>
 @endforeach
 
-{{ $contracts->links('layouts.pagination.default') }}
+<div class="container pagination-links">
+    <div class="row justify-content-center">
+        {{ $contracts->links('layouts.pagination.default') }}
+    </div>
+</div>

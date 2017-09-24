@@ -73,7 +73,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        flashy('You have completely removed an account with all data');
+        flashy()->success('You have completely removed an account with all data');
         return redirect()->to(route('main-page'));
     }
 

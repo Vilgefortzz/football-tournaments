@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract;
 use Illuminate\Http\Request;
 
 class ContractController extends Controller
@@ -27,6 +28,23 @@ class ContractController extends Controller
         }
         else{
             return view('contracts.management-menu');
+        }
+    }
+
+    public function destroy(Contract $contract){
+
+        if (request()->ajax()){
+
+            $contract->delete();
+
+            return response()->json('Contract was rejected');
+        }
+        else{
+
+            $contract->delete();
+
+            flashy()->primary('Contract was rejected');
+            return redirect()->back();
         }
     }
 }

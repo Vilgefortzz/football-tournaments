@@ -21,15 +21,12 @@ function getContracts(url) {
 
             $('#content').html(data);
 
-            var menuCards = $('.menu-card');
-            var jumbotrons = $('.jumbotron');
+            var contractCards = $('.contract-card');
 
-            addAnimation(menuCards, 'pulse');
-            addAnimation(jumbotrons, 'pulse');
+            addAnimation(contractCards, 'pulse');
 
             window.setTimeout(function(){
-                removeAnimation(menuCards, 'pulse');
-                removeAnimation(jumbotrons, 'pulse');
+                removeAnimation(contractCards, 'pulse');
             }, 800);
 
             $('#loading').hide();

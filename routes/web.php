@@ -47,6 +47,8 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/menu', 'ContractController@menu')->name('contracts-menu');
         Route::get('/management/menu', 'ContractController@managementMenu')
             ->name('contracts-management-menu');
+        Route::post('/{contract}/sign', 'ContractController@sign')
+            ->name('contract-sign');
         Route::delete('/{contract}/destroy', 'ContractController@destroy')->name('contract-destroy');
     });
 

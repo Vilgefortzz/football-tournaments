@@ -2,16 +2,23 @@
 
 @section('content')
 
+    <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="contract-binding" hidden></div>
+
     <div id="loading"></div>
+    <div id="contract-sign-loading"></div>
     <div id="content" class="row justify-content-center">
         @foreach($contracts as $contract)
             <div id="contract-{{$contract->id}}" class="tile tile-contracts contract-card"
                  href="{{ route('user-contracts-created', Auth::user()->id) }}">
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-                <h1 class="info-header animate-text">
+                <div class="info-header animate-text">
                     <a href="{{ route('contract-destroy', $contract->id) }}"
                        class="btn btn-circle my-button delete-contract" role="button"><i class="fa fa-remove"></i></a>
-                </h1>
+
+                    <div class="pull-right" style="font-size: 10px">
+                        <i class="fa fa-calendar fa-fw"></i>{{ $contract->created_at }}
+                    </div>
+                </div>
                 <h1 class="text-header text-center"><i class="fa fa-file-text fa-5x"></i></h1>
                 <h1 class="text-header text-center">
                     {{ $contract->club->name }}
@@ -21,7 +28,18 @@
                          width="60" height="60">
                 </h1>
                 <div class="text-contracts text-center">
-                    <p class="animate-text"><i class="fa fa-calendar fa-lg fa-fw"></i>{{ $contract->created_at }}</p>
+                    <h5 class="animate-text">
+                        <input type="text" id="username-contract-{{$contract->id}}" name="username">
+                        <label class="font-italic" for="username-contract-{{$contract->id}}">Make your signature</label>
+                        <div class="bar"></div>
+                    </h5>
+
+                    <h6 class="animate-text">
+                        <a href="{{ route('contract-sign', $contract->id) }}"
+                           class="btn my-button sign-contract" data-contract-id="{{$contract->id}}">
+                            <i class="fa fa-pencil fa-lg fa-fw"></i>Sign contract:
+                        </a>
+                    </h6>
                 </div>
             </div>
         @endforeach

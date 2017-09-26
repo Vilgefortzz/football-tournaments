@@ -83,6 +83,30 @@
   }
 }
 
+#loading {
+  display: none;
+  position: fixed;
+  background-image: url("/loaders/loader.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+}
+
+#contract-sign-loading {
+  display: none;
+  position: fixed;
+  background-image: url("/loaders/sign-contract.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+}
+
 /* Container */
 
 .container-login-register-panel {
@@ -760,6 +784,26 @@
           transition-delay: 0.2s;
 }
 
+.tile-contracts > .text-contracts > h5 {
+  margin: 0 0 0 0;
+  -webkit-transform: translateX(200px);
+          transform: translateX(200px);
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+.tile-contracts > .text-contracts > h6 {
+  margin: 0 0 0 0;
+  -webkit-transform: translateX(-200px);
+          transform: translateX(-200px);
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+.animate-text > input {
+  text-align: center;
+}
+
 .animate-text {
   opacity: 0;
   -webkit-transition: all 0.6s ease-in-out;
@@ -823,18 +867,6 @@ body {
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
-}
-
-#loading {
-  display: none;
-  position: fixed;
-  background-image: url("/loaders/loader.gif");
-  background-repeat: no-repeat;
-  background-position: center;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  top: 0;
 }
 
 #avatar:focus {

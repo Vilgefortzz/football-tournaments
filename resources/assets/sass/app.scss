@@ -4,6 +4,7 @@
 // My styles
 
 @import "flashy";
+@import "loaders";
 
 @import "login-register-panel";
 @import "login-register-panel-checkbox";
@@ -40,17 +41,6 @@ body {
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
-}
-#loading {
-  display: none;
-  position: fixed;
-  background-image: url('/loaders/loader.gif');
-  background-repeat: no-repeat;
-  background-position: center;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  top: 0;
 }
 #avatar:focus{
   outline: none;

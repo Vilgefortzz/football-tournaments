@@ -2,7 +2,10 @@
 
 @section('content')
 
+    <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="contract-binding" hidden></div>
+
     <div id="loading"></div>
+    <div id="contract-sign-loading"></div>
     <div id="content" class="row justify-content-center">
         @if(Auth::user()->isClubPresident())
             <div href="#" id="contracts-extend" class="tile menu-card">
@@ -15,15 +18,17 @@
                 </div>
             </div>
         @elseif(Auth::user()->isFootballer())
-            <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" id="signed-contract" class="tile menu-card">
-                <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-                <div class="text text-center">
-                    <h1>Binding contract</h1>
-                    <h1><i class="fa fa-star fa-2x"></i></h1>
-                    <h2 class="animate-text">Your signed contract</h2>
-                    <p class="animate-text">See details of your binding contract </p>
+            @if(Auth::user()->haveBindingContract())
+                <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" id="signed-contract" class="tile menu-card">
+                    <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+                    <div class="text text-center">
+                        <h1>Binding contract</h1>
+                        <h1><i class="fa fa-star fa-2x"></i></h1>
+                        <h2 class="animate-text">Your signed contract</h2>
+                        <p class="animate-text">See details of your binding contract </p>
+                    </div>
                 </div>
-            </div>
+            @endif
         @endif
 
         <div href="{{ route('contracts-management-menu') }}" id="contracts-management" class="tile menu-card">

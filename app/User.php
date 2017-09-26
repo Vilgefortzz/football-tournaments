@@ -111,4 +111,10 @@ class User extends Authenticatable
     public function haveClub(){
         return $this->club ? true : false;
     }
+
+    public function haveBindingContract(){
+
+        $bindingContract = $this->contracts->where('status', 'signed');
+        return $bindingContract->isNotEmpty();
+    }
 }

@@ -107,6 +107,22 @@
   transition-delay: 0.2s;
 }
 
+.tile-contracts > .text-contracts > h5 {
+  margin:0 0 0 0;
+  transform: translateX(200px);
+  transition-delay: 0.2s;
+}
+
+.tile-contracts > .text-contracts > h6 {
+  margin:0 0 0 0;
+  transform: translateX(-200px);
+  transition-delay: 0.2s;
+}
+
+.animate-text > input {
+  text-align: center;
+}
+
 .animate-text {
   opacity:0;
   transition: all 0.6s ease-in-out;

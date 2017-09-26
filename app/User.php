@@ -113,8 +113,10 @@ class User extends Authenticatable
     }
 
     public function haveBindingContract(){
+        return $this->contracts->where('status', 'signed')->isNotEmpty();
+    }
 
-        $bindingContract = $this->contracts->where('status', 'signed');
-        return $bindingContract->isNotEmpty();
+    public function numberOfWaitingContracts(){
+        return $this->contracts->where('status', 'created')->count();
     }
 }

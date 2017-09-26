@@ -4,7 +4,7 @@
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <div class="info-header animate-text">
             <a href="{{ route('contract-destroy', $contract->id) }}"
-               class="btn btn-circle my-button delete-contract" role="button"><i class="fa fa-remove"></i></a>
+               class="btn btn-circle my-color delete-contract" role="button"><i class="fa fa-remove"></i></a>
 
             <div class="pull-right" style="font-size: 10px">
                 <i class="fa fa-calendar fa-fw"></i>{{ $contract->created_at }}
@@ -27,7 +27,7 @@
 
             <h6 class="animate-text">
                 <a href="{{ route('contract-sign', $contract->id) }}"
-                   class="btn my-button sign-contract" data-contract-id="{{$contract->id}}">
+                   class="btn my-color sign-contract" data-contract-id="{{$contract->id}}">
                     <i class="fa fa-pencil fa-lg fa-fw"></i>Sign contract:
                 </a>
             </h6>

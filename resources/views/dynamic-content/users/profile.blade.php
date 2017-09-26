@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button class="btn my-button" type="submit">Save changes</button>
+                        <button class="btn my-color" type="submit">Save changes</button>
                     </div>
                 </form>
             </div>

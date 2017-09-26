@@ -20,7 +20,12 @@ $(function () {
     });
 
     $(document).on('click', '.menu-card', function () {
-        displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
+        if ($(this).find('.badge').attr('data-number-waiting-contracts') !== '0'){
+            displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
+        }
+        else{
+            flashy('You don\'t have any waiting contracts');
+        }
     });
 });
 

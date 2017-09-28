@@ -7,19 +7,22 @@
     <div id="loading"></div>
     <div id="contract-sign-loading"></div>
     <div id="content" class="row justify-content-center">
-        <div class="tile menu-card">
-            <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-            <div class="text text-center">
-                <h1>Your club</h1>
-                <h1><i class="fa fa-users fa-2x"></i></h1>
-                <h2 class="animate-text">Go to your club</h2>
-                <p class="animate-text">See club details, footballers, tournaments,
-                    matches, showcase with trophies. </p>
+        @if(Auth::user()->haveClub())
+            <div class="tile menu-card dynamic-content-card">
+                <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+                <br>
+                <div class="text text-center">
+                    <h1>Your club</h1>
+                    <h1><i class="fa fa-users fa-2x"></i></h1>
+                    <h2 class="animate-text">Go to your club</h2>
+                    <p class="animate-text">See club details, footballers, tournaments,
+                        matches, showcase with trophies. </p>
+                </div>
             </div>
-        </div>
-
-        <div class="tile menu-card">
+        @endif
+        <div href="{{ route('clubs-search') }}" class="tile menu-card dynamic-content-card">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+            <br>
             <div class="text text-center">
                 <h1>Clubs</h1>
                 <h1><i class="fa fa-search fa-2x"></i></h1>
@@ -28,10 +31,10 @@
                     Try to join the club and become part of it. </p>
             </div>
         </div>
-
         @if(Auth::user()->isFootballer())
-            <div href="{{ route('club-create') }}" class="tile menu-card">
+            <div href="{{ route('club-create') }}" class="tile menu-card dynamic-content-card">
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+                <br>
                 <div class="text text-center">
                     <h1>Create club</h1>
                     <h1><i class="fa fa-hand-o-right fa-2x"></i></h1>

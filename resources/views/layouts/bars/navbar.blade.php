@@ -6,10 +6,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
             <ul class="navbar-nav mr-auto">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/brand-logo.png') }}" height="30" class="d-inline-block align-top" alt="">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{ asset('images/brand-logo.png') }}" height="30" class="d-inline-block align-top" alt="">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
+                </li>
             </ul>
 
             @if(Auth::check())

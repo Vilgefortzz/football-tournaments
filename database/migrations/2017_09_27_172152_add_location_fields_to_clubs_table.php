@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddClubEmblemToClubsTable extends Migration
+class AddLocationFieldsToClubsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class AddClubEmblemToClubsTable extends Migration
     public function up()
     {
         Schema::table('clubs', function (Blueprint $table) {
-            $table->dropColumn('logo');
-            $table->string('emblem_dir')->default('uploads/clubs/emblems/')->after('name');
-            $table->string('emblem')->default('default.jpg')->after('emblem_dir');
+            $table->string('country')->after('founded_by');
+            $table->string('city')->after('country');
         });
     }
 
@@ -28,8 +27,7 @@ class AddClubEmblemToClubsTable extends Migration
     public function down()
     {
         Schema::table('clubs', function (Blueprint $table) {
-            $table->dropColumn(['emblem', 'emblem_dir']);
-            $table->string('logo')->default('logo_club_default.jpg');
+            $table->dropColumn(['city', 'country']);
         });
     }
 }

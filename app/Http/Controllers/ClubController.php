@@ -82,4 +82,16 @@ class ClubController extends Controller
         flashy()->error('Club cannot be created. Error occurs');
         return redirect()->back();
     }
+
+    public function search(){
+
+        if(request()->ajax()){
+
+            $view = view('dynamic-content.clubs.search')->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.search');
+        }
+    }
 }

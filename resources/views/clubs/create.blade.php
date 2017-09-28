@@ -34,7 +34,7 @@
                             <br>
 
                             <div class="form-group">
-                                <button class="btn my-color" type="submit">Create a new club</button>
+                                <button class="btn my-colorx`" type="submit">Create a new club</button>
                             </div>
                         </form>
                     </div>

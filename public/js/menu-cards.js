@@ -19,7 +19,11 @@ $(function () {
         displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
     });
 
-    $(document).on('click', '.menu-card', function () {
+    $(document).on('click', '.dynamic-content-card', function () {
+        displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
+    });
+
+    $(document).on('click', '#waiting-contracts', function () {
         if ($(this).find('.badge').attr('data-number-waiting-contracts') !== '0'){
             displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
         }

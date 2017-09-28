@@ -1,5 +1,6 @@
-<div class="tile menu-card">
+<div class="tile menu-card dynamic-content-card">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+    <br>
     <div class="text text-center">
         <h1>Your club</h1>
         <h1><i class="fa fa-users fa-2x"></i></h1>
@@ -9,8 +10,9 @@
     </div>
 </div>
 
-<div class="tile menu-card">
+<div href="{{ route('clubs-search') }}" class="tile menu-card dynamic-content-card">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+    <br>
     <div class="text text-center">
         <h1>Clubs</h1>
         <h1><i class="fa fa-search fa-2x"></i></h1>
@@ -21,8 +23,9 @@
 </div>
 
 @if(Auth::user()->isFootballer())
-    <div href="{{ route('club-create') }}" class="tile menu-card">
+    <div href="{{ route('club-create') }}" class="tile menu-card dynamic-content-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+        <br>
         <div class="text text-center">
             <h1>Create club</h1>
             <h1><i class="fa fa-hand-o-right fa-2x"></i></h1>

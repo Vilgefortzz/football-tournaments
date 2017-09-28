@@ -75,6 +75,9 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::post('/store', 'ClubController@store')
             ->name('club-store');
+
+        Route::get('/search', 'ClubController@search')
+            ->name('clubs-search');
     });
 
 });

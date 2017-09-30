@@ -70,6 +70,9 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::group(['prefix' => 'clubs'], function (){
 
+        Route::get('/list', 'ClubController@list')
+            ->name('clubs-list');
+
         Route::get('/create', 'ClubController@create')
             ->name('club-create');
 

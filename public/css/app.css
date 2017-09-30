@@ -838,13 +838,13 @@
           transform: translateY(0px);
 }
 
-.search {
+.search-main {
   position: relative;
   width: 300px;
   margin-bottom: 15px;
 }
 
-.search > .input-group > input {
+.search-main > .input-group > input {
   font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: bold;
@@ -852,7 +852,7 @@
   height: 30px;
   padding: 0 12px 0 25px;
   background: white url("http://cssdeck.com/uploads/media/items/5/5JuDgOa.png") 8px 7px no-repeat;
-  border: 2px solid black;
+  border: 2px solid #d3d3d3;
   border-radius: 13px;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -864,7 +864,7 @@
   box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
 }
 
-.search > .input-group > input:focus {
+.search-main > .input-group > input:focus {
   border-color: #ec2652;
   -webkit-box-shadow: 0 0 2px #ec2652;
   -ms-box-shadow: 0 0 2px #ec2652;
@@ -882,7 +882,96 @@
   font-weight: 200;
 }
 
-.lt-ie9 .search > .input-group > input {
+.lt-ie9 .search-main > .input-group > input {
+  line-height: 26px;
+}
+
+.margin-filter {
+  margin-left: 10px;
+}
+
+.search-filter-text,
+.search-filter-number {
+  display: none;
+}
+
+#hide-filters {
+  display: none;
+}
+
+.search-filter-text {
+  position: relative;
+  width: 170px;
+  margin-bottom: 15px;
+}
+
+.search-filter-text > .input-group > input {
+  font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #ec2652;
+  height: 30px;
+  padding: 0 0 0 10px;
+  background: white;
+  border: 2px solid #d3d3d3;
+  border-radius: 13px;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -ms-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -o-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+}
+
+.search-filter-text > .input-group > input:focus {
+  border-color: #ec2652;
+  -webkit-box-shadow: 0 0 2px #ec2652;
+  -ms-box-shadow: 0 0 2px #ec2652;
+  -o-box-shadow: 0 0 2px #ec2652;
+  box-shadow: 0 0 2px #ec2652;
+}
+
+.lt-ie9 .search-filter-text > .input-group > input {
+  line-height: 26px;
+}
+
+.search-filter-number {
+  position: relative;
+  width: 130px;
+  margin-bottom: 15px;
+}
+
+.search-filter-number > .input-group > input {
+  font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #ec2652;
+  height: 30px;
+  padding: 0 0 0 10px;
+  background: white;
+  border: 2px solid #d3d3d3;
+  border-radius: 13px;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -ms-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -o-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+}
+
+.search-filter-number > .input-group > input:focus {
+  border-color: #ec2652;
+  -webkit-box-shadow: 0 0 2px #ec2652;
+  -ms-box-shadow: 0 0 2px #ec2652;
+  -o-box-shadow: 0 0 2px #ec2652;
+  box-shadow: 0 0 2px #ec2652;
+}
+
+.lt-ie9 .search-filter-number > .input-group > input {
   line-height: 26px;
 }
 
@@ -917,6 +1006,17 @@ body {
   border-radius: 15px;
 }
 
+.btn-circle-filter {
+  width: 29px;
+  height: 29px;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 10px;
+  margin-top: 0;
+}
+
 #avatar:focus {
   outline: none;
   border: none;
@@ -924,6 +1024,11 @@ body {
 
 .my-color {
   background-color: #ec2652;
+}
+
+.my-color-2 {
+  background-color: white;
+  color: #ec2652 !important;
 }
 
 .pagination-margin {

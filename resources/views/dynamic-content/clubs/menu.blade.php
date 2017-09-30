@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div href="{{ route('clubs-search') }}" class="tile menu-card dynamic-content-card">
+<div href="{{ route('clubs-list') }}" class="tile menu-card dynamic-content-card">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
     <br>
     <div class="text text-center">

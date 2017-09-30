@@ -23,6 +23,20 @@ class ClubController extends Controller
        }
    }
 
+    public function list(){
+
+       $clubs = Club::all();
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.list', compact('clubs'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.list', compact('clubs'));
+        }
+    }
+
     public function create(){
 
         if (request()->ajax()){

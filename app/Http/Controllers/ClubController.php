@@ -25,7 +25,7 @@ class ClubController extends Controller
 
     public function list(){
 
-       $clubs = Club::all();
+       $clubs = Club::paginate(5);
 
         if (request()->ajax()){
 

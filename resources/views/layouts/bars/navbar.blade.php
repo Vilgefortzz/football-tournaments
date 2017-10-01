@@ -44,7 +44,7 @@
                 @if(Auth::check())
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link" id="avatar-dropdown" data-toggle="dropdown"
+                        <a class="nav-link font-bold" id="avatar-dropdown" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             <img src="{{ asset(Auth::user()->avatar_dir. Auth::user()->avatar) }}"
                                  width="40" height="40" class="img-fluid rounded-circle">

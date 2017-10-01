@@ -1,9 +1,12 @@
 $filter-fields-margin: 10px !default;
+$sort-fields-margin: 5px !default;
+$search-main-margin: 10px !default;
+$sort-option-active: #53232a !default;
 
 .search-main {
   position: relative;
   width: 300px;
-  margin-bottom: 15px;
+  margin-bottom: $search-main-margin;
 }
 
 .search-main > .input-group > input {
@@ -49,23 +52,25 @@ $filter-fields-margin: 10px !default;
 
 .lt-ie9 .search-main > .input-group > input { line-height: 26px }
 
-// Filters
+// Filters and sort options
 
 .margin-filter{
   margin-left: $filter-fields-margin;
 }
+.margin-sort-options{
+  margin-left: $sort-fields-margin;
+}
 
-.search-filter-text, .search-filter-number{
+.search-filter-text, .search-filter-number, .search-sort-option-text{
   display: none;
 }
-#hide-filters{
+#hide-filters, #hide-sort-options{
   display: none;
 }
 
 .search-filter-text {
   position: relative;
   width: 170px;
-  margin-bottom: 15px;
 }
 
 .search-filter-text > .input-group > input {
@@ -104,7 +109,6 @@ $filter-fields-margin: 10px !default;
 .search-filter-number {
   position: relative;
   width: 130px;
-  margin-bottom: 15px;
 }
 
 .search-filter-number > .input-group > input {
@@ -139,3 +143,11 @@ $filter-fields-margin: 10px !default;
 }
 
 .lt-ie9 .search-filter-number > .input-group > input { line-height: 26px }
+
+.active-sort{
+  background-color: $sort-option-active !important;
+}
+
+#clubs-table, #clubs-table > td,th {
+  text-align: center;
+}

@@ -18,6 +18,9 @@
 // Variables - settings
 $my-color: #ec2652;
 $main-background: url("/images/background.jpg") no-repeat center center fixed !default;
+$pagination-margin-contract: 20px !default;
+$pagination-margin-club: 0px !default;
+$table-in-jumbotron: 10px 10px !default;
 
 body {
   margin:0;
@@ -39,6 +42,9 @@ body {
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
+.table-jumbotron{
+  padding: $table-in-jumbotron;
+}
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -58,6 +64,16 @@ body {
   border-radius: 10px;
   margin-top: 0;
 }
+.btn-circle-sort {
+  height: 25px;
+  text-align: center;
+  padding: 5px 8px;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  font-weight: bold;
+  text-transform: none;
+}
 #avatar:focus{
   outline: none;
   border: none;
@@ -69,6 +85,9 @@ body {
   background-color: white;
   color: $my-color !important;
 }
-.pagination-margin{
-  margin-top: 20px;
+.pagination-margin-contract{
+  margin-top: $pagination-margin-contract;
+}
+.pagination-margin-club{
+  margin-top: $pagination-margin-club;
 }

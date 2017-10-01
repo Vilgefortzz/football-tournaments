@@ -841,7 +841,7 @@
 .search-main {
   position: relative;
   width: 300px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .search-main > .input-group > input {
@@ -890,19 +890,24 @@
   margin-left: 10px;
 }
 
+.margin-sort-options {
+  margin-left: 5px;
+}
+
 .search-filter-text,
-.search-filter-number {
+.search-filter-number,
+.search-sort-option-text {
   display: none;
 }
 
-#hide-filters {
+#hide-filters,
+#hide-sort-options {
   display: none;
 }
 
 .search-filter-text {
   position: relative;
   width: 170px;
-  margin-bottom: 15px;
 }
 
 .search-filter-text > .input-group > input {
@@ -940,7 +945,6 @@
 .search-filter-number {
   position: relative;
   width: 130px;
-  margin-bottom: 15px;
 }
 
 .search-filter-number > .input-group > input {
@@ -975,6 +979,16 @@
   line-height: 26px;
 }
 
+.active-sort {
+  background-color: #53232a !important;
+}
+
+#clubs-table,
+#clubs-table > td,
+th {
+  text-align: center;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -994,6 +1008,10 @@ body {
   border-radius: 5px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.table-jumbotron {
+  padding: 10px 10px;
 }
 
 .btn-circle {
@@ -1017,6 +1035,17 @@ body {
   margin-top: 0;
 }
 
+.btn-circle-sort {
+  height: 25px;
+  text-align: center;
+  padding: 5px 8px;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  font-weight: bold;
+  text-transform: none;
+}
+
 #avatar:focus {
   outline: none;
   border: none;
@@ -1031,7 +1060,11 @@ body {
   color: #ec2652 !important;
 }
 
-.pagination-margin {
+.pagination-margin-contract {
   margin-top: 20px;
+}
+
+.pagination-margin-club {
+  margin-top: 0px;
 }
 

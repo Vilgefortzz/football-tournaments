@@ -13,13 +13,13 @@
 <div class="search-filter-number margin-filter">
     <div class="input-group" style="align-items: center">
         <i class="fa fa-minus-square-o fa-lg fa-fw"></i>
-        <input type="number" name="#" placeholder="Min. rating...">
+        <input type="number" name="#" placeholder="Min. rating..." min="1" max="99">
     </div>
 </div>
 <div class="search-filter-number margin-filter">
     <div class="input-group" style="align-items: center">
         <i class="fa fa-plus-square-o fa-lg fa-fw"></i>
-        <input type="number" name="#" placeholder="Max.rating...">
+        <input type="number" name="#" placeholder="Max.rating..." min="1" max="99">
     </div>
 </div>
 

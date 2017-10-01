@@ -49,7 +49,7 @@
         @endif
         <div class="container pagination-links">
             <div class="row justify-content-center">
-                {{ $contracts->links('layouts.pagination.default') }}
+                {{ $contracts->links('layouts.pagination.contracts.default') }}
             </div>
         </div>
     </div>

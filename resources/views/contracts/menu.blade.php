@@ -6,6 +6,7 @@
 
     <div id="loading"></div>
     <div id="contract-sign-loading"></div>
+    <div id="content-search" class="row justify-content-center"></div>
     <div id="content" class="row justify-content-center">
         @if(Auth::user()->isClubPresident())
             <div href="#" id="contracts-extend" class="tile menu-card dynamic-content-card">

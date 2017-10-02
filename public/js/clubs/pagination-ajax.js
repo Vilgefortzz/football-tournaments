@@ -1,16 +1,16 @@
 $(function() {
 
-    $(document).on('click', '.pagination-contracts a', function (e) {
+    $(document).on('click', '.pagination-clubs a', function (e) {
         e.preventDefault();
 
         $('#loading').css('display', 'block');
         var url = $(this).attr('href');
-        getContracts(url);
+        getClubs(url);
         window.history.pushState("", "", url);
     });
 });
 
-function getContracts(url) {
+function getClubs(url) {
 
     $.ajax({
         type: 'GET',
@@ -19,14 +19,14 @@ function getContracts(url) {
 
         success: function(data){
 
-            $('#content').html(data);
+            $('#content').html(data.list);
 
-            var contractCards = $('.contract-card');
+            var table = $('.table');
 
-            addAnimation(contractCards, 'pulse');
+            addAnimation(table, 'fadeIn');
 
             window.setTimeout(function(){
-                removeAnimation(contractCards, 'pulse');
+                removeAnimation(table, 'fadeIn');
             }, 800);
 
             $('#loading').hide();

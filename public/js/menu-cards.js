@@ -31,6 +31,10 @@ $(function () {
             flashy('You don\'t have any waiting contracts');
         }
     });
+
+    $(document).on('click', '#clubs-list', function () {
+        displayDynamicContentWithSearch($(this), $('.menu-card'));
+    });
 });
 
 function displayDynamicContent(trigger, menuCards, contractCards, jumbotrons, paginations) {
@@ -55,12 +59,27 @@ function displayDynamicContent(trigger, menuCards, contractCards, jumbotrons, pa
 
     var url = trigger.attr('href');
 
-    handleAjaxRequestMenuCards(url);
+    ajaxRequestDynamicContent(url);
 
     window.history.pushState("", "", url);
 }
 
-function handleAjaxRequestMenuCards(url) {
+function displayDynamicContentWithSearch(trigger, menuCards) {
+
+    if (menuCards !== undefined) {
+        menuCards.hide();
+    }
+
+    $('#loading').css('display', 'block');
+
+    var url = trigger.attr('href');
+
+    ajaxRequestDynamicContentWithSearch(url);
+
+    window.history.pushState("", "", url);
+}
+
+function ajaxRequestDynamicContent(url) {
 
     $.ajax({
         type: "GET",
@@ -68,6 +87,10 @@ function handleAjaxRequestMenuCards(url) {
         cache: false,
 
         success: function (data) {
+
+            if (!isEmpty($('#content-search'))){
+                $('#content-search').empty();
+            }
 
             $('#content').html(data);
 
@@ -91,4 +114,36 @@ function handleAjaxRequestMenuCards(url) {
             $('#loading').hide();
         }
     });
+}
+
+function ajaxRequestDynamicContentWithSearch(url) {
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        cache: false,
+
+        success: function (data) {
+
+            $('#content-search').html(data.search);
+            $('#content').html(data.list);
+
+            var jumbotrons = $('.jumbotron');
+            var paginations = $('.pagination-links');
+
+            addAnimation(jumbotrons, 'zoomInUp');
+            addAnimation(paginations, 'zoomInUp');
+
+            window.setTimeout(function(){
+                removeAnimation(jumbotrons, 'zoomInUp');
+                removeAnimation(paginations, 'zoomInUp');
+            }, 800);
+
+            $('#loading').hide();
+        }
+    });
+}
+
+function isEmpty( el ){
+    return !$.trim(el.html())
 }

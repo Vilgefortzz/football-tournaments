@@ -44,6 +44,7 @@
     <script src="{{ asset('js/contracts/contract-sign.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/contract-delete.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/pagination-ajax.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/clubs/pagination-ajax.js') }}" type="text/javascript"></script>
     @yield('scripts')
     @include('layouts.flashy.message')
 

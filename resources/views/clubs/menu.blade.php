@@ -6,6 +6,7 @@
 
     <div id="loading"></div>
     <div id="contract-sign-loading"></div>
+    <div id="content-search" class="row justify-content-center"></div>
     <div id="content" class="row justify-content-center">
         @if(Auth::user()->haveClub())
             <div class="tile menu-card dynamic-content-card">
@@ -20,7 +21,7 @@
                 </div>
             </div>
         @endif
-        <div href="{{ route('clubs-list') }}" class="tile menu-card dynamic-content-card">
+        <div id="clubs-list" href="{{ route('clubs-list') }}" class="tile menu-card">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
             <br>
             <div class="text text-center">

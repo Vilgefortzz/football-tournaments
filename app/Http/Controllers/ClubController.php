@@ -29,8 +29,13 @@ class ClubController extends Controller
 
         if (request()->ajax()){
 
-            $view = view('dynamic-content.clubs.list', compact('clubs'))->render();
-            return response()->json($view);
+            $firstView = view('layouts.elements.clubs.search.search')->render();
+            $secondView = view('dynamic-content.clubs.list', compact('clubs'))->render();
+
+            return response()->json([
+                'search' => $firstView,
+                'list' => $secondView
+            ]);
         }
         else{
             return view('clubs.list', compact('clubs'));

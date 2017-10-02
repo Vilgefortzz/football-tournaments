@@ -6,6 +6,7 @@
 
     <div id="loading"></div>
     <div id="contract-sign-loading"></div>
+    <div id="content-search" class="row justify-content-center"></div>
     <div id="content" class="row justify-content-center">
         <div class="col-md-12">
             <div class="jumbotron jumbotron-main-page">

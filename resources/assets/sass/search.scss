@@ -1,5 +1,6 @@
 $filter-fields-margin: 10px !default;
-$sort-fields-margin: 5px !default;
+$sort-fields-margin-left: 5px !default;
+$sort-fields-margin-bottom: 15px !default;
 $search-main-margin: 10px !default;
 $sort-option-active: #53232a !default;
 
@@ -58,7 +59,8 @@ $sort-option-active: #53232a !default;
   margin-left: $filter-fields-margin;
 }
 .margin-sort-options{
-  margin-left: $sort-fields-margin;
+  margin-left: $sort-fields-margin-left;
+  margin-bottom: $sort-fields-margin-bottom;
 }
 
 .search-filter-text, .search-filter-number, .search-sort-option-text{

@@ -12,6 +12,11 @@
     <div id="content" class="row justify-content-center">
         <div class="col-md-8">
             <div class="jumbotron jumbotron-main-page table-jumbotron">
+                <div class="container pagination-links">
+                    <div class="row justify-content-center">
+                        {{ $clubs->links('layouts.pagination.clubs.default') }}
+                    </div>
+                </div>
                 <table id="clubs-table" class="table table-hover table-responsive" cellspacing="0" width="100%">
                     <thead class="my-color-2">
                     <tr>
@@ -40,12 +45,6 @@
                     @endforeach
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-        <div class="container pagination-links">
-            <div class="row justify-content-center">
-                {{ $clubs->links('layouts.pagination.clubs.default') }}
             </div>
         </div>
     </div>

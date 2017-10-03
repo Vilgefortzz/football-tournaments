@@ -699,6 +699,24 @@
   font-family: 'Roboto';
 }
 
+.tile-clubs {
+  width: 280px;
+  height: 420px;
+  margin: 6px;
+  background-color: #ec2652;
+  display: inline-block;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  -webkit-box-shadow: 0 35px 77px -17px rgba(0, 0, 0, 0.44);
+          box-shadow: 0 35px 77px -17px rgba(0, 0, 0, 0.44);
+  overflow: hidden;
+  color: white;
+  font-family: 'Roboto';
+}
+
 .tile .cover-image {
   height: 100%;
   width: 100%;

@@ -1,6 +1,6 @@
 <div class="search-main">
     <div class="input-group">
-        <input type="text" name="#" placeholder="Search...">
+        <input id="search-main" href="{{ route('clubs-search') }}" type="text" name="#" placeholder="Search...">
     </div>
 </div>
 

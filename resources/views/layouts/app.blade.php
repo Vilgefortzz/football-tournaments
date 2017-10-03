@@ -39,8 +39,11 @@
     <script src="{{ asset('js/link-active.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/flashy.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/menu-cards.js') }}" type="text/javascript"></script>
+
     <script src="{{ asset('js/clubs/search/sort.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/clubs/search/filters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/clubs/search/search.js') }}" type="text/javascript"></script>
+
     <script src="{{ asset('js/contracts/contract-sign.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/contract-delete.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/pagination-ajax.js') }}" type="text/javascript"></script>

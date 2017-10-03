@@ -102,15 +102,14 @@ class ClubController extends Controller
         return redirect()->back();
     }
 
-    public function search(){
+    public function search(Request $request){
 
         if(request()->ajax()){
 
-            $view = view('dynamic-content.clubs.search')->render();
+            $clubs = Club::where('name', 'like', $request->value. '%')->get();
+            $view = view('dynamic-content.clubs.searchable-cards', compact('clubs'))->render();
+
             return response()->json($view);
-        }
-        else{
-            return view('clubs.search');
         }
     }
 }

@@ -2,7 +2,7 @@
     <div class="jumbotron jumbotron-main-page table-jumbotron">
         <div class="container pagination-links">
             <div class="row justify-content-center">
-                {{ $clubs->links('layouts.pagination.clubs.default') }}
+                {{ $clubs->links('layouts.pagination.clubs.list') }}
             </div>
         </div>
         <table id="clubs-table" class="table table-hover table-responsive" cellspacing="0" width="100%">

@@ -13,6 +13,7 @@ $(function() {
 
             var clubListUrl = $('#clubs-list').attr('href');
             ajaxRequestDynamicContentClubsList(clubListUrl);
+            window.history.pushState("", "", clubListUrl);
         }
         else{
 

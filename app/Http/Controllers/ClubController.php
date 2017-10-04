@@ -106,7 +106,7 @@ class ClubController extends Controller
 
         if(request()->ajax()){
 
-            $clubs = Club::where('name', 'like', $request->value. '%')->take(3)->get();
+            $clubs = Club::where('name', 'like', $request->value. '%')->paginate(3);
             $view = view('dynamic-content.clubs.searchable-cards', compact('clubs'))->render();
 
             return response()->json($view);

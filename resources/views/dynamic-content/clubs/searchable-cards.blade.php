@@ -25,3 +25,8 @@
         </div>
     </div>
 @endforeach
+<div class="container pagination-links">
+    <div class="row justify-content-center">
+        {{ $clubs->links('layouts.pagination.clubs.searchable-cards') }}
+    </div>
+</div>

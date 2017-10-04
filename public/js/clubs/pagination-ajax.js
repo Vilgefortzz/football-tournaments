@@ -3,7 +3,6 @@ $(function() {
     $(document).on('click', '.pagination-clubs a', function (e) {
         e.preventDefault();
 
-        $('#loading').css('display', 'block');
         var url = $(this).attr('href');
         getClubs(url);
         window.history.pushState("", "", url);

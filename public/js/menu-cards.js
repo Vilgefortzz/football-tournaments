@@ -144,6 +144,6 @@ function ajaxRequestDynamicContentWithSearch(url) {
     });
 }
 
-function isEmpty( el ){
+function isEmpty(el){
     return !$.trim(el.html())
 }

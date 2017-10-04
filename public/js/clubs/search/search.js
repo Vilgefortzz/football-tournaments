@@ -1,39 +1,77 @@
 $(function() {
 
     var timer;
-
     $(document).on('keyup', '#search-main', function () {
 
         $('#content').html('');
-
         $('#loading').css('display', 'block');
-        var url = $(this).attr('href');
+
+        // Value from search
         var value = $(this).val();
 
-        clearTimeout(timer);
-        timer = setTimeout(function() {
+        if(value === ''){
 
-            $.ajax({
-                type: 'GET',
-                url: url,
-                data: {value: value},
-                cache: false,
+            var clubListUrl = $('#clubs-list').attr('href');
+            ajaxRequestDynamicContentClubsList(clubListUrl);
+        }
+        else{
 
-                success: function(data){
+            var url = $(this).attr('href');
 
-                    $('#content').html(data);
+            clearTimeout(timer);
+            timer = setTimeout(function() {
 
-                    var clubCards = $('.club-card');
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {value: value},
+                    cache: false,
 
-                    addAnimation(clubCards, 'fadeInRight');
+                    success: function(data){
 
-                    window.setTimeout(function(){
-                        removeAnimation(clubCards, 'fadeInRight');
-                    }, 1500);
+                        $('#content').html(data);
 
-                    $('#loading').hide();
-                }
-            });
-        }, 300);
+                        var clubCards = $('.club-card');
+
+                        addAnimation(clubCards, 'fadeInRight');
+
+                        window.setTimeout(function(){
+                            removeAnimation(clubCards, 'fadeInRight');
+                        }, 1500);
+
+                        $('#loading').hide();
+                    }
+                });
+            }, 400);
+
+            window.history.pushState("", "", url);
+        }
     });
 });
+
+function ajaxRequestDynamicContentClubsList(url) {
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        cache: false,
+
+        success: function(data){
+
+            $('#content').html(data.list);
+
+            var jumbotrons = $('.jumbotron');
+            var paginations = $('.pagination-links');
+
+            addAnimation(jumbotrons, 'zoomInUp');
+            addAnimation(paginations, 'zoomInUp');
+
+            window.setTimeout(function(){
+                removeAnimation(jumbotrons, 'zoomInUp');
+                removeAnimation(paginations, 'zoomInUp');
+            }, 1500);
+
+            $('#loading').hide();
+        }
+    });
+}

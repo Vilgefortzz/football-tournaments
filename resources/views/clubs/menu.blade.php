@@ -21,7 +21,7 @@
                 </div>
             </div>
         @endif
-        <div id="clubs-list" href="{{ route('clubs-list') }}" class="tile menu-card">
+        <div id="clubs-list" href="{{ route('clubs-list-search') }}" class="tile menu-card">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
             <br>
             <div class="text text-center">

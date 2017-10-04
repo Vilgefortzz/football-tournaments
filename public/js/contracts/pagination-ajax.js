@@ -3,7 +3,9 @@ $(function() {
     $(document).on('click', '.pagination-contracts a', function (e) {
         e.preventDefault();
 
+        $('#content').html('');
         $('#loading').css('display', 'block');
+
         var url = $(this).attr('href');
         getContracts(url);
         window.history.pushState("", "", url);

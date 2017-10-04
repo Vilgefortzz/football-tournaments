@@ -2,19 +2,13 @@ $(function() {
 
     $(document).on('click', '.sign-contract', function (e) {
         e.preventDefault();
-        displayDynamicContentContractSign($(this), $('.contract-card'), $('.pagination-links'));
+        displayDynamicContentContractSign($(this));
     });
 });
 
-function displayDynamicContentContractSign(trigger, contractCards, paginations) {
+function displayDynamicContentContractSign(trigger) {
 
-    if (contractCards !== undefined) {
-        contractCards.hide();
-    }
-
-    if (paginations !== undefined) {
-        paginations.hide();
-    }
+    $('#content').html('');
 
     var urlAfterFailed = $('.contract-card').attr('href');
     var urlAfterSign = $('.contract-binding').attr('href');
@@ -72,7 +66,7 @@ function handleAjaxRequestCompleted(url) {
 
                 window.setTimeout(function(){
                     removeAnimation(jumbotrons, 'zoomInUp');
-                }, 1500);
+                }, 1000);
             }, 5000);
         }
     });
@@ -98,7 +92,7 @@ function handleAjaxRequestFailed(url) {
             window.setTimeout(function(){
                 removeAnimation(contractCards, 'zoomInUp');
                 removeAnimation(paginations, 'zoomInUp');
-            }, 1500);
+            }, 1000);
 
             $('#loading').hide();
         }

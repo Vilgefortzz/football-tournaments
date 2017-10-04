@@ -16,16 +16,16 @@ $(function () {
         $('.navbar-nav > .nav-item').removeClass('active');
         $(this).parent().addClass('active');
 
-        displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
+        displayDynamicContent($(this));
     });
 
     $(document).on('click', '.dynamic-content-card', function () {
-        displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
+        displayDynamicContent($(this));
     });
 
     $(document).on('click', '#waiting-contracts', function () {
         if ($(this).find('.badge').attr('data-number-waiting-contracts') !== '0'){
-            displayDynamicContent($(this), $('.menu-card'), $('.contract-card'), $('.jumbotron'), $('.pagination-links'));
+            displayDynamicContent($(this));
         }
         else{
             flashy('You don\'t have any waiting contracts');
@@ -33,28 +33,13 @@ $(function () {
     });
 
     $(document).on('click', '#clubs-list', function () {
-        displayDynamicContentWithSearch($(this), $('.menu-card'));
+        displayDynamicContentWithSearch($(this));
     });
 });
 
-function displayDynamicContent(trigger, menuCards, contractCards, jumbotrons, paginations) {
+function displayDynamicContent(trigger) {
 
-    if (menuCards !== undefined) {
-        menuCards.hide();
-    }
-
-    if (contractCards !== undefined) {
-        contractCards.hide();
-    }
-
-    if (jumbotrons !== undefined) {
-        jumbotrons.hide();
-    }
-
-    if (paginations !== undefined) {
-        paginations.hide();
-    }
-
+    $('#content').html('');
     $('#loading').css('display', 'block');
 
     var url = trigger.attr('href');
@@ -64,12 +49,9 @@ function displayDynamicContent(trigger, menuCards, contractCards, jumbotrons, pa
     window.history.pushState("", "", url);
 }
 
-function displayDynamicContentWithSearch(trigger, menuCards) {
+function displayDynamicContentWithSearch(trigger) {
 
-    if (menuCards !== undefined) {
-        menuCards.hide();
-    }
-
+    $('#content').html('');
     $('#loading').css('display', 'block');
 
     var url = trigger.attr('href');
@@ -109,7 +91,7 @@ function ajaxRequestDynamicContent(url) {
                 removeAnimation(contractCards, 'zoomInUp');
                 removeAnimation(jumbotrons, 'zoomInUp');
                 removeAnimation(paginations, 'zoomInUp');
-            }, 800);
+            }, 1000);
 
             $('#loading').hide();
         }
@@ -137,7 +119,7 @@ function ajaxRequestDynamicContentWithSearch(url) {
             window.setTimeout(function(){
                 removeAnimation(jumbotrons, 'zoomInUp');
                 removeAnimation(paginations, 'zoomInUp');
-            }, 800);
+            }, 1000);
 
             $('#loading').hide();
         }

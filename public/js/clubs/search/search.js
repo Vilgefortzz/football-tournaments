@@ -70,7 +70,7 @@ function ajaxRequestDynamicContentClubsList(url) {
             window.setTimeout(function(){
                 removeAnimation(jumbotrons, 'zoomInUp');
                 removeAnimation(paginations, 'zoomInUp');
-            }, 1500);
+            }, 1000);
 
             $('#loading').hide();
         }

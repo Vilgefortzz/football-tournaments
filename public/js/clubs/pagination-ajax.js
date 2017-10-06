@@ -18,7 +18,6 @@ $(function() {
         var value = $('#search-main').val();
 
         getClubCards(url, value);
-        window.history.pushState("", "", url);
     });
 });
 

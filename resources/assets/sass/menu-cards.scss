@@ -62,6 +62,12 @@
   font-size: 28px;
 }
 
+.tile .text-locations {
+  position:relative;
+  font-style: italic;
+  font-size: 18px;
+}
+
 .tile .info-header{
   position:relative;
   font-style: italic;
@@ -132,6 +138,16 @@
 .tile-contracts > .text-contracts > h6 {
   margin:0 0 0 0;
   transform: translateX(-200px);
+  transition-delay: 0.2s;
+}
+
+.tile-clubs > .text-clubs > h5 {
+  transform: translateX(-200px);
+  transition-delay: 0.2s;
+}
+
+.tile-clubs > .text-clubs > h6 {
+  transform: translateX(200px);
   transition-delay: 0.2s;
 }
 

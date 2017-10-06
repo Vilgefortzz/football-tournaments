@@ -41,7 +41,7 @@
                         <h6 class="animate-text">
                             <a href="{{ route('contract-sign', $contract->id) }}"
                                class="btn my-color sign-contract" data-contract-id="{{$contract->id}}">
-                                <i class="fa fa-pencil fa-lg fa-fw"></i>Sign contract:
+                                <i class="fa fa-handshake-o fa-lg fa-fw"></i>  Sign contract
                             </a>
                         </h6>
                     </div>

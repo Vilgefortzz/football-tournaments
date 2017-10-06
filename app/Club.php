@@ -66,4 +66,12 @@ class Club extends Model
     public function contracts(){
         return $this->hasMany('App\Contract');
     }
+
+    public function placeOnTheLeaderboard(){
+
+        $clubsLeaderboard = Club::orderBy('tournament_points', 'desc')->get();
+        $placeOnTheLeaderboard = $clubsLeaderboard->pluck('id')->search($this->id) + 1;
+
+        return $placeOnTheLeaderboard;
+    }
 }

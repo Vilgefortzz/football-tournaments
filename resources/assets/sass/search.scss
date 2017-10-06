@@ -1,13 +1,14 @@
 $filter-fields-margin: 10px !default;
 $sort-fields-margin-left: 5px !default;
-$sort-fields-margin-bottom: 15px !default;
-$search-main-margin: 10px !default;
-$sort-option-active: #53232a !default;
+$sort-fields-margin-bottom: 10px !default;
+$search-main-margin-bottom: 10px !default;
+$sort-option-active: #62000f !default;
+$remove-sort-option: #000000 !default;
 
 .search-main {
   position: relative;
   width: 300px;
-  margin-bottom: $search-main-margin;
+  margin-bottom: $search-main-margin-bottom;
 }
 
 .search-main > .input-group > input {
@@ -148,6 +149,10 @@ $sort-option-active: #53232a !default;
 
 .active-sort{
   background-color: $sort-option-active !important;
+}
+
+.remove-sort{
+  background-color: $remove-sort-option !important;
 }
 
 #clubs-table, #clubs-table > td,th {

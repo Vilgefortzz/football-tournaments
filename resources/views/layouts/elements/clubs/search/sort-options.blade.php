@@ -24,7 +24,7 @@
     </a>
 </div>
 <div class="search-sort-option-text margin-sort-options">
-    <a class="btn btn-circle-sort my-color">
+    <a class="btn btn-circle-sort my-color remove-sort">
         <i class="fa fa-remove fa-2x fa-fw" aria-hidden="true"></i> Remove sort
     </a>
 </div>

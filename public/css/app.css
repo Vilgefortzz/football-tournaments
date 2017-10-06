@@ -734,6 +734,12 @@
   font-size: 28px;
 }
 
+.tile .text-locations {
+  position: relative;
+  font-style: italic;
+  font-size: 18px;
+}
+
 .tile .info-header {
   position: relative;
   font-style: italic;
@@ -814,6 +820,20 @@
   margin: 0 0 0 0;
   -webkit-transform: translateX(-200px);
           transform: translateX(-200px);
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+.tile-clubs > .text-clubs > h5 {
+  -webkit-transform: translateX(-200px);
+          transform: translateX(-200px);
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+.tile-clubs > .text-clubs > h6 {
+  -webkit-transform: translateX(200px);
+          transform: translateX(200px);
   -webkit-transition-delay: 0.2s;
           transition-delay: 0.2s;
 }
@@ -910,7 +930,7 @@
 
 .margin-sort-options {
   margin-left: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .search-filter-text,
@@ -999,7 +1019,11 @@
 }
 
 .active-sort {
-  background-color: #53232a !important;
+  background-color: #62000f !important;
+}
+
+.remove-sort {
+  background-color: #000000 !important;
 }
 
 #clubs-table,
@@ -1077,6 +1101,10 @@ body {
 .my-color-2 {
   background-color: white;
   color: #ec2652 !important;
+}
+
+.my-color-3 {
+  background-color: #4a9415;
 }
 
 .pagination-margin-contract {

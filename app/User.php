@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  *
  * @property int $id
  * @property string $username
+ * @property string $avatar_dir
+ * @property string $avatar
  * @property string $password
  * @property int $goals
  * @property int $assists
@@ -29,6 +31,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAssists($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAvatar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAvatarDir($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereClubId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCompletedTournaments($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
@@ -53,6 +57,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Contract[] $contracts
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Notification[] $notifications
  * @property-read \App\Role $role
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\RequestToJoinTheClub[] $requestsToJoinTheClub
  */
 class User extends Authenticatable
 {
@@ -90,6 +95,10 @@ class User extends Authenticatable
 
     public function notifications(){
         return $this->hasMany('App\Notification');
+    }
+
+    public function requestsToJoinTheClub(){
+        return $this->hasMany('App\RequestToJoinTheClub');
     }
 
     public function isFootballer(){

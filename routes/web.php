@@ -81,6 +81,9 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/search', 'ClubController@search')
             ->name('clubs-search');
+
+        Route::post('/{club}/join', 'ClubController@join')
+            ->name('club-join');
     });
 
 });

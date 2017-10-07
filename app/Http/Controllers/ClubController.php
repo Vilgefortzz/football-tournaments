@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Club;
+use App\RequestToJoinTheClub;
 use App\Role;
 use Auth;
 use File;
@@ -11,34 +12,15 @@ use Image;
 
 class ClubController extends Controller
 {
-   public function menu(){
-
-       if (request()->ajax()){
-
-           $view = view('dynamic-content.clubs.menu')->render();
-           return response()->json($view);
-       }
-       else{
-           return view('clubs.menu');
-       }
-   }
-
-    public function listAndSearch(){
-
-       $clubs = Club::paginate(5);
+    public function menu(){
 
         if (request()->ajax()){
 
-            $firstView = view('layouts.elements.clubs.search.search')->render();
-            $secondView = view('dynamic-content.clubs.list', compact('clubs'))->render();
-
-            return response()->json([
-                'search' => $firstView,
-                'list' => $secondView
-            ]);
+            $view = view('dynamic-content.clubs.menu')->render();
+            return response()->json($view);
         }
         else{
-            return view('clubs.list', compact('clubs'));
+            return view('clubs.menu');
         }
     }
 
@@ -100,6 +82,40 @@ class ClubController extends Controller
 
         flashy()->error('Club cannot be created. Error occurs');
         return redirect()->back();
+    }
+
+    public function join(Club $club){
+
+        if (request()->ajax()){
+
+            $authUserId = Auth::user()->id;
+
+            $requestToJoinTheClub = new RequestToJoinTheClub;
+            $requestToJoinTheClub->club_id = $club->id;
+            $requestToJoinTheClub->user_id = $authUserId;
+            $requestToJoinTheClub->save();
+        }
+    }
+
+    // Search clubs
+
+    public function listAndSearch(){
+
+        $clubs = Club::paginate(5);
+
+        if (request()->ajax()){
+
+            $firstView = view('layouts.elements.clubs.search.search')->render();
+            $secondView = view('dynamic-content.clubs.list', compact('clubs'))->render();
+
+            return response()->json([
+                'search' => $firstView,
+                'list' => $secondView
+            ]);
+        }
+        else{
+            return view('clubs.list', compact('clubs'));
+        }
     }
 
     public function search(Request $request){

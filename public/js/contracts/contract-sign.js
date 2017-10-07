@@ -17,10 +17,10 @@ function displayDynamicContentContractSign(trigger) {
     var contractId = trigger.attr('data-contract-id');
     var signature = $('#username-contract-' + contractId).val();
 
-    handleAjaxSignRequest(url, urlAfterSign, urlAfterFailed, signature);
+    ajaxSignRequest(url, urlAfterSign, urlAfterFailed, signature);
 }
 
-function handleAjaxSignRequest(url, urlAfterSign, urlAfterFailed, signature) {
+function ajaxSignRequest(url, urlAfterSign, urlAfterFailed, signature) {
 
     $.ajax({
         type: 'POST',
@@ -33,12 +33,12 @@ function handleAjaxSignRequest(url, urlAfterSign, urlAfterFailed, signature) {
 
             if(data.completed){
                 $('#contract-sign-loading').css('display', 'block');
-                handleAjaxRequestCompleted(urlAfterSign);
+                ajaxRequestCompleted(urlAfterSign);
                 window.history.pushState("", "", urlAfterSign);
             }
             else{
                 $('#loading').css('display', 'block');
-                handleAjaxRequestFailed(urlAfterFailed);
+                ajaxRequestFailed(urlAfterFailed);
                 window.history.pushState("", "", urlAfterFailed);
             }
 
@@ -46,7 +46,7 @@ function handleAjaxSignRequest(url, urlAfterSign, urlAfterFailed, signature) {
     });
 }
 
-function handleAjaxRequestCompleted(url) {
+function ajaxRequestCompleted(url) {
 
     $.ajax({
         type: "GET",
@@ -72,7 +72,7 @@ function handleAjaxRequestCompleted(url) {
     });
 }
 
-function handleAjaxRequestFailed(url) {
+function ajaxRequestFailed(url) {
 
     $.ajax({
         type: "GET",

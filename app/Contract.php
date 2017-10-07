@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string|null $date_and_time_of_signing
+ * @property string|null $date_and_time_of_end
  * @property string $duration
  * @property string $status
  * @property string $club_name
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereClubId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereClubName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereDateAndTimeOfEnd($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereDateAndTimeOfSigning($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereDuration($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereId($value)

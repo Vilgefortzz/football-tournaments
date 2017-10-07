@@ -18,6 +18,7 @@
 // Variables - settings
 $my-color: #ec2652;
 $my-color-join: #4a9415;
+$my-color-requested-to-join: #bab91c;
 $main-background: url("/images/background.jpg") no-repeat center center fixed !default;
 $pagination-margin-contract: 20px !default;
 $pagination-margin-club: 0px !default;
@@ -88,6 +89,9 @@ body {
 }
 .my-color-3{
   background-color: $my-color-join;
+}
+.my-color-4{
+  background-color: $my-color-requested-to-join;
 }
 .pagination-margin-contract{
   margin-top: $pagination-margin-contract;

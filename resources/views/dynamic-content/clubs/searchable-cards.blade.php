@@ -19,16 +19,10 @@
             <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
                  width="150" height="150">
         </h1>
-        <h1 class="text-header text-center">
+        <h1 class="text-header text-center" style="margin-bottom: 20px">
             {{ $club->name }}
         </h1>
         <div class="text-clubs text-center">
-            <h5 class="animate-text">
-                <a href="#"
-                   class="btn btn-sm my-color-3 request-join-club">
-                    <i class="fa fa-users fa-lg fa-fw"></i>  Try to join the club
-                </a>
-            </h5>
             <h6 class="animate-text">
                 <i class="fa fa-star fa-fw" style="color: gold;"></i> Place on the leaderboard: {{ $club->placeOnTheLeaderboard() }}
             </h6>
@@ -41,6 +35,19 @@
             <h6 class="animate-text">
                 <i class="fa fa-mail-forward"></i> All Assists: {{ $club->assists }}
             </h6>
+            <h5 class="animate-text">
+                @if($club->isRequestSentToJoin())
+                    <span class="badge my-color-4">
+                        <i class="fa fa-check fa-fw" aria-hidden="true"></i>
+                        Request to join this club was sent
+                    </span>
+                @else
+                    <a href="{{ route('club-join', $club->id) }}"
+                       class="btn my-color-3 join-club">
+                        <i class="fa fa-users fa-lg fa-fw"></i>  Try to join the club
+                    </a>
+                @endif
+            </h5>
         </div>
     </div>
 @endforeach

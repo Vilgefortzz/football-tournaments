@@ -4,7 +4,7 @@
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <h1 class="text-header pull-right">
             <span class="badge badge-pill my-color">
-                <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
+                <i class="fa fa-star fa-fw" aria-hidden="true"></i>
                 {{ $club->tournament_points }}
             </span>
         </h1>

@@ -20,7 +20,34 @@ $(function() {
     $(document).on('click', '.btn-circle-sort', function (e) {
         e.preventDefault();
 
-        $('.btn-circle-sort').removeClass('active-sort');
+        $('#content').html('');
+        $('#loading').css('display', 'block');
+
+        var url = $(this).attr('href');
+        var sortBy = $(this).attr('data-sort-by');
+        var direction = $(this).attr('data-direction');
+        var sortOptions = $('.btn-circle-sort');
+
+        sortOptions.attr('data-direction', 'asc');
+
+        $('.direction').hide();
+
+        if (direction === 'asc'){
+            $(this).find('.asc').show();
+            $(this).attr('data-direction', 'desc');
+            $(this).attr('data-direction-current', 'asc');
+        }
+        else {
+            $(this).find('.desc').show();
+            $(this).attr('data-direction', 'asc');
+            $(this).attr('data-direction-current', 'desc');
+        }
+
+        getClubs(url, sortBy, direction);
+
+        $('#search-main').val('');
+        sortOptions.removeClass('active-sort');
         $(this).addClass('active-sort');
+        window.history.pushState("", "", url);
     });
 });

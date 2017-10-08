@@ -929,13 +929,13 @@
 }
 
 .margin-sort-options {
-  margin-left: 5px;
   margin-bottom: 10px;
 }
 
 .search-filter-text,
 .search-filter-number,
-.search-sort-option-text {
+.search-sort-option-text,
+.direction {
   display: none;
 }
 

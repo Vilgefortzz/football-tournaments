@@ -97,11 +97,57 @@ class ClubController extends Controller
         }
     }
 
-    // Search clubs
+    // Search clubs - search, filters and sort
 
-    public function listAndSearch(){
+    public function listAndSearch(Request $request){
 
         $clubs = Club::paginate(5);
+
+        if ($request->sortBy === 'name'){
+
+            if ($request->direction === 'desc'){
+                $clubs = Club::orderBy('name', 'desc')->paginate(5);
+            }
+            else{
+                $clubs = Club::orderBy('name', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'country'){
+
+            if($request->direction === 'desc'){
+                $clubs = Club::orderBy('country', 'desc')->paginate(5);
+            }
+            else{
+                $clubs = Club::orderBy('country', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'city'){
+
+            if($request->direction === 'desc'){
+                $clubs = Club::orderBy('city', 'desc')->paginate(5);
+            }
+            else{
+                $clubs = Club::orderBy('city', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'tournament points'){
+
+            if($request->direction === 'desc'){
+                $clubs = Club::orderBy('tournament_points', 'desc')->paginate(5);
+            }
+            else{
+                $clubs = Club::orderBy('tournament_points', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'trophies'){
+
+            if($request->direction === 'desc'){
+                $clubs = Club::orderBy('won_trophies', 'desc')->paginate(5);
+            }
+            else{
+                $clubs = Club::orderBy('won_trophies', 'asc')->paginate(5);
+            }
+        }
 
         if (request()->ajax()){
 
@@ -122,10 +168,13 @@ class ClubController extends Controller
 
         if(request()->ajax()){
 
-            $clubs = Club::where('name', 'like', $request->value. '%')->paginate(3);
-            $view = view('dynamic-content.clubs.searchable-cards', compact('clubs'))->render();
+            if($request->has('value')){
 
-            return response()->json($view);
+                $clubs = Club::where('name', 'like', $request->value. '%')->paginate(3);
+                $view = view('dynamic-content.clubs.searchable-cards', compact('clubs'))->render();
+
+                return response()->json($view);
+            }
         }
     }
 }

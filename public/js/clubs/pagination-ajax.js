@@ -4,7 +4,9 @@ $(function() {
         e.preventDefault();
 
         var url = $(this).attr('href');
-        getClubs(url);
+        var sortBy = $('.active-sort').attr('data-sort-by');
+        var direction = $('.active-sort').attr('data-direction-current');
+        getClubs(url, sortBy, direction);
         window.history.pushState("", "", url);
     });
 
@@ -20,52 +22,3 @@ $(function() {
         getClubCards(url, value);
     });
 });
-
-function getClubs(url) {
-
-    $.ajax({
-        type: 'GET',
-        url: url,
-        cache: false,
-
-        success: function(data){
-
-            $('#content').html(data.list);
-
-            var table = $('.table');
-
-            addAnimation(table, 'fadeIn');
-
-            window.setTimeout(function(){
-                removeAnimation(table, 'fadeIn');
-            }, 800);
-
-            $('#loading').hide();
-        }
-    });
-}
-
-function getClubCards(url, value) {
-
-    $.ajax({
-        type: 'GET',
-        url: url,
-        data: {value: value},
-        cache: false,
-
-        success: function(data){
-
-            $('#content').html(data);
-
-            var clubCards = $('.club-card');
-
-            addAnimation(clubCards, 'fadeInRight');
-
-            window.setTimeout(function(){
-                removeAnimation(clubCards, 'fadeInRight');
-            }, 1500);
-
-            $('#loading').hide();
-        }
-    });
-}

@@ -1,5 +1,4 @@
 $filter-fields-margin: 10px !default;
-$sort-fields-margin-left: 5px !default;
 $sort-fields-margin-bottom: 10px !default;
 $search-main-margin-bottom: 10px !default;
 $sort-option-active: #62000f !default;
@@ -60,11 +59,10 @@ $remove-sort-option: #000000 !default;
   margin-left: $filter-fields-margin;
 }
 .margin-sort-options{
-  margin-left: $sort-fields-margin-left;
   margin-bottom: $sort-fields-margin-bottom;
 }
 
-.search-filter-text, .search-filter-number, .search-sort-option-text{
+.search-filter-text, .search-filter-number, .search-sort-option-text, .direction{
   display: none;
 }
 #hide-filters, #hide-sort-options{

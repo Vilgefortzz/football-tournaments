@@ -24,7 +24,7 @@
                         <th><i class="fa fa-shield fa-fw"></i>Emblem</th>
                         <th><i class="fa fa-flag fa-fw"></i>Country</th>
                         <th><i class="fa fa-flag-o fa-fw"></i>City</th>
-                        <th><i class="fa fa-star fa-fw"></i>Rating</th>
+                        <th><i class="fa fa-star fa-fw"></i>Tournament points</th>
                         <th><i class="fa fa-trophy fa-fw"></i>Trophies</th>
                     </tr>
                     </thead>

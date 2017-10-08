@@ -125,7 +125,3 @@ function ajaxRequestDynamicContentWithSearch(url) {
         }
     });
 }
-
-function isEmpty(el){
-    return !$.trim(el.html())
-}

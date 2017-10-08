@@ -11,7 +11,7 @@ function displayDynamicContentContractDelete(trigger) {
     $('#content').html('');
     $('#loading').css('display', 'block');
 
-    var urlAfterDelete = $('.contract-card').attr('href');
+    var urlAfterDelete = $('.contracts-created').attr('href');
     var url = trigger.attr('href');
 
     handleAjaxDeleteRequest(url, urlAfterDelete);

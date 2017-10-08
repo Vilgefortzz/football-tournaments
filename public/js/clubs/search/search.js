@@ -38,7 +38,7 @@ $(function() {
 
                         window.setTimeout(function(){
                             removeAnimation(clubCards, 'fadeInRight');
-                        }, 1500);
+                        }, 3000);
 
                         $('#loading').hide();
                     }

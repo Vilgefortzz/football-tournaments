@@ -42,7 +42,7 @@ class ContractController extends Controller
             if ($request->has('signature')){
 
                 // Check if signature is good
-                if ($user->username == $request->signature){
+                if ($user->username === $request->signature){
 
                     $user->club_id = $contract->club_id;
                     $user->save();

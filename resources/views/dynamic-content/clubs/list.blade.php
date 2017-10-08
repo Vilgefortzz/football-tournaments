@@ -1,4 +1,4 @@
-<div class="col-md-8">
+<div class="col-md-10">
     <div class="jumbotron jumbotron-main-page table-jumbotron">
         <div class="container pagination-links">
             <div class="row justify-content-center">

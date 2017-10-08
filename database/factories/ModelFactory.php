@@ -39,6 +39,8 @@ $factory->define(App\Club::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'founded_by' => $faker->unique()->name,
+        'country' => 'Poland',
+        'city' => 'Kraków'
     ];
 });
 

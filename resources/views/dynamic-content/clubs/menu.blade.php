@@ -1,15 +1,16 @@
-<div class="tile menu-card dynamic-content-card">
-    <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-    <br>
-    <div class="text text-center">
-        <h1>Your club</h1>
-        <h1><i class="fa fa-users fa-2x"></i></h1>
-        <h2 class="animate-text">Go to your club</h2>
-        <p class="animate-text">See club details, footballers, tournaments,
-            matches, showcase with trophies. </p>
+@if(Auth::user()->haveClub())
+    <div class="tile menu-card dynamic-content-card">
+        <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+        <br>
+        <div class="text text-center">
+            <h1>Your club</h1>
+            <h1><i class="fa fa-users fa-2x"></i></h1>
+            <h2 class="animate-text">Go to your club</h2>
+            <p class="animate-text">See club details, footballers, tournaments,
+                matches, showcase with trophies. </p>
+        </div>
     </div>
-</div>
-
+@endif
 <div id="clubs-list" href="{{ route('clubs-list-search') }}" class="tile menu-card">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
     <br>
@@ -21,7 +22,6 @@
             Try to join the club and become part of it. </p>
     </div>
 </div>
-
 @if(Auth::user()->isFootballer())
     <div href="{{ route('club-create') }}" class="tile menu-card dynamic-content-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>

@@ -3,6 +3,7 @@
 @section('content')
 
     <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="contract-binding" hidden></div>
+    <div href="{{ route('user-contracts-created', Auth::user()->id) }}" class="contracts-created" hidden></div>
 
     <div id="loading"></div>
     <div id="contract-sign-loading"></div>
@@ -12,8 +13,7 @@
             @include('layouts.elements.contract-info')
         @else
             @foreach($contracts as $contract)
-                <div id="contract-{{$contract->id}}" class="tile tile-contracts contract-card"
-                     href="{{ route('user-contracts-created', Auth::user()->id) }}">
+                <div id="contract-{{$contract->id}}" class="tile tile-contracts contract-card">
                     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                     <div class="info-header animate-text">
                         <a href="{{ route('contract-destroy', $contract->id) }}"

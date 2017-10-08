@@ -13,9 +13,6 @@ $(function() {
     $(document).on('click', '.pagination-clubs-searchable-cards a', function (e) {
         e.preventDefault();
 
-        $('#content').html('');
-        $('#loading').css('display', 'block');
-
         var url = $(this).attr('href');
         var value = $('#search-main').val();
 

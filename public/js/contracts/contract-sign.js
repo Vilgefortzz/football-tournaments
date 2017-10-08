@@ -8,15 +8,14 @@ $(function() {
 
 function displayDynamicContentContractSign(trigger) {
 
-    $('#content').html('');
-
-    var urlAfterFailed = $('.contract-card').attr('href');
+    var urlAfterFailed = $('.contracts-created').attr('href');
     var urlAfterSign = $('.contract-binding').attr('href');
     var url = trigger.attr('href');
 
     var contractId = trigger.attr('data-contract-id');
     var signature = $('#username-contract-' + contractId).val();
 
+    $('#content').html('');
     ajaxSignRequest(url, urlAfterSign, urlAfterFailed, signature);
 }
 

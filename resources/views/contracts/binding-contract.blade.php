@@ -3,6 +3,7 @@
 @section('content')
 
     <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="contract-binding" hidden></div>
+    <div href="{{ route('user-contracts-created', Auth::user()->id) }}" class="contracts-created" hidden></div>
 
     <div id="loading"></div>
     <div id="contract-sign-loading"></div>

@@ -3,6 +3,7 @@
 @section('content')
 
     <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="contract-binding" hidden></div>
+    <div href="{{ route('user-contracts-created', Auth::user()->id) }}" class="contracts-created" hidden></div>
 
     <div id="loading"></div>
     <div id="contract-sign-loading"></div>
@@ -10,7 +11,7 @@
         @include('layouts.elements.clubs.search.search')
     </div>
     <div id="content" class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="jumbotron jumbotron-main-page table-jumbotron">
                 <div class="container pagination-links">
                     <div class="row justify-content-center">

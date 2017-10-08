@@ -1,6 +1,5 @@
 @foreach($contracts as $contract)
-    <div id="contract-{{$contract->id}}" class="tile tile-contracts contract-card"
-         href="{{ route('user-contracts-created', Auth::user()->id) }}">
+    <div id="contract-{{$contract->id}}" class="tile tile-contracts contract-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <div class="info-header animate-text">
             <a href="{{ route('contract-destroy', $contract->id) }}"

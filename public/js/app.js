@@ -42,8 +42,6 @@ function getClubs(url, sortBy, direction) {
             window.setTimeout(function(){
                 removeAnimation(table, 'fadeIn');
             }, 800);
-
-            $('#loading').hide();
         }
     });
 }
@@ -66,9 +64,7 @@ function getClubCards(url, value) {
 
             window.setTimeout(function(){
                 removeAnimation(clubCards, 'fadeInRight');
-            }, 1500);
-
-            $('#loading').hide();
+            }, 3000);
         }
     });
 }

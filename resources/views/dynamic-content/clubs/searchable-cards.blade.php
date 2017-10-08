@@ -9,7 +9,7 @@
             </span>
         </h1>
         <h1 class="text-locations">
-            <span class="badge badge-pill my-color">
+            <span class="badge badge-pill my-color-3">
                   <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
                 {{ $club->city }}
             </span>
@@ -51,7 +51,7 @@
         </div>
     </div>
 @endforeach
-<div class="container pagination-links">
+<div class="container pagination-links" style="margin-top: 15px">
     <div class="row justify-content-center">
         {{ $clubs->links('layouts.pagination.clubs.searchable-cards') }}
     </div>

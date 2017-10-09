@@ -1,5 +1,9 @@
 {{-- Search club - input --}}
 @include('layouts.elements.clubs.search.box')
+{{-- Search list button --}}
+<a id="show-club-list" href="{{ route('clubs-list-search') }}" class="btn btn-circle-filter my-color-2" role="button">
+    <i class="fa fa-list"></i>
+</a>
 {{-- Search sort options button --}}
 <a id="show-sort-options" href="#" class="btn btn-circle-filter my-color-2" role="button">
     <i class="fa fa-sort"></i>

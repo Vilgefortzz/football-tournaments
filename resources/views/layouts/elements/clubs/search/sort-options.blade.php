@@ -39,8 +39,7 @@
     </a>
 </div>
 <div class="search-sort-option-text margin-sort-options">
-    <a href="{{ route('clubs-list-search') }}" class="btn btn-circle-sort my-color remove-sort"
-       data-sort-by="" data-direction="" data-direction-current="">
+    <a href="{{ route('clubs-list-search') }}" class="btn btn-circle-sort my-color remove-sort">
         <i class="fa fa-remove fa-2x fa-fw" aria-hidden="true"></i> Remove sort
     </a>
 </div>

@@ -42,6 +42,8 @@ function getClubs(url, sortBy, direction) {
             window.setTimeout(function(){
                 removeAnimation(table, 'fadeIn');
             }, 800);
+
+            $('#loading').hide();
         }
     });
 }

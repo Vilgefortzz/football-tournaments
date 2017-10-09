@@ -14,8 +14,6 @@ $(function() {
         e.preventDefault();
 
         var url = $(this).attr('href');
-        var value = $('#search-main').val();
-
-        getClubCards(url, value);
+        getClubCardsWithPagination(url);
     });
 });

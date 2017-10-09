@@ -45,7 +45,7 @@ $(function() {
 
         getClubs(url, sortBy, direction);
 
-        $('#search-main').val('');
+        $('.search-input').val('');
         sortOptions.removeClass('active-sort');
         $(this).addClass('active-sort');
         window.history.pushState("", "", url);

@@ -46,12 +46,25 @@ function getClubs(url, sortBy, direction) {
     });
 }
 
-function getClubCards(url, value) {
+function getClubCardsWithPagination(url) {
+
+    // Value from main search input
+    var clubNameValue = $('#search-main').val();
+
+    // Values from filter inputs
+    var clubCountryValue = $('#filter-country').val();
+    var clubCityValue = $('#filter-city').val();
+    var clubMinTournamentPointsValue = $('#filter-min-rating').val();
+    var clubMaxTournamentPointsValue = $('#filter-max-rating').val();
 
     $.ajax({
         type: 'GET',
         url: url,
-        data: {value: value},
+        data: {
+            clubNameValue: clubNameValue, clubCountryValue: clubCountryValue, clubCityValue: clubCityValue,
+            clubMinTournamentPointsValue: clubMinTournamentPointsValue,
+            clubMaxTournamentPointsValue: clubMaxTournamentPointsValue
+        },
         cache: false,
 
         success: function(data){
@@ -67,6 +80,50 @@ function getClubCards(url, value) {
             }, 3000);
         }
     });
+}
+
+function getClubCardsSearch(timer, url) {
+
+    // Value from main search input
+    var clubNameValue = $('#search-main').val();
+
+    // Values from filter inputs
+    var clubCountryValue = $('#filter-country').val();
+    var clubCityValue = $('#filter-city').val();
+    var clubMinTournamentPointsValue = $('#filter-min-rating').val();
+    var clubMaxTournamentPointsValue = $('#filter-max-rating').val();
+
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                clubNameValue: clubNameValue, clubCountryValue: clubCountryValue, clubCityValue: clubCityValue,
+                clubMinTournamentPointsValue: clubMinTournamentPointsValue,
+                clubMaxTournamentPointsValue: clubMaxTournamentPointsValue
+            },
+            cache: false,
+
+            success: function(data){
+
+                $('#content').html(data);
+
+                var clubCards = $('.club-card');
+
+                addAnimation(clubCards, 'fadeInRight');
+
+                window.setTimeout(function(){
+                    removeAnimation(clubCards, 'fadeInRight');
+                }, 3000);
+
+                $('#loading').hide();
+            }
+        });
+    }, 400);
+
+    return timer;
 }
 
 function isEmpty(el){

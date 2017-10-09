@@ -168,13 +168,49 @@ class ClubController extends Controller
 
         if(request()->ajax()){
 
-            if($request->has('value')){
+            if($request->has('clubMinTournamentPointsValue') && $request->has('clubMaxTournamentPointsValue')){
 
-                $clubs = Club::where('name', 'like', $request->value. '%')->paginate(3);
+                $clubs = Club::where('name', 'like', $request->clubNameValue. '%')
+                    ->where('country', 'like', $request->clubCountryValue. '%')
+                    ->where('city', 'like', $request->clubCityValue. '%')
+                    ->where('tournament_points', '>=', $request->clubMinTournamentPointsValue)
+                    ->where('tournament_points', '<=', $request->clubMaxTournamentPointsValue)
+                    ->paginate(3);
+
                 $view = view('dynamic-content.clubs.searchable-cards', compact('clubs'))->render();
-
                 return response()->json($view);
             }
+            elseif ($request->has('clubMinTournamentPointsValue')){
+
+                $clubs = Club::where('name', 'like', $request->clubNameValue. '%')
+                    ->where('country', 'like', $request->clubCountryValue. '%')
+                    ->where('city', 'like', $request->clubCityValue. '%')
+                    ->where('tournament_points', '>=', $request->clubMinTournamentPointsValue)
+                    ->paginate(3);
+
+                $view = view('dynamic-content.clubs.searchable-cards', compact('clubs'))->render();
+                return response()->json($view);
+            }
+            elseif ($request->has('clubMaxTournamentPointsValue')){
+
+                $clubs = Club::where('name', 'like', $request->clubNameValue. '%')
+                    ->where('country', 'like', $request->clubCountryValue. '%')
+                    ->where('city', 'like', $request->clubCityValue. '%')
+                    ->where('tournament_points', '<=', $request->clubMaxTournamentPointsValue)
+                    ->paginate(3);
+
+                $view = view('dynamic-content.clubs.searchable-cards', compact('clubs'))->render();
+                return response()->json($view);
+            }
+
+            $clubs = Club::where('name', 'like', $request->clubNameValue. '%')
+                ->where('country', 'like', $request->clubCountryValue. '%')
+                ->where('city', 'like', $request->clubCityValue. '%')
+                ->paginate(3);
+
+            $view = view('dynamic-content.clubs.searchable-cards', compact('clubs'))->render();
+            return response()->json($view);
+
         }
     }
 }

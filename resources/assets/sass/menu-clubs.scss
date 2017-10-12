@@ -1,0 +1,12 @@
+$default-your-club-menu-button-color: #ec2652;
+$your-club-menu-button-color-hover: #ec2652;
+
+.your-club-menu-nav{
+  color: black;
+}
+.your-club-menu-nav:hover{
+  color: $default-your-club-menu-button-color;
+}
+#your-club-menu-previous{
+  display: none;
+}

@@ -40,7 +40,26 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::group(['prefix' => 'clubs'], function (){
+
         Route::get('/menu', 'ClubController@menu')->name('clubs-menu');
+        Route::get('/{club}/menu', 'ClubController@clubMenu')->name('clubs-club-menu');
+        Route::get('/{club}/submenu/1', 'ClubController@clubSubMenu1')->name('clubs-club-submenu-1');
+        Route::get('/{club}/submenu/2', 'ClubController@clubSubMenu2')->name('clubs-club-submenu-2');
+
+        Route::get('/listAndSearch', 'ClubController@listAndSearch')
+            ->name('clubs-list-search');
+
+        Route::get('/create', 'ClubController@create')
+            ->name('club-create');
+
+        Route::post('/store', 'ClubController@store')
+            ->name('club-store');
+
+        Route::get('/search', 'ClubController@search')
+            ->name('clubs-search');
+
+        Route::post('/{club}/join', 'ClubController@join')
+            ->name('club-join');
     });
 
     Route::group(['prefix' => 'contracts'], function (){
@@ -67,23 +86,4 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{user}/contracts/binding', 'UserController@bindingContract')
             ->name('user-contracts-binding');
     });
-
-    Route::group(['prefix' => 'clubs'], function (){
-
-        Route::get('/listAndSearch', 'ClubController@listAndSearch')
-            ->name('clubs-list-search');
-
-        Route::get('/create', 'ClubController@create')
-            ->name('club-create');
-
-        Route::post('/store', 'ClubController@store')
-            ->name('club-store');
-
-        Route::get('/search', 'ClubController@search')
-            ->name('clubs-search');
-
-        Route::post('/{club}/join', 'ClubController@join')
-            ->name('club-join');
-    });
-
 });

@@ -36,6 +36,42 @@ class ClubController extends Controller
         }
     }
 
+    public function clubMenu(Club $club){
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.your-club-menu', compact('club'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.your-club-menu', compact('club'));
+        }
+    }
+
+    public function clubSubMenu1(Club $club){
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.clubs.menu.your-club-menu.sub-menu-1', compact('club'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.your-club-menu', compact('club'));
+        }
+    }
+
+    public function clubSubMenu2(Club $club){
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.clubs.menu.your-club-menu.sub-menu-2', compact('club'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.your-club-menu', compact('club'));
+        }
+    }
+
     public function store(Request $request){
 
         $user = Auth::user();

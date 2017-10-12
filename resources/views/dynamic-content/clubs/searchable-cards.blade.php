@@ -36,16 +36,18 @@
                 <i class="fa fa-mail-forward"></i> All Assists: {{ $club->assists }}
             </h6>
             <h5 class="animate-text">
-                @if($club->isRequestSentToJoin())
-                    <span class="badge my-color-4">
+                @if(Auth::user()->isFootballer())
+                    @if($club->isRequestSentToJoin())
+                        <span class="badge my-color-4">
                         <i class="fa fa-check fa-fw" aria-hidden="true"></i>
                         Request to join this club was sent
                     </span>
-                @else
-                    <a href="{{ route('club-join', $club->id) }}"
-                       class="btn my-color-3 join-club">
-                        <i class="fa fa-users fa-lg fa-fw"></i>  Try to join the club
-                    </a>
+                    @else
+                        <a href="{{ route('club-join', $club->id) }}"
+                           class="btn my-color-3 join-club">
+                            <i class="fa fa-users fa-lg fa-fw"></i>  Try to join the club
+                        </a>
+                    @endif
                 @endif
             </h5>
         </div>

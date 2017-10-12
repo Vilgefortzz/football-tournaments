@@ -87,6 +87,10 @@ class Club extends Model
         return $this->requestsToJoinTheClub->contains('user_id', $authUserId);
     }
 
+    public function numberOfFootballerRequests(){
+        return $this->requestsToJoinTheClub->count();
+    }
+
     public function placeOnTheLeaderboard(){
 
         $clubsLeaderboard = Club::orderBy('tournament_points', 'desc')->get();

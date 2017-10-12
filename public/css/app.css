@@ -876,6 +876,18 @@
           transform: translateY(0px);
 }
 
+.your-club-menu-nav {
+  color: black;
+}
+
+.your-club-menu-nav:hover {
+  color: #ec2652;
+}
+
+#your-club-menu-previous {
+  display: none;
+}
+
 .search-main {
   position: relative;
   width: 300px;

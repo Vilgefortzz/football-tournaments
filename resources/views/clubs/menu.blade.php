@@ -10,15 +10,19 @@
     <div id="content-search" class="row justify-content-center"></div>
     <div id="content" class="row justify-content-center">
         @if(Auth::user()->haveClub())
-            <div class="tile menu-card dynamic-content-card">
+            <div href="{{ route('clubs-club-menu', Auth::user()->club->id) }}" class="tile menu-card dynamic-content-card">
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                 <br>
                 <div class="text text-center">
                     <h1>Your club</h1>
                     <h1><i class="fa fa-users fa-2x"></i></h1>
                     <h2 class="animate-text">Go to your club</h2>
-                    <p class="animate-text">See club details, footballers, tournaments,
-                        matches, showcase with trophies. </p>
+                    <p class="animate-text">
+                        @if(Auth::user()->isClubPresident())
+                            Manage the club.
+                        @endif
+                        See club details, footballers, tournaments, matches, showcase with trophies.
+                    </p>
                 </div>
             </div>
         @endif
@@ -28,9 +32,19 @@
             <div class="text text-center">
                 <h1>Clubs</h1>
                 <h1><i class="fa fa-search fa-2x"></i></h1>
-                <h2 class="animate-text">Search or find your club</h2>
-                <p class="animate-text">Search, see clubs, see their stats, trophies, ratings.
-                    Try to join the club and become part of it. </p>
+                <h2 class="animate-text">
+                    @if(Auth::user()->isFootballer())
+                        Search, find or join the club
+                    @elseif(Auth::user()->isClubPresident())
+                        Search the club
+                    @endif
+                </h2>
+                <p class="animate-text">
+                    See all clubs, search and find the right one, see their stats, trophies, tournament points.
+                    @if(Auth::user()->isFootballer())
+                        Try to join the club and become part of it.
+                    @endif
+                </p>
             </div>
         </div>
         @if(Auth::user()->isFootballer())

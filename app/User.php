@@ -13,6 +13,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $avatar_dir
  * @property string $avatar
  * @property string $password
+ * @property string|null $country
+ * @property string|null $city
  * @property int $goals
  * @property int $assists
  * @property int $number_of_clubs
@@ -33,8 +35,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAssists($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAvatarDir($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereClubId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCompletedTournaments($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereGoals($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
@@ -119,6 +123,18 @@ class User extends Authenticatable
 
     public function haveClub(){
         return $this->club ? true : false;
+    }
+
+    public function haveCountryAndCity(){
+        return ($this->country && $this->city) ? true : false;
+    }
+
+    public function haveCountry(){
+        return $this->country ? true : false;
+    }
+
+    public function haveCity(){
+        return $this->city ? true : false;
     }
 
     public function haveBindingContract(){

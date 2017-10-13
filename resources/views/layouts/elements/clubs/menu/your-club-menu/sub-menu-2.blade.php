@@ -1,5 +1,5 @@
 @if(Auth::user()->isClubPresident())
-    <div id="requests-to-join-the-club" href="#" class="tile menu-card sub-menu-card">
+    <div id="requests-to-join-the-club" href="{{ route('user-join-requests', $club->id) }}" class="tile menu-card sub-menu-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <h1 class="text-header pull-right">
             <span class="badge badge-pill my-color"

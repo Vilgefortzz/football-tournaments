@@ -32,6 +32,15 @@ $(function () {
         }
     });
 
+    $(document).on('click', '#requests-to-join-the-club', function () {
+        if ($(this).find('.badge').attr('data-number-footballer-requests') !== '0'){
+            displayDynamicContent($(this));
+        }
+        else{
+            flashy('You don\'t have any footballer requests');
+        }
+    });
+
     $(document).on('click', '#clubs-list', function () {
         displayDynamicContentWithSearch($(this));
     });
@@ -78,17 +87,20 @@ function ajaxRequestDynamicContent(url) {
 
             var menuCards = $('.menu-card');
             var contractCards = $('.contract-card');
+            var requestToJoinTheClubCards = $('.request-to-join-the-club-card');
             var jumbotrons = $('.jumbotron');
             var paginations = $('.pagination-links');
 
             addAnimation(menuCards, 'zoomInUp');
             addAnimation(contractCards, 'zoomInUp');
+            addAnimation(requestToJoinTheClubCards, 'zoomInUp');
             addAnimation(jumbotrons, 'zoomInUp');
             addAnimation(paginations, 'zoomInUp');
 
             window.setTimeout(function(){
                 removeAnimation(menuCards, 'zoomInUp');
                 removeAnimation(contractCards, 'zoomInUp');
+                removeAnimation(requestToJoinTheClubCards, 'zoomInUp');
                 removeAnimation(jumbotrons, 'zoomInUp');
                 removeAnimation(paginations, 'zoomInUp');
             }, 1000);

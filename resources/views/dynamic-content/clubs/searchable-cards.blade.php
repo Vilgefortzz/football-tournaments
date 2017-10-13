@@ -8,7 +8,7 @@
                 {{ $club->tournament_points }}
             </span>
         </h1>
-        <h1 class="text-locations">
+        <h1 class="text-display">
             <span class="badge badge-pill my-color-3">
                   <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
                 {{ $club->city }}

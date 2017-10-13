@@ -72,6 +72,23 @@ class ClubController extends Controller
         }
     }
 
+    public function joinRequests(Club $club){
+
+        $requestsToJoinTheClub = RequestToJoinTheClub::where('club_id', $club->id)
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.join-requests.join-requests',
+                compact('requestsToJoinTheClub'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.join-requests.join-requests', compact('requestsToJoinTheClub'));
+        }
+    }
+
     public function store(Request $request){
 
         $user = Auth::user();

@@ -11,11 +11,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $club_id
  * @property int $user_id
+ * @property string $status
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RequestToJoinTheClub whereClubId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RequestToJoinTheClub whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RequestToJoinTheClub whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\RequestToJoinTheClub whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RequestToJoinTheClub whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\RequestToJoinTheClub whereUserId($value)
  * @mixin \Eloquent

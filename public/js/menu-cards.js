@@ -32,6 +32,11 @@ $(function () {
         }
     });
 
+    $(document).on('click', '.contracts-link', function (e) {
+        e.preventDefault();
+        displayDynamicContent($(this));
+    });
+
     $(document).on('click', '#requests-to-join-the-club', function () {
         if ($(this).find('.badge').attr('data-number-footballer-requests') !== '0'){
             displayDynamicContent($(this));

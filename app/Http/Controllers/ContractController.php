@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Club;
 use App\Contract;
+use App\RequestToJoinTheClub;
+use App\User;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -35,17 +37,25 @@ class ContractController extends Controller
 
     public function sign(Contract $contract, Request $request){
 
-        $user = Auth::user();
+        $authUser = Auth::user();
 
         if ($request->ajax()){
 
             if ($request->has('signature')){
 
                 // Check if signature is good
-                if ($user->username === $request->signature){
+                if ($authUser->username === $request->signature){
 
-                    $user->club_id = $contract->club_id;
-                    $user->save();
+                    // Delete request to join the club if exists
+                    $requestToJoinTheClub = RequestToJoinTheClub::where('club_id', $contract->club_id)
+                        ->where('user_id', $authUser->id)->first();
+
+                    if ($requestToJoinTheClub){
+                        $requestToJoinTheClub->delete();
+                    }
+
+                    $authUser->club_id = $contract->club_id;
+                    $authUser->save();
 
                     $club = Club::find($contract->club_id);
                     $club->number_of_footballers++;
@@ -58,7 +68,7 @@ class ContractController extends Controller
 
                     $contract->save();
 
-                    $userWaitingContracts = $user->contracts()->where('status', 'created');
+                    $userWaitingContracts = $authUser->contracts()->where('status', 'created');
                     $userWaitingContracts->delete();
 
                     return response()->json([
@@ -78,45 +88,67 @@ class ContractController extends Controller
                 'message' => 'Signature is empty'
             ]);
         }
-        else{
+    }
 
-            if ($request->has('username')){
+    public function store(User $user, Request $request){
+
+        $authUser = Auth::user();
+
+        if ($request->ajax()){
+
+            if ($request->has('signature')){
 
                 // Check if signature is good
-                if ($user->username == $request->username){
+                if ($authUser->username === $request->signature){
 
-                    $contract->status = 'signed';
+                    $contract = new Contract;
+                    $contract->duration = $request->duration;
 
-                    $userWaitingContracts = $user->contracts()->where('status', 'created');
-                    $userWaitingContracts->delete();
+                    $contract->club_id = $authUser->club_id;
+                    $contract->user_id = $user->id;
+                    $contract->save();
 
-                    flashy()->primary('New contract was signed. Welcome in new club !!');
-                    return redirect()->to(route('user-contracts-binding', $user->id));
+                    // Change status of request to join the club if exists
+                    $requestToJoinTheClub = RequestToJoinTheClub::where('club_id', $authUser->club_id)
+                        ->where('user_id', $user->id)->first();
+
+                    if ($requestToJoinTheClub){
+                        $requestToJoinTheClub->status = 'contract proposed';
+                        $requestToJoinTheClub->save();
+                    }
+
+                    return response()->json([
+                        'message' => 'New contract was created and signed by you. Waiting for footballer to sign it !!'
+                    ]);
                 }
 
-                flashy()->primary('Signature is invalid');
-                return redirect()->back();
+                return response()->json([
+                    'message' => 'Signature is invalid'
+                ]);
             }
 
-            flashy()->primary('Signature is empty');
-            return redirect()->back();
+            return response()->json([
+                'message' => 'Signature is empty'
+            ]);
         }
     }
 
     public function destroy(Contract $contract){
 
+        $authUser = Auth::user();
+
         if (request()->ajax()){
 
-            $contract->delete();
+            // Delete request to join the club if exists
+            $requestToJoinTheClub = RequestToJoinTheClub::where('club_id', $contract->club_id)
+                ->where('user_id', $authUser->id)->first();
 
+            if ($requestToJoinTheClub){
+                $requestToJoinTheClub->delete();
+            }
+
+            $contract->delete();
             return response()->json('Contract was rejected');
-        }
-        else{
-
-            $contract->delete();
-
-            flashy()->primary('Contract was rejected');
-            return redirect()->back();
         }
     }
 

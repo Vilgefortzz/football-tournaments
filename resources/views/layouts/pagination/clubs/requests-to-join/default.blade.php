@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav class="pagination-margin-request-to-join">
+    <nav class="pagination-margin-request-to-join-the-club">
         <ul class="pagination pagination-requests-to-join pg-red font-bold">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())

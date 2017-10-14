@@ -32,7 +32,23 @@
 
 .tile-clubs {
   width:280px;
-  height:420px;
+  height:400px;
+  margin:1px;
+  background-color: #ec2652;
+  display:inline-block;
+  background-size:cover;
+  position:relative;
+  cursor:pointer;
+  transition: all 0.4s ease-out;
+  box-shadow: 0 35px 77px -17px rgba(0,0,0,0.44);
+  overflow:hidden;
+  color:white;
+  font-family:'Roboto';
+}
+
+.tile-requests-to-join-the-club {
+  width:300px;
+  height:480px;
   margin:1px;
   background-color: #ec2652;
   display:inline-block;
@@ -174,4 +190,25 @@
 .tile:hover span, .chosen span {
   opacity:1;
   transform:translateY(0px);
+}
+
+.propose-contract-section{
+  display: none;
+}
+
+// Select
+.styled-select {
+  height: 28px;
+  overflow: hidden;
+}
+.styled-select select {
+  border: none;
+  font-size: 14px;
+  padding: 5px;
+  width: 276px;
+}
+.rounded {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }

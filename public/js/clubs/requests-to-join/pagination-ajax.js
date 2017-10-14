@@ -1,15 +1,15 @@
 $(function() {
 
-    $(document).on('click', '.pagination-contracts a', function (e) {
+    $(document).on('click', '.pagination-requests-to-join a', function (e) {
         e.preventDefault();
 
         var url = $(this).attr('href');
-        getContracts(url);
+        getJoinRequests(url);
         window.history.pushState("", "", url);
     });
 });
 
-function getContracts(url) {
+function getJoinRequests(url) {
 
     $.ajax({
         type: 'GET',
@@ -20,12 +20,12 @@ function getContracts(url) {
 
             $('#content').html(data);
 
-            var contractCards = $('.contract-card');
+            var requestToJoinTheClubCards = $('.request-to-join-the-club-card');
 
-            addAnimation(contractCards, 'pulse');
+            addAnimation(requestToJoinTheClubCards, 'pulse');
 
             window.setTimeout(function(){
-                removeAnimation(contractCards, 'pulse');
+                removeAnimation(requestToJoinTheClubCards, 'pulse');
             }, 800);
         }
     });

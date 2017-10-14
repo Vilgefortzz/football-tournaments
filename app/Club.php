@@ -81,14 +81,40 @@ class Club extends Model
         return $this->hasMany('App\RequestToJoinTheClub');
     }
 
+    public function haveCountryAndCity(){
+        return ($this->country && $this->city) ? true : false;
+    }
+
+    public function haveCountry(){
+        return $this->country ? true : false;
+    }
+
+    public function haveCity(){
+        return $this->city ? true : false;
+    }
+
     public function isRequestSentToJoin(){
 
         $authUserId = Auth::user()->id;
-        return $this->requestsToJoinTheClub->contains('user_id', $authUserId);
+        return $this->requestsToJoinTheClub->where('status', 'created')
+            ->contains('user_id', $authUserId);
+    }
+
+    public function isContractProposed(){
+
+        $authUserId = Auth::user()->id;
+        return $this->requestsToJoinTheClub->where('status', 'contract proposed')
+            ->contains('user_id', $authUserId);
+    }
+
+    public function isYourClub(){
+
+        $authUserId = Auth::user()->id;
+        return $this->users->contains('id', $authUserId);
     }
 
     public function numberOfFootballerRequests(){
-        return $this->requestsToJoinTheClub->count();
+        return $this->requestsToJoinTheClub->where('status', 'created')->count();
     }
 
     public function placeOnTheLeaderboard(){

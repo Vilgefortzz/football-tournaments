@@ -1,24 +1,24 @@
 $(function() {
 
-    $(document).on('click', '.delete-contract', function (e) {
+    $(document).on('click', '.delete-request-to-join-the-club', function (e) {
         e.preventDefault();
-        displayDynamicContentContractDelete($(this));
+        dynamicContentDeleteRequestToJoinTheClub($(this));
     });
 });
 
-function displayDynamicContentContractDelete(trigger) {
+function dynamicContentDeleteRequestToJoinTheClub(trigger) {
 
     $('#content').html('');
     $('#loading').css('display', 'block');
 
-    var urlAfterDelete = $('.contracts-created').attr('href');
+    var urlAfterDelete = $('.requests-to-join-the-club').attr('href');
     var url = trigger.attr('href');
 
-    handleAjaxDeleteRequestForContract(url, urlAfterDelete);
+    deleteRequestToJoinTheClub(url, urlAfterDelete);
     window.history.pushState("", "", urlAfterDelete);
 }
 
-function handleAjaxDeleteRequestForContract(url, urlAfterDelete) {
+function deleteRequestToJoinTheClub(url, urlAfterDelete) {
 
     $.ajax({
         type: 'DELETE',
@@ -27,12 +27,12 @@ function handleAjaxDeleteRequestForContract(url, urlAfterDelete) {
 
         success: function (message) {
             flashy(message);
-            handleAjaxRequestContractCards(urlAfterDelete);
+            getRequestToJoinTheClubCards(urlAfterDelete);
         }
     });
 }
 
-function handleAjaxRequestContractCards(url) {
+function getRequestToJoinTheClubCards(url) {
 
     $.ajax({
         type: "GET",
@@ -43,14 +43,14 @@ function handleAjaxRequestContractCards(url) {
 
             $('#content').html(data);
 
-            var contractCards = $('.contract-card');
+            var requestToJoinTheClubCards = $('.request-to-join-the-club-card');
             var paginations = $('.pagination-links');
 
-            addAnimation(contractCards, 'zoomInUp');
+            addAnimation(requestToJoinTheClubCards, 'zoomInUp');
             addAnimation(paginations, 'zoomInUp');
 
             window.setTimeout(function(){
-                removeAnimation(contractCards, 'zoomInUp');
+                removeAnimation(requestToJoinTheClubCards, 'zoomInUp');
                 removeAnimation(paginations, 'zoomInUp');
             }, 1000);
 

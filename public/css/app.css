@@ -701,7 +701,25 @@
 
 .tile-clubs {
   width: 280px;
-  height: 420px;
+  height: 400px;
+  margin: 1px;
+  background-color: #ec2652;
+  display: inline-block;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  -webkit-box-shadow: 0 35px 77px -17px rgba(0, 0, 0, 0.44);
+          box-shadow: 0 35px 77px -17px rgba(0, 0, 0, 0.44);
+  overflow: hidden;
+  color: white;
+  font-family: 'Roboto';
+}
+
+.tile-requests-to-join-the-club {
+  width: 300px;
+  height: 480px;
   margin: 1px;
   background-color: #ec2652;
   display: inline-block;
@@ -876,6 +894,26 @@
           transform: translateY(0px);
 }
 
+.propose-contract-section {
+  display: none;
+}
+
+.styled-select {
+  height: 28px;
+  overflow: hidden;
+}
+
+.styled-select select {
+  border: none;
+  font-size: 14px;
+  padding: 5px;
+  width: 276px;
+}
+
+.rounded {
+  border-radius: 20px;
+}
+
 .your-club-menu-nav {
   color: black;
 }
@@ -891,7 +929,7 @@
 .search-main {
   position: relative;
   width: 300px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .search-main > .input-group > input {
@@ -941,7 +979,7 @@
 }
 
 .margin-sort-options {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .search-filter-text,
@@ -1129,5 +1167,9 @@ body {
 
 .pagination-margin-club {
   margin-top: 0px;
+}
+
+.pagination-margin-request-to-join-the-club {
+  margin-top: 15px;
 }
 

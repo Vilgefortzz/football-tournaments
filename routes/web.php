@@ -62,7 +62,13 @@ Route::group(['middleware' => 'auth'], function (){
             ->name('club-join');
 
         Route::get('/{club}/requests', 'ClubController@joinRequests')
-            ->name('user-join-requests');
+            ->name('club-join-requests');
+    });
+
+    Route::group(['prefix' => 'requests'], function (){
+
+        Route::delete('/{requestToJoinTheClub}/destroy', 'RequestToJoinTheClubController@destroy')
+            ->name('request-to-join-the-club-destroy');
     });
 
     Route::group(['prefix' => 'contracts'], function (){
@@ -71,6 +77,8 @@ Route::group(['middleware' => 'auth'], function (){
             ->name('contracts-management-menu');
         Route::post('/{contract}/sign', 'ContractController@sign')
             ->name('contract-sign');
+        Route::post('/store/{user}', 'ContractController@store')
+            ->name('contract-store');
         Route::delete('/{contract}/destroy', 'ContractController@destroy')->name('contract-destroy');
     });
 

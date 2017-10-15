@@ -46,15 +46,6 @@ class ContractController extends Controller
                 // Check if signature is good
                 if ($authUser->username === $request->signature){
 
-                    // Delete request to join the club if exists
-                    $requestsToJoinTheClub = RequestToJoinTheClub::where('user_id', $authUser->id)->get();
-
-                    if ($requestsToJoinTheClub->isNotEmpty()){
-                        foreach ($requestsToJoinTheClub as $requestToJoinTheClub){
-                            $requestToJoinTheClub->delete();
-                        }
-                    }
-
                     $authUser->club_id = $contract->club_id;
                     $authUser->save();
 
@@ -69,8 +60,12 @@ class ContractController extends Controller
 
                     $contract->save();
 
+                    // Delete all waiting contracts and requests to join the club if exists
                     $userWaitingContracts = $authUser->contracts()->where('status', 'created');
                     $userWaitingContracts->delete();
+
+                    $userRequestsToJoinTheClub = $authUser->requestsToJoinTheClub();
+                    $userRequestsToJoinTheClub->delete();
 
                     return response()->json([
                         'completed' => true,

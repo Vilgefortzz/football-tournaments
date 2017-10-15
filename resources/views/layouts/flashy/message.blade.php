@@ -43,7 +43,7 @@
 
 {{-- Create new club --}}
 
-@if ($errors->has('club_name'))
+@if ($errors->has('name'))
     <script id="flashy-template" type="text/template">
         <div class="flashy flashy--error">
             <div class="flashy__body"></div>
@@ -51,7 +51,7 @@
     </script>
 
     <script>
-        flashy("{{ $errors->first('club_name') }}");
+        flashy("{{ $errors->first('name') }}");
     </script>
 @endif
 

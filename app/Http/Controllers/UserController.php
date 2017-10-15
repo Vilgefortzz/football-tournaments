@@ -31,8 +31,10 @@ class UserController extends Controller
 
             $avatar = $request->file('avatar');
 
-            $directoryName = 'uploads/users/avatars/'. $user->username. '/';
-            $fileName = $user->username. '_'. $user->id. '_avatar.'. $avatar->getClientOriginalExtension();
+            $userName = implode('_', explode(' ', $user->username));
+
+            $directoryName = 'uploads/users/avatars/'. $userName. '/';
+            $fileName = $userName. '_'. $user->id. '_avatar.'. $avatar->getClientOriginalExtension();
 
             if(!File::exists(public_path($directoryName))) {
                 File::makeDirectory(public_path($directoryName));

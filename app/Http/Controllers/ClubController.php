@@ -92,24 +92,28 @@ class ClubController extends Controller
 
     public function store(Request $request){
 
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        if ($request->has('club_name')){
+        if ($request->has('name') && $request->has('country') && $request->has('city')){
 
             $this->validate($request, [
-                'club_name' => 'required|string|min:3|max:20|unique:clubs',
+                'name' => 'required|string|min:3|max:20|unique:clubs',
             ]);
 
             $club = new Club;
-            $club->name = $request->club_name;
-            $club->founded_by = $user->username;
+            $club->name = $request->name;
+            $club->founded_by = $authUser->username;
+            $club->country = $request->country;
+            $club->city = $request->city;
 
             if ($request->hasFile('club_emblem')){
 
                 $emblem = $request->file('club_emblem');
 
-                $directoryName = 'uploads/clubs/emblems/'. $club->name. '/';
-                $fileName = $club->name. '_emblem.'. $emblem->getClientOriginalExtension();
+                $clubName = implode('_', explode(' ', $club->name));
+
+                $directoryName = 'uploads/clubs/emblems/'. $clubName. '/';
+                $fileName = $clubName. '_emblem.'. $emblem->getClientOriginalExtension();
 
                 if(!File::exists(public_path($directoryName))) {
                     File::makeDirectory(public_path($directoryName));
@@ -126,9 +130,16 @@ class ClubController extends Controller
 
             $club->save();
 
-            $user->club_id = $club->id;
-            $user->role_id = Role::ClubPresident;
-            $user->save();
+            $authUser->club_id = $club->id;
+            $authUser->role_id = Role::ClubPresident;
+            $authUser->save();
+
+            // Delete all waiting contracts and requests to join the club if exists
+            $userWaitingContracts = $authUser->contracts();
+            $userWaitingContracts->delete();
+
+            $userRequestsToJoinTheClub = $authUser->requestsToJoinTheClub();
+            $userRequestsToJoinTheClub->delete();
 
             flashy()->success('Club was successfully created. You are club president now !!');
             return redirect()->to(route('home'));

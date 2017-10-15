@@ -47,11 +47,12 @@ class ContractController extends Controller
                 if ($authUser->username === $request->signature){
 
                     // Delete request to join the club if exists
-                    $requestToJoinTheClub = RequestToJoinTheClub::where('club_id', $contract->club_id)
-                        ->where('user_id', $authUser->id)->first();
+                    $requestsToJoinTheClub = RequestToJoinTheClub::where('user_id', $authUser->id)->get();
 
-                    if ($requestToJoinTheClub){
-                        $requestToJoinTheClub->delete();
+                    if ($requestsToJoinTheClub->isNotEmpty()){
+                        foreach ($requestsToJoinTheClub as $requestToJoinTheClub){
+                            $requestToJoinTheClub->delete();
+                        }
                     }
 
                     $authUser->club_id = $contract->club_id;

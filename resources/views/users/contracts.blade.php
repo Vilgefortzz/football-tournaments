@@ -10,7 +10,7 @@
     <div id="content-search" class="row justify-content-center"></div>
     <div id="content" class="row justify-content-center">
         @if($contracts->isEmpty())
-            @include('layouts.elements.contract-info')
+            @include('layouts.elements.contracts.contract-info')
         @else
             @foreach($contracts as $contract)
                 <div id="contract-{{$contract->id}}" class="tile tile-contracts contract-card">
@@ -31,7 +31,10 @@
                         <img src="{{ asset($contract->club->emblem_dir. $contract->club->emblem) }}"
                              width="60" height="60">
                     </h1>
-                    <div class="text-contracts text-center">
+                    <div class="text-contracts text-center font-italic">
+                        <h5 class="animate-text">
+                            <i class="fa fa-clock-o"></i> {{ $contract->duration }}
+                        </h5>
                         <h5 class="animate-text">
                             <input type="text" id="username-contract-{{$contract->id}}" name="username">
                             <label class="font-italic" for="username-contract-{{$contract->id}}">Make your signature</label>
@@ -47,12 +50,12 @@
                     </div>
                 </div>
             @endforeach
-        @endif
-        <div class="container pagination-links">
-            <div class="row justify-content-center">
-                {{ $contracts->links('layouts.pagination.contracts.default') }}
+            <div class="container pagination-links">
+                <div class="row justify-content-center">
+                    {{ $contracts->links('layouts.pagination.contracts.default') }}
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 
 @endsection

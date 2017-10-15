@@ -73,7 +73,7 @@
                             <i class="fa fa-remove"></i></a>
                     </h1>
                     <div id="propose-contract-{{$requestToJoinTheClub->id}}"
-                         class="text-contracts propose-contract-section text-center animate-text">
+                         class="text-join-requests propose-contract-section text-center animate-text">
 
                         Contract duration:
                         <div class="styled-select my-color rounded">

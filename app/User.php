@@ -15,6 +15,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $password
  * @property string|null $country
  * @property string|null $city
+ * @property string|null $main_football_position
  * @property int $goals
  * @property int $assists
  * @property int $number_of_clubs
@@ -42,6 +43,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereGoals($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereMainFootballPosition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereMatchesWinRate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereNumberOfClubs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereNumberOfContracts($value)
@@ -62,6 +64,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Notification[] $notifications
  * @property-read \App\Role $role
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\RequestToJoinTheClub[] $requestsToJoinTheClub
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\FootballPosition[] $footballPositions
  */
 class User extends Authenticatable
 {
@@ -103,6 +106,10 @@ class User extends Authenticatable
 
     public function requestsToJoinTheClub(){
         return $this->hasMany('App\RequestToJoinTheClub');
+    }
+
+    public function footballPositions(){
+        return $this->belongsToMany('App\FootballPosition');
     }
 
     public function isFootballer(){

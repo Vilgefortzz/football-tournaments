@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequestsToJoinTheClub extends Migration
+class CreateFootballPositionUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateRequestsToJoinTheClub extends Migration
      */
     public function up()
     {
-        Schema::create('requests_to_join_the_club', function (Blueprint $table) {
+        Schema::create('football_position_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('club_id')->unsigned()->index();
+            $table->integer('football_position_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
 
-            $table->foreign('club_id')->references('id')->on('clubs')
+            $table->foreign('football_position_id')->references('id')->on('football_positions')
                 ->onDelete('cascade');
+
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
 
@@ -34,6 +35,6 @@ class CreateRequestsToJoinTheClub extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('requests_to_join_the_club');
+        Schema::dropIfExists('football_position_user');
     }
 }

@@ -53,3 +53,10 @@ $factory->define(App\Contract::class, function (Faker\Generator $faker) {
         'user_id' => 2,
     ];
 });
+
+$factory->define(App\FootballPosition::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => 'Undefined'
+    ];
+});

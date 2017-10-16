@@ -22,6 +22,8 @@ $factory->define(User::class, function (Faker\Generator $faker) {
     return [
         'username' => $faker->name,
         'password' => $password ?: $password = bcrypt('secret'),
+        'country' => 'Poland',
+        'city' => 'Kraków',
         'role_id' => Role::Footballer,
         'remember_token' => str_random(10),
     ];

@@ -29,6 +29,9 @@ class UsersTableSeeder extends Seeder
         factory(User::class)->create([
             'username' => 'footballer',
             'password' => bcrypt('footballer'),
+            'country' => 'Spain',
+            'city' => 'Barcelona',
+            'main_football_position' => 'RW'
         ]);
 
         /*
@@ -37,6 +40,7 @@ class UsersTableSeeder extends Seeder
         factory(User::class)->create([
             'username' => 'president',
             'password' => bcrypt('president'),
+            'main_football_position' => 'CB',
             'role_id' => Role::ClubPresident
         ]);
 
@@ -49,7 +53,10 @@ class UsersTableSeeder extends Seeder
             'role_id' => Role::Organizer
         ]);
 
+        factory(User::class, 10)->create([
+            'main_football_position' => 'GK',
+        ]);
 
-        factory(User::class, 10)->create();
+        factory(User::class, 30)->create();
     }
 }

@@ -41,7 +41,7 @@
         </p>
     </div>
 </div>
-<div id="footballers-list" href="#" class="tile menu-card">
+<div id="footballers-list" href="{{ route('footballers-list-search') }}" class="tile menu-card">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
     <br>
     <div class="text text-center">

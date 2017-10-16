@@ -41,7 +41,11 @@
                     <i class="fa fa-search fa-2x" style="color: gold"></i>
                 </h1>
                 <h2 class="animate-text">
-                    Search the club
+                    @if(Auth::user()->isFootballer())
+                        Search, find or join the club
+                    @elseif(Auth::user()->isClubPresident())
+                        Search the club
+                    @endif
                 </h2>
                 <p class="animate-text">
                     See all clubs, search and find the right one, see their stats, trophies, tournament points.
@@ -51,7 +55,7 @@
                 </p>
             </div>
         </div>
-        <div id="footballers-list" href="#" class="tile menu-card">
+        <div id="footballers-list" href="{{ route('footballers-list-search') }}" class="tile menu-card">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
             <br>
             <div class="text text-center">
@@ -62,10 +66,13 @@
                     <i class="fa fa-search fa-2x" style="color: gold"></i>
                 </h1>
                 <h2 class="animate-text">
-                    Search footballer
+                    Search footballers, see their stats
+                    @if(Auth::user()->isClubPresident())
+                        and propose contracts
+                    @endif
                 </h2>
                 <p class="animate-text">
-                    See all footballers, search and find the right one, see their stats.
+                    See all footballers, search and find the right one, see their stats, goals, assists.
                     @if(Auth::user()->isClubPresident())
                         Try to sign the contracts, search footballer you want - by preferred positions and create
                         the unbeatable team.

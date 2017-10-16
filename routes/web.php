@@ -96,5 +96,11 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/{user}/contracts/binding', 'UserController@bindingContract')
             ->name('user-contracts-binding');
+
+        Route::get('/footballers/listAndSearch', 'UserController@listAndSearch')
+            ->name('footballers-list-search');
+
+        Route::get('/footballers/search', 'UserController@search')
+            ->name('footballers-search');
     });
 });

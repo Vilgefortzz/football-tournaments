@@ -43,7 +43,7 @@ $(function() {
             $(this).attr('data-direction-current', 'desc');
         }
 
-        getClubs(url, sortBy, direction);
+        getListWithData(url, sortBy, direction);
 
         $('.search-input').val('');
         sortOptions.removeClass('active-sort');

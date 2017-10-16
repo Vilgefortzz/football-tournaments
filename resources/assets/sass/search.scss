@@ -153,6 +153,6 @@ $remove-sort-option: #000000 !default;
   background-color: $remove-sort-option !important;
 }
 
-#clubs-table, #clubs-table > td,th {
+#clubs-table, #clubs-table > td,th, #footballers-table, #footballers-table > td,th {
   text-align: center;
 }

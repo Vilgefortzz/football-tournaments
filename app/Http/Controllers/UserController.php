@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contract;
+use App\Role;
 use App\User;
 use Auth;
 use File;
@@ -116,6 +117,83 @@ class UserController extends Controller
 
         $contracts = $user->contracts->where('status', 'rejected');
         return view('users.contracts', compact('contracts'));
+    }
+
+    // Search footballers - search, filters and sort
+
+    public function listAndSearch(Request $request){
+
+        $footballers = User::where('role_id', Role::Footballer)->paginate(5);
+
+        if ($request->sortBy === 'username'){
+
+            if ($request->direction === 'desc'){
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('username', 'desc')->paginate(5);
+            }
+            else{
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('username', 'asc')->paginate(5);
+            }
+        }
+        if ($request->sortBy === 'main_football_position'){
+
+            if ($request->direction === 'desc'){
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('main_football_position', 'desc')->paginate(5);
+            }
+            else{
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('main_football_position', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'country'){
+
+            if($request->direction === 'desc'){
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('country', 'desc')->paginate(5);
+            }
+            else{
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('country', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'city'){
+
+            if($request->direction === 'desc'){
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('city', 'desc')->paginate(5);
+            }
+            else{
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('city', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'trophies'){
+
+            if($request->direction === 'desc'){
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('won_trophies', 'desc')->paginate(5);
+            }
+            else{
+                $footballers = User::where('role_id', Role::Footballer)
+                    ->orderBy('won_trophies', 'asc')->paginate(5);
+            }
+        }
+
+        if (request()->ajax()){
+
+            $firstView = view('layouts.elements.users.footballers.search.search')->render();
+            $secondView = view('dynamic-content.users.footballers.list', compact('footballers'))->render();
+
+            return response()->json([
+                'search' => $firstView,
+                'list' => $secondView
+            ]);
+        }
+        else{
+            return view('users.footballers.list', compact('footballers'));
+        }
     }
 
     private function computeRemainingContractDuration($dateOfEnd){

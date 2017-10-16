@@ -46,7 +46,7 @@ $(function () {
         }
     });
 
-    $(document).on('click', '#clubs-list', function () {
+    $(document).on('click', '#clubs-list,  #footballers-list', function () {
         displayDynamicContentWithSearch($(this));
     });
 });

@@ -41,10 +41,16 @@
     <script src="{{ asset('js/flashy.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/menu-cards.js') }}" type="text/javascript"></script>
 
+    <script src="{{ asset('js/search/search-list-buttons.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/search/filters-show-hide.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/search/sort.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('js/users/footballers/search/search-with-filters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/users/footballers/pagination-ajax.js') }}" type="text/javascript"></script>
+
     <script src="{{ asset('js/clubs/club-join.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/clubs/menu/your-club-menu.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/clubs/search/sort.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/clubs/search/filters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/clubs/search/search-with-filters.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/clubs/search/search.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/clubs/pagination-ajax.js') }}" type="text/javascript"></script>
 

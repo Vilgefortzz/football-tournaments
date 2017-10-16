@@ -1,6 +1,6 @@
 $(function() {
 
-    $(document).on('click', '.pagination-clubs-list a', function (e) {
+    $(document).on('click', '.pagination-footballers-list a', function (e) {
         e.preventDefault();
 
         var url = $(this).attr('href');
@@ -10,10 +10,10 @@ $(function() {
         window.history.pushState("", "", url);
     });
 
-    $(document).on('click', '.pagination-clubs-searchable-cards a', function (e) {
+    $(document).on('click', '.pagination-footballers-searchable-cards a', function (e) {
         e.preventDefault();
 
         var url = $(this).attr('href');
-        getClubCardsWithPagination(url);
+        getFootballerCardsWithPagination(url);
     });
 });

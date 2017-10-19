@@ -1,5 +1,5 @@
 @foreach($footballers as $footballer)
-    <div id="user-{{$footballer->id}}" class="tile tile-users user-card"
+    <div id="user-{{$footballer->id}}" class="tile tile-users footballer-card"
          href="#">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <h1 class="text-header pull-right">
@@ -23,14 +23,16 @@
         @if($footballer->haveClub())
             @if($footballer->isInYourClub())
                 <h1 class="text-display">
-             <span class="badge badge-pill my-color">
-                 <i class="fa fa-user fa-fw" aria-hidden="true"></i>
-                     This is your teammate !
-             </span>
+                     <span class="badge badge-pill my-color">
+                         <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                             This is your teammate !
+                     </span>
                 </h1>
             @else
                 <br>
             @endif
+        @else
+            <br>
         @endif
 
         <h1 class="text-header text-center">
@@ -40,7 +42,7 @@
         <h1 class="text-header text-center" style="margin-bottom: 20px">
             {{ $footballer->username }}
         </h1>
-        <div class="text-clubs text-center">
+        <div class="text-users text-center">
             <h6 class="animate-text">
                <i class="fa fa-map-marker fa-fw" style="color: gold"></i> Played matches: {{ $footballer->played_matches }}
             </h6>
@@ -60,6 +62,6 @@
 @endforeach
 <div class="container pagination-links" style="margin-top: 15px">
     <div class="row justify-content-center">
-        {{ $clubs->links('layouts.pagination.users.footballers.searchable-cards') }}
+        {{ $footballers->links('layouts.pagination.users.footballers.searchable-cards') }}
     </div>
 </div>

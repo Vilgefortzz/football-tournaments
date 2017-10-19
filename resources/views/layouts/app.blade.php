@@ -51,7 +51,6 @@
     <script src="{{ asset('js/clubs/club-join.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/clubs/menu/your-club-menu.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/clubs/search/search-with-filters.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/clubs/search/search.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/clubs/pagination-ajax.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('js/clubs/requests-to-join/request-delete.js') }}" type="text/javascript"></script>

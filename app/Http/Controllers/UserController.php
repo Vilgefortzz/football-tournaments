@@ -196,6 +196,23 @@ class UserController extends Controller
         }
     }
 
+    public function search(Request $request)
+    {
+
+        if (request()->ajax()) {
+
+            $footballers = User::where('role_id', Role::Footballer)
+                ->where('username', 'like', $request->footballerUsernameValue . '%')
+                ->where('country', 'like', $request->footballerCountryValue . '%')
+                ->where('city', 'like', $request->footballerCityValue . '%')
+                ->paginate(3);
+
+            $view = view('dynamic-content.users.footballers.searchable-cards', compact('footballers'))->render();
+            return response()->json($view);
+
+        }
+    }
+
     private function computeRemainingContractDuration($dateOfEnd){
 
         $currentDate = date_create(date('Y-m-d'));

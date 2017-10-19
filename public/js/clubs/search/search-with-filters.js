@@ -2,7 +2,7 @@ $(function() {
 
     var timer;
 
-    $(document).on('keyup', '#search-main', function () {
+    $(document).on('keyup', '#clubs-search-main', function () {
 
         $('#content').html('');
         $('#loading').css('display', 'block');
@@ -11,7 +11,7 @@ $(function() {
         timer = getClubCardsSearch(timer, url);
     });
 
-    $(document).on('keyup', '#filter-country', function () {
+    $(document).on('keyup', '#clubs-filter-country', function () {
 
         $('#content').html('');
         $('#loading').css('display', 'block');
@@ -20,7 +20,7 @@ $(function() {
         timer = getClubCardsSearch(timer, url);
     });
 
-    $(document).on('keyup', '#filter-city', function () {
+    $(document).on('keyup', '#clubs-filter-city', function () {
 
         $('#content').html('');
         $('#loading').css('display', 'block');
@@ -29,7 +29,7 @@ $(function() {
         timer = getClubCardsSearch(timer, url);
     });
 
-    $(document).on('change', '#filter-min-rating', function () {
+    $(document).on('change', '#clubs-filter-min-rating', function () {
 
         $('#content').html('');
         $('#loading').css('display', 'block');
@@ -38,7 +38,7 @@ $(function() {
         timer = getClubCardsSearch(timer, url);
     });
 
-    $(document).on('change', '#filter-max-rating', function () {
+    $(document).on('change', '#clubs-filter-max-rating', function () {
 
         $('#content').html('');
         $('#loading').css('display', 'block');

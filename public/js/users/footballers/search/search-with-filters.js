@@ -2,7 +2,7 @@ $(function() {
 
     var timer;
 
-    $(document).on('keyup', '#search-main', function () {
+    $(document).on('keyup', '#footballers-search-main', function () {
 
         $('#content').html('');
         $('#loading').css('display', 'block');
@@ -11,7 +11,7 @@ $(function() {
         timer = getFootballerCardsSearch(timer, url);
     });
 
-    $(document).on('keyup', '#filter-country', function () {
+    $(document).on('keyup', '#footballers-filter-country', function () {
 
         $('#content').html('');
         $('#loading').css('display', 'block');
@@ -20,7 +20,7 @@ $(function() {
         timer = getFootballerCardsSearch(timer, url);
     });
 
-    $(document).on('keyup', '#filter-city', function () {
+    $(document).on('keyup', '#footballers-filter-city', function () {
 
         $('#content').html('');
         $('#loading').css('display', 'block');

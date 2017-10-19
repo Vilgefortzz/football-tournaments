@@ -4,6 +4,7 @@ $(function() {
 
         $('.propose-contract-section').fadeOut();
         $('.contract-card').removeClass('chosen');
+        $('.footballer-card').removeClass('chosen');
         $('.request-to-join-the-club-card').removeClass('chosen');
     });
 
@@ -18,6 +19,13 @@ $(function() {
         e.stopPropagation();
 
         $('.contract-card').removeClass('chosen');
+        $(this).addClass('chosen');
+    });
+
+    $(document).on('click', '.footballer-card', function (e) {
+        e.stopPropagation();
+
+        $('.footballer-card').removeClass('chosen');
         $(this).addClass('chosen');
     });
 });

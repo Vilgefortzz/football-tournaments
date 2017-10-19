@@ -46,6 +46,22 @@
   font-family:'Roboto';
 }
 
+.tile-users {
+  width:280px;
+  height:420px;
+  margin:1px;
+  background-color: #ec2652;
+  display:inline-block;
+  background-size:cover;
+  position:relative;
+  cursor:pointer;
+  transition: all 0.4s ease-out;
+  box-shadow: 0 35px 77px -17px rgba(0,0,0,0.44);
+  overflow:hidden;
+  color:white;
+  font-family:'Roboto';
+}
+
 .tile-requests-to-join-the-club {
   width:300px;
   height:480px;
@@ -168,6 +184,14 @@
 .tile-clubs > .text-clubs > h6 {
   transform: translateX(320px);
   transition-delay: 0.2s;
+}
+
+.tile-users > .text-users > h5 {
+  transform: translateX(-320px);
+  transition-delay: 0.2s;
+}
+
+.tile-users > .text-users > h6 {
 }
 
 .animate-text > input {

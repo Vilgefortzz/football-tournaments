@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -142,6 +143,11 @@ class User extends Authenticatable
 
     public function haveCity(){
         return $this->city ? true : false;
+    }
+
+    public function isInYourClub(){
+        $authUserId = Auth::user()->id;
+        return $this->club->users->contains('id', $authUserId);
     }
 
     public function haveBindingContract(){

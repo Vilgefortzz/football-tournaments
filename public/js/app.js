@@ -51,13 +51,13 @@ function getListWithData(url, sortBy, direction) {
 function getClubCardsWithPagination(url) {
 
     // Value from main search input
-    var clubNameValue = $('#search-main').val();
+    var clubNameValue = $('#clubs-search-main').val();
 
     // Values from filter inputs
-    var clubCountryValue = $('#filter-country').val();
-    var clubCityValue = $('#filter-city').val();
-    var clubMinTournamentPointsValue = $('#filter-min-rating').val();
-    var clubMaxTournamentPointsValue = $('#filter-max-rating').val();
+    var clubCountryValue = $('#clubs-filter-country').val();
+    var clubCityValue = $('#clubs-filter-city').val();
+    var clubMinTournamentPointsValue = $('#clubs-filter-min-rating').val();
+    var clubMaxTournamentPointsValue = $('#clubs-filter-max-rating').val();
 
     $.ajax({
         type: 'GET',
@@ -87,18 +87,18 @@ function getClubCardsWithPagination(url) {
 function getFootballerCardsWithPagination(url) {
 
     // Value from main search input
-    var footballerUsernameValue = $('#search-main').val();
+    var footballerUsernameValue = $('#footballers-search-main').val();
 
     // Values from filter inputs
-    var footballerCountryValue = $('#filter-country').val();
-    var footballerCityValue = $('#filter-city').val();
+    var footballerCountryValue = $('#footballers-filter-country').val();
+    var footballerCityValue = $('#footballers-filter-city').val();
 
     $.ajax({
         type: 'GET',
         url: url,
         data: {
-            clubNameValue: footballerUsernameValue, clubCountryValue: footballerCountryValue,
-            clubCityValue: footballerCityValue
+            footballerUsernameValue: footballerUsernameValue, footballerCountryValue: footballerCountryValue,
+            footballerCityValue: footballerCityValue
         },
         cache: false,
 
@@ -106,7 +106,7 @@ function getFootballerCardsWithPagination(url) {
 
             $('#content').html(data);
 
-            var footballerCards = $('.user');
+            var footballerCards = $('.footballer-card');
 
             addAnimation(footballerCards, 'fadeInRight');
 
@@ -120,13 +120,13 @@ function getFootballerCardsWithPagination(url) {
 function getClubCardsSearch(timer, url) {
 
     // Value from main search input
-    var clubNameValue = $('#search-main').val();
+    var clubNameValue = $('#clubs-search-main').val();
 
     // Values from filter inputs
-    var clubCountryValue = $('#filter-country').val();
-    var clubCityValue = $('#filter-city').val();
-    var clubMinTournamentPointsValue = $('#filter-min-rating').val();
-    var clubMaxTournamentPointsValue = $('#filter-max-rating').val();
+    var clubCountryValue = $('#clubs-filter-country').val();
+    var clubCityValue = $('#clubs-filter-city').val();
+    var clubMinTournamentPointsValue = $('#clubs-filter-min-rating').val();
+    var clubMaxTournamentPointsValue = $('#clubs-filter-max-rating').val();
 
     clearTimeout(timer);
     timer = setTimeout(function() {
@@ -164,13 +164,11 @@ function getClubCardsSearch(timer, url) {
 function getFootballerCardsSearch(timer, url) {
 
     // Value from main search input
-    var clubNameValue = $('#search-main').val();
+    var footballerUsernameValue = $('#footballers-search-main').val();
 
     // Values from filter inputs
-    var clubCountryValue = $('#filter-country').val();
-    var clubCityValue = $('#filter-city').val();
-    var clubMinTournamentPointsValue = $('#filter-min-rating').val();
-    var clubMaxTournamentPointsValue = $('#filter-max-rating').val();
+    var footballerCountryValue = $('#footballers-filter-country').val();
+    var footballerCityValue = $('#footballers-filter-city').val();
 
     clearTimeout(timer);
     timer = setTimeout(function() {
@@ -179,9 +177,8 @@ function getFootballerCardsSearch(timer, url) {
             type: 'GET',
             url: url,
             data: {
-                clubNameValue: clubNameValue, clubCountryValue: clubCountryValue, clubCityValue: clubCityValue,
-                clubMinTournamentPointsValue: clubMinTournamentPointsValue,
-                clubMaxTournamentPointsValue: clubMaxTournamentPointsValue
+                footballerUsernameValue: footballerUsernameValue, footballerCountryValue: footballerCountryValue,
+                footballerCityValue: footballerCityValue
             },
             cache: false,
 
@@ -189,12 +186,12 @@ function getFootballerCardsSearch(timer, url) {
 
                 $('#content').html(data);
 
-                var clubCards = $('.club-card');
+                var footballerCards = $('.footballer-card');
 
-                addAnimation(clubCards, 'fadeInRight');
+                addAnimation(footballerCards, 'fadeInRight');
 
                 window.setTimeout(function(){
-                    removeAnimation(clubCards, 'fadeInRight');
+                    removeAnimation(footballerCards, 'fadeInRight');
                 }, 3000);
 
                 $('#loading').hide();

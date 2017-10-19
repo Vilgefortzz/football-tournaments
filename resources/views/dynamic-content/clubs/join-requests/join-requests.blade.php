@@ -50,7 +50,7 @@
                 {{ $requestToJoinTheClub->user->username }}
             </h1>
             <h1 class="text-header text-center animate-text">
-                <a href="#" class="btn btn-circle my-color-3 propose-contract"
+                <a href="#" class="btn btn-circle my-color-3 propose-contract-request-to-join-the-club"
                    data-request-to-join-the-club-id="{{$requestToJoinTheClub->id}}" role="button">
                     <i class="fa fa-file-text"></i>
                 </a>
@@ -58,7 +58,7 @@
                    class="btn btn-circle my-color delete-request-to-join-the-club" role="button">
                     <i class="fa fa-remove"></i></a>
             </h1>
-            <div id="propose-contract-{{$requestToJoinTheClub->id}}"
+            <div id="propose-contract-request-to-join-the-club-{{$requestToJoinTheClub->id}}"
                  class="text-join-requests propose-contract-section text-center animate-text">
 
                 Contract duration:
@@ -77,7 +77,8 @@
                 <div class="bar"></div>
 
                 <a href="{{ route('contract-store', $requestToJoinTheClub->user->id) }}"
-                   class="btn btn-sm my-color-3 create-contract" data-request-to-join-the-club-id="{{$requestToJoinTheClub->id}}">
+                   class="btn btn-sm my-color-3 create-contract-request-to-join-the-club"
+                   data-request-to-join-the-club-id="{{$requestToJoinTheClub->id}}">
                     <i class="fa fa-handshake-o fa-lg fa-fw"></i>  Propose the contract
                 </a>
             </div>

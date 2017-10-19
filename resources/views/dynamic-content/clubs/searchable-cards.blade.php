@@ -22,7 +22,7 @@
         </h1>
         @if($club->isYourClub())
             <h1 class="text-display">
-             <span class="badge badge-pill my-color">
+             <span class="badge badge-pill my-color-4">
                  <i class="fa fa-users fa-fw" aria-hidden="true"></i>
                      Your club !
              </span>

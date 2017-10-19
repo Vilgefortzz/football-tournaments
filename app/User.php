@@ -150,6 +150,12 @@ class User extends Authenticatable
         return $this->club->users->contains('id', $authUserId);
     }
 
+    public function isContractProposed(){
+
+        $authUserClubId = Auth::user()->club_id;
+        return $this->contracts->contains('club_id', $authUserClubId);
+    }
+
     public function haveBindingContract(){
         return $this->contracts->where('status', 'signed')->isNotEmpty();
     }

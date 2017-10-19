@@ -6,6 +6,7 @@
     <div href="{{ route('user-contracts-created', Auth::user()->id) }}" class="contracts-created" hidden></div>
     @if(Auth::user()->isClubPresident())
         <div href="{{ route('club-join-requests', Auth::user()->club->id) }}" class="requests-to-join-the-club" hidden></div>
+        <div href="{{ route('footballers-list-search') }}" class="footballers-list" hidden></div>
     @endif
 
     <div id="loading"></div>
@@ -80,7 +81,7 @@
                 </p>
             </div>
         </div>
-        @if(Auth::user()->isFootballer())
+        @if(Auth::user()->isFootballer() && !Auth::user()->haveClub())
             <div href="{{ route('club-create') }}" class="tile menu-card dynamic-content-card">
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                 <br>

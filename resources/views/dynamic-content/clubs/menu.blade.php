@@ -66,7 +66,7 @@
         </p>
     </div>
 </div>
-@if(Auth::user()->isFootballer())
+@if(Auth::user()->isFootballer() && !Auth::user()->haveClub())
     <div href="{{ route('club-create') }}" class="tile menu-card dynamic-content-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <br>

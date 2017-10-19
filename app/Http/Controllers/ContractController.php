@@ -114,16 +114,19 @@ class ContractController extends Controller
                     }
 
                     return response()->json([
+                        'completed' => true,
                         'message' => 'New contract was created and signed by you. Waiting for footballer to sign it !!'
                     ]);
                 }
 
                 return response()->json([
+                    'completed' => false,
                     'message' => 'Signature is invalid'
                 ]);
             }
 
             return response()->json([
+                'completed' => false,
                 'message' => 'Signature is empty'
             ]);
         }

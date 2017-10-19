@@ -207,7 +207,20 @@ class UserController extends Controller
                 ->where('city', 'like', $request->footballerCityValue . '%')
                 ->paginate(3);
 
-            $view = view('dynamic-content.users.footballers.searchable-cards', compact('footballers'))->render();
+            $remainingContractDuration = [];
+
+            foreach ($footballers as $footballer){
+
+                $bindingContract = $footballer->contracts->where('status', 'signed')->first();
+
+                if ($bindingContract){
+                    $remainingContractDuration[$footballer->id] =
+                        $this->computeRemainingContractDuration($bindingContract->date_and_time_of_end);
+                }
+            }
+
+            $view = view('dynamic-content.users.footballers.searchable-cards',
+                compact('footballers', 'remainingContractDuration'))->render();
             return response()->json($view);
 
         }

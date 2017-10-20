@@ -7,6 +7,7 @@ $(function() {
         $('#hide-filters').fadeIn();
         $('.search-filter-text').fadeIn();
         $('.search-filter-number').fadeIn();
+        $('.search-filter-select').fadeIn();
     });
 
     $(document).on('click', '#hide-filters', function (e) {
@@ -16,5 +17,6 @@ $(function() {
         $('#show-filters').fadeIn();
         $('.search-filter-text').fadeOut();
         $('.search-filter-number').fadeOut();
+        $('.search-filter-select').fadeOut();
     });
 });

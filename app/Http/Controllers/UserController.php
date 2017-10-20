@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contract;
+use App\FootballPosition;
 use App\Role;
 use App\User;
 use Auth;
@@ -124,6 +125,7 @@ class UserController extends Controller
     public function listAndSearch(Request $request){
 
         $footballers = User::where('role_id', Role::Footballer)->paginate(5);
+        $footballPositions = FootballPosition::all();
 
         if ($request->sortBy === 'username'){
 
@@ -183,8 +185,10 @@ class UserController extends Controller
 
         if (request()->ajax()){
 
-            $firstView = view('layouts.elements.users.footballers.search.search')->render();
-            $secondView = view('dynamic-content.users.footballers.list', compact('footballers'))->render();
+            $firstView = view('layouts.elements.users.footballers.search.search',
+                compact('footballPositions'))->render();
+            $secondView = view('dynamic-content.users.footballers.list',
+                compact('footballers'))->render();
 
             return response()->json([
                 'search' => $firstView,
@@ -192,7 +196,7 @@ class UserController extends Controller
             ]);
         }
         else{
-            return view('users.footballers.list', compact('footballers'));
+            return view('users.footballers.list', compact('footballers', 'footballPositions'));
         }
     }
 
@@ -201,29 +205,54 @@ class UserController extends Controller
 
         if (request()->ajax()) {
 
+            if ($request->footballerFootballPositionValue !== '0'){
+
+                $footballPosition = FootballPosition::find($request->footballerFootballPositionValue);
+
+                $footballers = $footballPosition->users()
+                    ->where('role_id', Role::Footballer)
+                    ->where('username', 'like', $request->footballerUsernameValue . '%')
+                    ->where('country', 'like', $request->footballerCountryValue . '%')
+                    ->where('city', 'like', $request->footballerCityValue . '%')
+                    ->paginate(3);
+
+                $this->getRemainingContractsDurationForFootballers($footballers);
+
+                $view = view('dynamic-content.users.footballers.searchable-cards',
+                    compact('footballers', 'remainingContractDuration'))->render();
+                return response()->json($view);
+            }
+
             $footballers = User::where('role_id', Role::Footballer)
                 ->where('username', 'like', $request->footballerUsernameValue . '%')
                 ->where('country', 'like', $request->footballerCountryValue . '%')
                 ->where('city', 'like', $request->footballerCityValue . '%')
                 ->paginate(3);
 
-            $remainingContractDuration = [];
-
-            foreach ($footballers as $footballer){
-
-                $bindingContract = $footballer->contracts->where('status', 'signed')->first();
-
-                if ($bindingContract){
-                    $remainingContractDuration[$footballer->id] =
-                        $this->computeRemainingContractDuration($bindingContract->date_and_time_of_end);
-                }
-            }
+            $this->getRemainingContractsDurationForFootballers($footballers);
 
             $view = view('dynamic-content.users.footballers.searchable-cards',
                 compact('footballers', 'remainingContractDuration'))->render();
             return response()->json($view);
 
         }
+    }
+
+    private function getRemainingContractsDurationForFootballers($footballers): array {
+
+        $remainingContractsDuration = [];
+
+        foreach ($footballers as $footballer){
+
+            $bindingContract = $footballer->contracts->where('status', 'signed')->first();
+
+            if ($bindingContract){
+                $remainingContractsDuration[$footballer->id] =
+                    $this->computeRemainingContractDuration($bindingContract->date_and_time_of_end);
+            }
+        }
+
+        return $remainingContractsDuration;
     }
 
     private function computeRemainingContractDuration($dateOfEnd){

@@ -10,6 +10,7 @@ $(function() {
         getListWithData(url);
 
         $('.search-input').val('');
+        $('.search-select').val(0);
         window.history.pushState("", "", url);
     });
 });

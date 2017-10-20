@@ -46,6 +46,7 @@ $(function() {
         getListWithData(url, sortBy, direction);
 
         $('.search-input').val('');
+        $('.search-select').val(0);
         sortOptions.removeClass('active-sort');
         $(this).addClass('active-sort');
         window.history.pushState("", "", url);

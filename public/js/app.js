@@ -92,13 +92,14 @@ function getFootballerCardsWithPagination(url) {
     // Values from filter inputs
     var footballerCountryValue = $('#footballers-filter-country').val();
     var footballerCityValue = $('#footballers-filter-city').val();
+    var footballerFootballPositionValue = $('#footballers-filter-football-position').val();
 
     $.ajax({
         type: 'GET',
         url: url,
         data: {
             footballerUsernameValue: footballerUsernameValue, footballerCountryValue: footballerCountryValue,
-            footballerCityValue: footballerCityValue
+            footballerCityValue: footballerCityValue, footballerFootballPositionValue: footballerFootballPositionValue
         },
         cache: false,
 
@@ -169,6 +170,7 @@ function getFootballerCardsSearch(timer, url) {
     // Values from filter inputs
     var footballerCountryValue = $('#footballers-filter-country').val();
     var footballerCityValue = $('#footballers-filter-city').val();
+    var footballerFootballPositionValue = $('#footballers-filter-football-position').val();
 
     clearTimeout(timer);
     timer = setTimeout(function() {
@@ -178,7 +180,7 @@ function getFootballerCardsSearch(timer, url) {
             url: url,
             data: {
                 footballerUsernameValue: footballerUsernameValue, footballerCountryValue: footballerCountryValue,
-                footballerCityValue: footballerCityValue
+                footballerCityValue: footballerCityValue, footballerFootballPositionValue: footballerFootballPositionValue
             },
             cache: false,
 

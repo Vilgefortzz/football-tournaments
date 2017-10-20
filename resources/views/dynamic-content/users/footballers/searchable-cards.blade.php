@@ -8,12 +8,20 @@
                 {{ $footballer->main_football_position }}
             </span>
             <br>
-            @if($footballer->haveClub())
-                @if($footballer->isInYourClub())
-                     <span class="badge badge-pill my-color-4" style="font-size: 12px;">
-                         <i class="fa fa-user fa-fw" aria-hidden="true"></i>
-                             Teammate !
-                     </span>
+            @if($footballer->isThatYou())
+
+                <span class="badge badge-pill my-color-4" style="font-size: 12px;">
+                    <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                    This is you !
+                </span>
+            @else
+                @if($footballer->haveClub())
+                    @if($footballer->isInYourClub())
+                        <span class="badge badge-pill my-color-4" style="font-size: 12px;">
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                            Teammate !
+                        </span>
+                    @endif
                 @endif
             @endif
         </h1>
@@ -45,11 +53,17 @@
                 Preferred positions:
             </span>
         </h1>
-        <h1 class="text-display">
-            <span class="badge badge-pill my-color">
-                LW | RW | AM
-            </span>
-        </h1>
+        @if($footballer->haveFootballPositions())
+            <h1 class="text-display">
+                 <span class="badge badge-pill my-color">
+                     @php ($footballPositions = array())
+                     @foreach($footballer->footballPositions as $footballPosition)
+                          @php($footballPositions[] = $footballPosition->name)
+                     @endforeach
+                     {{ implode(' | ', $footballPositions) }}
+                 </span>
+            </h1>
+        @endif
         <h1 class="text-header text-center">
             <img src="{{ asset($footballer->avatar_dir. $footballer->avatar) }}"
                  width="100" height="100">

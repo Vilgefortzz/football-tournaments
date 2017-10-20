@@ -21,6 +21,6 @@ use Illuminate\Database\Eloquent\Model;
 class FootballPosition extends Model
 {
     public function users(){
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User', 'football_position_user');
     }
 }

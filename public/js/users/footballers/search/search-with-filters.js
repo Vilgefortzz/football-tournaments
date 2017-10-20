@@ -28,4 +28,13 @@ $(function() {
         var url = $(this).attr('href');
         timer = getFootballerCardsSearch(timer, url);
     });
+
+    $(document).on('change', '#footballers-filter-football-position', function () {
+
+        $('#content').html('');
+        $('#loading').css('display', 'block');
+
+        var url = $(this).attr('href');
+        timer = getFootballerCardsSearch(timer, url);
+    });
 });

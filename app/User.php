@@ -110,7 +110,7 @@ class User extends Authenticatable
     }
 
     public function footballPositions(){
-        return $this->belongsToMany('App\FootballPosition');
+        return $this->belongsToMany('App\FootballPosition', 'football_position_user');
     }
 
     public function isFootballer(){
@@ -150,10 +150,19 @@ class User extends Authenticatable
         return $this->club->users->contains('id', $authUserId);
     }
 
+    public function isThatYou(){
+        $authUserId = Auth::user()->id;
+        return $this->id === $authUserId ? true : false;
+    }
+
     public function isContractProposed(){
 
         $authUserClubId = Auth::user()->club_id;
         return $this->contracts->contains('club_id', $authUserClubId);
+    }
+
+    public function haveFootballPositions(){
+        return $this->footballPositions->isNotEmpty();
     }
 
     public function haveBindingContract(){

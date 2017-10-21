@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-11">
     <div class="jumbotron jumbotron-main-page">
         <div class="row justify-content-center">
             <div class="col">
@@ -34,6 +34,7 @@
                             @foreach($userFootballPositions as $userFootballPosition)
                                 <a href="{{ route('user-football-position-delete',
                                          [Auth::user()->id, $userFootballPosition->id]) }}"
+                                   data-football-position-id="{{$userFootballPosition->id}}"
                                    class="badge badge-pill my-color delete-football-position" role="button">
                                     <span>{{ $userFootballPosition->name }}</span>
                                     <i class="fa fa-remove"></i>
@@ -74,33 +75,54 @@
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
 
-                    <h3 class="font-italic">Update profile image</h3>
-                    <div class="form-group">
-                        <img src="{{ asset($user->avatar_dir. $user->avatar) }}"
-                             width="110" height="110" class="img-fluid rounded-circle">
-                        <input id="avatar" type="file" name="avatar">
-                    </div>
-                    <br>
-                    <h3 class="font-italic">Change password</h3>
-
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <div class="input-container">
-                            <input type="password" id="password" name="password">
-                            <label for="password">Password</label>
-                            <div class="bar"></div>
+                    <div class="text-center">
+                        <h4 class="font-italic my-color-2">Update profile image</h4>
+                        <div class="form-group">
+                            <img src="{{ asset($user->avatar_dir. $user->avatar) }}"
+                                 width="110" height="110" class="img-fluid rounded-circle">
+                            <input id="avatar" type="file" name="avatar">
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="input-container">
-                            <input type="password" id="password-confirm" name="password_confirmation">
-                            <label for="password-confirm">Confirm Password</label>
-                            <div class="bar"></div>
+                        <hr>
+                        <h4 class="font-italic my-color-2">Change main football position</h4>
+                        <div class="form-group">
+                            <div class="button-container">
+                                <div class="radio">
+                                    @foreach($userFootballPositions as $userFootballPosition)
+                                        <label id="football-main-position-{{$userFootballPosition->id}}" style="padding-left: 10px">
+                                            @if($userFootballPosition->id === $mainFootballPositionId)
+                                                <input type="radio" name="main_football_position" value="{{ $userFootballPosition->name }}" checked>
+                                            @else
+                                                <input type="radio" name="main_football_position" value="{{ $userFootballPosition->name }}">
+                                            @endif
+                                            <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                                            {{ $userFootballPosition->name }}
+                                        </label>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <hr>
+                        <h4 class="font-italic my-color-2">Change password</h4>
 
-                    <div class="form-group">
-                        <button class="btn my-color" type="submit">Save changes</button>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="input-container">
+                                <input type="password" id="password" name="password">
+                                <label for="password">Password</label>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-container">
+                                <input type="password" id="password-confirm" name="password_confirmation">
+                                <label for="password-confirm">Confirm Password</label>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn my-color" type="submit">Save changes</button>
+                        </div>
                     </div>
                 </form>
             </div>

@@ -19,15 +19,17 @@ class UserController extends Controller
 
         $footballPositions = FootballPosition::all();
         $userFootballPositions = $user->footballPositions;
+        $mainFootballPositionId = FootballPosition::where('name', $user->main_football_position)->first()->id;
 
         if (request()->ajax()){
 
             $view = view('dynamic-content.users.profile',
-                compact('user', 'userFootballPositions', 'footballPositions'))->render();
+                compact('user', 'userFootballPositions', 'footballPositions', 'mainFootballPositionId'))->render();
             return response()->json($view);
         }
         else{
-            return view('users.profile', compact('user', 'userFootballPositions', 'footballPositions'));
+            return view('users.profile',
+                compact('user', 'userFootballPositions', 'footballPositions', 'mainFootballPositionId'));
         }
     }
 
@@ -54,8 +56,6 @@ class UserController extends Controller
             $user->avatar_dir = $directoryName;
             $user->avatar = $fileName;
             $user->save();
-            flashy()->success('Your profile image was successfully updated');
-            return redirect()->back();
         }
 
         if ($request->has('password')){
@@ -66,11 +66,22 @@ class UserController extends Controller
 
             $user->password = bcrypt($request->password);
             $user->save();
-            flashy()->success('Your password was changed');
-            return redirect()->back();
         }
 
-        flashy()->error('Nothing has changed');
+        if ($request->has('main_football_position')){
+
+            if ($user->main_football_position !== $request->main_football_position){
+
+                $user->main_football_position = $request->main_football_position;
+                $user->save();
+            }
+            else{
+                flashy()->error('Nothing has changed');
+                return redirect()->back();
+            }
+        }
+
+        flashy()->success('Your profile was updated');
         return redirect()->back();
     }
 
@@ -133,14 +144,17 @@ class UserController extends Controller
                 if (!$user->footballPositions->contains($request->footballerFootballPositionValue)){
 
                     $user->footballPositions()->attach($request->footballerFootballPositionValue);
-                    $userFootballPosition = FootballPosition::find($request->footballerFootballPositionValue);
+                    $footballPosition = FootballPosition::find($request->footballerFootballPositionValue);
 
                     $userFootballPosition = view('layouts.elements.users.footballers.football-positions.football-position',
-                        compact('userFootballPosition'))->render();
+                        compact('footballPosition'))->render();
+                    $userMainFootballPosition = view('layouts.elements.users.footballers.football-positions.main-football-position',
+                        compact('footballPosition'))->render();
 
                     return response()->json([
                         'completed' => true,
                         'userFootballPosition' => $userFootballPosition,
+                        'userMainFootballPosition' => $userMainFootballPosition,
                         'message' => 'Football position was added'
                     ]);
                 }

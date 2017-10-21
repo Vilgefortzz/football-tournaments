@@ -21,7 +21,10 @@ $(function() {
         var url = $(this).attr('href');
         ajaxDeleteFootballPosition(url);
 
-        $(this).fadeOut();
+        var footballPositionId = $(this).data('football-position-id');
+
+        $('#football-main-position-' + footballPositionId).remove();
+        $(this).remove();
     });
 });
 
@@ -53,6 +56,7 @@ function ajaxAddFootballPosition(url) {
                     $('#football-positions').fadeOut();
 
                     $('#football-positions-added').append(data.userFootballPosition);
+                    $('.radio').append(data.userMainFootballPosition);
                 }
                 else{
                     addFootballPositionButton.removeClass('add-football-position').addClass('add-football-position-button');
@@ -60,6 +64,7 @@ function ajaxAddFootballPosition(url) {
                     $('#football-positions').fadeOut();
 
                     $('#football-positions-added').append(data.userFootballPosition);
+                    $('.radio').append(data.userMainFootballPosition);
                 }
             }
         }

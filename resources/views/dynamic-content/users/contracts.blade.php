@@ -18,7 +18,7 @@
             </h1>
             <h1 class="text-header text-center">
                 <img src="{{ asset($contract->club->emblem_dir. $contract->club->emblem) }}"
-                     width="60" height="60">
+                     width="60" height="60" class="img-fluid rounded-circle">
             </h1>
             <div class="text-contracts text-center font-italic">
                 <h5 class="animate-text">

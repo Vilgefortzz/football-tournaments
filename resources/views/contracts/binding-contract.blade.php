@@ -26,7 +26,7 @@
                                 <h1><img src="{{ asset('images/contracts/signature.png') }}" width="130"></h1>
                                 <h1><i class="fa fa-long-arrow-down"></i></h1>
                                 <h1><img src="{{ asset($contract->club->emblem_dir. $contract->club->emblem) }}"
-                                         width="60" height="60"></h1>
+                                         width="60" height="60" class="img-fluid rounded-circle"></h1>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                             {{ $contract->user->username }}
                             <i class="fa fa-long-arrow-right"></i>
                             <img src="{{ asset($contract->club->emblem_dir. $contract->club->emblem) }}"
-                                 width="60" height="60"> {{ $contract->club->name }}
+                                 width="60" height="60" class="img-fluid rounded-circle"> {{ $contract->club->name }}
                         </h3>
                     </div>
                 </div>

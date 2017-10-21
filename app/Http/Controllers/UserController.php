@@ -75,10 +75,6 @@ class UserController extends Controller
                 $user->main_football_position = $request->main_football_position;
                 $user->save();
             }
-            else{
-                flashy()->error('Nothing has changed');
-                return redirect()->back();
-            }
         }
 
         flashy()->success('Your profile was updated');
@@ -280,7 +276,7 @@ class UserController extends Controller
                     ->where('city', 'like', $request->footballerCityValue . '%')
                     ->paginate(3);
 
-                $this->getRemainingContractsDurationForFootballers($footballers);
+                $remainingContractDuration = $this->getRemainingContractsDurationForFootballers($footballers);
 
                 $view = view('dynamic-content.users.footballers.searchable-cards',
                     compact('footballers', 'remainingContractDuration'))->render();
@@ -293,7 +289,7 @@ class UserController extends Controller
                 ->where('city', 'like', $request->footballerCityValue . '%')
                 ->paginate(3);
 
-            $this->getRemainingContractsDurationForFootballers($footballers);
+            $remainingContractDuration = $this->getRemainingContractsDurationForFootballers($footballers);
 
             $view = view('dynamic-content.users.footballers.searchable-cards',
                 compact('footballers', 'remainingContractDuration'))->render();

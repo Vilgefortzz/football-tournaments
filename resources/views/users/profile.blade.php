@@ -33,7 +33,8 @@
                                 <h1 class="text-display font-italic">Current club: </h1>
                                 @if($user->haveClub())
                                     <h6>
-                                        <img src="{{ asset($user->club->emblem_dir. $user->club->emblem) }}" width="45" height="45">
+                                        <img src="{{ asset($user->club->emblem_dir. $user->club->emblem) }}"
+                                             width="45" height="45" class="img-fluid rounded-circle">
                                     </h6>
                                     <h6>{{ $user->club->name }}</h6>
                                 @else

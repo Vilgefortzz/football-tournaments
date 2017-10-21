@@ -33,7 +33,7 @@
 
         <h1 class="text-header text-center">
             <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
-                 width="150" height="150">
+                 width="150" height="150" class="img-fluid rounded-circle">
         </h1>
         <h1 class="text-header text-center" style="margin-bottom: 20px">
             {{ $club->name }}

@@ -165,6 +165,10 @@ class User extends Authenticatable
         return $this->footballPositions->isNotEmpty();
     }
 
+    public function haveMainFootballPosition(){
+        return $this->main_football_position ? true : false;
+    }
+
     public function haveThreeFootballPositions(){
         return $this->footballPositions->count() === 3 ? true : false;
     }

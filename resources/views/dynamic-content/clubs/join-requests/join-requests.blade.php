@@ -6,45 +6,57 @@
              class="tile tile-requests-to-join-the-club request-to-join-the-club-card">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
             <h1 class="text-header pull-right">
-                    <span class="badge badge-pill my-color">
-                        <i class="fa fa-male" aria-hidden="true"></i>
-                        LW
-                    </span>
+                <span class="badge badge-pill my-color">
+                    <i class="fa fa-male" aria-hidden="true"></i>
+                    @if($requestToJoinTheClub->user->haveMainFootballPosition())
+                        {{ $requestToJoinTheClub->user->main_football_position }}
+                    @else
+                        ---
+                    @endif
+                </span>
             </h1>
             <h1 class="text-display" style="margin-bottom: 0">
-                    <span class="badge badge-pill my-color-3">
-                          <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
-                        @if($requestToJoinTheClub->user->haveCountryAndCity())
-                            {{ $requestToJoinTheClub->user->country }} | {{ $requestToJoinTheClub->user->city }}
-                        @elseif($requestToJoinTheClub->user->haveCountry())
-                            {{ $requestToJoinTheClub->user->country }}
-                        @elseif($requestToJoinTheClub->user->haveCity())
-                            {{ $requestToJoinTheClub->user->city }}
-                        @endif
-                    </span>
+                <span class="badge badge-pill my-color-3">
+                    <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
+                    @if($requestToJoinTheClub->user->haveCountryAndCity())
+                        {{ $requestToJoinTheClub->user->country }} | {{ $requestToJoinTheClub->user->city }}
+                    @elseif($requestToJoinTheClub->user->haveCountry())
+                        {{ $requestToJoinTheClub->user->country }}
+                    @elseif($requestToJoinTheClub->user->haveCity())
+                        {{ $requestToJoinTheClub->user->city }}
+                    @endif
+                </span>
             </h1>
             <h1 class="text-display">
-                    <span class="badge badge-pill my-color">
-                        <i class="fa fa-soccer-ball-o fa-fw" aria-hidden="true"></i>
-                        {{ $requestToJoinTheClub->user->goals }} |
-                        <i class="fa fa-mail-forward fa-fw" aria-hidden="true"></i>
-                        {{ $requestToJoinTheClub->user->assists }}
-                    </span>
+                <span class="badge badge-pill my-color">
+                    <i class="fa fa-soccer-ball-o fa-fw" aria-hidden="true"></i>
+                    {{ $requestToJoinTheClub->user->goals }} |
+                    <i class="fa fa-mail-forward fa-fw" aria-hidden="true"></i>
+                    {{ $requestToJoinTheClub->user->assists }}
+                </span>
             </h1>
             <h1 class="text-display" style="margin-bottom: 0">
-                    <span class="badge badge-pill my-color-3">
-                        <i class="fa fa-male fa-fw" aria-hidden="true"></i>
-                        Preferred positions:
-                    </span>
+                <span class="badge badge-pill my-color-3">
+                    <i class="fa fa-male fa-fw" aria-hidden="true"></i>
+                    Preferred positions:
+                </span>
             </h1>
             <h1 class="text-display">
-                    <span class="badge badge-pill my-color">
-                        LW | RW | AM
-                    </span>
+            <span class="badge badge-pill my-color">
+                @if($requestToJoinTheClub->user->haveFootballPositions())
+                    @php ($footballPositions = array())
+                    @foreach($requestToJoinTheClub->user->footballPositions as $footballPosition)
+                        @php($footballPositions[] = $footballPosition->name)
+                    @endforeach
+                    {{ implode(' | ', $footballPositions) }}
+                @else
+                    Not defined
+                @endif
+            </span>
             </h1>
             <h1 class="text-header text-center">
                 <img src="{{ asset($requestToJoinTheClub->user->avatar_dir. $requestToJoinTheClub->user->avatar) }}"
-                     width="120" height="120">
+                     width="120" height="120" class="img-fluid rounded-circle">
             </h1>
             <h1 class="text-header text-center">
                 {{ $requestToJoinTheClub->user->username }}

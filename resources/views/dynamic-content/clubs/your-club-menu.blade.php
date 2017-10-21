@@ -4,7 +4,7 @@
     <div class="text text-center">
         <h1 style="color: #f8f4a0">Club details</h1>
         <h1><img src="{{ asset($club->emblem_dir. $club->emblem) }}"
-                 width="150" height="150"></h1>
+                 width="150" height="150" class="img-fluid rounded-circle"></h1>
         <h2 class="animate-text">See club details</h2>
         <p class="animate-text">Get all information about the club</p>
     </div>

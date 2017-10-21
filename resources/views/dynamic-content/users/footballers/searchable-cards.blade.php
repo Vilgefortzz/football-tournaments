@@ -68,7 +68,7 @@
         </h1>
         <h1 class="text-header text-center">
             <img src="{{ asset($footballer->avatar_dir. $footballer->avatar) }}"
-                 width="100" height="100">
+                 width="100" height="100" class="img-fluid rounded-circle">
         </h1>
         <h1 class="text-header text-center">
             {{ $footballer->username }}

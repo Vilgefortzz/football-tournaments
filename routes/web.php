@@ -97,6 +97,12 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{user}/contracts/binding', 'UserController@bindingContract')
             ->name('user-contracts-binding');
 
+        Route::post('/{user}/position/add', 'UserController@addFootballPosition')
+            ->name('user-football-position-add');
+
+        Route::delete('/{user}/position/{footballPosition}/delete', 'UserController@deleteFootballPosition')
+            ->name('user-football-position-delete');
+
         Route::get('/footballers/listAndSearch', 'UserController@listAndSearch')
             ->name('footballers-list-search');
 

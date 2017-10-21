@@ -165,8 +165,16 @@ class User extends Authenticatable
         return $this->footballPositions->isNotEmpty();
     }
 
+    public function haveThreeFootballPositions(){
+        return $this->footballPositions->count() === 3 ? true : false;
+    }
+
     public function haveBindingContract(){
         return $this->contracts->where('status', 'signed')->isNotEmpty();
+    }
+
+    public function numberOfFootballPositions(){
+        return $this->footballPositions->count();
     }
 
     public function numberOfWaitingContracts(){

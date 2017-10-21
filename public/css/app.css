@@ -1145,6 +1145,55 @@ th {
   text-align: center;
 }
 
+.delete-football-position:hover {
+  color: white;
+}
+
+.delete-football-position > .fa {
+  display: none;
+}
+
+.delete-football-position:hover > .fa {
+  display: inherit;
+}
+
+#football-positions {
+  display: none;
+}
+
+#football-positions {
+  font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #ec2652;
+  height: 19px;
+  padding: 0 0 0 5px;
+  background: white;
+  border: 1px #d3d3d3;
+  border-radius: 13px;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -ms-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -o-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  outline: none;
+}
+
+#football-positions:focus {
+  border-color: #ec2652;
+  -webkit-box-shadow: 0 0 2px #ec2652;
+  -moz-box-shadow: 0 0 2px #ec2652;
+  -ms-box-shadow: 0 0 2px #ec2652;
+  -o-box-shadow: 0 0 2px #ec2652;
+}
+
+.lt-ie9 #football-positions {
+  line-height: 26px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -1200,6 +1249,16 @@ body {
   border-radius: 15px;
   font-weight: bold;
   text-transform: none;
+}
+
+.btn-circle-position {
+  width: 23px;
+  height: 23px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
 }
 
 #avatar:focus {

@@ -17,13 +17,17 @@ class UserController extends Controller
 
     public function profile(User $user){
 
+        $footballPositions = FootballPosition::all();
+        $userFootballPositions = $user->footballPositions;
+
         if (request()->ajax()){
 
-            $view = view('dynamic-content.users.profile', compact('user'))->render();
+            $view = view('dynamic-content.users.profile',
+                compact('user', 'userFootballPositions', 'footballPositions'))->render();
             return response()->json($view);
         }
         else{
-            return view('users.profile', compact('user'));
+            return view('users.profile', compact('user', 'userFootballPositions', 'footballPositions'));
         }
     }
 
@@ -118,6 +122,52 @@ class UserController extends Controller
 
         $contracts = $user->contracts->where('status', 'rejected');
         return view('users.contracts', compact('contracts'));
+    }
+
+    public function addFootballPosition(User $user, Request $request){
+
+        if (request()->ajax()){
+
+            if ($request->footballerFootballPositionValue !== '0'){
+
+                if (!$user->footballPositions->contains($request->footballerFootballPositionValue)){
+
+                    $user->footballPositions()->attach($request->footballerFootballPositionValue);
+                    $userFootballPosition = FootballPosition::find($request->footballerFootballPositionValue);
+
+                    $userFootballPosition = view('layouts.elements.users.footballers.football-positions.football-position',
+                        compact('userFootballPosition'))->render();
+
+                    return response()->json([
+                        'completed' => true,
+                        'userFootballPosition' => $userFootballPosition,
+                        'message' => 'Football position was added'
+                    ]);
+                }
+                else{
+                    return response()->json([
+                        'completed' => false,
+                        'message' => 'This football position is already on your list'
+                    ]);
+                }
+            }
+            else{
+
+                return response()->json([
+                    'completed' => false,
+                    'message' => 'Cannot add football position. Choose the right one again'
+                ]);
+            }
+        }
+    }
+
+    public function deleteFootballPosition(User $user, FootballPosition $footballPosition){
+
+        if (request()->ajax()){
+
+            $user->footballPositions()->detach($footballPosition->id);
+            return response()->json('Football position was deleted');
+        }
     }
 
     // Search footballers - search, filters and sort

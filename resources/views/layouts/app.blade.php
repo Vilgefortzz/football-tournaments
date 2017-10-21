@@ -46,6 +46,7 @@
     <script src="{{ asset('js/search/sort.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('js/users/footballers/search/search-with-filters.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/users/footballers/football-positions/football-positions.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/users/footballers/pagination-ajax.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('js/clubs/club-join.js') }}" type="text/javascript"></script>

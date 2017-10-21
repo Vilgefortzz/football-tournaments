@@ -53,17 +53,19 @@
                 Preferred positions:
             </span>
         </h1>
-        @if($footballer->haveFootballPositions())
-            <h1 class="text-display">
-                 <span class="badge badge-pill my-color">
-                     @php ($footballPositions = array())
-                     @foreach($footballer->footballPositions as $footballPosition)
-                          @php($footballPositions[] = $footballPosition->name)
-                     @endforeach
-                     {{ implode(' | ', $footballPositions) }}
-                 </span>
-            </h1>
-        @endif
+        <h1 class="text-display">
+            <span class="badge badge-pill my-color">
+                @if($footballer->haveFootballPositions())
+                    @php ($footballPositions = array())
+                    @foreach($footballer->footballPositions as $footballPosition)
+                        @php($footballPositions[] = $footballPosition->name)
+                    @endforeach
+                    {{ implode(' | ', $footballPositions) }}
+                @else
+                    Not defined
+                @endif
+            </span>
+        </h1>
         <h1 class="text-header text-center">
             <img src="{{ asset($footballer->avatar_dir. $footballer->avatar) }}"
                  width="100" height="100">

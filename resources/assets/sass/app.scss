@@ -16,6 +16,8 @@
 
 @import "search";
 
+@import "football-positions";
+
 // Variables - settings
 $my-color: #ec2652;
 $my-color-join: #4a9415;
@@ -77,6 +79,15 @@ body {
   border-radius: 15px;
   font-weight: bold;
   text-transform: none;
+}
+.btn-circle-position {
+  width: 23px;
+  height: 23px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
 }
 #avatar:focus{
   outline: none;

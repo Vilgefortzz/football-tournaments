@@ -317,9 +317,9 @@ class UserController extends Controller
 
     private function computeRemainingContractDuration($dateOfEnd){
 
-        $currentDate = date_create(date('Y-m-d'));
+        $currentDate = date_create(date('Y-m-d H:i'));
         $endDate = date_create($dateOfEnd);
-        $remainingContractDuration = $endDate->diff($currentDate)->format('%a');
+        $remainingContractDuration = $currentDate->diff($endDate)->format('| %d days | %h hours | %r%i minutes');
 
         return $remainingContractDuration;
     }

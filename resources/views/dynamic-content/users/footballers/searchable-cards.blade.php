@@ -5,7 +5,11 @@
         <h1 class="text-header pull-right">
             <span class="badge badge-pill my-color pull-right">
                 <i class="fa fa-star fa-fw" aria-hidden="true"></i>
-                {{ $footballer->main_football_position }}
+                @if($footballer->haveMainFootballPosition())
+                    {{ $footballer->main_football_position }}
+                @else
+                    ---
+                @endif
             </span>
             <br>
             @if($footballer->isThatYou())

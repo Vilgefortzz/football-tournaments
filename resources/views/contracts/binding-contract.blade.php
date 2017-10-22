@@ -2,9 +2,6 @@
 
 @section('content')
 
-    <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="contract-binding" hidden></div>
-    <div href="{{ route('user-contracts-created', Auth::user()->id) }}" class="contracts-created" hidden></div>
-
     <div id="loading"></div>
     <div id="contract-sign-loading"></div>
     <div id="content-search" class="row justify-content-center"></div>
@@ -16,7 +13,7 @@
                         <div class="tile chosen">
                             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                             <h1 class="info-header"><i class="fa fa-hourglass-start"></i>
-                                {{ $remainingContractDuration. ' days left' }}
+                                {{ $remainingContractDuration }}
                             </h1>
                             <div class="text text-center">
                                 <h1>Binding contract</h1>

@@ -63,6 +63,9 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/{club}/requests', 'ClubController@joinRequests')
             ->name('club-join-requests');
+
+        Route::post('/{club}/validateContracts', 'ClubController@validateContracts')
+            ->name('club-validate-contracts');
     });
 
     Route::group(['prefix' => 'requests'], function (){

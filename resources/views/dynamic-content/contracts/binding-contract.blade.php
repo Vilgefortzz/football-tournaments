@@ -5,7 +5,7 @@
                 <div class="tile chosen">
                     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                     <h1 class="info-header"><i class="fa fa-hourglass-start"></i>
-                        {{ $remainingContractDuration. ' days left' }}
+                        {{ $remainingContractDuration }}
                     </h1>
                     <div class="text text-center">
                         <h1>Binding contract</h1>

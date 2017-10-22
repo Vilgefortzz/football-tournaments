@@ -46,10 +46,10 @@ class ContractController extends Controller
                 // Check if signature is good
                 if ($authUser->username === $request->signature){
 
-                    $authUser->club_id = $contract->club_id;
-                    $authUser->save();
-
                     $club = Club::find($contract->club_id);
+
+                    $club->users()->save($authUser);
+
                     $club->number_of_footballers++;
                     $club->save();
 
@@ -69,6 +69,7 @@ class ContractController extends Controller
 
                     return response()->json([
                         'completed' => true,
+                        'club_id' => $club->id,
                         'message' => 'New contract was signed. Welcome in new club !!'
                     ]);
                 }

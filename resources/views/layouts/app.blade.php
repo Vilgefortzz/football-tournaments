@@ -24,9 +24,15 @@
     <div id="app">
         @include('layouts.bars.navbar')
         <div class="container navbar-margin">
+            @include('layouts.links.links')
             @yield('content')
         </div>
     </div>
+
+    <script type="text/javascript">
+        var baseUrl = '{{ url('/').'/' }}';
+        var contractValidateJsUrl = '{{ asset('js/contracts/contracts-validate.js') }}';
+    </script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
@@ -57,10 +63,15 @@
     <script src="{{ asset('js/clubs/requests-to-join/request-delete.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/clubs/requests-to-join/pagination-ajax.js') }}" type="text/javascript"></script>
 
+    @if(Auth::check() && Auth::user()->haveClub() && !Auth::user()->isOrganizer())
+        <script src="{{ asset('js/contracts/contracts-validate.js') }}" type="text/javascript"></script>
+    @endif
+
     <script src="{{ asset('js/contracts/contract-create.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/contract-sign.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/contract-delete.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/pagination-ajax.js') }}" type="text/javascript"></script>
+    <div id="dynamic-scripts"></div>
     @yield('scripts')
     @include('layouts.flashy.message')
 

@@ -31,6 +31,22 @@ function ajaxSignRequest(url, urlAfterSign, urlAfterFailed, signature) {
             flashy(data.message);
 
             if(data.completed){
+
+                contractValidateUrl = baseUrl + 'clubs/' + data.club_id + '/validateContracts';
+
+                $('#dynamic-urls').append(
+                    $('<div>')
+                        .attr('href', contractValidateUrl)
+                        .attr('class', 'contracts-validate')
+                        .attr('hidden', true)
+                );
+
+                $('#dynamic-scripts').append(
+                    $('<script>')
+                        .attr('type', 'text/javascript')
+                        .attr('src', contractValidateJsUrl)
+                );
+
                 $('#contract-sign-loading').css('display', 'block');
                 ajaxRequestCompleted(urlAfterSign);
                 window.history.pushState("", "", urlAfterSign);

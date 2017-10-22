@@ -24,6 +24,43 @@ class ClubController extends Controller
         }
     }
 
+    public function validateContracts(Club $club){
+
+        $authUserId = Auth::user()->id;
+        $bindingContracts = $club->contracts->where('status', 'signed');
+        $authUserBindingContractExpired = false;
+
+        if (request()->ajax()){
+            if ($bindingContracts->isNotEmpty()){
+                foreach ($bindingContracts as $bindingContract){
+                    $remainingContractDuration = $this->computeRemainingContractDuration($bindingContract->date_and_time_of_end);
+
+                    if ($remainingContractDuration <= 0){
+
+                        $user = $bindingContract->user;
+                        $club = $bindingContract->club;
+
+                        $user->club_id = NULL;
+                        $user->save();
+
+                        $club->number_of_footballers--;
+                        $club->save();
+
+                        $bindingContract->delete();
+
+                        if ($user->id === $authUserId){
+                            $authUserBindingContractExpired = true;
+                        }
+                    }
+                }
+
+                if ($authUserBindingContractExpired){
+                    return response()->json('Your contract expired :(');
+                }
+            }
+        }
+    }
+
     public function create(){
 
         if (request()->ajax()){
@@ -277,5 +314,14 @@ class ClubController extends Controller
             return response()->json($view);
 
         }
+    }
+
+    private function computeRemainingContractDuration($dateOfEnd){
+
+        $currentDate = date_create(date('Y-m-d H:i'));
+        $endDate = date_create($dateOfEnd);
+        $remainingContractDuration = $currentDate->diff($endDate)->format('%r%i');
+
+        return ($remainingContractDuration);
     }
 }

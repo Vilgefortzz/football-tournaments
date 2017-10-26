@@ -20,13 +20,15 @@
                             <i class="fa fa-calendar fa-fw"></i>{{ $contract->created_at }}
                         </div>
                     </div>
-                    <h1 class="text-header text-center"><i class="fa fa-file-text fa-5x"></i></h1>
+                    <h1 class="text-header text-center">
+                        <img src="{{ asset($contract->club->emblem_dir. $contract->club->emblem) }}"
+                             width="150" height="150" class="img-fluid rounded-circle">
+                    </h1>
                     <h1 class="text-header text-center">
                         {{ $contract->club->name }}
                     </h1>
                     <h1 class="text-header text-center">
-                        <img src="{{ asset($contract->club->emblem_dir. $contract->club->emblem) }}"
-                             width="60" height="60" class="img-fluid rounded-circle">
+                        <i class="fa fa-file-text fa-lg"></i>
                     </h1>
                     <div class="text-contracts text-center font-italic">
                         <h5 class="animate-text">

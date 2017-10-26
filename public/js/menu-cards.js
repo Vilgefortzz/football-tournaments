@@ -23,7 +23,7 @@ $(function () {
         displayDynamicContent($(this));
     });
 
-    $(document).on('click', '#user-waiting-contracts, #club-waiting-contracts, #club-signed-contracts', function () {
+    $(document).on('click', '#footballer-waiting-contracts, #club-waiting-contracts, #club-signed-contracts', function () {
         if ($(this).find('.badge').attr('data-number-contracts') !== '0'){
             displayDynamicContent($(this));
         }

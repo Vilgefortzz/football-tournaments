@@ -96,15 +96,13 @@ class Club extends Model
     public function isRequestSentToJoin(){
 
         $authUserId = Auth::user()->id;
-        return $this->requestsToJoinTheClub->where('status', 'created')
-            ->contains('user_id', $authUserId);
+        return $this->requestsToJoinTheClub->contains('user_id', $authUserId);
     }
 
     public function isContractProposed(){
 
         $authUserId = Auth::user()->id;
-        return $this->requestsToJoinTheClub->where('status', 'contract proposed')
-            ->contains('user_id', $authUserId);
+        return $this->contracts->contains('user_id', $authUserId);
     }
 
     public function isYourClub(){
@@ -114,7 +112,7 @@ class Club extends Model
     }
 
     public function numberOfFootballerRequests(){
-        return $this->requestsToJoinTheClub->where('status', 'created')->count();
+        return $this->requestsToJoinTheClub->count();
     }
 
     public function placeOnTheLeaderboard(){

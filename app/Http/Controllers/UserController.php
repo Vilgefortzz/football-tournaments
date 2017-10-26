@@ -125,12 +125,6 @@ class UserController extends Controller
         }
     }
 
-    public function rejectedContracts(User $user){
-
-        $contracts = $user->contracts->where('status', 'rejected');
-        return view('users.contracts', compact('contracts'));
-    }
-
     public function addFootballPosition(User $user, Request $request){
 
         if (request()->ajax()){
@@ -320,7 +314,7 @@ class UserController extends Controller
         $currentDate = date_create(date('Y-m-d H:i'));
         $endDate = date_create($dateOfEnd);
 
-        $dateDifference = $endDate->diff($currentDate);
+        $dateDifference = $currentDate->diff($endDate);
 
         $remainingContractDurationInDays = $dateDifference->format('%a');
         $remainingContractDurationInHours = $dateDifference->format('%h');

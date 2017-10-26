@@ -112,7 +112,6 @@ class ClubController extends Controller
     public function joinRequests(Club $club){
 
         $requestsToJoinTheClub = RequestToJoinTheClub::where('club_id', $club->id)
-            ->where('status', 'created')
             ->orderBy('created_at', 'desc')
             ->paginate(3);
 

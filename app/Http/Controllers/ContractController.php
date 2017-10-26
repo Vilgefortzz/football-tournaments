@@ -105,13 +105,12 @@ class ContractController extends Controller
                     $contract->user_id = $user->id;
                     $contract->save();
 
-                    // Change status of request to join the club if exists
+                    // Delete request to join the club if exists
                     $requestToJoinTheClub = RequestToJoinTheClub::where('club_id', $authUser->club_id)
                         ->where('user_id', $user->id)->first();
 
                     if ($requestToJoinTheClub){
-                        $requestToJoinTheClub->status = 'contract proposed';
-                        $requestToJoinTheClub->save();
+                        $requestToJoinTheClub->delete();
                     }
 
                     return response()->json([

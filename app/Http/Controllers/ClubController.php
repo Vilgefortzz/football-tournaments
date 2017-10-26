@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Club;
+use App\Contract;
 use App\RequestToJoinTheClub;
 use App\Role;
 use Auth;
@@ -123,6 +124,23 @@ class ClubController extends Controller
         }
         else{
             return view('clubs.join-requests.join-requests', compact('requestsToJoinTheClub'));
+        }
+    }
+
+    public function createdContracts(Club $club){
+
+        $contracts = Contract::where('club_id', $club->id)
+            ->where('status', 'created')
+            ->orderBy('created_at', 'desc')
+            ->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.contracts', compact('contracts'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.contracts', compact('contracts'));
         }
     }
 

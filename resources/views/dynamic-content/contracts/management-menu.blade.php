@@ -1,22 +1,20 @@
 @if(Auth::user()->isClubPresident())
-    <div href="#" class="tile menu-card dynamic-content-card">
+    <div id="club-waiting-contracts" href="{{ route('club-contracts-created', Auth::user()->club->id) }}"
+         class="tile menu-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+        <h1 class="text-header text-center pull-right">
+                    <span class="badge badge-pill my-color"
+                          data-number-waiting-contracts="{{ Auth::user()->club->numberOfWaitingContracts() }}">
+                        <i class="fa fa-file-text fa-fw" aria-hidden="true"></i>
+                        {{ Auth::user()->club->numberOfWaitingContracts() }}
+                    </span>
+        </h1>
         <br>
         <div class="text text-center">
-            <h1>Extend contracts</h1>
-            <h1><i class="fa fa-users fa-2x"></i></h1>
-            <h2 class="animate-text">Extend contracts with footballers</h2>
-            <p class="animate-text">See completed contracts which you want to extend, see all details </p>
-        </div>
-    </div>
-    <div href="#" id="footballers-list" class="tile menu-card dynamic-content-card">
-        <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-        <br>
-        <div class="text text-center">
-            <h1>Manage footballers</h1>
-            <h1><i class="fa fa-soccer-ball-o fa-2x"></i></h1>
-            <h2 class="animate-text">See list of footballers</h2>
-            <p class="animate-text">Manage footballers, see list, extend contracts, see all details </p>
+            <h1>Waiting contracts</h1>
+            <h1><i class="fa fa-database fa-2x"></i></h1>
+            <h2 class="animate-text">Club waiting contracts</h2>
+            <p class="animate-text">See all club waiting for signature contracts </p>
         </div>
     </div>
 @elseif(Auth::user()->isFootballer())
@@ -32,14 +30,15 @@
             </div>
         </div>
     @endif
-    <div id="waiting-contracts" href="{{ route('user-contracts-created', Auth::user()->id) }}" class="tile menu-card">
+    <div id="footballer-waiting-contracts" href="{{ route('user-contracts-created', Auth::user()->id) }}"
+         class="tile menu-card">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <h1 class="text-header text-center pull-right">
-            <span class="badge badge-pill my-color"
-                  data-number-waiting-contracts="{{ Auth::user()->numberOfWaitingContracts() }}">
-                <i class="fa fa-file-text fa-fw" aria-hidden="true"></i>
-                {{ Auth::user()->numberOfWaitingContracts() }}
-            </span>
+                    <span class="badge badge-pill my-color"
+                          data-number-waiting-contracts="{{ Auth::user()->numberOfWaitingContracts() }}">
+                        <i class="fa fa-file-text fa-fw" aria-hidden="true"></i>
+                        {{ Auth::user()->numberOfWaitingContracts() }}
+                    </span>
         </h1>
         <br>
         <div class="text text-center">

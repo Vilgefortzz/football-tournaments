@@ -115,6 +115,10 @@ class Club extends Model
         return $this->requestsToJoinTheClub->count();
     }
 
+    public function numberOfWaitingContracts(){
+        return $this->contracts->where('status', 'created')->count();
+    }
+
     public function placeOnTheLeaderboard(){
 
         $clubsLeaderboard = Club::orderBy('tournament_points', 'desc')->get();

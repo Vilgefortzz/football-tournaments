@@ -23,12 +23,12 @@ $(function () {
         displayDynamicContent($(this));
     });
 
-    $(document).on('click', '#waiting-contracts', function () {
+    $(document).on('click', '#user-waiting-contracts, #club-waiting-contracts', function () {
         if ($(this).find('.badge').attr('data-number-waiting-contracts') !== '0'){
             displayDynamicContent($(this));
         }
         else{
-            flashy('You don\'t have any waiting contracts');
+            flashy('There are not any waiting contracts right now');
         }
     });
 

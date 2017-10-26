@@ -9,6 +9,16 @@
             <p class="animate-text">See completed contracts which you want to extend, see all details </p>
         </div>
     </div>
+    <div href="#" id="footballers-list" class="tile menu-card dynamic-content-card">
+        <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
+        <br>
+        <div class="text text-center">
+            <h1>Manage footballers</h1>
+            <h1><i class="fa fa-soccer-ball-o fa-2x"></i></h1>
+            <h2 class="animate-text">See list of footballers</h2>
+            <p class="animate-text">Manage footballers, see list, extend contracts, see all details </p>
+        </div>
+    </div>
 @elseif(Auth::user()->isFootballer())
     @if(Auth::user()->haveBindingContract())
         <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" id="signed-contract"
@@ -25,14 +35,20 @@
     @endif
 @endif
 
-<div href="{{ route('contracts-management-menu') }}" id="contracts-management" class="tile menu-card dynamic-content-card">
+<div href="{{ route('contracts-management-menu') }}" id="contracts-management"
+     class="tile menu-card dynamic-content-card">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
     <br>
     <div class="text text-center">
         <h1>Manage contracts</h1>
         <h1><i class="fa fa-file-text fa-2x"></i></h1>
         <h2 class="animate-text">Contracts management</h2>
-        <p class="animate-text">See all contracts you want to sign, their status,
-            rejected or completed contracts </p>
+        <p class="animate-text">
+            @if(Auth::user()->isFootballer())
+                See all your waiting contracts or binding contract
+            @elseif(Auth::user()->isClubPresident())
+                See all club contracts signed by footballers or these which waiting for signature
+            @endif
+        </p>
     </div>
 </div>

@@ -33,9 +33,9 @@ class ClubController extends Controller
         if (request()->ajax()){
             if ($bindingContracts->isNotEmpty()){
                 foreach ($bindingContracts as $bindingContract){
-                    $remainingContractDuration = $this->computeRemainingContractDuration($bindingContract->date_and_time_of_end);
+                    $contractExpired = $this->checkIfContractExpired($bindingContract->date_and_time_of_end);
 
-                    if ($remainingContractDuration <= 0){
+                    if ($contractExpired){
 
                         $user = $bindingContract->user;
                         $club = $bindingContract->club;
@@ -316,12 +316,22 @@ class ClubController extends Controller
         }
     }
 
-    private function computeRemainingContractDuration($dateOfEnd){
+    private function checkIfContractExpired($dateOfEnd){
 
         $currentDate = date_create(date('Y-m-d H:i'));
         $endDate = date_create($dateOfEnd);
-        $remainingContractDuration = $currentDate->diff($endDate)->format('%r%i');
 
-        return ($remainingContractDuration);
+        $dateDifference = $currentDate->diff($endDate);
+
+        $remainingContractDurationInDays = intval($dateDifference->format('%r%a'));
+        $remainingContractDurationInHours = intval($dateDifference->format('%r%h'));
+        $remainingContractDurationInMinutes = intval($dateDifference->format('%r%i'));
+
+        if ($remainingContractDurationInDays <= 0 && $remainingContractDurationInHours <= 0
+            && $remainingContractDurationInMinutes <= 0){
+            return true;
+        }
+
+        return false;
     }
 }

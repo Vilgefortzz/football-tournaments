@@ -6,7 +6,7 @@ $(function() {
         var url = $('.contracts-validate').attr('href');
         checkContractsValidity(url);
 
-    }, 2000);
+    }, 1500);
 });
 
 function checkContractsValidity(url) {

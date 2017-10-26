@@ -319,7 +319,23 @@ class UserController extends Controller
 
         $currentDate = date_create(date('Y-m-d H:i'));
         $endDate = date_create($dateOfEnd);
-        $remainingContractDuration = $currentDate->diff($endDate)->format('| %d days | %h hours | %r%i minutes');
+
+        $dateDifference = $endDate->diff($currentDate);
+
+        $remainingContractDurationInDays = $dateDifference->format('%a');
+        $remainingContractDurationInHours = $dateDifference->format('%h');
+
+        if ($remainingContractDurationInDays !== '0'){
+            $remainingContractDuration = $dateDifference->format('%a day(s) left');
+        }
+        else{
+            if ($remainingContractDurationInHours !== '0'){
+                $remainingContractDuration = $dateDifference->format('%h hour(s) left');
+            }
+            else{
+                $remainingContractDuration = $dateDifference->format('%i minute(s) left');
+            }
+        }
 
         return $remainingContractDuration;
     }

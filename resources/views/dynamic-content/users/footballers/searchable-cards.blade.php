@@ -85,7 +85,7 @@
                     </button>
                 </h1>
                 <h6 class="text-center animate-text font-italic">
-                    {{$remainingContractDuration[$footballer->id]}} days left
+                    {{$remainingContractDuration[$footballer->id]}}
                 </h6>
             @else
                 @if($footballer->isContractProposed())

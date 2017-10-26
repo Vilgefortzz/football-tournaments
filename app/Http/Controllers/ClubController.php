@@ -136,11 +136,31 @@ class ClubController extends Controller
 
         if (request()->ajax()){
 
-            $view = view('dynamic-content.clubs.contracts', compact('contracts'))->render();
+            $view = view('dynamic-content.clubs.waiting-contracts', compact('contracts'))->render();
             return response()->json($view);
         }
         else{
-            return view('clubs.contracts', compact('contracts'));
+            return view('clubs.waiting-contracts', compact('contracts'));
+        }
+    }
+
+    public function signedContracts(Club $club){
+
+        $contracts = Contract::where('club_id', $club->id)
+            ->where('status', 'signed')
+            ->orderBy('date_and_time_of_end', 'asc')
+            ->paginate(3);
+
+        $remainingContractsDuration = $this->getRemainingContractsDuration($contracts);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.signed-contracts',
+                compact('contracts', 'remainingContractsDuration'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.signed-contracts', compact('contracts', 'remainingContractsDuration'));
         }
     }
 
@@ -331,6 +351,43 @@ class ClubController extends Controller
             return response()->json($view);
 
         }
+    }
+
+    private function getRemainingContractsDuration($contracts): array {
+
+        $remainingContractsDuration = [];
+
+        foreach ($contracts as $contract){
+            $remainingContractsDuration[$contract->id] =
+                $this->computeRemainingContractDuration($contract->date_and_time_of_end);
+        }
+
+        return $remainingContractsDuration;
+    }
+
+    private function computeRemainingContractDuration($dateOfEnd){
+
+        $currentDate = date_create(date('Y-m-d H:i'));
+        $endDate = date_create($dateOfEnd);
+
+        $dateDifference = $currentDate->diff($endDate);
+
+        $remainingContractDurationInDays = $dateDifference->format('%a');
+        $remainingContractDurationInHours = $dateDifference->format('%h');
+
+        if ($remainingContractDurationInDays !== '0'){
+            $remainingContractDuration = $dateDifference->format('%a day(s) left');
+        }
+        else{
+            if ($remainingContractDurationInHours !== '0'){
+                $remainingContractDuration = $dateDifference->format('%h hour(s) left');
+            }
+            else{
+                $remainingContractDuration = $dateDifference->format('%i minute(s) left');
+            }
+        }
+
+        return $remainingContractDuration;
     }
 
     private function checkIfContractExpired($dateOfEnd){

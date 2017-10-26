@@ -58,6 +58,9 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{club}/contracts/created', 'ClubController@createdContracts')
             ->name('club-contracts-created');
 
+        Route::get('/{club}/contracts/signed', 'ClubController@signedContracts')
+            ->name('club-contracts-signed');
+
         Route::get('/search', 'ClubController@search')
             ->name('clubs-search');
 

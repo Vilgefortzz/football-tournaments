@@ -101,11 +101,11 @@ class UserController extends Controller
 
         if (request()->ajax()){
 
-            $view = view('dynamic-content.users.contracts', compact('contracts'))->render();
+            $view = view('dynamic-content.users.waiting-contracts', compact('contracts'))->render();
             return response()->json($view);
         }
         else{
-            return view('users.contracts', compact('contracts'));
+            return view('users.waiting-contracts', compact('contracts'));
         }
     }
 

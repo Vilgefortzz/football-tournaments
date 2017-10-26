@@ -23,8 +23,8 @@ $(function () {
         displayDynamicContent($(this));
     });
 
-    $(document).on('click', '#user-waiting-contracts, #club-waiting-contracts', function () {
-        if ($(this).find('.badge').attr('data-number-waiting-contracts') !== '0'){
+    $(document).on('click', '#user-waiting-contracts, #club-waiting-contracts, #club-signed-contracts', function () {
+        if ($(this).find('.badge').attr('data-number-contracts') !== '0'){
             displayDynamicContent($(this));
         }
         else{

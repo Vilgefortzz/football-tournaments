@@ -174,7 +174,13 @@ class User extends Authenticatable
     }
 
     public function haveBindingContract(){
-        return $this->contracts->where('status', 'signed')->isNotEmpty();
+
+        if ($this->contracts->contains('status', 'signed')
+            || $this->contracts->contains('status', 'extension proposed')){
+            return true;
+        }
+
+        return false;
     }
 
     public function numberOfFootballPositions(){

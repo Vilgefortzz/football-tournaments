@@ -44,4 +44,8 @@ class Contract extends Model
     public function club(){
         return $this->belongsTo('App\Club');
     }
+
+    public function isExtensionProposed(){
+        return $this->status === 'extension proposed' ? true : false;
+    }
 }

@@ -92,7 +92,7 @@ class ContractController extends Controller
 
                     return response()->json([
                         'completed' => true,
-                        'message' => 'Proposition to extend contract was send.'
+                        'message' => 'Proposition to extend contract was send'
                     ]);
                 }
 
@@ -106,6 +106,35 @@ class ContractController extends Controller
                 'completed' => false,
                 'message' => 'Signature is empty'
             ]);
+        }
+    }
+
+    public function extend(Contract $contract){
+
+        if (request()->ajax()){
+
+            $contract->status = 'signed';
+            $contract->date_and_time_of_signing = date('Y-m-d H:i:s');
+            $contract->date_and_time_of_end =
+                $this->computeEndContractDate($contract->date_and_time_of_signing, $contract->extended_duration);
+            $contract->duration = $contract->extended_duration;
+            $contract->extended_duration = NULL;
+
+            $contract->save();
+
+            return response()->json('Contract was extended');
+        }
+    }
+
+    public function rejectExtension(Contract $contract){
+
+        if (request()->ajax()){
+
+            $contract->status = 'signed';
+            $contract->extended_duration = NULL;
+            $contract->save();
+
+            return response()->json('Proposition to extend contract was rejected');
         }
     }
 

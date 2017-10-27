@@ -112,6 +112,10 @@ class UserController extends Controller
     public function bindingContract(User $user){
 
         $contract = $user->contracts->where('status', 'signed')->first();
+        if (!$contract){
+            $contract = $user->contracts->where('status', 'extension proposed')->first();
+        }
+
         $remainingContractDuration = $this->computeRemainingContractDuration($contract->date_and_time_of_end);
 
         if (request()->ajax()){

@@ -89,6 +89,10 @@ Route::group(['middleware' => 'auth'], function (){
             ->name('contract-sign');
         Route::post('/{contract}/proposeExtension', 'ContractController@proposeExtension')
             ->name('contract-propose-extension');
+        Route::post('/{contract}/extend', 'ContractController@extend')
+            ->name('contract-extend');
+        Route::post('/{contract}/rejectExtension', 'ContractController@rejectExtension')
+            ->name('contract-reject-extension');
         Route::post('/store/{user}', 'ContractController@store')
             ->name('contract-store');
         Route::delete('/{contract}/destroy', 'ContractController@destroy')->name('contract-destroy');

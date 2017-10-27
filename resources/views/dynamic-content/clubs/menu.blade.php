@@ -52,14 +52,12 @@
             <i class="fa fa-search fa-2x" style="color: gold"></i>
         </h1>
         <h2 class="animate-text">
-            Search footballers, see their stats
-            @if(Auth::user()->isClubPresident())
-                and propose contracts
-            @endif
+            Search footballer
         </h2>
         <p class="animate-text">
-            See all footballers, search and find the right one, see their stats, goals, assists.
-            @if(Auth::user()->isClubPresident())
+            @if(Auth::user()->isFootballer())
+                See all footballers, search and find the right one, see their stats, goals, assists.
+            @elseif(Auth::user()->isClubPresident())
                 Try to sign the contracts, search footballer you want - by preferred positions and create
                 the unbeatable team.
             @endif

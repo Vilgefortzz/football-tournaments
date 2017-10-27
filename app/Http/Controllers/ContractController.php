@@ -23,18 +23,6 @@ class ContractController extends Controller
         }
     }
 
-    public function managementMenu(){
-
-        if (request()->ajax()){
-
-            $view = view('dynamic-content.contracts.management-menu')->render();
-            return response()->json($view);
-        }
-        else{
-            return view('contracts.management-menu');
-        }
-    }
-
     public function sign(Contract $contract, Request $request){
 
         $authUser = Auth::user();

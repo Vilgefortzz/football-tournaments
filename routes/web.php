@@ -82,8 +82,6 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::group(['prefix' => 'contracts'], function (){
         Route::get('/menu', 'ContractController@menu')->name('contracts-menu');
-        Route::get('/management/menu', 'ContractController@managementMenu')
-            ->name('contracts-management-menu');
         Route::post('/{contract}/sign', 'ContractController@sign')
             ->name('contract-sign');
         Route::post('/store/{user}', 'ContractController@store')

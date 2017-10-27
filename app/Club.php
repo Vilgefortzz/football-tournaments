@@ -123,6 +123,10 @@ class Club extends Model
         return $this->contracts->where('status', 'signed')->count();
     }
 
+    public function numberOfExtensionPropositionsForContracts(){
+        return $this->contracts->where('status', 'extension proposed')->count();
+    }
+
     public function placeOnTheLeaderboard(){
 
         $clubsLeaderboard = Club::orderBy('tournament_points', 'desc')->get();

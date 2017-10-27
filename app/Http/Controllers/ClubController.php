@@ -164,6 +164,27 @@ class ClubController extends Controller
         }
     }
 
+    public function extensionProposedContracts(Club $club){
+
+        $contracts = Contract::where('club_id', $club->id)
+            ->where('status', 'extension proposed')
+            ->orderBy('date_and_time_of_end', 'asc')
+            ->paginate(3);
+
+        $remainingContractsDuration = $this->getRemainingContractsDuration($contracts);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.extension-propositions-for-contracts',
+                compact('contracts', 'remainingContractsDuration'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.extension-propositions-for-contracts',
+                compact('contracts', 'remainingContractsDuration'));
+        }
+    }
+
     public function store(Request $request){
 
         $authUser = Auth::user();

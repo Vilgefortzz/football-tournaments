@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $date_and_time_of_signing
  * @property string|null $date_and_time_of_end
  * @property string $duration
+ * @property string|null $extended_duration
  * @property string $status
  * @property string $club_name
  * @property string $user_name
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereDateAndTimeOfEnd($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereDateAndTimeOfSigning($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereDuration($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereExtendedDuration($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contract whereUpdatedAt($value)

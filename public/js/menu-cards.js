@@ -23,12 +23,13 @@ $(function () {
         displayDynamicContent($(this));
     });
 
-    $(document).on('click', '#footballer-waiting-contracts, #club-waiting-contracts, #club-signed-contracts', function () {
+    $(document).on('click', '#footballer-waiting-contracts, #club-waiting-contracts,' +
+        ' #club-signed-contracts, #club-extension-proposed-contracts', function () {
         if ($(this).find('.badge').attr('data-number-contracts') !== '0'){
             displayDynamicContent($(this));
         }
         else{
-            flashy('There are not any waiting contracts right now');
+            flashy('There are not any these contracts right now');
         }
     });
 

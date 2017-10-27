@@ -3,6 +3,7 @@
     <div href="{{ route('user-contracts-created', Auth::user()->id) }}" class="contracts-created" hidden></div>
 
     @if(Auth::user()->haveClub())
+        <div href="{{ route('club-contracts-signed', Auth::user()->club->id) }}" class="contracts-signed" hidden></div>
         <div href="{{ route('club-validate-contracts', Auth::user()->club->id) }}" class="contracts-validate" hidden></div>
     @endif
 

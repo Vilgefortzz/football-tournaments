@@ -69,6 +69,7 @@
 
     <script src="{{ asset('js/contracts/contract-create.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/contract-sign.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/contracts/contract-extend.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/contract-delete.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/pagination-ajax.js') }}" type="text/javascript"></script>
     <div id="dynamic-scripts"></div>

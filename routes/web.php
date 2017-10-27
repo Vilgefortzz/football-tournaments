@@ -61,6 +61,9 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{club}/contracts/signed', 'ClubController@signedContracts')
             ->name('club-contracts-signed');
 
+        Route::get('/{club}/contracts/extensionProposed', 'ClubController@extensionProposedContracts')
+            ->name('club-contracts-extension-proposed');
+
         Route::get('/search', 'ClubController@search')
             ->name('clubs-search');
 
@@ -84,6 +87,8 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/menu', 'ContractController@menu')->name('contracts-menu');
         Route::post('/{contract}/sign', 'ContractController@sign')
             ->name('contract-sign');
+        Route::post('/{contract}/proposeExtension', 'ContractController@proposeExtension')
+            ->name('contract-propose-extension');
         Route::post('/store/{user}', 'ContractController@store')
             ->name('contract-store');
         Route::delete('/{contract}/destroy', 'ContractController@destroy')->name('contract-destroy');

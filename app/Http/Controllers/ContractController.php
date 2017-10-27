@@ -58,7 +58,41 @@ class ContractController extends Controller
                     return response()->json([
                         'completed' => true,
                         'club_id' => $club->id,
-                        'message' => 'New contract was signed. Welcome in new club !!'
+                        'message' => 'Contract was signed. Welcome in new club !!'
+                    ]);
+                }
+
+                return response()->json([
+                    'completed' => false,
+                    'message' => 'Signature is invalid'
+                ]);
+            }
+
+            return response()->json([
+                'completed' => false,
+                'message' => 'Signature is empty'
+            ]);
+        }
+    }
+
+    public function proposeExtension(Contract $contract, Request $request){
+
+        $authUser = Auth::user();
+
+        if ($request->ajax()){
+
+            if ($request->has('signature')){
+
+                // Check if signature is good
+                if ($authUser->username === $request->signature){
+
+                    $contract->status = 'extension proposed';
+                    $contract->extended_duration = $request->duration;
+                    $contract->save();
+
+                    return response()->json([
+                        'completed' => true,
+                        'message' => 'Proposition to extend contract was send.'
                     ]);
                 }
 

@@ -12,7 +12,7 @@
             <br>
             <h1 class="text-header text-center">
                 <img src="{{ asset($contract->user->avatar_dir. $contract->user->avatar) }}"
-                     width="150" height="150" class="img-fluid rounded-circle">
+                     width="130" height="130" class="img-fluid rounded-circle">
             </h1>
             <h1 class="text-header text-center">
                 {{ $contract->user->username }}
@@ -24,7 +24,7 @@
                 {{$remainingContractsDuration[$contract->id]}}
             </h6>
             <div class="text-join-requests text-center animate-text">
-                Contract duration:
+                Extended contract duration:
                 <div class="styled-select my-color rounded">
                     <select id="duration-contract-{{$contract->id}}">
                         <option value="1" selected="selected">1 week</option>
@@ -41,7 +41,7 @@
 
                 <a href="{{ route('contract-propose-extension', $contract->id) }}"
                    class="btn btn-sm my-color-3 propose-extend-contract" data-contract-id="{{$contract->id}}">
-                    <i class="fa fa-handshake-o fa-lg fa-fw"></i>  Propose extension of the contract
+                    <i class="fa fa-handshake-o fa-lg fa-fw"></i>  Propose extension
                 </a>
             </div>
         </div>

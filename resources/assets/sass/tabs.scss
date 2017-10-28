@@ -1,0 +1,18 @@
+.tabbable-line > .nav-tabs {
+  font-size: 20px;
+}
+.tabbable-line > .nav-tabs > li > a {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  color: #363636;
+}
+.tabbable-line > .nav-tabs > li > a.active {
+  border: 1px solid #ec2652;
+  color: #ec2652;
+}
+.tabbable-line > .tab-content {
+  margin-top: 25px;
+  background-color: #fff;
+  padding: 15px 0;
+}

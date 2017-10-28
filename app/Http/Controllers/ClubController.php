@@ -62,6 +62,22 @@ class ClubController extends Controller
         }
     }
 
+    public function show(Club $club){
+
+        $clubPresident = $club->users->where('role_id', Role::ClubPresident)->first();
+        $footballers = $club->users->where('role_id', Role::Footballer);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.show',
+                compact('club', 'clubPresident', 'footballers'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.show', compact('club', 'clubPresident', 'footballers'));
+        }
+    }
+
     public function create(){
 
         if (request()->ajax()){

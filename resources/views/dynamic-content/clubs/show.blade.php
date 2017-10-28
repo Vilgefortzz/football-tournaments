@@ -51,78 +51,144 @@
             </div>
 
             <div class="col">
-                <div class="tabbable-line">
-                    <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <a href="#tab-main-1" class="badge badge-pill tab-remove-active active" data-toggle="tab">
+                            <i class="fa fa-users fa-fw" aria-hidden="true"></i>
+                            Staff
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab-main-2" class="badge badge-pill tab-remove-active" data-toggle="tab">
+                            <i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>
+                            Stats
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab-main-3" class="badge badge-pill tab-add-active" data-toggle="tab">
+                            <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
+                            Trophies
+                        </a>
+                    </li>
+                    @if(Auth::user()->isClubPresident() && $club->isYourClub())
                         <li>
-                            <a href="#tab-1" class="badge badge-pill active" data-toggle="tab">
-                                <i class="fa fa-users fa-fw" aria-hidden="true"></i>
-                                Staff
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#tab-2" class="badge badge-pill" data-toggle="tab">
-                                <i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>
-                                Stats
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#tab-3" class="badge badge-pill" data-toggle="tab">
-                                <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
-                                Trophies
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#tab-4" class="badge badge-pill" data-toggle="tab">
+                            <a href="#tab-main-4" class="badge badge-pill tab-remove-active" data-toggle="tab">
                                 <i class="fa fa-cog fa-fw" aria-hidden="true"></i> Settings
                             </a>
                         </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab-1">
-                            <table id="footballers-table" class="table table-hover table-responsive" cellspacing="0" width="100%">
-                                <thead class="my-color-2">
+                    @endif
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab-main-1">
+                        <table id="footballers-table" class="table table-hover table-responsive" cellspacing="0" width="100%">
+                            <thead class="my-color-2">
+                            <tr>
+                                <th><i class="fa fa-users fa-fw"></i>Name</th>
+                                <th><i class="fa fa-shield fa-fw"></i>Avatar</th>
+                                <th><i class="fa fa-male fa-fw"></i>Main football position</th>
+                                <th><i class="fa fa-soccer-ball-o fa-fw"></i>Goals</th>
+                                <th><i class="fa fa-mail-forward fa-fw"></i>Assists</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="font-bold">
+                                    <i class="fa fa-star fa-fw" style="color: gold;"></i>{{ $clubPresident->username }}
+                                </td>
+                                <td>
+                                    <img src="{{ asset($clubPresident->avatar_dir. $clubPresident->avatar) }}"
+                                         width="25" height="25">
+                                </td>
+                                <td class="font-bold">{{ $clubPresident->main_football_position }}</td>
+                                <td class="font-bold">{{ $clubPresident->goals }}</td>
+                                <td class="font-bold">{{ $clubPresident->assists }}</td>
+                            </tr>
+                            @foreach($footballers as $footballer)
                                 <tr>
-                                    <th><i class="fa fa-users fa-fw"></i>Name</th>
-                                    <th><i class="fa fa-shield fa-fw"></i>Avatar</th>
-                                    <th><i class="fa fa-male fa-fw"></i>Main football position</th>
-                                    <th><i class="fa fa-soccer-ball-o fa-fw"></i>Goals</th>
-                                    <th><i class="fa fa-mail-forward fa-fw"></i>Assists</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="font-bold">
-                                        <i class="fa fa-star fa-fw" style="color: gold;"></i>{{ $clubPresident->username }}
-                                    </td>
+                                    <td class="font-bold">{{ $footballer->username }}</td>
                                     <td>
-                                        <img src="{{ asset($clubPresident->avatar_dir. $clubPresident->avatar) }}"
+                                        <img src="{{ asset($footballer->avatar_dir. $footballer->avatar) }}"
                                              width="25" height="25">
                                     </td>
-                                    <td class="font-bold">{{ $clubPresident->main_football_position }}</td>
-                                    <td class="font-bold">{{ $clubPresident->goals }}</td>
-                                    <td class="font-bold">{{ $clubPresident->assists }}</td>
+                                    <td class="font-bold">{{ $footballer->main_football_position }}</td>
+                                    <td class="font-bold">{{ $footballer->goals }}</td>
+                                    <td class="font-bold">{{ $footballer->assists }}</td>
                                 </tr>
-                                @foreach($footballers as $footballer)
-                                    <tr>
-                                        <td class="font-bold">{{ $footballer->username }}</td>
-                                        <td>
-                                            <img src="{{ asset($footballer->avatar_dir. $footballer->avatar) }}"
-                                                 width="25" height="25">
-                                        </td>
-                                        <td class="font-bold">{{ $footballer->main_football_position }}</td>
-                                        <td class="font-bold">{{ $footballer->goals }}</td>
-                                        <td class="font-bold">{{ $footballer->assists }}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="tab-main-2">
+                        <h1 class="font-bold font-italic"><i class="fa fa-trophy fa-fw"></i>Tournaments:</h1>
+                        <h4 class="font-italic">
+                            Tournament points: {{ $club->tournament_points }}</h4>
+                        <h4 class="font-italic">
+                            Completed tournaments: {{ $club->completed_tournaments }}</h4>
+                        <h4 class="font-italic">
+                            Won tournaments: {{ $club->won_tournaments }}</h4>
+                        <h4 class="font-italic">
+                            Tournaments win rate: {{ $club->tournaments_win_rate }}</h4>
+
+                        <h1 class="font-bold font-italic"><i class="fa fa-soccer-ball-o fa-fw"></i>Matches:</h1>
+                        <h4 class="font-italic">
+                            Played matches: {{ $club->played_matches }}</h4>
+                        <h4 class="font-italic">
+                            Won matches: {{ $club->won_matches }}</h4>
+                        <h4 class="font-italic">
+                            Matches win rate: {{ $club->matches_win_rate }}</h4>
+                    </div>
+                    <div class="tab-pane" id="tab-main-3">
+                        <h4 class="font-italic">
+                            Won trophies: {{ $club->won_trophies }}</h4>
+                        <h4 class="font-italic">
+                            Trophies win rate: {{ $club->trophies_win_rate }}</h4>
+                        <br>
+                        <ul class="nav nav-tabs">
+                            <li>
+                                <a id="tab-trophy-first-place" href="#tab-trophies-first-place"
+                                   class="badge badge-pill tab-trophies active" data-toggle="tab">
+                                    For first place
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#tab-trophies-second-place" class="badge badge-pill tab-trophies" data-toggle="tab">
+                                    For second place
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#tab-trophies-third-place" class="badge badge-pill tab-trophies" data-toggle="tab">
+                                    For third place
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane tab-pane-trophies" id="tab-trophies-first-place">
+                            @foreach($trophiesForFirstPlace as $trophyForFirstPlace)
+                                <img src="{{ asset('images/trophies/first_place.png') }}"
+                                     width="70" height="70">
+                                {{ $trophyForFirstPlace->name }}
+                                <br>
+                            @endforeach
                         </div>
-                        <div class="tab-pane" id="tab-2">
+                        <div class="tab-pane tab-pane-trophies" id="tab-trophies-second-place">
+                            @foreach($trophiesForSecondPlace as $trophyForSecondPlace)
+                                <img src="{{ asset('images/trophies/second_place.png') }}"
+                                     width="70" height="70">
+                                {{ $trophyForSecondPlace->name }}
+                                <br>
+                            @endforeach
                         </div>
-                        <div class="tab-pane" id="tab-3">
+                        <div class="tab-pane tab-pane-trophies" id="tab-trophies-third-place">
+                            @foreach($trophiesForThirdPlace as $trophyForThirdPlace)
+                                <img src="{{ asset('images/trophies/third_place.png') }}"
+                                     width="70" height="70">
+                                {{ $trophyForThirdPlace->name }}
+                                <br>
+                            @endforeach
                         </div>
-                        <div class="tab-pane" id="tab-4">
-                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-main-4">
                     </div>
                 </div>
             </div>

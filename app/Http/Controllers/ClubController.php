@@ -67,14 +67,20 @@ class ClubController extends Controller
         $clubPresident = $club->users->where('role_id', Role::ClubPresident)->first();
         $footballers = $club->users->where('role_id', Role::Footballer);
 
+        $trophiesForFirstPlace = $club->trophies->where('label', 'first place');
+        $trophiesForSecondPlace = $club->trophies->where('label', 'second place');
+        $trophiesForThirdPlace = $club->trophies->where('label', 'third place');
+
         if (request()->ajax()){
 
             $view = view('dynamic-content.clubs.show',
-                compact('club', 'clubPresident', 'footballers'))->render();
+                compact('club', 'clubPresident', 'footballers',
+                    'trophiesForFirstPlace', 'trophiesForSecondPlace', 'trophiesForThirdPlace'))->render();
             return response()->json($view);
         }
         else{
-            return view('clubs.show', compact('club', 'clubPresident', 'footballers'));
+            return view('clubs.show', compact('club', 'clubPresident', 'footballers',
+                'trophiesForFirstPlace', 'trophiesForSecondPlace', 'trophiesForThirdPlace'));
         }
     }
 

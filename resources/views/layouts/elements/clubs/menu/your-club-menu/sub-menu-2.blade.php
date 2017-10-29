@@ -18,7 +18,7 @@
         </div>
     </div>
 @elseif(Auth::user()->isFootballer() && Auth::user()->haveBindingContract())
-    <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="tile menu-card sub-menu-card dynamic-content-card">
+    <div href="{{ route('user-contracts-binding', Auth::user()->id) }}" class="tile menu-card sub-menu-card dynamic-content">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <br>
         <div class="text text-center">
@@ -30,7 +30,7 @@
         </div>
     </div>
 @endif
-<div href="#" class="tile menu-card sub-menu-card dynamic-content-card">
+<div href="#" class="tile menu-card sub-menu-card dynamic-content">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
     <br>
     <div class="text text-center">

@@ -1,4 +1,4 @@
-<div href="{{ route('club-show', $club->id) }}" class="tile menu-card dynamic-content-card" style="margin-left: 20px; margin-right: 0">
+<div href="{{ route('club-show', $club->id) }}" class="tile menu-card dynamic-content" style="margin-left: 20px; margin-right: 0">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
     <br>
     <div class="text text-center">

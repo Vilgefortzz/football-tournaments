@@ -19,7 +19,7 @@ $(function () {
         displayDynamicContent($(this));
     });
 
-    $(document).on('click', '.dynamic-content-card', function () {
+    $(document).on('click', '.dynamic-content', function () {
         displayDynamicContent($(this));
     });
 

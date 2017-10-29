@@ -7,7 +7,7 @@
     <div id="content-search" class="row justify-content-center"></div>
     <div id="content" class="row justify-content-center">
         @if(Auth::user()->haveClub())
-            <div href="{{ route('clubs-club-menu', Auth::user()->club->id) }}" class="tile menu-card dynamic-content-card">
+            <div href="{{ route('clubs-club-menu', Auth::user()->club->id) }}" class="tile menu-card dynamic-content">
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                 <br>
                 <div class="text text-center">
@@ -73,7 +73,7 @@
             </div>
         </div>
         @if(Auth::user()->isFootballer() && !Auth::user()->haveClub())
-            <div href="{{ route('club-create') }}" class="tile menu-card dynamic-content-card">
+            <div href="{{ route('club-create') }}" class="tile menu-card dynamic-content">
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                 <br>
                 <div class="text text-center">

@@ -1,4 +1,4 @@
-<div href="#" class="tile menu-card sub-menu-card dynamic-content-card">
+<div href="#" class="tile menu-card sub-menu-card dynamic-content">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
     <br>
     <div class="text text-center">
@@ -9,7 +9,7 @@
         <p class="animate-text">All upcoming matches, game schedule for near future </p>
     </div>
 </div>
-<div href="#" class="tile menu-card sub-menu-card dynamic-content-card">
+<div href="#" class="tile menu-card sub-menu-card dynamic-content">
     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
     <br>
     <div class="text text-center">

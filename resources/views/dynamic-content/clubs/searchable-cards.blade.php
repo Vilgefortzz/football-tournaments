@@ -1,6 +1,6 @@
 @foreach($clubs as $club)
-    <div id="club-{{$club->id}}" class="tile tile-clubs club-card"
-         href="#">
+    <div id="club-{{$club->id}}" class="tile tile-clubs club-card dynamic-content"
+         href="{{ route('club-show', $club->id) }}">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <h1 class="text-header pull-right">
             <span class="badge badge-pill my-color">

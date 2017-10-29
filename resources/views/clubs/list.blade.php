@@ -29,7 +29,7 @@
                     <tbody>
 
                     @foreach($clubs as $club)
-                        <tr>
+                        <tr href="{{ route('club-show', $club->id) }}" class="dynamic-content">
                             <td class="font-bold">{{ $club->name }}</td>
                             <td>
                                 <img src="{{ asset($club->emblem_dir. $club->emblem) }}"

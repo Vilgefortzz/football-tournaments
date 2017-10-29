@@ -175,6 +175,31 @@
                             <div id="content-trophies">
                             </div>
                             <div class="tab-pane" id="tab-main-4">
+                                <form enctype="multipart/form-data" method="POST" action="{{ route('club-update', $club->id) }}">
+
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
+
+                                    <div class="text-center">
+                                        <h3 class="font-italic"><i class="fa fa-pencil fa-fw"></i> Edit club name</h3>
+                                        <div class="form-group">
+                                            <div class="input-container" style="padding: 5px 130px">
+                                                <input type="text" id="club-name" name="name" autofocus style="text-align: center">
+                                                <label for="club-name">Club name</label>
+                                            </div>
+                                        </div>
+                                        <h3 class="font-italic">Update club emblem</h3>
+                                        <div class="form-group">
+                                            <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
+                                                 width="110" height="110" class="img-fluid rounded-circle">
+                                            <input id="club-emblem" type="file" name="club_emblem">
+                                        </div>
+                                        <hr>
+                                        <div class="form-group">
+                                            <button class="btn my-color" type="submit">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

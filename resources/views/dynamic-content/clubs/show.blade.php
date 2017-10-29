@@ -5,22 +5,22 @@
                 <div class="tile chosen">
                     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                     <h1 class="text-header pull-right">
-                                <span class="badge badge-pill my-color">
-                                    <i class="fa fa-star fa-fw" aria-hidden="true"></i>
-                                    {{ $club->tournament_points }}
-                                </span>
+                        <span class="badge badge-pill my-color">
+                            <i class="fa fa-star fa-fw" aria-hidden="true"></i>
+                            {{ $club->tournament_points }}
+                        </span>
                     </h1>
                     <h1 class="text-display" style="margin-bottom: 0">
-                                <span class="badge badge-pill my-color-3">
-                                    <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
-                                    @if($club->haveCountryAndCity())
-                                        {{ $club->country }} | {{ $club->city }}
-                                    @elseif($club->haveCountry())
-                                        {{ $club->country }}
-                                    @elseif($club->haveCity())
-                                        {{ $club->city }}
-                                    @endif
-                                </span>
+                        <span class="badge badge-pill my-color-3">
+                            <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
+                            @if($club->haveCountryAndCity())
+                                {{ $club->country }} | {{ $club->city }}
+                            @elseif($club->haveCountry())
+                                {{ $club->country }}
+                            @elseif($club->haveCity())
+                                {{ $club->city }}
+                            @endif
+                        </span>
                     </h1>
                     <br>
                     <h1 class="text-header text-center">
@@ -167,6 +167,31 @@
                     <div id="content-trophies">
                     </div>
                     <div class="tab-pane" id="tab-main-4">
+                        <form enctype="multipart/form-data" method="POST" action="{{ route('club-update', $club->id) }}">
+
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
+
+                            <div class="text-center">
+                                <h3 class="font-italic"><i class="fa fa-pencil fa-fw"></i> Edit club name</h3>
+                                <div class="form-group">
+                                    <div class="input-container" style="padding: 5px 130px">
+                                        <input type="text" id="club-name" name="name" autofocus style="text-align: center">
+                                        <label for="club-name">Club name</label>
+                                    </div>
+                                </div>
+                                <h3 class="font-italic">Update club emblem</h3>
+                                <div class="form-group">
+                                    <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
+                                         width="110" height="110" class="img-fluid rounded-circle">
+                                    <input id="club-emblem" type="file" name="club_emblem">
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <button class="btn my-color" type="submit">Save changes</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

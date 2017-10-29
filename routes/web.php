@@ -67,6 +67,8 @@ Route::group(['middleware' => 'auth'], function (){
         Route::post('/store', 'ClubController@store')
             ->name('club-store');
 
+        Route::put('/{club}/update', 'ClubController@update')->name('club-update');
+
         Route::get('/{club}/contracts/created', 'ClubController@createdContracts')
             ->name('club-contracts-created');
 

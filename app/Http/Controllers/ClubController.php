@@ -135,6 +135,45 @@ class ClubController extends Controller
         }
     }
 
+    public function update(Club $club, Request $request){
+
+        if ($request->has('name')){
+
+            $this->validate($request, [
+                'name' => 'required|string|min:3|max:20|unique:clubs',
+            ]);
+
+            $club->name = $request->name;
+            $club->save();
+        }
+
+        if ($request->hasFile('club_emblem')){
+
+            $emblem = $request->file('club_emblem');
+
+            $clubName = implode('_', explode(' ', $club->name));
+
+            $directoryName = 'uploads/clubs/emblems/'. $clubName. '/';
+            $fileName = $clubName. '_emblem.'. $emblem->getClientOriginalExtension();
+
+            if(!File::exists(public_path($directoryName))) {
+                File::makeDirectory(public_path($directoryName));
+            }
+            else{
+                File::deleteDirectory(public_path($directoryName), true);
+            }
+
+            Image::make($emblem)->resize(150, 150)->save(public_path($directoryName. $fileName));
+
+            $club->emblem_dir = $directoryName;
+            $club->emblem = $fileName;
+            $club->save();
+        }
+
+        flashy()->success('Club profile was updated');
+        return redirect()->back();
+    }
+
     public function clubMenu(Club $club){
 
         if (request()->ajax()){

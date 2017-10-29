@@ -67,20 +67,59 @@ class ClubController extends Controller
         $clubPresident = $club->users->where('role_id', Role::ClubPresident)->first();
         $footballers = $club->users->where('role_id', Role::Footballer);
 
-        $trophiesForFirstPlace = $club->trophies->where('label', 'first place');
-        $trophiesForSecondPlace = $club->trophies->where('label', 'second place');
-        $trophiesForThirdPlace = $club->trophies->where('label', 'third place');
-
         if (request()->ajax()){
 
             $view = view('dynamic-content.clubs.show',
-                compact('club', 'clubPresident', 'footballers',
-                    'trophiesForFirstPlace', 'trophiesForSecondPlace', 'trophiesForThirdPlace'))->render();
+                compact('club', 'clubPresident', 'footballers'))->render();
             return response()->json($view);
         }
         else{
-            return view('clubs.show', compact('club', 'clubPresident', 'footballers',
-                'trophiesForFirstPlace', 'trophiesForSecondPlace', 'trophiesForThirdPlace'));
+            return view('clubs.show', compact('club', 'clubPresident', 'footballers'));
+        }
+    }
+
+    public function getTrophiesForFirstPlace(Club $club){
+
+        $trophiesForFirstPlace = $club->trophies()->where('label', 'first place')->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.trophies.trophies-first-place-list',
+                compact('trophiesForFirstPlace'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('layouts.elements.trophies.trophies-first-place-list', compact('trophiesForFirstPlace'));
+        }
+    }
+
+    public function getTrophiesForSecondPlace(Club $club){
+
+        $trophiesForSecondPlace = $club->trophies()->where('label', 'second place')->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.trophies.trophies-second-place-list',
+                compact('trophiesForSecondPlace'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('layouts.elements.trophies.trophies-second-place-list', compact('trophiesForSecondPlace'));
+        }
+    }
+
+    public function getTrophiesForThirdPlace(Club $club){
+
+        $trophiesForThirdPlace = $club->trophies()->where('label', 'third place')->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.trophies.trophies-third-place-list',
+                compact('trophiesForThirdPlace'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('layouts.elements.trophies.trophies-third-place-list', compact('trophiesForThirdPlace'));
         }
     }
 

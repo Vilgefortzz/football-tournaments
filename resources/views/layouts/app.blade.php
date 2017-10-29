@@ -68,6 +68,9 @@
         <script src="{{ asset('js/contracts/contracts-validate.js') }}" type="text/javascript"></script>
     @endif
 
+    <script src="{{ asset('js/trophies/trophies.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/trophies/pagination-ajax.js') }}" type="text/javascript"></script>
+
     <script src="{{ asset('js/contracts/contract-create.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/contract-sign.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/contracts/contract-extend.js') }}" type="text/javascript"></script>

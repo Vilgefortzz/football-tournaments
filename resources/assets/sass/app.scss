@@ -27,6 +27,7 @@ $main-background: url("/images/background.jpg") no-repeat center center fixed !d
 $pagination-margin-contract: 20px !default;
 $pagination-margin-club: 0px !default;
 $pagination-margin-request-to-join-the-club: 15px !default;
+$pagination-margin-trophy: 10px !default;
 $table-in-jumbotron: 10px 10px !default;
 
 body {
@@ -115,4 +116,7 @@ body {
 }
 .pagination-margin-request-to-join-the-club{
   margin-top: $pagination-margin-request-to-join-the-club;
+}
+.pagination-margin-trophy{
+  margin-top: $pagination-margin-trophy;
 }

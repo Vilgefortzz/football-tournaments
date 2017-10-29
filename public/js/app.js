@@ -197,6 +197,31 @@ function getFootballerCardsSearch(timer, url) {
     return timer;
 }
 
+function getListWithTrophies(url) {
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        cache: false,
+
+        success: function(data){
+
+            $('#content-trophies').html(data);
+
+            var trophiesList = $('.trophies-list');
+            var paginations = $('.pagination-links');
+
+            addAnimation(trophiesList, 'fadeIn');
+            addAnimation(paginations, 'fadeIn');
+
+            window.setTimeout(function(){
+                removeAnimation(trophiesList, 'fadeIn');
+                removeAnimation(paginations, 'fadeIn');
+            }, 800);
+        }
+    });
+}
+
 function isEmpty(el){
     return !$.trim(el.html())
 }

@@ -61,26 +61,26 @@
                     <div class="col">
                         <ul class="nav nav-tabs">
                             <li>
-                                <a href="#tab-main-1" class="badge badge-pill tab-remove-active active" data-toggle="tab">
+                                <a href="#tab-main-1" class="badge badge-pill tab-main active" data-toggle="tab">
                                     <i class="fa fa-users fa-fw" aria-hidden="true"></i>
                                     Staff
                                 </a>
                             </li>
                             <li>
-                                <a href="#tab-main-2" class="badge badge-pill tab-remove-active" data-toggle="tab">
+                                <a href="#tab-main-2" class="badge badge-pill tab-main" data-toggle="tab">
                                     <i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>
                                     Stats
                                 </a>
                             </li>
                             <li>
-                                <a href="#tab-main-3" class="badge badge-pill tab-add-active" data-toggle="tab">
+                                <a id="tab-trophies" href="#tab-main-3" class="badge badge-pill" data-toggle="tab">
                                     <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
                                     Trophies
                                 </a>
                             </li>
                             @if(Auth::user()->isClubPresident() && $club->isYourClub())
                                 <li>
-                                    <a href="#tab-main-4" class="badge badge-pill tab-remove-active" data-toggle="tab">
+                                    <a href="#tab-main-4" class="badge badge-pill tab-main" data-toggle="tab">
                                         <i class="fa fa-cog fa-fw" aria-hidden="true"></i> Settings
                                     </a>
                                 </li>
@@ -153,48 +153,26 @@
                                 <br>
                                 <ul class="nav nav-tabs">
                                     <li>
-                                        <a id="tab-trophy-first-place" href="#tab-trophies-first-place"
-                                           class="badge badge-pill tab-trophies active" data-toggle="tab">
+                                        <a id="tab-trophy-first-place" href="{{ route('club-trophies-first-place', $club->id) }}"
+                                           class="badge badge-pill tab-trophies">
                                             For first place
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#tab-trophies-second-place" class="badge badge-pill tab-trophies" data-toggle="tab">
+                                        <a href="{{ route('club-trophies-second-place', $club->id) }}"
+                                           class="badge badge-pill tab-trophies">
                                             For second place
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#tab-trophies-third-place" class="badge badge-pill tab-trophies" data-toggle="tab">
+                                        <a href="{{ route('club-trophies-third-place', $club->id) }}"
+                                           class="badge badge-pill tab-trophies">
                                             For third place
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="tab-content">
-                                <div class="tab-pane tab-pane-trophies" id="tab-trophies-first-place">
-                                    @foreach($trophiesForFirstPlace as $trophyForFirstPlace)
-                                        <img src="{{ asset('images/trophies/first_place.png') }}"
-                                             width="70" height="70">
-                                        {{ $trophyForFirstPlace->name }}
-                                        <br>
-                                    @endforeach
-                                </div>
-                                <div class="tab-pane tab-pane-trophies" id="tab-trophies-second-place">
-                                    @foreach($trophiesForSecondPlace as $trophyForSecondPlace)
-                                        <img src="{{ asset('images/trophies/second_place.png') }}"
-                                             width="70" height="70">
-                                        {{ $trophyForSecondPlace->name }}
-                                        <br>
-                                    @endforeach
-                                </div>
-                                <div class="tab-pane tab-pane-trophies" id="tab-trophies-third-place">
-                                    @foreach($trophiesForThirdPlace as $trophyForThirdPlace)
-                                        <img src="{{ asset('images/trophies/third_place.png') }}"
-                                             width="70" height="70">
-                                        {{ $trophyForThirdPlace->name }}
-                                        <br>
-                                    @endforeach
-                                </div>
+                            <div id="content-trophies">
                             </div>
                             <div class="tab-pane" id="tab-main-4">
                             </div>

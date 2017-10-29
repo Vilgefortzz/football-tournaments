@@ -52,6 +52,15 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{club}/show', 'ClubController@show')
             ->name('club-show');
 
+        Route::get('/{club}/trophies/firstPlace', 'ClubController@getTrophiesForFirstPlace')
+            ->name('club-trophies-first-place');
+
+        Route::get('/{club}/trophies/secondPlace', 'ClubController@getTrophiesForSecondPlace')
+            ->name('club-trophies-second-place');
+
+        Route::get('/{club}/trophies/thirdPlace', 'ClubController@getTrophiesForThirdPlace')
+            ->name('club-trophies-third-place');
+
         Route::get('/create', 'ClubController@create')
             ->name('club-create');
 

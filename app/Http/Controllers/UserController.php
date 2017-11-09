@@ -19,7 +19,11 @@ class UserController extends Controller
 
         $footballPositions = FootballPosition::all();
         $userFootballPositions = $user->footballPositions;
-        $mainFootballPositionId = FootballPosition::where('name', $user->main_football_position)->first()->id;
+        $mainFootballPositionId = null;
+
+        if ($user->haveMainFootballPosition()){
+            $mainFootballPositionId = FootballPosition::where('name', $user->main_football_position)->first()->id;
+        }
 
         if (request()->ajax()){
 
@@ -172,6 +176,15 @@ class UserController extends Controller
     public function deleteFootballPosition(User $user, FootballPosition $footballPosition){
 
         if (request()->ajax()){
+
+            if ($user->haveMainFootballPosition()){
+                $mainFootballPositionId = FootballPosition::where('name', $user->main_football_position)->first()->id;
+
+                if ($mainFootballPositionId === $footballPosition->id){
+                    $user->main_football_position = null;
+                    $user->save();
+                }
+            }
 
             $user->footballPositions()->detach($footballPosition->id);
             return response()->json('Football position was deleted');

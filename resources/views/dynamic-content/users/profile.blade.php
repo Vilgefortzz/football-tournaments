@@ -83,28 +83,29 @@
                                  width="110" height="110" class="img-fluid rounded-circle">
                             <input id="avatar" type="file" name="avatar">
                         </div>
-                        <hr>
-                        <h4 class="font-italic my-color-2">Change main football position</h4>
-                        <div class="form-group">
-                            <div class="button-container">
-                                <div class="radio">
-                                    @foreach($userFootballPositions as $userFootballPosition)
-                                        <label id="football-main-position-{{$userFootballPosition->id}}" style="padding-left: 10px">
-                                            @if($userFootballPosition->id === $mainFootballPositionId)
-                                                <input type="radio" name="main_football_position" value="{{ $userFootballPosition->name }}" checked>
-                                            @else
-                                                <input type="radio" name="main_football_position" value="{{ $userFootballPosition->name }}">
-                                            @endif
-                                            <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
-                                            {{ $userFootballPosition->name }}
-                                        </label>
-                                    @endforeach
+                        @if($user->haveFootballPositions())
+                            <hr>
+                            <h4 class="font-italic my-color-2">Change main football position</h4>
+                            <div class="form-group">
+                                <div class="button-container">
+                                    <div class="radio">
+                                        @foreach($userFootballPositions as $userFootballPosition)
+                                            <label id="football-main-position-{{$userFootballPosition->id}}" style="padding-left: 10px">
+                                                @if($userFootballPosition->id === $mainFootballPositionId)
+                                                    <input type="radio" name="main_football_position" value="{{ $userFootballPosition->name }}" checked>
+                                                @else
+                                                    <input type="radio" name="main_football_position" value="{{ $userFootballPosition->name }}">
+                                                @endif
+                                                <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                                                {{ $userFootballPosition->name }}
+                                            </label>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                         <hr>
                         <h4 class="font-italic my-color-2">Change password</h4>
-
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <div class="input-container">
                                 <input type="password" id="password" name="password">

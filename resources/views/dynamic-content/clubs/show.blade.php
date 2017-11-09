@@ -4,13 +4,24 @@
             <div class="col">
                 <div class="tile chosen">
                     <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
-                    <h1 class="text-header pull-right">
-                        <span class="badge badge-pill my-color">
-                            <i class="fa fa-star fa-fw" aria-hidden="true"></i>
-                            {{ $club->tournament_points }}
-                        </span>
+                    <h1 class="text-header">
+                        @if(Auth::user()->isClubPresident() && $club->isYourClub())
+                            <a data-toggle="modal" data-target="#delete-club-modal"
+                               class="btn btn-circle btn-danger" role="button"><i class="fa fa-trash"></i></a>
+                            <span class="badge badge-pill my-color pull-right">
+                                <i class="fa fa-star fa-fw" aria-hidden="true"></i>
+                                    {{ $club->tournament_points }}
+                            </span>
+                        @endif
                     </h1>
-                    <h1 class="text-display" style="margin-bottom: 0">
+                    <h1 class="text-header text-center">
+                        <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
+                             width="150" height="150" class="img-fluid rounded-circle">
+                    </h1>
+                    <h1 class="text-header text-center">
+                        {{ $club->name }}
+                    </h1>
+                    <h1 class="text-display text-center" style="margin-bottom: 30px">
                         <span class="badge badge-pill my-color-3">
                             <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
                             @if($club->haveCountryAndCity())
@@ -21,14 +32,6 @@
                                 {{ $club->city }}
                             @endif
                         </span>
-                    </h1>
-                    <br>
-                    <h1 class="text-header text-center">
-                        <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
-                             width="150" height="150" class="img-fluid rounded-circle">
-                    </h1>
-                    <h1 class="text-header text-center" style="margin-bottom: 20px">
-                        {{ $club->name }}
                     </h1>
                     <div class="text-clubs text-center">
                         <h6 class="animate-text">
@@ -198,3 +201,5 @@
         </div>
     </div>
 </div>
+
+@include('layouts.elements.clubs.delete-club-modal')

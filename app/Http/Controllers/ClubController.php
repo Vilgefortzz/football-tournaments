@@ -174,6 +174,18 @@ class ClubController extends Controller
         return redirect()->back();
     }
 
+    public function destroy(Club $club){
+
+        $authUser = Auth::user();
+        $authUser->role_id = Role::Footballer;
+        $authUser->save();
+
+        $club->delete();
+
+        flashy()->success('Club was destroyed');
+        return redirect()->to(route('home'));
+    }
+
     public function clubMenu(Club $club){
 
         if (request()->ajax()){

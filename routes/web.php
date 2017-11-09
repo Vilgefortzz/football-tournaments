@@ -69,6 +69,8 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::put('/{club}/update', 'ClubController@update')->name('club-update');
 
+        Route::delete('/{club}/destroy', 'ClubController@destroy')->name('club-destroy');
+
         Route::get('/{club}/contracts/created', 'ClubController@createdContracts')
             ->name('club-contracts-created');
 

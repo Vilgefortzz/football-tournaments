@@ -90,6 +90,10 @@ class UserController extends Controller
         Session::flush();
         Auth::logout();
 
+        if ($user->isClubPresident()){
+            $user->club->delete();
+        }
+
         $user->delete();
 
         flashy()->success('You have completely removed an account with all data');

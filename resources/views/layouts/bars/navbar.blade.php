@@ -14,13 +14,13 @@
                 </li>
             </ul>
 
-            @if(Auth::check())
+            @if(Auth::check() && !Auth::user()->isOrganizer())
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home') }}"><i class="fa fa-home fa-lg"></i></a>
+                        <a class="nav-link menu-link" href="{{ route('home') }}"><i class="fa fa-home fa-lg"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-trophy fa-lg"></i> </a>
+                        <a class="nav-link menu-link" href="{{ route('tournaments-menu') }}"><i class="fa fa-trophy fa-lg"></i> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('clubs-menu') }}"><i class="fa fa-users fa-lg"></i> </a>

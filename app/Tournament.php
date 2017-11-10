@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $status
  * @property int $goals
  * @property int $assists
+ * @property int $user_id
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereAssists($value)
@@ -45,17 +46,23 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereStartDateAndTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereUserId($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Club[] $clubs
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Match[] $matches
+ * @property-read \App\User $user
  */
 class Tournament extends Model
 {
     public function clubs(){
-        return $this->belongsToMany('App\Club');
+        return $this->belongsToMany('App\Club', 'club_tournament');
     }
 
     public function matches(){
         return $this->hasMany('App\Match');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }

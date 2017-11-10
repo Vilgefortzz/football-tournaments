@@ -297,6 +297,42 @@ class ClubController extends Controller
         }
     }
 
+    public function openTournaments(Club $club){
+
+        $tournaments = $club->tournaments()
+            ->where('status', 'open')
+            ->orderBy('end_date_and_time', 'asc')
+            ->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.open-tournaments',
+                compact('tournaments'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.open-tournaments', compact('tournaments'));
+        }
+    }
+
+    public function closedTournaments(Club $club){
+
+        $tournaments = $club->tournaments()
+            ->where('status', 'closed')
+            ->orderBy('end_date_and_time', 'asc')
+            ->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.closed-tournaments',
+                compact('tournaments'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.closed-tournaments', compact('tournaments'));
+        }
+    }
+
     public function store(Request $request){
 
         $authUser = Auth::user();

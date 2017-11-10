@@ -66,6 +66,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \App\Role $role
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\RequestToJoinTheClub[] $requestsToJoinTheClub
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\FootballPosition[] $footballPositions
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Tournament[] $tournaments
  */
 class User extends Authenticatable
 {
@@ -107,6 +108,10 @@ class User extends Authenticatable
 
     public function requestsToJoinTheClub(){
         return $this->hasMany('App\RequestToJoinTheClub');
+    }
+
+    public function tournaments(){
+        return $this->hasMany('App\Tournament');
     }
 
     public function footballPositions(){
@@ -189,5 +194,13 @@ class User extends Authenticatable
 
     public function numberOfWaitingContracts(){
         return $this->contracts->where('status', 'created')->count();
+    }
+
+    public function numberOfOpenTournaments(){
+        return $this->tournaments->where('status', 'open')->count();
+    }
+
+    public function numberOfClosedTournaments(){
+        return $this->tournaments->where('status', 'closed')->count();
     }
 }

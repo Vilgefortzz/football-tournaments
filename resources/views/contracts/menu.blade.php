@@ -12,7 +12,7 @@
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                 <h1 class="text-header text-center pull-right">
                     <span class="badge badge-pill my-color"
-                          data-number-contracts="{{ Auth::user()->club->numberOfSignedContracts() }}">
+                          data-number-items="{{ Auth::user()->club->numberOfSignedContracts() }}">
                         <i class="fa fa-file-text fa-fw" aria-hidden="true"></i>
                         {{ Auth::user()->club->numberOfSignedContracts() }}
                     </span>
@@ -30,7 +30,7 @@
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                 <h1 class="text-header text-center pull-right">
                     <span class="badge badge-pill my-color"
-                          data-number-contracts="{{ Auth::user()->club->numberOfWaitingContracts() }}">
+                          data-number-items="{{ Auth::user()->club->numberOfWaitingContracts() }}">
                         <i class="fa fa-file-text fa-fw" aria-hidden="true"></i>
                         {{ Auth::user()->club->numberOfWaitingContracts() }}
                     </span>
@@ -48,7 +48,7 @@
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                 <h1 class="text-header text-center pull-right">
                     <span class="badge badge-pill my-color"
-                          data-number-contracts="{{ Auth::user()->club->numberOfExtensionPropositionsForContracts() }}">
+                          data-number-items="{{ Auth::user()->club->numberOfExtensionPropositionsForContracts() }}">
                         <i class="fa fa-file-text fa-fw" aria-hidden="true"></i>
                         {{ Auth::user()->club->numberOfExtensionPropositionsForContracts() }}
                     </span>
@@ -82,7 +82,7 @@
                 <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
                 <h1 class="text-header text-center pull-right">
                     <span class="badge badge-pill my-color"
-                          data-number-contracts="{{ Auth::user()->numberOfWaitingContracts() }}">
+                          data-number-items="{{ Auth::user()->numberOfWaitingContracts() }}">
                         <i class="fa fa-file-text fa-fw" aria-hidden="true"></i>
                         {{ Auth::user()->numberOfWaitingContracts() }}
                     </span>

@@ -61,6 +61,12 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{club}/trophies/thirdPlace', 'ClubController@getTrophiesForThirdPlace')
             ->name('club-trophies-third-place');
 
+        Route::get('/{club}/tournaments/open', 'ClubController@openTournaments')
+            ->name('club-tournaments-open');
+
+        Route::get('/{club}/tournaments/closed', 'ClubController@closedTournaments')
+            ->name('club-tournaments-closed');
+
         Route::get('/create', 'ClubController@create')
             ->name('club-create');
 
@@ -129,6 +135,12 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{user}/contracts/binding', 'UserController@bindingContract')
             ->name('user-contracts-binding');
 
+        Route::get('/{user}/tournaments/open', 'UserController@openTournaments')
+            ->name('user-tournaments-open');
+
+        Route::get('/{user}/tournaments/closed', 'UserController@closedTournaments')
+            ->name('user-tournaments-closed');
+
         Route::post('/{user}/position/add', 'UserController@addFootballPosition')
             ->name('user-football-position-add');
 
@@ -140,5 +152,9 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/footballers/search', 'UserController@search')
             ->name('footballers-search');
+    });
+
+    Route::group(['prefix' => 'tournaments'], function (){
+        Route::get('/menu', 'TournamentController@menu')->name('tournaments-menu');
     });
 });

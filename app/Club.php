@@ -66,7 +66,7 @@ class Club extends Model
     }
 
     public function tournaments(){
-        return $this->belongsToMany('App\Tournament');
+        return $this->belongsToMany('App\Tournament', 'club_tournament');
     }
 
     public function trophies(){
@@ -125,6 +125,14 @@ class Club extends Model
 
     public function numberOfExtensionPropositionsForContracts(){
         return $this->contracts->where('status', 'extension proposed')->count();
+    }
+
+    public function numberOfOpenTournaments(){
+        return $this->tournaments->where('status', 'open')->count();
+    }
+
+    public function numberOfClosedTournaments(){
+        return $this->tournaments->where('status', 'closed')->count();
     }
 
     public function placeOnTheLeaderboard(){

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contract;
 use App\FootballPosition;
 use App\Role;
+use App\Tournament;
 use App\User;
 use Auth;
 use File;
@@ -134,6 +135,42 @@ class UserController extends Controller
         }
         else{
             return view('contracts.binding-contract', compact('contract', 'remainingContractDuration'));
+        }
+    }
+
+    public function openTournaments(User $user){
+
+        $tournaments = $user->tournaments()
+            ->where('status', 'open')
+            ->orderBy('end_date_and_time', 'asc')
+            ->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.users.organizers.open-tournaments',
+                compact('tournaments'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('users.organizers.open-tournaments', compact('tournaments'));
+        }
+    }
+
+    public function closedTournaments(User $user){
+
+        $tournaments = $user->tournaments()
+            ->where('status', 'closed')
+            ->orderBy('end_date_and_time', 'asc')
+            ->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.users.organizers.closed-tournaments',
+                compact('tournaments'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('users.organizers.closed-tournaments', compact('tournaments'));
         }
     }
 

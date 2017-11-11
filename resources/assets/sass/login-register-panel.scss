@@ -3,7 +3,7 @@
   position: relative;
   max-width: 460px;
   width: 100%;
-  margin: 0 auto 100px;
+  margin: 0 0 15px 0;
 }
 .container-login-register-panel.active .card-login-register-panel:first-child {
   background: #f2f2f2;
@@ -309,7 +309,7 @@
 .card-login-register-panel.alt .title .close {
   cursor: pointer;
   position: absolute;
-  top: 0;
+  top: -12px;
   right: 60px;
   display: inline;
   color: #ffffff;

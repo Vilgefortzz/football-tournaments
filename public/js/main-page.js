@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-    new WOW().init();
-
     $('.toggle').on('click', function() {
         $('.container').stop().addClass('active');
     });
@@ -18,5 +16,5 @@ $(document).ready(function(){
     $('.caption h3').on('mouseleave', function () {
 
         $(this).removeClass('animated pulse');
-    })
+    });
 });

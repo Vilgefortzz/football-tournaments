@@ -6,7 +6,7 @@
     <div id="contract-sign-loading"></div>
     <div id="content-search" class="row justify-content-center"></div>
     <div id="content" class="row justify-content-center">
-        <div href="#" class="tile menu-card dynamic-content">
+        <div href="{{ route('tournament-create') }}" class="tile menu-card dynamic-content">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
             <br>
             <div class="text text-center">

@@ -156,5 +156,8 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::group(['prefix' => 'tournaments'], function (){
         Route::get('/menu', 'TournamentController@menu')->name('tournaments-menu');
+
+        Route::get('/create', 'TournamentController@create')
+            ->name('tournament-create');
     });
 });

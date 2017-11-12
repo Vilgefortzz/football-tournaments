@@ -1167,6 +1167,38 @@ th {
   padding: 15px 0;
 }
 
+.process-step .btn:focus {
+  outline: none;
+}
+
+.process {
+  display: table;
+  width: 100%;
+  position: relative;
+}
+
+.process-row {
+  display: table-row;
+}
+
+.process-step {
+  display: table-cell;
+  position: relative;
+}
+
+.btn-circle-step {
+  width: 80px;
+  height: 80px;
+  font-size: 10px;
+  border-radius: 50%;
+  background-color: #ec2652;
+}
+
+.horizontal-step-line {
+  display: inline-block;
+  width: 50px;
+}
+
 .delete-football-position:hover {
   color: white;
 }
@@ -1319,5 +1351,15 @@ body {
 
 .pagination-margin-trophy {
   margin-top: 10px;
+}
+
+.inline-input-label {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+.inline-input-width {
+  width: 200px !important;
 }
 

@@ -16,6 +16,7 @@
 
 @import "search";
 @import "tabs";
+@import "process-steps";
 
 @import "football-positions";
 
@@ -119,4 +120,12 @@ body {
 }
 .pagination-margin-trophy{
   margin-top: $pagination-margin-trophy;
+}
+.inline-input-label{
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 20px;
+}
+.inline-input-width{
+  width: 200px !important;
 }

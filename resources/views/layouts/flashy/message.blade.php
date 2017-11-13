@@ -41,8 +41,6 @@
     </script>
 @endif
 
-{{-- Create new club --}}
-
 @if ($errors->has('name'))
     <script id="flashy-template" type="text/template">
         <div class="flashy flashy--error">
@@ -52,6 +50,18 @@
 
     <script>
         flashy("{{ $errors->first('name') }}");
+    </script>
+@endif
+
+@if ($errors->has('tournament_points'))
+    <script id="flashy-template" type="text/template">
+        <div class="flashy flashy--error">
+            <div class="flashy__body"></div>
+        </div>
+    </script>
+
+    <script>
+        flashy("{{ $errors->first('tournament_points') }}");
     </script>
 @endif
 

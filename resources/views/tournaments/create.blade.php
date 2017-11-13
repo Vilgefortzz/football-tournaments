@@ -60,29 +60,39 @@
                         <div class="form-group">
                             <div class="input-container">
                                 <label for="tournament-name" class="font-bold inline-input-label">
-                                    <i class="fa fa-edit fa-fw"></i>Tournament name:
+                                    <i class="fa fa-edit fa-fw"></i>Tournament name*:
                                 </label>
                                 <input id="tournament-name" type="text" name="name" class="inline-input-width">
                             </div>
                         </div>
-                        <h3 class="font-italic"><i class="fa fa-clock-o fa-fw"></i>Start date and time</h3>
                         <div class="form-group">
-                            {{--TODO: DateTimePicker--}}
-                        </div>
-                        <h3 class="font-italic"><i class="fa fa-clock-o fa-fw"></i>End date and time</h3>
-                        <div class="form-group">
-                            {{--TODO: DateTimePicker--}}
+                            <div class="input-container" style="display: inline-block">
+                                <label for="tournament-start-date" class="font-bold inline-input-label">
+                                    <i class="fa fa-clock-o fa-fw"></i>Start date*:
+                                </label>
+                                <input id="tournament-start-date" type="text" name="start_date"
+                                       class="inline-input-width">
+                                <div id="tournament-end-date-section" class="form-group" style="display: none">
+                                    <label for="tournament-end-date" class="font-bold inline-input-label">
+                                        <i class="fa fa-clock-o fa-fw"></i>End date*:
+                                    </label>
+                                    <input id="tournament-end-date" type="text" name="end_date"
+                                           class="inline-input-width">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="text-center">
-                            <a role="button" class="btn my-color-3 next-step" data-next-step-id="2">Next <i class="fa fa-chevron-right"></i></a>
+                        <a role="button" class="btn my-color-3 next-step" data-next-step-id="2">Next <i class="fa fa-chevron-right"></i></a>
+                        <br>
+                        <div class="pull-right">
+                            <p class="font-italic">*required field</p>
                         </div>
                     </div>
                     <div id="menu-2" class="tab-pane">
                         <div class="form-group">
                             <div class="input-container">
                                 <label for="tournament-country" class="font-bold inline-input-label">
-                                    <i class="fa fa-flag fa-fw"></i>Tournament country:
+                                    <i class="fa fa-flag fa-fw"></i>Tournament country*:
                                 </label>
                                 <input id="tournament-country" type="text" name="country" class="inline-input-width">
                             </div>
@@ -90,15 +100,17 @@
                         <div class="form-group">
                             <div class="input-container">
                                 <label for="tournament-city" class="font-bold inline-input-label">
-                                    <i class="fa fa-flag-o fa-fw"></i>Tournament city:
+                                    <i class="fa fa-flag-o fa-fw"></i>Tournament city*:
                                 </label>
                                 <input id="tournament-city" type="text" name="city" class="inline-input-width">
                             </div>
                         </div>
 
-                        <div class="text-center">
-                            <a role="button" class="btn my-color prev-step" data-previous-step-id="1" data-current-step-id="2"><i class="fa fa-chevron-left"></i> Back</a>
-                            <a role="button" class="btn my-color-3 next-step" data-next-step-id="3">Next <i class="fa fa-chevron-right"></i></a>
+                        <a role="button" class="btn my-color prev-step" data-previous-step-id="1" data-current-step-id="2"><i class="fa fa-chevron-left"></i> Back</a>
+                        <a role="button" class="btn my-color-3 next-step" data-next-step-id="3">Next <i class="fa fa-chevron-right"></i></a>
+                        <br>
+                        <div class="pull-right">
+                            <p class="font-italic">*required field</p>
                         </div>
                     </div>
                     <div id="menu-3" class="tab-pane">
@@ -106,9 +118,9 @@
                             <div class="input-container">
                                 <div class="styled-select rounded">
                                     <label for="tournament-number-of-seats" class="font-bold inline-input-label">
-                                        <i class="fa fa-users fa-fw"></i>Number of teams:
+                                        <i class="fa fa-users fa-fw"></i>Number of teams*:
                                     </label>
-                                    <select id="tournament-number-of-seats" name="number-of-seats" required>
+                                    <select id="tournament-number-of-seats" name="number_of_seats" required>
                                         <option value="2" selected="selected">2</option>
                                         <option value="4">4</option>
                                         <option value="8">8</option>
@@ -122,7 +134,7 @@
                             <div class="input-container">
                                 <div class="styled-select rounded">
                                     <label for="tournament-game-system" class="font-bold inline-input-label">
-                                        <i class="fa fa-gamepad fa-fw"></i>Game system:
+                                        <i class="fa fa-gamepad fa-fw"></i>Game system*:
                                     </label>
                                     <select id="tournament-game-system" name="game_system" required>
                                         <option value="single elimination" selected="selected">Single elimination ( winner stays )</option>
@@ -132,16 +144,18 @@
                             </div>
                         </div>
 
-                        <div class="text-center">
-                            <a role="button" class="btn my-color prev-step" data-previous-step-id="2" data-current-step-id="3"><i class="fa fa-chevron-left"></i> Back</a>
-                            <a role="button" class="btn my-color-3 next-step" data-next-step-id="4">Next <i class="fa fa-chevron-right"></i></a>
+                        <a role="button" class="btn my-color prev-step" data-previous-step-id="2" data-current-step-id="3"><i class="fa fa-chevron-left"></i> Back</a>
+                        <a role="button" class="btn my-color-3 next-step" data-next-step-id="4">Next <i class="fa fa-chevron-right"></i></a>
+                        <br>
+                        <div class="pull-right">
+                            <p class="font-italic">*required field</p>
                         </div>
                     </div>
                     <div id="menu-4" class="tab-pane">
                         <div class="form-group">
                             <div class="input-container">
                                 <label for="tournament-points" class="font-bold inline-input-label">
-                                    <i class="fa fa-money fa-fw"></i>Number of tournament points:
+                                    <i class="fa fa-money fa-fw"></i>Number of tournament points*:
                                 </label>
                                 <input id="tournament-points" type="number" name="tournament_points" class="inline-input-width" min="0" style="text-align: center">
                             </div>
@@ -149,7 +163,7 @@
                         <div class="form-group">
                             <div class="input-container">
                                 <label for="tournament-prize-for-first-place" class="font-bold inline-input-label">
-                                    <i class="fa fa-trophy fa-fw" style="color: gold"></i>Prize for first place ( optional field ):
+                                    <i class="fa fa-trophy fa-fw" style="color: gold"></i>Prize for first place:
                                 </label>
                                 <input id="tournament-prize-for-first-place" type="text" name="prize_first_place" class="inline-input-width">
                             </div>
@@ -157,7 +171,7 @@
                         <div class="form-group text-center">
                             <div class="input-container">
                                 <label for="tournament-prize-for-second-place" class="font-bold inline-input-label">
-                                    <i class="fa fa-trophy fa-fw" style="color: silver"></i>Prize for second place ( optional field ):
+                                    <i class="fa fa-trophy fa-fw" style="color: silver"></i>Prize for second place:
                                 </label>
                                 <input id="tournament-prize-for-second-place" type="text" name="prize_second_place" class="inline-input-width">
                             </div>
@@ -165,23 +179,28 @@
                         <div class="form-group text-center">
                             <div class="input-container">
                                 <label for="tournament-prize-for-third-place" class="font-bold inline-input-label">
-                                    <i class="fa fa-trophy fa-fw" style="color: saddlebrown"></i>Prize for third place ( optional field ):
+                                    <i class="fa fa-trophy fa-fw" style="color: saddlebrown"></i>Prize for third place:
                                 </label>
                                 <input id="tournament-prize-for-third-place" type="text" name="prize_third_place" class="inline-input-width">
                             </div>
                         </div>
 
-                        <div class="text-center">
-                            <a role="button" class="btn my-color prev-step" data-previous-step-id="3" data-current-step-id="4"><i class="fa fa-chevron-left"></i> Back</a>
-                            <a role="button" class="btn my-color-3 next-step" data-next-step-id="5">Next <i class="fa fa-chevron-right"></i></a>
+                        <a role="button" class="btn my-color prev-step" data-previous-step-id="3" data-current-step-id="4"><i class="fa fa-chevron-left"></i> Back</a>
+                        <a role="button" class="btn my-color-3 next-step" data-next-step-id="5">Next <i class="fa fa-chevron-right"></i></a>
+                        <br>
+                        <div class="pull-right">
+                            <p class="font-italic">*required field</p>
                         </div>
                     </div>
                     <div id="menu-5" class="tab-pane">
 
-                        <div class="text-center">
-                            <a role="button" class="btn my-color prev-step" data-previous-step-id="4" data-current-step-id="5"><i class="fa fa-chevron-left"></i> Back</a>
-                            <button type="submit" class="btn my-color-3" href="{{ route('tournament-store') }}"><i class="fa fa-check"></i>Create tournament</button>
-                        </div>
+                        <button type="submit" class="btn btn-lg my-color-3" href="{{ route('tournament-store') }}">
+                            <i class="fa fa-trophy" style="color: gold"></i>
+                            Create tournament
+                            <i class="fa fa-trophy" style="color: gold"></i>
+                        </button>
+                        <br>
+                        <a role="button" class="btn my-color prev-step" data-previous-step-id="4" data-current-step-id="5"><i class="fa fa-chevron-left"></i> Back</a>
                     </div>
                 </div>
             </div>

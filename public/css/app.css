@@ -1,4 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.flashy {
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.btn-flat {
+  background-color: white;
+  color: black !important;
+}
+
+.dtp-buttons {
+  background-color: white;
+}
+
+.flashy {
   font-family: Arial, sans-serif;
   padding: 11px 30px;
   border-radius: 10px;

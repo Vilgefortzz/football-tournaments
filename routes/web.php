@@ -159,5 +159,8 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/create', 'TournamentController@create')
             ->name('tournament-create');
+
+        Route::post('/store', 'TournamentController@store')
+            ->name('tournament-store');
     });
 });

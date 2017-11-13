@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $name
- * @property string $start_date_and_time
- * @property string $end_date_and_time
+ * @property string $start_date
+ * @property string $end_date
  * @property string $country
  * @property string $city
- * @property int $points
+ * @property int $tournament_points
  * @property int $number_of_seats
  * @property int $number_of_occupied_seats
  * @property int $number_of_available_seats
@@ -31,7 +31,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereEndDateAndTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereEndDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereGameSystem($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereGoals($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereId($value)
@@ -43,8 +43,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament wherePrizeFirstPlace($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament wherePrizeSecondPlace($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament wherePrizeThirdPlace($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereStartDateAndTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereTournamentPoints($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereUserId($value)
  * @mixin \Eloquent

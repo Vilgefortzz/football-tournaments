@@ -60,7 +60,7 @@
                     <i class="fa fa-trophy fa-2x" style="color: gold"></i>
                 </h1>
                 <h2 class="animate-text">See all your finished tournaments</h2>
-                <p class="animate-text">See details, enter results, monitor progress of the tournaments. </p>
+                <p class="animate-text">See details, monitor progress of the finished tournaments. </p>
             </div>
         </div>
     </div>

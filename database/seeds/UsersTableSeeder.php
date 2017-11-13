@@ -45,11 +45,23 @@ class UsersTableSeeder extends Seeder
         ]);
 
         /*
-         * Create organizer for test
+         * Create organizers for test
          */
         factory(User::class)->create([
             'username' => 'organizer',
             'password' => bcrypt('organizer'),
+            'role_id' => Role::Organizer
+        ]);
+
+        factory(User::class)->create([
+            'username' => 'organizer_2',
+            'password' => bcrypt('organizer_2'),
+            'role_id' => Role::Organizer
+        ]);
+
+        factory(User::class)->create([
+            'username' => 'organizer_3',
+            'password' => bcrypt('organizer_3'),
             'role_id' => Role::Organizer
         ]);
 

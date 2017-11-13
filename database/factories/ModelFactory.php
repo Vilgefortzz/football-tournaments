@@ -62,3 +62,22 @@ $factory->define(App\FootballPosition::class, function (Faker\Generator $faker) 
         'name' => 'Undefined'
     ];
 });
+
+$factory->define(App\Tournament::class, function (Faker\Generator $faker) {
+
+    $startDate = date('Y-m-d');
+    $endDate = date_create(date('Y-m-d', strtotime($startDate. ' +7days')));
+
+    return [
+        'name' => 'President Masters Tournament',
+        'start_date' => $startDate,
+        'end_date' => $endDate,
+        'country' => 'Poland',
+        'city' => 'Kraków',
+        'tournament_points' => 750,
+        'number_of_seats' => '16',
+        'number_of_available_seats' => 16,
+        'game_system' => 'single elimination',
+        'user_id' => 4
+    ];
+});

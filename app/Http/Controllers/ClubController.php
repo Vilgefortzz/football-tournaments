@@ -301,7 +301,7 @@ class ClubController extends Controller
 
         $tournaments = $club->tournaments()
             ->where('status', 'open')
-            ->orderBy('end_date_and_time', 'asc')
+            ->orderBy('end_date', 'asc')
             ->paginate(3);
 
         if (request()->ajax()){
@@ -319,7 +319,7 @@ class ClubController extends Controller
 
         $tournaments = $club->tournaments()
             ->where('status', 'closed')
-            ->orderBy('end_date_and_time', 'asc')
+            ->orderBy('end_date', 'asc')
             ->paginate(3);
 
         if (request()->ajax()){

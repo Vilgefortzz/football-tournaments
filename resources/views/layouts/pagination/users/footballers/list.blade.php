@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav class="pagination-margin-club">
+    <nav class="pagination-margin-search-list">
         <ul class="pagination pagination-footballers-list pg-red font-bold">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())

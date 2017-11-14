@@ -1346,15 +1346,15 @@ body {
   background-color: #bab91c;
 }
 
-.pagination-margin-contract {
+.pagination-margin-contract-cards {
   margin-top: 20px;
 }
 
-.pagination-margin-club {
+.pagination-margin-search-list {
   margin-top: 0px;
 }
 
-.pagination-margin-request-to-join-the-club {
+.pagination-margin-request-to-join-the-club-cards {
   margin-top: 15px;
 }
 

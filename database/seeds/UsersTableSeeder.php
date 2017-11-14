@@ -41,7 +41,8 @@ class UsersTableSeeder extends Seeder
             'username' => 'president',
             'password' => bcrypt('president'),
             'main_football_position' => 'CB',
-            'role_id' => Role::ClubPresident
+            'role_id' => Role::ClubPresident,
+            'club_id' => 1
         ]);
 
         /*

@@ -15,10 +15,7 @@ class ContractsTableSeeder extends Seeder
         /*
          * Create contracts for test - created
          */
-        factory(Contract::class)->create([
-            'club_id' => 1,
-            'user_id' => 2,
-        ]);
+        factory(Contract::class)->create();
 
         factory(Contract::class)->create([
             'duration' => '2 weeks',

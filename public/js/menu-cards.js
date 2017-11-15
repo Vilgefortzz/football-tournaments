@@ -35,6 +35,10 @@ $(function () {
         }
     });
 
+    $(document).on('click', '#organizer-create-tournament', function () {
+        displayDynamicContentWithDateTimePickers($(this));
+    });
+
     $(document).on('click', '.contracts-link', function (e) {
         e.preventDefault();
         displayDynamicContent($(this));
@@ -49,7 +53,7 @@ $(function () {
         }
     });
 
-    $(document).on('click', '#clubs-list,  #footballers-list', function () {
+    $(document).on('click', '#clubs-list,  #footballers-list, #tournaments-list', function () {
         displayDynamicContentWithSearch($(this));
     });
 });
@@ -74,6 +78,18 @@ function displayDynamicContentWithSearch(trigger) {
     var url = trigger.attr('href');
 
     ajaxRequestDynamicContentWithSearch(url);
+
+    window.history.pushState("", "", url);
+}
+
+function displayDynamicContentWithDateTimePickers(trigger) {
+
+    $('#content').html('');
+    $('#loading').css('display', 'block');
+
+    var url = trigger.attr('href');
+
+    ajaxRequestDynamicContentWithDateTimePickers(url);
 
     window.history.pushState("", "", url);
 }
@@ -140,6 +156,40 @@ function ajaxRequestDynamicContentWithSearch(url) {
                 removeAnimation(jumbotrons, 'zoomInUp');
                 removeAnimation(paginations, 'zoomInUp');
             }, 1000);
+
+            $('#loading').hide();
+        }
+    });
+}
+
+function ajaxRequestDynamicContentWithDateTimePickers(url) {
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        cache: false,
+
+        success: function (data) {
+
+            $('#content').html(data);
+
+            var jumbotrons = $('.jumbotron');
+            addAnimation(jumbotrons, 'zoomInUp');
+
+            window.setTimeout(function(){
+                removeAnimation(jumbotrons, 'zoomInUp');
+            }, 1000);
+
+            // Date time pickers - init
+            $('#tournament-end-date')
+                .bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time: false});
+
+            $('#tournament-start-date').bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time : false})
+                .on('change', function(e, date) {
+
+                    $('#tournament-end-date-section').fadeIn('slow');
+                    $('#tournament-end-date').bootstrapMaterialDatePicker('setMinDate', date);
+                });
 
             $('#loading').hide();
         }

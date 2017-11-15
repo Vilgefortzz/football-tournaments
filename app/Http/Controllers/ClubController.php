@@ -341,6 +341,8 @@ class ClubController extends Controller
 
             $this->validate($request, [
                 'name' => 'required|string|min:3|max:20|unique:clubs',
+                'country' => 'required|string|min:3|max:12',
+                'city' => 'required|string|min:3|max:12'
             ]);
 
             $club = new Club;

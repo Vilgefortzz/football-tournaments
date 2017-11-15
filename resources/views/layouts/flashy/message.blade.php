@@ -53,6 +53,30 @@
     </script>
 @endif
 
+@if ($errors->has('country'))
+    <script id="flashy-template" type="text/template">
+        <div class="flashy flashy--error">
+            <div class="flashy__body"></div>
+        </div>
+    </script>
+
+    <script>
+        flashy("{{ $errors->first('country') }}");
+    </script>
+@endif
+
+@if ($errors->has('city'))
+    <script id="flashy-template" type="text/template">
+        <div class="flashy flashy--error">
+            <div class="flashy__body"></div>
+        </div>
+    </script>
+
+    <script>
+        flashy("{{ $errors->first('city') }}");
+    </script>
+@endif
+
 @if ($errors->has('tournament_points'))
     <script id="flashy-template" type="text/template">
         <div class="flashy flashy--error">

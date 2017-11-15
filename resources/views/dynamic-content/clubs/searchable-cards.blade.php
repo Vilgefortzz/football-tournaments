@@ -11,13 +11,7 @@
         <h1 class="text-display" style="margin-bottom: 0">
             <span class="badge badge-pill my-color-3">
                 <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
-                @if($club->haveCountryAndCity())
-                    {{ $club->country }} | {{ $club->city }}
-                @elseif($club->haveCountry())
-                    {{ $club->country }}
-                @elseif($club->haveCity())
-                    {{ $club->city }}
-                @endif
+                {{ $club->country }} | {{ $club->city }}
             </span>
         </h1>
         @if($club->isYourClub())

@@ -81,18 +81,6 @@ class Club extends Model
         return $this->hasMany('App\RequestToJoinTheClub');
     }
 
-    public function haveCountryAndCity(){
-        return ($this->country && $this->city) ? true : false;
-    }
-
-    public function haveCountry(){
-        return $this->country ? true : false;
-    }
-
-    public function haveCity(){
-        return $this->city ? true : false;
-    }
-
     public function isRequestSentToJoin(){
 
         $authUserId = Auth::user()->id;

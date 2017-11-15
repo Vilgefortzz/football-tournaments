@@ -1,7 +1,7 @@
 {{-- Search club - input --}}
-@include('layouts.elements.clubs.search.box')
+@include('layouts.elements.tournaments.search.box')
 {{-- Search list button --}}
-<a id="show-clubs-list" href="{{ route('clubs-list-search') }}" class="btn btn-circle-filter my-color-2" role="button">
+<a id="show-tournaments-list" href="{{ route('tournaments-list-search') }}" class="btn btn-circle-filter my-color-2" role="button">
     <i class="fa fa-list"></i>
 </a>
 {{-- Search sort options button --}}
@@ -19,10 +19,10 @@
     <i class="fa fa-angle-double-left"></i>
 </a>
 {{-- Search filters --}}
-@include('layouts.elements.clubs.search.filters')
+@include('layouts.elements.tournaments.search.filters')
 
 <div class="container">
     <div class="row justify-content-center">
-        @include('layouts.elements.clubs.search.sort-options')
+        @include('layouts.elements.tournaments.search.sort-options')
     </div>
 </div>

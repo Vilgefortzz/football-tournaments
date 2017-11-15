@@ -1,6 +1,6 @@
 $(function() {
 
-    $(document).on('click', '#show-club-list, #show-footballers-list', function (e) {
+    $(document).on('click', '#show-clubs-list, #show-footballers-list, #show-tournaments-list', function (e) {
         e.preventDefault();
 
         $('#content').html('');

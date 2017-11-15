@@ -728,7 +728,25 @@
 
 .tile-users {
   width: 300px;
-  height: 460px;
+  height: 447px;
+  margin: 1px;
+  background-color: #ec2652;
+  display: inline-block;
+  background-size: cover;
+  position: relative;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  -webkit-box-shadow: 0 35px 77px -17px rgba(0, 0, 0, 0.44);
+          box-shadow: 0 35px 77px -17px rgba(0, 0, 0, 0.44);
+  overflow: hidden;
+  color: white;
+  font-family: 'Roboto';
+}
+
+.tile-tournaments {
+  width: 310px;
+  height: 447px;
   margin: 1px;
   background-color: #ec2652;
   display: inline-block;
@@ -1150,6 +1168,9 @@
 th,
 #footballers-table,
 #footballers-table > td,
+th,
+#tournaments-table,
+#tournaments-table > td,
 th {
   text-align: center;
 }

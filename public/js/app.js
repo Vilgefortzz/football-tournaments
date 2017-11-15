@@ -50,6 +50,31 @@ function getListWithData(url, sortBy, direction) {
     });
 }
 
+function getListWithTrophies(url) {
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        cache: false,
+
+        success: function(data){
+
+            $('#content-trophies').html(data);
+
+            var trophiesList = $('.trophies-list');
+            var paginations = $('.pagination-links');
+
+            addAnimation(trophiesList, 'fadeIn');
+            addAnimation(paginations, 'fadeIn');
+
+            window.setTimeout(function(){
+                removeAnimation(trophiesList, 'fadeIn');
+                removeAnimation(paginations, 'fadeIn');
+            }, 800);
+        }
+    });
+}
+
 function getClubCardsWithPagination(url) {
 
     // Value from main search input
@@ -115,6 +140,43 @@ function getFootballerCardsWithPagination(url) {
 
             window.setTimeout(function(){
                 removeAnimation(footballerCards, 'fadeInRight');
+            }, 3000);
+        }
+    });
+}
+
+function getTournamentCardsWithPagination(url) {
+
+    // Value from main search input
+    var tournamentNameValue = $('#tournaments-search-main').val();
+
+    // Values from filter inputs
+    var tournamentCountryValue = $('#tournaments-filter-country').val();
+    var tournamentCityValue = $('#tournaments-filter-city').val();
+    var tournamentMinTournamentPointsValue = $('#tournaments-filter-min-rating').val();
+    var tournamentMaxTournamentPointsValue = $('#tournaments-filter-max-rating').val();
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        data: {
+            tournamentNameValue: tournamentNameValue,
+            tournamentCountryValue: tournamentCountryValue, tournamentCityValue: tournamentCityValue,
+            tournamentMinTournamentPointsValue: tournamentMinTournamentPointsValue,
+            tournamentMaxTournamentPointsValue: tournamentMaxTournamentPointsValue
+        },
+        cache: false,
+
+        success: function(data){
+
+            $('#content').html(data);
+
+            var tournamentCards = $('.tournament-card');
+
+            addAnimation(tournamentCards, 'fadeInRight');
+
+            window.setTimeout(function(){
+                removeAnimation(tournamentCards, 'fadeInRight');
             }, 3000);
         }
     });
@@ -206,29 +268,49 @@ function getFootballerCardsSearch(timer, url) {
     return timer;
 }
 
-function getListWithTrophies(url) {
+function getTournamentCardsSearch(timer, url) {
 
-    $.ajax({
-        type: 'GET',
-        url: url,
-        cache: false,
+    // Value from main search input
+    var tournamentNameValue = $('#tournaments-search-main').val();
 
-        success: function(data){
+    // Values from filter inputs
+    var tournamentCountryValue = $('#tournaments-filter-country').val();
+    var tournamentCityValue = $('#tournaments-filter-city').val();
+    var tournamentMinTournamentPointsValue = $('#tournaments-filter-min-rating').val();
+    var tournamentMaxTournamentPointsValue = $('#tournaments-filter-max-rating').val();
 
-            $('#content-trophies').html(data);
+    clearTimeout(timer);
+    timer = setTimeout(function() {
 
-            var trophiesList = $('.trophies-list');
-            var paginations = $('.pagination-links');
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                tournamentNameValue: tournamentNameValue,
+                tournamentCountryValue: tournamentCountryValue, tournamentCityValue: tournamentCityValue,
+                tournamentMinTournamentPointsValue: tournamentMinTournamentPointsValue,
+                tournamentMaxTournamentPointsValue: tournamentMaxTournamentPointsValue
+            },
+            cache: false,
 
-            addAnimation(trophiesList, 'fadeIn');
-            addAnimation(paginations, 'fadeIn');
+            success: function(data){
 
-            window.setTimeout(function(){
-                removeAnimation(trophiesList, 'fadeIn');
-                removeAnimation(paginations, 'fadeIn');
-            }, 800);
-        }
-    });
+                $('#content').html(data);
+
+                var tournamentCards = $('.tournament-card');
+
+                addAnimation(tournamentCards, 'fadeInRight');
+
+                window.setTimeout(function(){
+                    removeAnimation(tournamentCards, 'fadeInRight');
+                }, 3000);
+
+                $('#loading').hide();
+            }
+        });
+    }, 400);
+
+    return timer;
 }
 
 function isEmpty(el){

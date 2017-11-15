@@ -124,7 +124,7 @@
                                for="username-footballer-{{$footballer->id}}">Make your signature</label>
                         <div class="bar"></div>
 
-                        <a href="{{ route('contract-store', $footballer->id) }}"
+                        <a href="{{ route('contract-store', $footballer->id) }}" style="margin-top: 0"
                            class="btn btn-sm my-color-3 create-contract-footballer" data-footballer-id="{{$footballer->id}}">
                             <i class="fa fa-handshake-o fa-lg fa-fw"></i>  Propose the contract
                         </a>

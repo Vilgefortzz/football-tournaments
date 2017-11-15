@@ -27,7 +27,7 @@ class TournamentsTableSeeder extends Seeder
             'name' => 'Houston Masters Tournament',
             'start_date' => $startDate1,
             'end_date' => $endDate1,
-            'country' => 'United States of America',
+            'country' => 'USA',
             'city' => 'Houston',
             'tournament_points' => 400,
             'number_of_seats' => '32',

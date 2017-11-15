@@ -40,6 +40,8 @@ class TournamentController extends Controller
 
             $this->validate($request, [
                 'name' => 'required|string|min:5|max:40',
+                'country' => 'required|string|min:3|max:12',
+                'city' => 'required|string|min:3|max:12',
                 'tournament_points' => 'required|integer|min:20|max:2000'
             ]);
 
@@ -76,5 +78,141 @@ class TournamentController extends Controller
 
         flashy()->error('Tournament cannot be created. Fill out all missing required fields');
         return redirect()->back();
+    }
+
+    // Search tournaments - search, filters and sort
+
+    public function listAndSearch(Request $request){
+
+        $tournaments = Tournament::paginate(5);
+
+        if ($request->sortBy === 'name'){
+
+            if ($request->direction === 'desc'){
+                $tournaments = Tournament::orderBy('name', 'desc')->paginate(5);
+            }
+            else{
+                $tournaments = Tournament::orderBy('name', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'start_date'){
+
+            if($request->direction === 'desc'){
+                $tournaments = Tournament::orderBy('start_date', 'desc')->paginate(5);
+            }
+            else{
+                $tournaments = Tournament::orderBy('start_date', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'end_date'){
+
+            if($request->direction === 'desc'){
+                $tournaments = Tournament::orderBy('end_date', 'desc')->paginate(5);
+            }
+            else{
+                $tournaments = Tournament::orderBy('end_date', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'country'){
+
+            if($request->direction === 'desc'){
+                $tournaments = Tournament::orderBy('country', 'desc')->paginate(5);
+            }
+            else{
+                $tournaments = Tournament::orderBy('country', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'city'){
+
+            if($request->direction === 'desc'){
+                $tournaments = Tournament::orderBy('city', 'desc')->paginate(5);
+            }
+            else{
+                $tournaments = Tournament::orderBy('city', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'tournament points'){
+
+            if($request->direction === 'desc'){
+                $tournaments = Tournament::orderBy('tournament_points', 'desc')->paginate(5);
+            }
+            else{
+                $tournaments = Tournament::orderBy('tournament_points', 'asc')->paginate(5);
+            }
+        }
+        elseif ($request->sortBy === 'number_of_available_seats'){
+
+            if($request->direction === 'desc'){
+                $tournaments = Tournament::orderBy('number_of_available_seats', 'desc')->paginate(5);
+            }
+            else{
+                $tournaments = Tournament::orderBy('number_of_available_seats', 'asc')->paginate(5);
+            }
+        }
+
+        if (request()->ajax()){
+
+            $firstView = view('layouts.elements.tournaments.search.search')->render();
+            $secondView = view('dynamic-content.tournaments.list', compact('tournaments'))->render();
+
+            return response()->json([
+                'search' => $firstView,
+                'list' => $secondView
+            ]);
+        }
+        else{
+            return view('tournaments.list', compact('tournaments'));
+        }
+    }
+
+    public function search(Request $request){
+
+        if(request()->ajax()){
+
+            if($request->has('tournamentMinTournamentPointsValue')
+                && $request->has('tournamentMaxTournamentPointsValue')){
+
+                $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
+                    ->where('country', 'like', $request->tournamentCountryValue. '%')
+                    ->where('city', 'like', $request->tournamentCityValue. '%')
+                    ->where('tournament_points', '>=', $request->tournamentMinTournamentPointsValue)
+                    ->where('tournament_points', '<=', $request->tournamentMaxTournamentPointsValue)
+                    ->paginate(3);
+
+                $view = view('dynamic-content.tournaments.searchable-cards', compact('tournaments'))->render();
+                return response()->json($view);
+            }
+            elseif ($request->has('tournamentMinTournamentPointsValue')){
+
+                $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
+                    ->where('country', 'like', $request->tournamentCountryValue. '%')
+                    ->where('city', 'like', $request->tournamentCityValue. '%')
+                    ->where('tournament_points', '>=', $request->tournamentMinTournamentPointsValue)
+                    ->paginate(3);
+
+                $view = view('dynamic-content.tournaments.searchable-cards', compact('tournaments'))->render();
+                return response()->json($view);
+            }
+            elseif ($request->has('tournamentMaxTournamentPointsValue')){
+
+                $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
+                    ->where('country', 'like', $request->tournamentCountryValue. '%')
+                    ->where('city', 'like', $request->tournamentCityValue. '%')
+                    ->where('tournament_points', '<=', $request->tournamentMaxTournamentPointsValue)
+                    ->paginate(3);
+
+                $view = view('dynamic-content.tournaments.searchable-cards', compact('tournaments'))->render();
+                return response()->json($view);
+            }
+
+            $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
+                ->where('country', 'like', $request->tournamentCountryValue. '%')
+                ->where('city', 'like', $request->tournamentCityValue. '%')
+                ->paginate(3);
+
+            $view = view('dynamic-content.tournaments.searchable-cards', compact('tournaments'))->render();
+            return response()->json($view);
+
+        }
     }
 }

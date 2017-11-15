@@ -162,5 +162,11 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::post('/store', 'TournamentController@store')
             ->name('tournament-store');
+
+        Route::get('/listAndSearch', 'TournamentController@listAndSearch')
+            ->name('tournaments-list-search');
+
+        Route::get('/search', 'TournamentController@search')
+            ->name('tournaments-search');
     });
 });

@@ -3,7 +3,7 @@
          href="#">
         <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
         <h1 class="text-header pull-right">
-            <span class="badge badge-pill my-color">
+            <span class="badge badge-pill my-color pull-right">
                 <i class="fa fa-star fa-fw" aria-hidden="true"></i>
                 {{ $tournament->tournament_points }}
             </span>
@@ -12,6 +12,28 @@
             <span class="badge badge-pill my-color-3">
                 <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
                 {{ $tournament->country }} | {{ $tournament->city }}
+            </span>
+        </h1>
+        <h1 class="text-display" style="margin-bottom: 0">
+            <span class="badge badge-pill my-color-4">
+                <i class="fa fa-gamepad fa-fw" style="color: silver"></i>
+                {{ $tournament->game_system }}
+            </span>
+        </h1>
+        <h1 class="text-display" style="margin-bottom: 0">
+            <span class="badge badge-pill my-color-2">
+                <i class="fa fa-clock-o fa-fw" aria-hidden="true" style="color: darkred"></i>
+                Start: {{ \Carbon\Carbon::parse($tournament->start_date)->format('d/m/Y') }}
+            </span>
+        </h1>
+        <h1 class="text-display">
+            <span class="badge badge-pill my-color">
+                <i class="fa fa-users fa-fw" style="color: cornflowerblue"></i>
+                {{ $tournament->number_of_seats }} |
+                <i class="fa fa-lock fa-fw" aria-hidden="true" style="color: black"></i>
+                {{ $tournament->number_of_occupied_seats }} |
+                <i class="fa fa-unlock fa-fw" aria-hidden="true" style="color: limegreen"></i>
+                {{ $tournament->number_of_available_seats }}
             </span>
         </h1>
         <br>

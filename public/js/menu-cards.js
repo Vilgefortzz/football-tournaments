@@ -53,8 +53,12 @@ $(function () {
         }
     });
 
-    $(document).on('click', '#clubs-list,  #footballers-list, #tournaments-list', function () {
+    $(document).on('click', '#clubs-list,  #footballers-list', function () {
         displayDynamicContentWithSearch($(this));
+    });
+
+    $(document).on('click', '#tournaments-list', function () {
+        displayDynamicContentWithSearchAndDateTimePickers($(this));
     });
 });
 
@@ -90,6 +94,18 @@ function displayDynamicContentWithDateTimePickers(trigger) {
     var url = trigger.attr('href');
 
     ajaxRequestDynamicContentWithDateTimePickers(url);
+
+    window.history.pushState("", "", url);
+}
+
+function displayDynamicContentWithSearchAndDateTimePickers(trigger) {
+
+    $('#content').html('');
+    $('#loading').css('display', 'block');
+
+    var url = trigger.attr('href');
+
+    ajaxRequestDynamicContentWithSearchAndDateTimePickers(url);
 
     window.history.pushState("", "", url);
 }
@@ -181,14 +197,52 @@ function ajaxRequestDynamicContentWithDateTimePickers(url) {
             }, 1000);
 
             // Date time pickers - init
-            $('#tournament-end-date')
-                .bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time: false});
+            $('.start-date').bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time : false});
+            $('.end-date').bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time: false});
 
-            $('#tournament-start-date').bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time : false})
+            $('.start-date')
                 .on('change', function(e, date) {
 
                     $('#tournament-end-date-section').fadeIn('slow');
-                    $('#tournament-end-date').bootstrapMaterialDatePicker('setMinDate', date);
+                    $('.end-date').bootstrapMaterialDatePicker('setMinDate', date);
+                });
+
+            $('#loading').hide();
+        }
+    });
+}
+
+function ajaxRequestDynamicContentWithSearchAndDateTimePickers(url) {
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        cache: false,
+
+        success: function (data) {
+
+            $('#content-search').html(data.search);
+            $('#content').html(data.list);
+
+            var jumbotrons = $('.jumbotron');
+            var paginations = $('.pagination-links');
+
+            addAnimation(jumbotrons, 'zoomInUp');
+            addAnimation(paginations, 'zoomInUp');
+
+            window.setTimeout(function(){
+                removeAnimation(jumbotrons, 'zoomInUp');
+                removeAnimation(paginations, 'zoomInUp');
+            }, 1000);
+
+            // Date time pickers - init
+            $('.start-date').bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time : false});
+            $('.end-date').bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time: false});
+
+            $('.start-date')
+                .on('change', function(e, date) {
+
+                    $('.end-date').bootstrapMaterialDatePicker('setMinDate', date);
                 });
 
             $('#loading').hide();

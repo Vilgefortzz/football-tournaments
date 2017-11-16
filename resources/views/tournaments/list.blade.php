@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('scripts')
+
+    <script src="{{ asset('js/date-time-pickers/start-end-date.js') }}" type="text/javascript"></script>
+
+@endsection
+
 @section('content')
 
     <div id="loading"></div>

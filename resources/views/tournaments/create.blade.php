@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('scripts')
+
+    <script src="{{ asset('js/date-time-pickers/start-end-date.js') }}" type="text/javascript"></script>
+
+@endsection
+
 @section('content')
 
     <div id="loading"></div>
@@ -71,13 +77,13 @@
                                     <i class="fa fa-clock-o fa-fw"></i>Start date*:
                                 </label>
                                 <input id="tournament-start-date" type="text" name="start_date"
-                                       class="inline-input-width">
+                                       class="inline-input-width start-date">
                                 <div id="tournament-end-date-section" class="form-group" style="display: none">
                                     <label for="tournament-end-date" class="font-bold inline-input-label">
                                         <i class="fa fa-clock-o fa-fw"></i>End date*:
                                     </label>
                                     <input id="tournament-end-date" type="text" name="end_date"
-                                           class="inline-input-width">
+                                           class="inline-input-width end-date">
                                 </div>
                             </div>
                         </div>

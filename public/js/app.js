@@ -3,16 +3,6 @@ $(function () {
     $(document).on('click', '#user-delete', function () {
         $('#user-delete-form').submit();
     });
-
-    $('#tournament-end-date')
-        .bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time: false});
-
-    $('#tournament-start-date').bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY', time : false})
-        .on('change', function(e, date) {
-
-        $('#tournament-end-date-section').fadeIn('slow');
-        $('#tournament-end-date').bootstrapMaterialDatePicker('setMinDate', date);
-    });
 });
 
 // Functions
@@ -274,6 +264,8 @@ function getTournamentCardsSearch(timer, url) {
     var tournamentNameValue = $('#tournaments-search-main').val();
 
     // Values from filter inputs
+    var tournamentValue = $('#tournaments-filter-country').val();
+    var tournamentCityValue = $('#tournaments-filter-city').val();
     var tournamentCountryValue = $('#tournaments-filter-country').val();
     var tournamentCityValue = $('#tournaments-filter-city').val();
     var tournamentMinTournamentPointsValue = $('#tournaments-filter-min-rating').val();

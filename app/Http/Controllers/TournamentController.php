@@ -175,6 +175,10 @@ class TournamentController extends Controller
             $tournamentMinTournamentPointsValue = $request->tournamentMinTournamentPointsValue;
             $tournamentMaxTournamentPointsValue = $request->tournamentMaxTournamentPointsValue;
 
+            $tournamentNumberOfSeatsValue = $request->tournamentNumberOfSeatsValue;
+            $tournamentGameSystemValue = $request->tournamentGameSystemValue;
+            $tournamentStatusValue = $request->tournamentStatusValue;
+
             $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
                 ->where('country', 'like', $request->tournamentCountryValue. '%')
                 ->where('city', 'like', $request->tournamentCityValue. '%')
@@ -191,6 +195,15 @@ class TournamentController extends Controller
                 })
                 ->when($tournamentMaxTournamentPointsValue, function ($query) use ($tournamentMaxTournamentPointsValue) {
                     return $query->where('tournament_points', '<=', $tournamentMaxTournamentPointsValue);
+                })
+                ->when($tournamentNumberOfSeatsValue, function ($query) use ($tournamentNumberOfSeatsValue) {
+                    return $query->where('number_of_seats', $tournamentNumberOfSeatsValue);
+                })
+                ->when($tournamentGameSystemValue, function ($query) use ($tournamentGameSystemValue) {
+                    return $query->where('game_system', $tournamentGameSystemValue);
+                })
+                ->when($tournamentStatusValue, function ($query) use ($tournamentStatusValue) {
+                    return $query->where('status', $tournamentStatusValue);
                 })
                 ->paginate(3);
 

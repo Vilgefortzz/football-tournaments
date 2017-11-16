@@ -16,14 +16,14 @@
     <div class="input-group" style="align-items: center">
         <i class="fa fa-minus-square-o fa-lg fa-fw"></i>
         <input id="clubs-filter-min-rating" class="search-input" href="{{ route('clubs-search') }}"
-               type="number" name="#" placeholder="Min. rating..." min="0">
+               type="number" name="#" placeholder="Min. points..." min="0">
     </div>
 </div>
 <div class="search-filter search-filter-number margin-filter">
     <div class="input-group" style="align-items: center">
         <i class="fa fa-plus-square-o fa-lg fa-fw"></i>
         <input id="clubs-filter-max-rating" class="search-input" href="{{ route('clubs-search') }}"
-               type="number" name="#" placeholder="Max.rating..." min="0">
+               type="number" name="#" placeholder="Max. points..." min="0">
     </div>
 </div>
 

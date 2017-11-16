@@ -49,4 +49,21 @@ $(function() {
         $('#show-game-system-points-filters').fadeIn();
         $('.search-filter-game-system-points').fadeOut();
     });
+
+    $(document).on('click', '#show-seats-status-filters', function (e) {
+        e.preventDefault();
+
+        $('.btn-circle-filter-tournaments').hide();
+        $('#hide-seats-status-filters').fadeIn();
+        $('.search-filter-seats-status').fadeIn();
+    });
+
+    $(document).on('click', '#hide-seats-status-filters', function (e) {
+        e.preventDefault();
+
+        $(this).hide();
+        $('.btn-circle-filter-tournaments').fadeIn();
+        $('#show-seats-status-filters').fadeIn();
+        $('.search-filter-seats-status').fadeOut();
+    });
 });

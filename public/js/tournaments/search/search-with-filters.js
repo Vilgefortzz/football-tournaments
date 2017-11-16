@@ -64,4 +64,31 @@ $(function() {
         var url = $(this).attr('href');
         timer = getTournamentCardsSearch(timer, url);
     });
+
+    $(document).on('change', '#tournaments-filter-number-of-seats', function () {
+
+        $('#content').html('');
+        $('#loading').css('display', 'block');
+
+        var url = $(this).attr('href');
+        timer = getTournamentCardsSearch(timer, url);
+    });
+
+    $(document).on('change', '#tournaments-filter-game-system', function () {
+
+        $('#content').html('');
+        $('#loading').css('display', 'block');
+
+        var url = $(this).attr('href');
+        timer = getTournamentCardsSearch(timer, url);
+    });
+
+    $(document).on('change', '#tournaments-filter-status', function () {
+
+        $('#content').html('');
+        $('#loading').css('display', 'block');
+
+        var url = $(this).attr('href');
+        timer = getTournamentCardsSearch(timer, url);
+    });
 });

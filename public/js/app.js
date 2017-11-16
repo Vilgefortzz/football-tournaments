@@ -147,6 +147,9 @@ function getTournamentCardsWithPagination(url) {
     var tournamentCityValue = $('#tournaments-filter-city').val();
     var tournamentMinTournamentPointsValue = $('#tournaments-filter-min-rating').val();
     var tournamentMaxTournamentPointsValue = $('#tournaments-filter-max-rating').val();
+    var tournamentNumberOfSeatsValue = $('#tournaments-filter-number-of-seats').val();
+    var tournamentGameSystemValue = $('#tournaments-filter-game-system').val();
+    var tournamentStatusValue = $('#tournaments-filter-status').val();
 
     $.ajax({
         type: 'GET',
@@ -156,7 +159,10 @@ function getTournamentCardsWithPagination(url) {
             tournamentStartDateValue: tournamentStartDateValue, tournamentEndDateValue: tournamentEndDateValue,
             tournamentCountryValue: tournamentCountryValue, tournamentCityValue: tournamentCityValue,
             tournamentMinTournamentPointsValue: tournamentMinTournamentPointsValue,
-            tournamentMaxTournamentPointsValue: tournamentMaxTournamentPointsValue
+            tournamentMaxTournamentPointsValue: tournamentMaxTournamentPointsValue,
+            tournamentNumberOfSeatsValue: tournamentNumberOfSeatsValue,
+            tournamentGameSystemValue: tournamentGameSystemValue,
+            tournamentStatusValue: tournamentStatusValue
         },
         cache: false,
 
@@ -273,6 +279,9 @@ function getTournamentCardsSearch(timer, url) {
     var tournamentCityValue = $('#tournaments-filter-city').val();
     var tournamentMinTournamentPointsValue = $('#tournaments-filter-min-rating').val();
     var tournamentMaxTournamentPointsValue = $('#tournaments-filter-max-rating').val();
+    var tournamentNumberOfSeatsValue = $('#tournaments-filter-number-of-seats').val();
+    var tournamentGameSystemValue = $('#tournaments-filter-game-system').val();
+    var tournamentStatusValue = $('#tournaments-filter-status').val();
 
     clearTimeout(timer);
     timer = setTimeout(function() {
@@ -285,7 +294,10 @@ function getTournamentCardsSearch(timer, url) {
                 tournamentStartDateValue: tournamentStartDateValue, tournamentEndDateValue: tournamentEndDateValue,
                 tournamentCountryValue: tournamentCountryValue, tournamentCityValue: tournamentCityValue,
                 tournamentMinTournamentPointsValue: tournamentMinTournamentPointsValue,
-                tournamentMaxTournamentPointsValue: tournamentMaxTournamentPointsValue
+                tournamentMaxTournamentPointsValue: tournamentMaxTournamentPointsValue,
+                tournamentNumberOfSeatsValue: tournamentNumberOfSeatsValue,
+                tournamentGameSystemValue: tournamentGameSystemValue,
+                tournamentStatusValue: tournamentStatusValue
             },
             cache: false,
 

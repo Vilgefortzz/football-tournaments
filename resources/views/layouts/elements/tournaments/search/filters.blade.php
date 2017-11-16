@@ -67,8 +67,9 @@
     <div class="input-group" style="align-items: center">
         <i class="fa fa-unlock-alt fa-lg fa-fw"></i>
         <select id="tournaments-filter-status" class="search-select" href="{{ route('tournaments-search') }}">
-            <option value="0" selected="selected">Select status</option>
-            <option value="open">open</option>
+            <option value="0">Select status</option>
+            <option value="open" selected="selected">open</option>
+            <option value="ongoing">ongoing</option>
             <option value="closed">closed</option>
         </select>
     </div>

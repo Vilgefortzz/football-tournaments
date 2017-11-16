@@ -43,6 +43,11 @@
         <h1 class="text-header text-center">
             {{ $tournament->name }}
         </h1>
+        <h1 class="text-display text-center">
+            <span class="badge badge-pill my-color">
+                {{ $tournament->status }}
+            </span>
+        </h1>
     </div>
 @endforeach
 <div class="container pagination-links" style="margin-top: 15px">

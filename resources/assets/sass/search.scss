@@ -62,7 +62,8 @@ $remove-sort-option: #000000 !default;
   margin-bottom: $sort-fields-margin-bottom;
 }
 
-.search-filter-text, .search-filter-number, .search-filter-select, .search-sort-option-text, .direction{
+.search-filter-text, .search-filter-number, .search-filter-select, .search-filter-date-picker,
+.search-sort-option-text, .direction{
   display: none;
 }
 #hide-filters, #hide-sort-options{
@@ -177,6 +178,44 @@ $remove-sort-option: #000000 !default;
 }
 
 .lt-ie9 .search-filter-select > .input-group > select { line-height: 26px }
+
+.search-filter-date-picker {
+  position: relative;
+  width: 110px;
+}
+
+.search-filter-date-picker > .input-group > input {
+  font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  color: #ec2652;
+  height: 30px;
+  padding: 0 0 0 10px;
+  background: white;
+  border: 2px solid #d3d3d3;
+  border-radius: 13px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -moz-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -ms-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  -o-box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+  box-shadow: inset 0 1px #e5e7ed, 0 1px 0 #fcfcfc;
+}
+
+.search-filter-date-picker > .input-group > input:focus {
+  border-color: #ec2652;
+  -webkit-box-shadow: 0 0 2px #ec2652;
+  -moz-box-shadow: 0 0 2px #ec2652;
+  -ms-box-shadow: 0 0 2px #ec2652;
+  -o-box-shadow: 0 0 2px #ec2652;
+  box-shadow: 0 0 2px #ec2652;
+}
+
+.lt-ie9 .search-filter-date-picker > .input-group > input { line-height: 26px }
 
 .active-sort{
   background-color: $sort-option-active !important;

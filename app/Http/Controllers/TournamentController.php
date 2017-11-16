@@ -169,45 +169,29 @@ class TournamentController extends Controller
 
         if(request()->ajax()){
 
-            if($request->has('tournamentMinTournamentPointsValue')
-                && $request->has('tournamentMaxTournamentPointsValue')){
+            $tournamentStartDateValue = $request->tournamentStartDateValue;
+            $tournamentEndDateValue = $request->tournamentEndDateValue;
 
-                $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
-                    ->where('country', 'like', $request->tournamentCountryValue. '%')
-                    ->where('city', 'like', $request->tournamentCityValue. '%')
-                    ->where('tournament_points', '>=', $request->tournamentMinTournamentPointsValue)
-                    ->where('tournament_points', '<=', $request->tournamentMaxTournamentPointsValue)
-                    ->paginate(3);
-
-                $view = view('dynamic-content.tournaments.searchable-cards', compact('tournaments'))->render();
-                return response()->json($view);
-            }
-            elseif ($request->has('tournamentMinTournamentPointsValue')){
-
-                $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
-                    ->where('country', 'like', $request->tournamentCountryValue. '%')
-                    ->where('city', 'like', $request->tournamentCityValue. '%')
-                    ->where('tournament_points', '>=', $request->tournamentMinTournamentPointsValue)
-                    ->paginate(3);
-
-                $view = view('dynamic-content.tournaments.searchable-cards', compact('tournaments'))->render();
-                return response()->json($view);
-            }
-            elseif ($request->has('tournamentMaxTournamentPointsValue')){
-
-                $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
-                    ->where('country', 'like', $request->tournamentCountryValue. '%')
-                    ->where('city', 'like', $request->tournamentCityValue. '%')
-                    ->where('tournament_points', '<=', $request->tournamentMaxTournamentPointsValue)
-                    ->paginate(3);
-
-                $view = view('dynamic-content.tournaments.searchable-cards', compact('tournaments'))->render();
-                return response()->json($view);
-            }
+            $tournamentMinTournamentPointsValue = $request->tournamentMinTournamentPointsValue;
+            $tournamentMaxTournamentPointsValue = $request->tournamentMaxTournamentPointsValue;
 
             $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
                 ->where('country', 'like', $request->tournamentCountryValue. '%')
                 ->where('city', 'like', $request->tournamentCityValue. '%')
+                ->when($tournamentStartDateValue, function ($query) use ($tournamentStartDateValue) {
+                    return $query->where('start_date', '>=',
+                        date_format(date_create_from_format('d/m/Y', $tournamentStartDateValue), 'Y-m-d'));
+                })
+                ->when($tournamentEndDateValue, function ($query) use ($tournamentEndDateValue) {
+                    return $query->where('end_date', '<=',
+                        date_format(date_create_from_format('d/m/Y', $tournamentEndDateValue), 'Y-m-d'));
+                })
+                ->when($tournamentMinTournamentPointsValue, function ($query) use ($tournamentMinTournamentPointsValue) {
+                    return $query->where('tournament_points', '>=', $tournamentMinTournamentPointsValue);
+                })
+                ->when($tournamentMaxTournamentPointsValue, function ($query) use ($tournamentMaxTournamentPointsValue) {
+                    return $query->where('tournament_points', '<=', $tournamentMaxTournamentPointsValue);
+                })
                 ->paginate(3);
 
             $view = view('dynamic-content.tournaments.searchable-cards', compact('tournaments'))->render();

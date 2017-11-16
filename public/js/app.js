@@ -141,6 +141,8 @@ function getTournamentCardsWithPagination(url) {
     var tournamentNameValue = $('#tournaments-search-main').val();
 
     // Values from filter inputs
+    var tournamentStartDateValue = $('#tournaments-filter-start-date').val();
+    var tournamentEndDateValue = $('#tournaments-filter-end-date').val();
     var tournamentCountryValue = $('#tournaments-filter-country').val();
     var tournamentCityValue = $('#tournaments-filter-city').val();
     var tournamentMinTournamentPointsValue = $('#tournaments-filter-min-rating').val();
@@ -151,6 +153,7 @@ function getTournamentCardsWithPagination(url) {
         url: url,
         data: {
             tournamentNameValue: tournamentNameValue,
+            tournamentStartDateValue: tournamentStartDateValue, tournamentEndDateValue: tournamentEndDateValue,
             tournamentCountryValue: tournamentCountryValue, tournamentCityValue: tournamentCityValue,
             tournamentMinTournamentPointsValue: tournamentMinTournamentPointsValue,
             tournamentMaxTournamentPointsValue: tournamentMaxTournamentPointsValue
@@ -264,8 +267,8 @@ function getTournamentCardsSearch(timer, url) {
     var tournamentNameValue = $('#tournaments-search-main').val();
 
     // Values from filter inputs
-    var tournamentValue = $('#tournaments-filter-country').val();
-    var tournamentCityValue = $('#tournaments-filter-city').val();
+    var tournamentStartDateValue = $('#tournaments-filter-start-date').val();
+    var tournamentEndDateValue = $('#tournaments-filter-end-date').val();
     var tournamentCountryValue = $('#tournaments-filter-country').val();
     var tournamentCityValue = $('#tournaments-filter-city').val();
     var tournamentMinTournamentPointsValue = $('#tournaments-filter-min-rating').val();
@@ -279,6 +282,7 @@ function getTournamentCardsSearch(timer, url) {
             url: url,
             data: {
                 tournamentNameValue: tournamentNameValue,
+                tournamentStartDateValue: tournamentStartDateValue, tournamentEndDateValue: tournamentEndDateValue,
                 tournamentCountryValue: tournamentCountryValue, tournamentCityValue: tournamentCityValue,
                 tournamentMinTournamentPointsValue: tournamentMinTournamentPointsValue,
                 tournamentMaxTournamentPointsValue: tournamentMaxTournamentPointsValue

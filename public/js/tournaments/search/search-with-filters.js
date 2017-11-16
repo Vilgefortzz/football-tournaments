@@ -11,6 +11,24 @@ $(function() {
         timer = getTournamentCardsSearch(timer, url);
     });
 
+    $(document).on('change', '#tournaments-filter-start-date', function () {
+
+        $('#content').html('');
+        $('#loading').css('display', 'block');
+
+        var url = $(this).attr('href');
+        timer = getTournamentCardsSearch(timer, url);
+    });
+
+    $(document).on('change', '#tournaments-filter-end-date', function () {
+
+        $('#content').html('');
+        $('#loading').css('display', 'block');
+
+        var url = $(this).attr('href');
+        timer = getTournamentCardsSearch(timer, url);
+    });
+
     $(document).on('keyup', '#tournaments-filter-country', function () {
 
         $('#content').html('');

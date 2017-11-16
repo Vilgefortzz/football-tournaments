@@ -8,6 +8,7 @@ $(function() {
         $('.search-filter-text').fadeIn();
         $('.search-filter-number').fadeIn();
         $('.search-filter-select').fadeIn();
+        $('.search-filter-date-picker').fadeIn();
     });
 
     $(document).on('click', '#hide-filters', function (e) {
@@ -18,5 +19,6 @@ $(function() {
         $('.search-filter-text').fadeOut();
         $('.search-filter-number').fadeOut();
         $('.search-filter-select').fadeOut();
+        $('.search-filter-date-picker').fadeOut();
     });
 });

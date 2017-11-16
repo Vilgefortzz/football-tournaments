@@ -1039,19 +1039,24 @@
 .search-filter-number,
 .search-filter-select,
 .search-filter-date-picker,
+.search-filter-location-time,
+.search-filter-game-system-points,
 .search-sort-option-text,
 .direction {
   display: none;
 }
 
 #hide-filters,
+#hide-location-time-filters,
+#hide-game-system-points-filters,
+#hide-seats-status-filters,
 #hide-sort-options {
   display: none;
 }
 
 .search-filter-text {
   position: relative;
-  width: 170px;
+  width: 141px;
 }
 
 .search-filter-text > .input-group > input {
@@ -1353,6 +1358,17 @@ body {
 
 .btn-circle-filter {
   width: 29px;
+  height: 29px;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 10px;
+  margin-top: 0;
+}
+
+.btn-circle-filter-tournaments {
+  width: 60px;
   height: 29px;
   text-align: center;
   padding: 7px 0;

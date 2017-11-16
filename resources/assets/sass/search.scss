@@ -63,16 +63,17 @@ $remove-sort-option: #000000 !default;
 }
 
 .search-filter-text, .search-filter-number, .search-filter-select, .search-filter-date-picker,
+.search-filter-location-time, .search-filter-game-system-points,
 .search-sort-option-text, .direction{
   display: none;
 }
-#hide-filters, #hide-sort-options{
+#hide-filters, #hide-location-time-filters, #hide-game-system-points-filters, #hide-seats-status-filters, #hide-sort-options{
   display: none;
 }
 
 .search-filter-text {
   position: relative;
-  width: 170px;
+  width: 141px;
 }
 
 .search-filter-text > .input-group > input {

@@ -1,10 +1,10 @@
 $(function() {
 
-    $(document).on('click', '.join-club', function (e) {
+    $(document).on('click', '.join-tournament', function (e) {
         e.preventDefault();
 
         var url = $(this).attr('href');
-        ajaxJoinClubRequest(url);
+        ajaxJoinTournamentRequest(url);
 
         addAnimation($(this), 'fadeOut');
 
@@ -14,7 +14,7 @@ $(function() {
     });
 });
 
-function ajaxJoinClubRequest(url) {
+function ajaxJoinTournamentRequest(url) {
 
     $.ajax({
         type: 'POST',

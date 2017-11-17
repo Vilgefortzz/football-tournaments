@@ -163,6 +163,12 @@ Route::group(['middleware' => 'auth'], function (){
         Route::post('/store', 'TournamentController@store')
             ->name('tournament-store');
 
+        Route::post('/{tournament}/join', 'TournamentController@join')
+            ->name('tournament-join');
+
+        Route::post('/{tournament}/leave', 'TournamentController@leave')
+            ->name('tournament-leave');
+
         Route::get('/listAndSearch', 'TournamentController@listAndSearch')
             ->name('tournaments-list-search');
 

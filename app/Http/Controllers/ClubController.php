@@ -404,6 +404,8 @@ class ClubController extends Controller
             $requestToJoinTheClub->club_id = $club->id;
             $requestToJoinTheClub->user_id = $authUserId;
             $requestToJoinTheClub->save();
+
+            return response()->json('Request with try to join the club was sent');
         }
     }
 

@@ -80,6 +80,53 @@ class TournamentController extends Controller
         return redirect()->back();
     }
 
+    public function join(Tournament $tournament){
+
+        if (request()->ajax()){
+
+            if ($tournament->isOpen()){
+
+                $clubId = Auth::user()->club->id;
+                $tournament->clubs()->attach($clubId);
+
+                $tournament->number_of_occupied_seats++;
+                $tournament->number_of_available_seats--;
+
+                // Tournament will start
+                if ($tournament->number_of_available_seats === 0){
+                    $tournament->status = 'ongoing';
+                }
+
+                $tournament->save();
+
+                return response()->json('Your club joined to the tournament');
+            }
+
+            return response()->json('Your club cannot join to the tournament, there are not any available seats');
+        }
+    }
+
+    public function leave(Tournament $tournament){
+
+        if (request()->ajax()){
+
+            if ($tournament->isOpen()){
+
+                $clubId = Auth::user()->club->id;
+                $tournament->clubs()->detach($clubId);
+
+                $tournament->number_of_occupied_seats--;
+                $tournament->number_of_available_seats++;
+
+                $tournament->save();
+
+                return response()->json('Your club left tournament');
+            }
+
+            return response()->json('Now your club cannot leave this tournament');
+        }
+    }
+
     // Search tournaments - search, filters and sort
 
     public function listAndSearch(Request $request){

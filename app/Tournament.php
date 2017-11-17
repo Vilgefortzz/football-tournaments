@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -65,5 +66,15 @@ class Tournament extends Model
 
     public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    public function isOpen(){
+        return $this->status == 'open' ? true : false;
+    }
+
+    public function isClubJoined(){
+
+        $clubId = Auth::user()->club->id;
+        return $this->clubs->contains('id', $clubId);
     }
 }

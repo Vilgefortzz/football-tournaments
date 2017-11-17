@@ -47,7 +47,27 @@
             <span class="badge badge-pill my-color">
                 {{ $tournament->status }}
             </span>
+            @if($tournament->isClubJoined())
+                <span class="badge badge-pill my-color-4">
+                    <i class="fa fa-check fa-fw"></i> joined
+                </span>
+            @endif
         </h1>
+        @if(Auth::user()->isClubPresident())
+            @if($tournament->isOpen())
+                <div class="text-center animate-text">
+                    @if($tournament->isClubJoined())
+                        <a href="{{ route('tournament-leave', $tournament->id) }}" class="btn my-color leave-tournament">
+                            <i class="fa fa-sign-out fa-lg fa-fw"></i> Leave tournament
+                        </a>
+                    @else
+                        <a href="{{ route('tournament-join', $tournament->id) }}" class="btn my-color-3 join-tournament">
+                            <i class="fa fa-sign-in fa-lg fa-fw"></i> Join tournament
+                        </a>
+                    @endif
+                </div>
+            @endif
+        @endif
     </div>
 @endforeach
 <div class="container pagination-links" style="margin-top: 15px">

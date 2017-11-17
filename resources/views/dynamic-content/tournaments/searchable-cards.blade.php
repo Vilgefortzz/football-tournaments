@@ -57,13 +57,13 @@
             @if($tournament->isOpen())
                 <div class="text-center animate-text">
                     @if($tournament->isClubJoined())
-                        <a href="{{ route('tournament-leave', $tournament->id) }}" class="btn my-color leave-tournament">
+                        <button href="{{ route('tournament-leave', $tournament->id) }}" class="btn my-color leave-tournament">
                             <i class="fa fa-sign-out fa-lg fa-fw"></i> Leave tournament
-                        </a>
+                        </button>
                     @else
-                        <a href="{{ route('tournament-join', $tournament->id) }}" class="btn my-color-3 join-tournament">
+                        <button href="{{ route('tournament-join', $tournament->id) }}" class="btn my-color-3 join-tournament">
                             <i class="fa fa-sign-in fa-lg fa-fw"></i> Join tournament
-                        </a>
+                        </button>
                     @endif
                 </div>
             @endif

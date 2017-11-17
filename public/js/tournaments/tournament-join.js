@@ -3,6 +3,8 @@ $(function() {
     $(document).on('click', '.join-tournament', function (e) {
         e.preventDefault();
 
+        $(this).prop('disabled', true);
+
         var url = $(this).attr('href');
         ajaxJoinTournamentRequest(url);
 

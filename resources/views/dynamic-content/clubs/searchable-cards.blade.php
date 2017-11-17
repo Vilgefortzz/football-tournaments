@@ -60,10 +60,10 @@
                                 </a>
                         </span>
                     @else
-                        <a href="{{ route('club-join', $club->id) }}"
+                        <button href="{{ route('club-join', $club->id) }}"
                            class="btn btn-sm my-color-3 join-club">
                             <i class="fa fa-users fa-lg fa-fw"></i>  Try to join the club
-                        </a>
+                        </button>
                     @endif
                 </h5>
             @endif

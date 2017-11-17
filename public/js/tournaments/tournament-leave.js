@@ -3,6 +3,8 @@ $(function() {
     $(document).on('click', '.leave-tournament', function (e) {
         e.preventDefault();
 
+        $(this).prop('disabled', true);
+
         var url = $(this).attr('href');
         ajaxLeaveTournamentRequest(url);
 

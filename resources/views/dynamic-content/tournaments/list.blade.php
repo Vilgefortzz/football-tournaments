@@ -15,6 +15,7 @@
                 <th><i class="fa fa-flag-o fa-fw"></i>City</th>
                 <th><i class="fa fa-star fa-fw"></i>Tournament points</th>
                 <th><i class="fa fa-users fa-fw"></i>Available seats</th>
+                <th><i class="fa fa-unlock-alt fa-fw"></i>Status</th>
             </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                     <td class="font-bold">{{ $tournament->city }}</td>
                     <td class="font-bold">{{ $tournament->tournament_points }}</td>
                     <td class="font-bold">{{ $tournament->number_of_available_seats }}</td>
+                    <td class="font-bold">{{ $tournament->status }}</td>
                 </tr>
             @endforeach
             </tbody>

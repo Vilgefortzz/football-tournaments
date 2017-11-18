@@ -77,4 +77,8 @@ class Tournament extends Model
         $clubId = Auth::user()->club->id;
         return $this->clubs->contains('id', $clubId);
     }
+
+    public function isExpired(){
+        return $this->start_date < date('Y-m-d');
+    }
 }

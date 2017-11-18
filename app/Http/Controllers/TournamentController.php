@@ -83,47 +83,65 @@ class TournamentController extends Controller
     public function join(Tournament $tournament){
 
         if (request()->ajax()){
+            if ($tournament){
+                if ($tournament->isOpen()){
+                    if ($tournament->isExpired()){
+                        $tournament->delete();
+                        return response()->json('Cannot join. This tournament has already expired');
+                    }
+                    else{
 
-            if ($tournament->isOpen()){
+                        $clubId = Auth::user()->club->id;
+                        $tournament->clubs()->attach($clubId);
 
-                $clubId = Auth::user()->club->id;
-                $tournament->clubs()->attach($clubId);
+                        $tournament->number_of_occupied_seats++;
+                        $tournament->number_of_available_seats--;
 
-                $tournament->number_of_occupied_seats++;
-                $tournament->number_of_available_seats--;
+                        // Tournament will start
+                        if ($tournament->number_of_available_seats === 0) {
+                            $tournament->status = 'ongoing';
+                        }
 
-                // Tournament will start
-                if ($tournament->number_of_available_seats === 0){
-                    $tournament->status = 'ongoing';
+                        $tournament->save();
+
+                        return response()->json('Your club joined to the tournament');
+                    }
                 }
 
-                $tournament->save();
-
-                return response()->json('Your club joined to the tournament');
+                return response()->json('Cannot join. This tournament has already started');
             }
 
-            return response()->json('Your club cannot join to the tournament, there are not any available seats');
+            return response()->json('This tournament doesn\'t exist');
         }
     }
 
     public function leave(Tournament $tournament){
 
         if (request()->ajax()){
+            if ($tournament){
+                if ($tournament->isOpen()){
+                    if ($tournament->isExpired()){
+                        $tournament->delete();
+                        return response()->json('This tournament has already expired');
+                    }
+                    else{
 
-            if ($tournament->isOpen()){
+                        $clubId = Auth::user()->club->id;
+                        $tournament->clubs()->detach($clubId);
 
-                $clubId = Auth::user()->club->id;
-                $tournament->clubs()->detach($clubId);
+                        $tournament->number_of_occupied_seats--;
+                        $tournament->number_of_available_seats++;
 
-                $tournament->number_of_occupied_seats--;
-                $tournament->number_of_available_seats++;
+                        $tournament->save();
 
-                $tournament->save();
+                        return response()->json('Your club left tournament');
+                    }
+                }
 
-                return response()->json('Your club left tournament');
+                return response()->json('Cannot leave. This tournament has already started');
             }
 
-            return response()->json('Now your club cannot leave this tournament');
+            return response()->json('This tournament doesn\'t exist');
         }
     }
 
@@ -131,7 +149,11 @@ class TournamentController extends Controller
 
     public function listAndSearch(Request $request){
 
-        $tournaments = Tournament::paginate(5);
+        $expiredTournaments = Tournament::where('status', 'open')
+            ->where('start_date', '<', date('Y-m-d'));
+        $expiredTournaments->delete();
+
+        $tournaments = Tournament::orderBy('start_date', 'asc')->paginate(5);
 
         if ($request->sortBy === 'name'){
 
@@ -226,7 +248,8 @@ class TournamentController extends Controller
             $tournamentGameSystemValue = $request->tournamentGameSystemValue;
             $tournamentStatusValue = $request->tournamentStatusValue;
 
-            $tournaments = Tournament::where('name', 'like', $request->tournamentNameValue. '%')
+            $tournaments = Tournament::orderBy('start_date', 'asc')
+                ->where('name', 'like', $request->tournamentNameValue. '%')
                 ->where('country', 'like', $request->tournamentCountryValue. '%')
                 ->where('city', 'like', $request->tournamentCityValue. '%')
                 ->when($tournamentStartDateValue, function ($query) use ($tournamentStartDateValue) {

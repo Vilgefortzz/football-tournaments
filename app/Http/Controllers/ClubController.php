@@ -301,7 +301,7 @@ class ClubController extends Controller
 
         $tournaments = $club->tournaments()
             ->where('status', 'open')
-            ->orderBy('end_date', 'asc')
+            ->orderBy('start_date', 'asc')
             ->paginate(3);
 
         if (request()->ajax()){
@@ -315,11 +315,29 @@ class ClubController extends Controller
         }
     }
 
+    public function ongoingTournaments(Club $club){
+
+        $tournaments = $club->tournaments()
+            ->where('status', 'ongoing')
+            ->orderBy('end_date', 'asc')
+            ->paginate(3);
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.clubs.ongoing-tournaments',
+                compact('tournaments'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('clubs.ongoing-tournaments', compact('tournaments'));
+        }
+    }
+
     public function closedTournaments(Club $club){
 
         $tournaments = $club->tournaments()
             ->where('status', 'closed')
-            ->orderBy('end_date', 'asc')
+            ->orderBy('start_date', 'asc')
             ->paginate(3);
 
         if (request()->ajax()){

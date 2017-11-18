@@ -64,6 +64,9 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{club}/tournaments/open', 'ClubController@openTournaments')
             ->name('club-tournaments-open');
 
+        Route::get('/{club}/tournaments/ongoing', 'ClubController@ongoingTournaments')
+            ->name('club-tournaments-ongoing');
+
         Route::get('/{club}/tournaments/closed', 'ClubController@closedTournaments')
             ->name('club-tournaments-closed');
 

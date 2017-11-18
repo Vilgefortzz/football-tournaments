@@ -119,6 +119,10 @@ class Club extends Model
         return $this->tournaments->where('status', 'open')->count();
     }
 
+    public function numberOfOngoingTournaments(){
+        return $this->tournaments->where('status', 'ongoing')->count();
+    }
+
     public function numberOfClosedTournaments(){
         return $this->tournaments->where('status', 'closed')->count();
     }

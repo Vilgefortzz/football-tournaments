@@ -25,7 +25,7 @@ $(function () {
 
     $(document).on('click', '#footballer-waiting-contracts, #club-waiting-contracts,' +
         ' #club-signed-contracts, #club-extension-proposed-contracts,' +
-        ' #club-open-tournaments, #club-closed-tournaments,' +
+        ' #club-open-tournaments, #club-ongoing-tournaments, #club-closed-tournaments,' +
         ' #organizer-open-tournaments, #organizer-closed-tournaments', function () {
         if ($(this).find('.badge').attr('data-number-items') !== '0'){
             displayDynamicContent($(this));

@@ -47,7 +47,7 @@
             <span class="badge badge-pill my-color">
                 {{ $tournament->status }}
             </span>
-            @if($tournament->isClubJoined())
+            @if(Auth::user()->haveClub() && $tournament->isClubJoined())
                 <span class="badge badge-pill my-color-4">
                     <i class="fa fa-check fa-fw"></i> joined
                 </span>

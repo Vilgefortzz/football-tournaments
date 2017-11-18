@@ -128,12 +128,14 @@ function ajaxRequestDynamicContent(url) {
             var menuCards = $('.menu-card');
             var contractCards = $('.contract-card');
             var requestToJoinTheClubCards = $('.request-to-join-the-club-card');
+            var tournamentCards = $('.tournament-card');
             var jumbotrons = $('.jumbotron');
             var paginations = $('.pagination-links');
 
             addAnimation(menuCards, 'zoomInUp');
             addAnimation(contractCards, 'zoomInUp');
             addAnimation(requestToJoinTheClubCards, 'zoomInUp');
+            addAnimation(tournamentCards, 'zoomInUp');
             addAnimation(jumbotrons, 'zoomInUp');
             addAnimation(paginations, 'zoomInUp');
 
@@ -141,6 +143,7 @@ function ajaxRequestDynamicContent(url) {
                 removeAnimation(menuCards, 'zoomInUp');
                 removeAnimation(contractCards, 'zoomInUp');
                 removeAnimation(requestToJoinTheClubCards, 'zoomInUp');
+                removeAnimation(tournamentCards, 'zoomInUp');
                 removeAnimation(jumbotrons, 'zoomInUp');
                 removeAnimation(paginations, 'zoomInUp');
             }, 1000);

@@ -138,21 +138,21 @@ class UserController extends Controller
         }
     }
 
-    public function openTournaments(User $user){
+    public function ongoingTournaments(User $user){
 
         $tournaments = $user->tournaments()
-            ->where('status', 'open')
+            ->where('status', 'ongoing')
             ->orderBy('end_date', 'asc')
             ->paginate(3);
 
         if (request()->ajax()){
 
-            $view = view('dynamic-content.users.organizers.open-tournaments',
+            $view = view('dynamic-content.users.organizers.ongoing-tournaments',
                 compact('tournaments'))->render();
             return response()->json($view);
         }
         else{
-            return view('users.organizers.open-tournaments', compact('tournaments'));
+            return view('users.organizers.ongoing-tournaments', compact('tournaments'));
         }
     }
 

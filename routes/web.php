@@ -138,8 +138,8 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{user}/contracts/binding', 'UserController@bindingContract')
             ->name('user-contracts-binding');
 
-        Route::get('/{user}/tournaments/open', 'UserController@openTournaments')
-            ->name('user-tournaments-open');
+        Route::get('/{user}/tournaments/ongoing', 'UserController@ongoingTournaments')
+            ->name('user-tournaments-ongoing');
 
         Route::get('/{user}/tournaments/closed', 'UserController@closedTournaments')
             ->name('user-tournaments-closed');

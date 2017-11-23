@@ -19,26 +19,26 @@
                 <p class="animate-text">Create tournament, set rules - max number of teams, game system and prizes. </p>
             </div>
         </div>
-        <div id="organizer-open-tournaments" href="{{ route('user-tournaments-open', Auth::user()->id) }}"
+        <div id="organizer-ongoing-tournaments" href="{{ route('user-tournaments-ongoing', Auth::user()->id) }}"
              class="tile menu-card">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
             <h1 class="text-header text-center pull-right">
                 <span class="badge badge-pill my-color"
-                      data-number-items="{{ Auth::user()->numberOfOpenTournaments() }}">
+                      data-number-items="{{ Auth::user()->numberOfOngoingTournaments() }}">
                     <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
-                    {{ Auth::user()->numberOfOpenTournaments() }}
+                    {{ Auth::user()->numberOfOngoingTournaments() }}
                 </span>
             </h1>
             <br>
             <div class="text text-center">
-                <h1>Current tournaments</h1>
+                <h1>Ongoing tournaments</h1>
                 <h1>
                     <i class="fa fa-trophy fa-lg" style="color: gold;"></i>
                     <img src="{{ asset(Auth::user()->avatar_dir. Auth::user()->avatar) }}"
                          width="100" height="100" class="img-fluid rounded-circle">
                     <i class="fa fa-trophy fa-lg" style="color: gold;"></i>
                 </h1>
-                <h2 class="animate-text">See all your current tournaments</h2>
+                <h2 class="animate-text">See all your ongoing tournaments</h2>
                 <p class="animate-text">See details, enter results, monitor progress of the tournaments. </p>
             </div>
         </div>

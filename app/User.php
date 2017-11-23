@@ -196,8 +196,8 @@ class User extends Authenticatable
         return $this->contracts->where('status', 'created')->count();
     }
 
-    public function numberOfOpenTournaments(){
-        return $this->tournaments->where('status', 'open')->count();
+    public function numberOfOngoingTournaments(){
+        return $this->tournaments->where('status', 'ongoing')->count();
     }
 
     public function numberOfClosedTournaments(){

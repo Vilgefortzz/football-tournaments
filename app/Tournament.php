@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $number_of_seats
  * @property int $number_of_occupied_seats
  * @property int $number_of_available_seats
+ * @property int $in_game_clubs
+ * @property int $eliminated_clubs
  * @property string $game_system
  * @property string $prize_first_place
  * @property string $prize_second_place
@@ -32,10 +34,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereEliminatedClubs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereEndDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereGameSystem($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereGoals($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereInGameClubs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereNumberOfAvailableSeats($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Tournament whereNumberOfOccupiedSeats($value)

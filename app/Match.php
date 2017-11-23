@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
  * App\Match
  *
  * @property int $id
- * @property string $label
- * @property string $start_date_and_time
- * @property string $end_date_and_time
- * @property string|null $first_club
- * @property string|null $second_club
+ * @property string|null $start_date_and_time
+ * @property string|null $end_date_and_time
+ * @property string $first_club
+ * @property string $second_club
  * @property int $result_first_club
  * @property int $result_second_club
  * @property string|null $winner
@@ -24,7 +23,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereEndDateAndTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereFirstClub($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereLabel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereResultFirstClub($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereResultSecondClub($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSecondClub($value)
@@ -38,6 +36,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Match extends Model
 {
+    protected $table = 'matches';
+
     public function tournament(){
         return $this->belongsTo('App\Tournament');
     }

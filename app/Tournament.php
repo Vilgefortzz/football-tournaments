@@ -72,6 +72,10 @@ class Tournament extends Model
         return $this->status == 'open' ? true : false;
     }
 
+    public function isOngoing(){
+        return $this->status == 'ongoing' ? true : false;
+    }
+
     public function isClubJoined(){
 
         $clubId = Auth::user()->club->id;

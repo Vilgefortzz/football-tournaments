@@ -8,6 +8,14 @@
                 {{ $tournament->tournament_points }}
             </span>
         </h1>
+        <h1 class="text-display">
+            <span class="badge badge-pill my-color">
+                {{ $tournament->status }}
+                @if(Auth::user()->haveClub() && $tournament->isClubJoined())
+                    | joined
+                @endif
+            </span>
+        </h1>
         <h1 class="text-display" style="margin-bottom: 0">
             <span class="badge badge-pill my-color-3">
                 <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
@@ -20,22 +28,27 @@
                 {{ $tournament->game_system }}
             </span>
         </h1>
-        <h1 class="text-display" style="margin-bottom: 0">
-            <span class="badge badge-pill my-color-2">
-                <i class="fa fa-clock-o fa-fw" aria-hidden="true" style="color: darkred"></i>
-                Start: {{ \Carbon\Carbon::parse($tournament->start_date)->format('d/m/Y') }}
-            </span>
-        </h1>
-        <h1 class="text-display">
-            <span class="badge badge-pill my-color">
-                <i class="fa fa-users fa-fw" style="color: cornflowerblue"></i>
-                {{ $tournament->number_of_seats }} |
-                <i class="fa fa-lock fa-fw" aria-hidden="true" style="color: black"></i>
-                {{ $tournament->number_of_occupied_seats }} |
-                <i class="fa fa-unlock fa-fw" aria-hidden="true" style="color: limegreen"></i>
-                {{ $tournament->number_of_available_seats }}
-            </span>
-        </h1>
+        @if($tournament->isOpen())
+            <h1 class="text-display">
+                <span class="badge badge-pill my-color">
+                    <i class="fa fa-users fa-fw" style="color: cornflowerblue"></i>
+                    {{ $tournament->number_of_seats }} |
+                    <i class="fa fa-lock fa-fw" aria-hidden="true" style="color: black"></i>
+                    {{ $tournament->number_of_occupied_seats }} |
+                    <i class="fa fa-unlock fa-fw" aria-hidden="true" style="color: limegreen"></i>
+                    {{ $tournament->number_of_available_seats }}
+                </span>
+            </h1>
+        @else
+            <h1 class="text-display">
+                <span class="badge badge-pill my-color">
+                    <i class="fa fa-users fa-fw" style="color: limegreen"></i>
+                    {{ $tournament->in_game_clubs }} |
+                    <i class="fa fa-users fa-fw" aria-hidden="true" style="color: black"></i>
+                    {{ $tournament->eliminated_clubs }}
+                </span>
+            </h1>
+        @endif
         <br>
         <h1 class="text-header text-center">
             <i class="fa fa-trophy fa-4x fa-fw" aria-hidden="true"></i>
@@ -44,14 +57,10 @@
             {{ $tournament->name }}
         </h1>
         <h1 class="text-display text-center">
-            <span class="badge badge-pill my-color">
-                {{ $tournament->status }}
+            <span class="badge badge-pill my-color-2">
+                <i class="fa fa-clock-o fa-fw" aria-hidden="true" style="color: darkred"></i>
+                Start: {{ \Carbon\Carbon::parse($tournament->start_date)->format('d/m/Y') }}
             </span>
-            @if(Auth::user()->haveClub() && $tournament->isClubJoined())
-                <span class="badge badge-pill my-color-4">
-                    <i class="fa fa-check fa-fw"></i> joined
-                </span>
-            @endif
         </h1>
         @if(Auth::user()->isClubPresident())
             @if($tournament->isOpen())

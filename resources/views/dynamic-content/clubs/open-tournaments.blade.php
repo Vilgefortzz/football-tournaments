@@ -10,6 +10,11 @@
                     {{ $tournament->tournament_points }}
                 </span>
             </h1>
+            <h1 class="text-display">
+                <span class="badge badge-pill my-color">
+                    {{ $tournament->status }}
+                </span>
+            </h1>
             <h1 class="text-display" style="margin-bottom: 0">
                 <span class="badge badge-pill my-color-3">
                     <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
@@ -20,12 +25,6 @@
                 <span class="badge badge-pill my-color-4">
                     <i class="fa fa-gamepad fa-fw" style="color: silver"></i>
                     {{ $tournament->game_system }}
-                </span>
-            </h1>
-            <h1 class="text-display" style="margin-bottom: 0">
-                <span class="badge badge-pill my-color-2">
-                    <i class="fa fa-clock-o fa-fw" aria-hidden="true" style="color: darkred"></i>
-                    Start: {{ \Carbon\Carbon::parse($tournament->start_date)->format('d/m/Y') }}
                 </span>
             </h1>
             <h1 class="text-display">
@@ -46,11 +45,9 @@
                 {{ $tournament->name }}
             </h1>
             <h1 class="text-display text-center">
-                <span class="badge badge-pill my-color">
-                    {{ $tournament->status }}
-                </span>
-                <span class="badge badge-pill my-color-4">
-                    <i class="fa fa-check fa-fw"></i> joined
+                <span class="badge badge-pill my-color-2">
+                    <i class="fa fa-clock-o fa-fw" aria-hidden="true" style="color: darkred"></i>
+                    Start: {{ \Carbon\Carbon::parse($tournament->start_date)->format('d/m/Y') }}
                 </span>
             </h1>
             <div class="text-center animate-text">

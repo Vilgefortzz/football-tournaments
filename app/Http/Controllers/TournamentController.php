@@ -20,6 +20,21 @@ class TournamentController extends Controller
         }
     }
 
+    public function show(Tournament $tournament){
+
+        $clubs = $tournament->clubs;
+
+        if (request()->ajax()){
+
+            $view = view('dynamic-content.tournaments.show',
+                compact('tournament', 'clubs'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('tournaments.show', compact('tournament', 'clubs'));
+        }
+    }
+
     public function create(){
 
         if (request()->ajax()){

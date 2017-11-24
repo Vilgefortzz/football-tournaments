@@ -37,7 +37,7 @@
                     <tbody>
 
                     @foreach($tournaments as $tournament)
-                        <tr>
+                        <tr href="{{ route('tournament-show', $tournament->id) }}" class="dynamic-content">
                             <td class="font-bold">{{ $tournament->name }}</td>
                             <td class="font-bold">{{ \Carbon\Carbon::parse($tournament->start_date)->format('d/m/Y') }}</td>
                             <td class="font-bold">{{ \Carbon\Carbon::parse($tournament->end_date)->format('d/m/Y') }}</td>

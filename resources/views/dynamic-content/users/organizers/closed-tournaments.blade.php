@@ -2,7 +2,8 @@
     @include('layouts.elements.tournaments.tournament-info')
 @else
     @foreach($tournaments as $tournament)
-        <div id="tournament-{{$tournament->id}}" class="tile tile-tournaments tournament-card" href="#">
+        <div id="tournament-{{$tournament->id}}" class="tile tile-tournaments tournament-card dynamic-content"
+             href="{{ route('tournament-show', $tournament->id) }}">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
             <h1 class="text-header pull-right">
                 <span class="badge badge-pill my-color pull-right">

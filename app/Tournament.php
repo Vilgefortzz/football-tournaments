@@ -89,4 +89,10 @@ class Tournament extends Model
     public function isExpired(){
         return $this->start_date < date('Y-m-d');
     }
+
+    public function isYourTournament(){
+
+        $authUserId = Auth::user()->id;
+        return $this->user->id == $authUserId ? true : false;
+    }
 }

@@ -160,6 +160,9 @@ Route::group(['middleware' => 'auth'], function (){
     Route::group(['prefix' => 'tournaments'], function (){
         Route::get('/menu', 'TournamentController@menu')->name('tournaments-menu');
 
+        Route::get('/{tournament}/show', 'TournamentController@show')
+            ->name('tournament-show');
+
         Route::get('/create', 'TournamentController@create')
             ->name('tournament-create');
 

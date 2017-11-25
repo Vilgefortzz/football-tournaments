@@ -19,6 +19,7 @@
     <link href="{{ asset('css/mdbootstrap-4/mdb.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-bracket/jquery.bracket.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
@@ -43,6 +44,7 @@
     <script src="{{ asset('js/mdbootstrap-4/mdb.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/moment.js/moment.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap-material-datetimepicker/bootstrap-material-datetimepicker.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery-bracket/jquery.bracket.min.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('js/setup/ajax-setup.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>

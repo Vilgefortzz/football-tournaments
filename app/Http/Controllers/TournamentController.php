@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Club;
+use App\Match;
 use App\Tournament;
 use Auth;
 use Illuminate\Http\Request;
@@ -112,10 +114,12 @@ class TournamentController extends Controller
                         $tournament->number_of_occupied_seats++;
                         $tournament->number_of_available_seats--;
 
-                        // Tournament will start
+                        // Tournament starts and matches are generated
                         if ($tournament->number_of_available_seats === 0) {
                             $tournament->in_game_clubs = $tournament->number_of_occupied_seats;
                             $tournament->status = 'ongoing';
+
+                            $this->generateMatches($tournament->id, $tournament->clubs);
                         }
 
                         $tournament->save();
@@ -297,5 +301,55 @@ class TournamentController extends Controller
             return response()->json($view);
 
         }
+    }
+
+    private function generateMatches(int $tournamentId, $teams){
+
+        $numberOfTeams = $teams->count();
+
+        // First round matches
+        for ($i = 0; $i < $numberOfTeams; $i+=2){
+
+            $j = $i+1;
+
+            $match = new Match;
+            $match->first_club = $teams->get($i)->name;
+            $match->second_club = $teams->get($j)->name;
+            $match->tournament_id = $tournamentId;
+            $match->save();
+        }
+
+        // Next round matches
+        switch ($numberOfTeams){
+            case 4:
+                for ($i = 0; $i < 2; $i++){
+                    $match = new Match;
+                    $match->tournament_id = $tournamentId;
+                    $match->save();
+                }
+                break;
+            case 8:
+                for ($i = 0; $i < 4; $i++){
+                    $match = new Match;
+                    $match->tournament_id = $tournamentId;
+                    $match->save();
+                }
+                break;
+            case 16:
+                for ($i = 0; $i < 8; $i++){
+                    $match = new Match;
+                    $match->tournament_id = $tournamentId;
+                    $match->save();
+                }
+                break;
+            case 32:
+                for ($i = 0; $i < 16; $i++){
+                    $match = new Match;
+                    $match->tournament_id = $tournamentId;
+                    $match->save();
+                }
+                break;
+        }
+
     }
 }

@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('scripts')
+
+    <script src="{{ asset('js/tournaments/tournament-tree.js') }}" type="text/javascript"></script>
+
+@endsection
+
 @section('content')
 
     <div id="loading"></div>
@@ -83,21 +89,9 @@
 
                     <div class="col">
                         <ul class="nav nav-tabs">
-                            <li>
-                                <a href="#tab-main-1" class="badge badge-pill tab-main active" data-toggle="tab">
-                                    <i class="fa fa-users fa-fw" aria-hidden="true"></i>
-                                    Clubs
-                                </a>
-                            </li>
                             @if(!$tournament->isOpen())
                                 <li>
-                                    <a href="#tab-main-2" class="badge badge-pill tab-main" data-toggle="tab">
-                                        <i class="fa fa-soccer-ball-o fa-fw" aria-hidden="true"></i>
-                                        Matches
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#tab-main-3" class="badge badge-pill tab-main" data-toggle="tab">
+                                    <a href="#tab-main-1" class="badge badge-pill tab-main active" data-toggle="tab">
                                         <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
                                         @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
                                             Tournament tree/Enter results
@@ -106,42 +100,89 @@
                                         @endif
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="#tab-main-2" class="badge badge-pill tab-main" data-toggle="tab">
+                                        <i class="fa fa-soccer-ball-o fa-fw" aria-hidden="true"></i>
+                                        Matches
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#tab-main-3" class="badge badge-pill tab-main" data-toggle="tab">
+                                        <i class="fa fa-users fa-fw" aria-hidden="true"></i>
+                                        Clubs
+                                    </a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="#tab-main-3" class="badge badge-pill tab-main active" data-toggle="tab">
+                                        <i class="fa fa-users fa-fw" aria-hidden="true"></i>
+                                        Clubs
+                                    </a>
+                                </li>
                             @endif
+
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane active" id="tab-main-1">
-                                <table id="clubs-table" class="table table-hover table-responsive" cellspacing="0" width="100%">
-                                    <thead class="my-color-2">
-                                    <tr>
-                                        <th><i class="fa fa-shield fa-fw"></i>Emblem</th>
-                                        <th><i class="fa fa-users fa-fw"></i>Name</th>
-                                        <th><i class="fa fa-star fa-fw"></i>Tournament points</th>
-                                        <th><i class="fa fa-trophy fa-fw"></i>Trophies</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($clubs as $club)
-                                        <tr href="{{ route('club-show', $club->id) }}" class="dynamic-content">
-                                            <td>
-                                                <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
-                                                     width="25" height="25">
-                                            </td>
-                                            <td class="font-bold">{{ $club->name }}</td>
-                                            <td class="font-bold">{{ $club->tournament_points }}</td>
-                                            <td class="font-bold">{{ $club->won_trophies }}</td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
                             @if(!$tournament->isOpen())
+                                <div class="tab-pane active" id="tab-main-1">
+                                    @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
+                                    @else
+                                        <div class="tournament-tree-view"></div>
+                                    @endif
+                                </div>
                                 <div class="tab-pane" id="tab-main-2">
 
                                 </div>
                                 <div class="tab-pane" id="tab-main-3">
-                                    @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
-                                    @else
-                                    @endif
+                                    <table id="clubs-table" class="table table-hover table-responsive" cellspacing="0" width="100%">
+                                        <thead class="my-color-2">
+                                        <tr>
+                                            <th><i class="fa fa-shield fa-fw"></i>Emblem</th>
+                                            <th><i class="fa fa-users fa-fw"></i>Name</th>
+                                            <th><i class="fa fa-star fa-fw"></i>Tournament points</th>
+                                            <th><i class="fa fa-trophy fa-fw"></i>Trophies</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($clubs as $club)
+                                            <tr href="{{ route('club-show', $club->id) }}" class="dynamic-content">
+                                                <td>
+                                                    <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
+                                                         width="25" height="25">
+                                                </td>
+                                                <td class="font-bold">{{ $club->name }}</td>
+                                                <td class="font-bold">{{ $club->tournament_points }}</td>
+                                                <td class="font-bold">{{ $club->won_trophies }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            @else
+                                <div class="tab-pane active" id="tab-main-3">
+                                    <table id="clubs-table" class="table table-hover table-responsive" cellspacing="0" width="100%">
+                                        <thead class="my-color-2">
+                                        <tr>
+                                            <th><i class="fa fa-shield fa-fw"></i>Emblem</th>
+                                            <th><i class="fa fa-users fa-fw"></i>Name</th>
+                                            <th><i class="fa fa-star fa-fw"></i>Tournament points</th>
+                                            <th><i class="fa fa-trophy fa-fw"></i>Trophies</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($clubs as $club)
+                                            <tr href="{{ route('club-show', $club->id) }}" class="dynamic-content">
+                                                <td>
+                                                    <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
+                                                         width="25" height="25">
+                                                </td>
+                                                <td class="font-bold">{{ $club->name }}</td>
+                                                <td class="font-bold">{{ $club->tournament_points }}</td>
+                                                <td class="font-bold">{{ $club->won_trophies }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             @endif
                         </div>

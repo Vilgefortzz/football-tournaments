@@ -8,12 +8,15 @@
                         @if(Auth::user()->isClubPresident() && $club->isYourClub())
                             <a data-toggle="modal" data-target="#delete-club-modal"
                                class="btn btn-circle btn-danger" role="button"><i class="fa fa-trash"></i></a>
-                            <span class="badge badge-pill my-color pull-right">
-                                <i class="fa fa-star fa-fw" aria-hidden="true"></i>
-                                    {{ $club->tournament_points }}
-                            </span>
                         @endif
+                        <span class="badge badge-pill my-color pull-right">
+                            <i class="fa fa-star fa-fw" aria-hidden="true"></i>
+                            {{ $club->tournament_points }}
+                        </span>
                     </h1>
+                    @if(Auth::user()->isFootballer())
+                        <br><br>
+                    @endif
                     <h1 class="text-header text-center">
                         <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
                              width="150" height="150" class="img-fluid rounded-circle">

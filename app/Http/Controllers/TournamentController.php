@@ -114,6 +114,7 @@ class TournamentController extends Controller
 
                         // Tournament will start
                         if ($tournament->number_of_available_seats === 0) {
+                            $tournament->in_game_clubs = $tournament->number_of_occupied_seats;
                             $tournament->status = 'ongoing';
                         }
 

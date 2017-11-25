@@ -61,18 +61,20 @@
                                     <i class="fa fa-gamepad fa-fw" style="color: greenyellow"></i>
                                     Game system: {{ $tournament->game_system }}
                                 </h6>
-                                <hr>
-                                @if(Auth::user()->isClubPresident())
-                                    @if($tournament->isOpen())
-                                        @if($tournament->isClubJoined())
+                                @if(Auth::user()->isClubPresident() && $tournament->isOpen())
+                                    <hr>
+                                    @if($tournament->isClubJoined())
+                                        <h6 class="animate-text">
                                             <button href="{{ route('tournament-leave', $tournament->id) }}" class="btn my-color leave-tournament">
                                                 <i class="fa fa-sign-out fa-lg fa-fw"></i> Leave tournament
                                             </button>
-                                        @else
+                                        </h6>
+                                    @else
+                                        <h6 class="animate-text">
                                             <button href="{{ route('tournament-join', $tournament->id) }}" class="btn my-color-3 join-tournament">
                                                 <i class="fa fa-sign-in fa-lg fa-fw"></i> Join tournament
                                             </button>
-                                        @endif
+                                        </h6>
                                     @endif
                                 @endif
                             </div>

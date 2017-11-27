@@ -131,7 +131,35 @@
                                     @endif
                                 </div>
                                 <div class="tab-pane" id="tab-main-2">
-
+                                    @foreach($matches as $match)
+                                        <h5 class="text-center font-bold" style="color: darkred">
+                                            <i class="fa fa-clock-o fa-fw"></i>
+                                            @if($match->hasStartDateAndTime())
+                                                {{ \Carbon\Carbon::parse($match->start_date_and_time)->format('d/m/Y H:i') }}
+                                            @else
+                                                ---
+                                            @endif
+                                        </h5>
+                                        <h6 class="text-center">
+                                            <img src="{{ asset($match->first_club_emblem_dir. $match->first_club_emblem) }}"
+                                                 width="60" height="60" class="img-fluid rounded-circle">
+                                            {{ $match->first_club}}
+                                            <span class="font-bold">vs</span>
+                                            {{ $match->second_club}}
+                                            <img src="{{ asset($match->second_club_emblem_dir. $match->second_club_emblem) }}"
+                                                 width="60" height="60" class="img-fluid rounded-circle">
+                                        </h6>
+                                        <h5 class="text-center font-bold" style="margin-top: -20px">
+                                            <span class="badge badge-pill my-color-3">
+                                                @if($match->hasResults())
+                                                    {{ $match->result_first_club }} : {{ $match->result_second_club }}
+                                                @else
+                                                    --- : ---
+                                                @endif
+                                            </span>
+                                        </h5>
+                                        <hr>
+                                    @endforeach
                                 </div>
                                 <div class="tab-pane" id="tab-main-3">
                                     <table id="clubs-table" class="table table-hover table-responsive" cellspacing="0" width="100%">

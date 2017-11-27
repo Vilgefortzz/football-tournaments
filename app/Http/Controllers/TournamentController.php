@@ -25,15 +25,19 @@ class TournamentController extends Controller
     public function show(Tournament $tournament){
 
         $clubs = $tournament->clubs;
+        $matches = $tournament->matches()
+            ->whereNotNull('first_club')
+            ->whereNotNull('second_club')
+            ->get();
 
         if (request()->ajax()){
 
             $view = view('dynamic-content.tournaments.show',
-                compact('tournament', 'clubs'))->render();
+                compact('tournament', 'clubs', 'matches'))->render();
             return response()->json($view);
         }
         else{
-            return view('tournaments.show', compact('tournament', 'clubs'));
+            return view('tournaments.show', compact('tournament', 'clubs', 'matches'));
         }
     }
 
@@ -314,7 +318,11 @@ class TournamentController extends Controller
 
             $match = new Match;
             $match->first_club = $teams->get($i)->name;
+            $match->first_club_emblem_dir = $teams->get($i)->emblem_dir;
+            $match->first_club_emblem = $teams->get($i)->emblem;
             $match->second_club = $teams->get($j)->name;
+            $match->second_club_emblem_dir = $teams->get($j)->emblem_dir;
+            $match->second_club_emblem = $teams->get($j)->emblem;
             $match->tournament_id = $tournamentId;
             $match->save();
         }

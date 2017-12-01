@@ -124,10 +124,11 @@
                         </ul>
                         <div class="tab-content">
                             @if(!$tournament->isOpen())
-                                <div class="tab-pane active" id="tab-main-1">
+                                <div class="tab-pane active tournament-tree-view" id="tab-main-1"
+                                     href="{{ route('tournaments-tree-view', $tournament->id) }}">
                                     @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
                                     @else
-                                        <div class="tournament-tree-view"></div>
+                                        <div class="tournament-tree"></div>
                                     @endif
                                 </div>
                                 <div class="tab-pane" id="tab-main-2">

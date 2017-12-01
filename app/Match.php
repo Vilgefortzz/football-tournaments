@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $second_club
  * @property string $second_club_emblem_dir
  * @property string $second_club_emblem
+ * @property int $round
  * @property int|null $result_first_club
  * @property int|null $result_second_club
  * @property string|null $winner
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereResultFirstClub($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereResultSecondClub($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereRound($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSecondClub($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSecondClubEmblem($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Match whereSecondClubEmblemDir($value)

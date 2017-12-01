@@ -180,5 +180,8 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/search', 'TournamentController@search')
             ->name('tournaments-search');
+
+        Route::get('/{tournament}/treeView', 'TournamentController@treeView')
+            ->name('tournaments-tree-view');
     });
 });

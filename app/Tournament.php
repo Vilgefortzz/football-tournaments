@@ -95,4 +95,12 @@ class Tournament extends Model
         $authUserId = Auth::user()->id;
         return $this->user->id == $authUserId ? true : false;
     }
+
+    public function numberOfMatches(){
+        return $this->matches->count();
+    }
+
+    public function numberOfFirstRoundMatches(){
+        return $this->matches->where('round', 1)->count();
+    }
 }

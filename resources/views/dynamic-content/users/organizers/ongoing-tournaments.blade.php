@@ -3,7 +3,8 @@
 @else
     @foreach($tournaments as $tournament)
         <div id="tournament-{{$tournament->id}}" class="tile tile-tournaments tournament-card"
-             href="{{ route('tournament-show', $tournament->id) }}">
+             href="{{ route('tournament-show', $tournament->id) }}"
+             data-tournament-tree-url="{{ route('tournaments-tree-view', $tournament->id) }}">
             <img class="cover-image" src='{{ asset('images/clubs/menu/football-grass.jpg') }}'>
             <h1 class="text-header pull-right">
                 <span class="badge badge-pill my-color pull-right">

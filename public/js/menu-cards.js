@@ -60,6 +60,10 @@ $(function () {
     $(document).on('click', '#tournaments-list', function () {
         displayDynamicContentWithSearchAndDateTimePickers($(this));
     });
+
+    $(document).on('click', '.tournament-card', function () {
+        displayDynamicContentWithTournamentTreeInit($(this));
+    });
 });
 
 function displayDynamicContent(trigger) {
@@ -108,6 +112,19 @@ function displayDynamicContentWithSearchAndDateTimePickers(trigger) {
     ajaxRequestDynamicContentWithSearchAndDateTimePickers(url);
 
     window.history.pushState("", "", url);
+}
+
+function displayDynamicContentWithTournamentTreeInit(trigger) {
+
+    $('#content').html('');
+    $('#loading').css('display', 'block');
+
+    var mainUrl = trigger.attr('href');
+    var treeViewUrl = trigger.data('tournament-tree-url');
+
+    ajaxRequestDynamicContentWithTournamentTreeInit(mainUrl, treeViewUrl);
+
+    window.history.pushState("", "", mainUrl);
 }
 
 function ajaxRequestDynamicContent(url) {
@@ -247,6 +264,32 @@ function ajaxRequestDynamicContentWithSearchAndDateTimePickers(url) {
 
                     $('.end-date').bootstrapMaterialDatePicker('setMinDate', date);
                 });
+
+            $('#loading').hide();
+        }
+    });
+}
+
+function ajaxRequestDynamicContentWithTournamentTreeInit(mainUrl, treeViewUrl) {
+
+    $.ajax({
+        type: "GET",
+        url: mainUrl,
+        cache: false,
+
+        success: function (data) {
+
+            $('#content').html(data);
+
+            var jumbotrons = $('.jumbotron');
+
+            addAnimation(jumbotrons, 'zoomInUp');
+
+            window.setTimeout(function(){
+                removeAnimation(jumbotrons, 'zoomInUp');
+            }, 1000);
+
+            generateTournamentTree(treeViewUrl);
 
             $('#loading').hide();
         }

@@ -113,7 +113,7 @@
                         <div class="tab-pane active" id="tab-main-1">
                             @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
                             @else
-                                <div class="tournament-tree-view"></div>
+                                <div class="tournament-tree"></div>
                             @endif
                         </div>
                         <div class="tab-pane" id="tab-main-2">

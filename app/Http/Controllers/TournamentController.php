@@ -169,6 +169,25 @@ class TournamentController extends Controller
         }
     }
 
+    public function treeView(Tournament $tournament){
+
+        if (request()->ajax()){
+
+            $numberOfRounds = $tournament->matches->last()->round;
+            $numberOfAllMatches = $tournament->numberOfMatches();
+            $numberOfFirstRoundMatches = $tournament->numberOfFirstRoundMatches();
+
+            $matches = $tournament->matches;
+
+            return response()->json([
+                'numberOfRounds' => $numberOfRounds,
+                'numberOfAllMatches' => $numberOfAllMatches,
+                'numberOfFirstRoundMatches' => $numberOfFirstRoundMatches,
+                'matches' => $matches
+            ]);
+        }
+    }
+
     // Search tournaments - search, filters and sort
 
     public function listAndSearch(Request $request){
@@ -323,41 +342,32 @@ class TournamentController extends Controller
             $match->second_club = $teams->get($j)->name;
             $match->second_club_emblem_dir = $teams->get($j)->emblem_dir;
             $match->second_club_emblem = $teams->get($j)->emblem;
+            $match->round = 1;
             $match->tournament_id = $tournamentId;
             $match->save();
         }
 
-        // Next round matches
-        switch ($numberOfTeams){
-            case 4:
-                for ($i = 0; $i < 2; $i++){
-                    $match = new Match;
-                    $match->tournament_id = $tournamentId;
-                    $match->save();
-                }
-                break;
-            case 8:
-                for ($i = 0; $i < 4; $i++){
-                    $match = new Match;
-                    $match->tournament_id = $tournamentId;
-                    $match->save();
-                }
-                break;
-            case 16:
-                for ($i = 0; $i < 8; $i++){
-                    $match = new Match;
-                    $match->tournament_id = $tournamentId;
-                    $match->save();
-                }
-                break;
-            case 32:
-                for ($i = 0; $i < 16; $i++){
-                    $match = new Match;
-                    $match->tournament_id = $tournamentId;
-                    $match->save();
-                }
-                break;
+        $tmpNumberOfTeams = $numberOfTeams / 2;
+        $tmpRound = 2;
+
+        // Next round matches + final match
+        while ($tmpNumberOfTeams % 2 == 0) {
+            for ($i = 0; $i < $tmpNumberOfTeams; $i+=2){
+                $match = new Match;
+                $match->tournament_id = $tournamentId;
+                $match->round = $tmpRound;
+
+                $match->save();
+            }
+            $tmpRound++;
+            $tmpNumberOfTeams = $tmpNumberOfTeams / 2;
         }
 
+        // Third place match
+        $match = new Match;
+        $match->tournament_id = $tournamentId;
+        $match->round = $tmpRound - 1;
+
+        $match->save();
     }
 }

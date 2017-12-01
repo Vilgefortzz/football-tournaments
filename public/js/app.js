@@ -15,6 +15,57 @@ function removeAnimation(object, animation) {
     object.removeClass('animated ' + animation);
 }
 
+function generateTournamentTree(url) {
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        cache: false,
+
+        success: function (data) {
+
+            var teams = [];
+            var results = [];
+
+            for (var i=0; i<( data.numberOfRounds + 1 ); i++){
+
+                results.push([]);
+            }
+
+            for (var j=0; j<data.numberOfFirstRoundMatches; j++){
+
+                var tmpTeams = [];
+                tmpTeams.push(data.matches[j].first_club);
+                tmpTeams.push(data.matches[j].second_club);
+
+                teams.push(tmpTeams);
+            }
+
+            for (var k=0; k<data.numberOfAllMatches; k++){
+
+                var tmpResult = [];
+                tmpResult.push(data.matches[k].result_first_club);
+                tmpResult.push(data.matches[k].result_second_club);
+
+                results[data.matches[k].round -1].push(tmpResult);
+            }
+
+            // Tournament tree - init
+            var tournamentTree = {
+                teams : teams,
+                results : results
+            };
+
+            $('.tournament-tree').bracket({
+                centerConnectors: true,
+                teamWidth: 150,
+                roundMargin: 30,
+                init: tournamentTree
+            });
+        }
+    });
+}
+
 function getListWithData(url, sortBy, direction) {
 
     $.ajax({

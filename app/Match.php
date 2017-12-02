@@ -57,6 +57,14 @@ class Match extends Model
     }
 
     public function hasResults(){
-        return $this->result_first_club && $this->result_second_club ? true : false;
+        return $this->result_first_club !== null && $this->result_second_club !== null ? true : false;
+    }
+
+    public function isThirdPlaceMatch($matchId){
+        return $this->id === $matchId ? true : false;
+    }
+
+    public function isFirstPlaceMatch($matchId){
+        return $this->id === $matchId ? true : false;
     }
 }

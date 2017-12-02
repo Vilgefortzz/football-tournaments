@@ -1241,6 +1241,27 @@ th {
   padding: 15px 0;
 }
 
+.tournament-tree-view {
+  overflow-x: auto;
+}
+
+.tab-pane {
+  margin-top: -30px;
+}
+
+.nav-tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .process-step .btn:focus {
   outline: none;
 }
@@ -1435,6 +1456,10 @@ body {
 }
 
 .pagination-margin-trophy {
+  margin-top: 10px;
+}
+
+.pagination-margin-match {
   margin-top: 10px;
 }
 

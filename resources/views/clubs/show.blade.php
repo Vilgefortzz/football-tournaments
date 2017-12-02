@@ -61,13 +61,13 @@
                     <div class="col">
                         <ul class="nav nav-tabs">
                             <li>
-                                <a href="#tab-main-1" class="badge badge-pill tab-main active" data-toggle="tab">
+                                <a href="#tab-main-1" class="badge badge-pill tab-main-trophies active" data-toggle="tab">
                                     <i class="fa fa-users fa-fw" aria-hidden="true"></i>
                                     Staff
                                 </a>
                             </li>
                             <li>
-                                <a href="#tab-main-2" class="badge badge-pill tab-main" data-toggle="tab">
+                                <a href="#tab-main-2" class="badge badge-pill tab-main-trophies" data-toggle="tab">
                                     <i class="fa fa-bar-chart fa-fw" aria-hidden="true"></i>
                                     Stats
                                 </a>
@@ -80,13 +80,13 @@
                             </li>
                             @if(Auth::user()->isClubPresident() && $club->isYourClub())
                                 <li>
-                                    <a href="#tab-main-4" class="badge badge-pill tab-main" data-toggle="tab">
+                                    <a href="#tab-main-4" class="badge badge-pill tab-main-trophies" data-toggle="tab">
                                         <i class="fa fa-cog fa-fw" aria-hidden="true"></i> Settings
                                     </a>
                                 </li>
                             @endif
                         </ul>
-                        <div class="tab-content">
+                        <div class="tab-content text-center">
                             <div class="tab-pane active" id="tab-main-1">
                                 <table id="footballers-table" class="table table-hover table-responsive" cellspacing="0" width="100%">
                                     <thead class="my-color-2">
@@ -137,6 +137,8 @@
                                 <h4 class="font-italic">
                                     Tournaments win rate: {{ $club->tournaments_win_rate }}</h4>
 
+                                <hr>
+
                                 <h1 class="font-bold font-italic"><i class="fa fa-soccer-ball-o fa-fw"></i>Matches:</h1>
                                 <h4 class="font-italic">
                                     Played matches: {{ $club->played_matches }}</h4>
@@ -180,24 +182,22 @@
                                     {{ csrf_field() }}
                                     {{ method_field('PUT') }}
 
-                                    <div class="text-center">
-                                        <h3 class="font-italic"><i class="fa fa-pencil fa-fw"></i> Edit club name</h3>
-                                        <div class="form-group">
-                                            <div class="input-container" style="padding: 5px 130px">
-                                                <input type="text" id="club-name" name="name" autofocus style="text-align: center">
-                                                <label for="club-name">Club name</label>
-                                            </div>
+                                    <h3 class="font-italic"><i class="fa fa-pencil fa-fw"></i> Edit club name</h3>
+                                    <div class="form-group">
+                                        <div class="input-container" style="padding: 5px 130px">
+                                            <input type="text" id="club-name" name="name" autofocus style="text-align: center">
+                                            <label for="club-name">Club name</label>
                                         </div>
-                                        <h3 class="font-italic">Update club emblem</h3>
-                                        <div class="form-group">
-                                            <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
-                                                 width="110" height="110" class="img-fluid rounded-circle">
-                                            <input id="club-emblem" type="file" name="club_emblem">
-                                        </div>
-                                        <hr>
-                                        <div class="form-group">
-                                            <button class="btn my-color" type="submit">Save changes</button>
-                                        </div>
+                                    </div>
+                                    <h3 class="font-italic">Update club emblem</h3>
+                                    <div class="form-group">
+                                        <img src="{{ asset($club->emblem_dir. $club->emblem) }}"
+                                             width="110" height="110" class="img-fluid rounded-circle">
+                                        <input id="club-emblem" type="file" name="club_emblem">
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <button class="btn my-color" type="submit">Save changes</button>
                                     </div>
                                 </form>
                             </div>

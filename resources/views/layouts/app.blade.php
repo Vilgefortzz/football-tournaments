@@ -76,6 +76,9 @@
     <script src="{{ asset('js/tournaments/search/search-with-filters.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/tournaments/pagination-ajax.js') }}" type="text/javascript"></script>
 
+    <script src="{{ asset('js/matches/matches.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/matches/pagination-ajax.js') }}" type="text/javascript"></script>
+
     @if(Auth::check() && Auth::user()->haveClub() && !Auth::user()->isOrganizer())
         <script src="{{ asset('js/contracts/contracts-validate.js') }}" type="text/javascript"></script>
     @endif

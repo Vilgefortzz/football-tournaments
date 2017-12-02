@@ -116,6 +116,31 @@ function getListWithTrophies(url) {
     });
 }
 
+function getListWithMatches(url) {
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        cache: false,
+
+        success: function(data){
+
+            $('#content-matches').html(data);
+
+            var matchesList = $('.matches-list-list');
+            var paginations = $('.pagination-links');
+
+            addAnimation(matchesList, 'fadeIn');
+            addAnimation(paginations, 'fadeIn');
+
+            window.setTimeout(function(){
+                removeAnimation(matchesList, 'fadeIn');
+                removeAnimation(paginations, 'fadeIn');
+            }, 800);
+        }
+    });
+}
+
 function getClubCardsWithPagination(url) {
 
     // Value from main search input

@@ -163,6 +163,18 @@ Route::group(['middleware' => 'auth'], function (){
         Route::get('/{tournament}/show', 'TournamentController@show')
             ->name('tournament-show');
 
+        Route::get('/{tournament}/matches/firstRound', 'TournamentController@getFirstRoundMatches')
+            ->name('tournament-matches-first-round');
+
+        Route::get('/{tournament}/matches/secondRound', 'TournamentController@getSecondRoundMatches')
+            ->name('tournament-matches-second-round');
+
+        Route::get('/{tournament}/matches/thirdRound', 'TournamentController@getThirdRoundMatches')
+            ->name('tournament-matches-third-round');
+
+        Route::get('/{tournament}/matches/fourthRound', 'TournamentController@getFourthRoundMatches')
+            ->name('tournament-matches-fourth-round');
+
         Route::get('/create', 'TournamentController@create')
             ->name('tournament-create');
 

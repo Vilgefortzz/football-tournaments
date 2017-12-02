@@ -25,19 +25,115 @@ class TournamentController extends Controller
     public function show(Tournament $tournament){
 
         $clubs = $tournament->clubs;
-        $matches = $tournament->matches()
-            ->whereNotNull('first_club')
-            ->whereNotNull('second_club')
-            ->get();
+        $numberOfRounds = $tournament->matches->last()->round;
 
         if (request()->ajax()){
 
             $view = view('dynamic-content.tournaments.show',
-                compact('tournament', 'clubs', 'matches'))->render();
+                compact('tournament', 'clubs', 'numberOfRounds'))->render();
             return response()->json($view);
         }
         else{
-            return view('tournaments.show', compact('tournament', 'clubs', 'matches'));
+            return view('tournaments.show', compact('tournament', 'clubs', 'numberOfRounds'));
+        }
+    }
+
+    public function getFirstRoundMatches(Tournament $tournament){
+
+        $firstRoundMatches = $tournament->matches()
+            ->where('round', 1)
+            ->whereNotNull('first_club')
+            ->whereNotNull('second_club')
+            ->orderBy('start_date_and_time', 'asc')
+            ->paginate(2);
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.matches.firstRoundMatches',
+                compact('firstRoundMatches'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('layouts.elements.matches.firstRoundMatches',
+                compact('firstRoundMatches'));
+        }
+    }
+
+    public function getSecondRoundMatches(Tournament $tournament){
+
+        $secondRoundMatches = $tournament->matches()
+            ->where('round', 2)
+            ->whereNotNull('first_club')
+            ->whereNotNull('second_club')
+            ->orderBy('start_date_and_time', 'asc')
+            ->paginate(2);
+
+        $isFinalRound = $tournament->matches->last()->round === 2 ? true : false;
+
+        $thirdPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id)->id;
+        $firstPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id - 1)->id;
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.matches.secondRoundMatches',
+                compact('secondRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('layouts.elements.matches.secondRoundMatches',
+                compact('secondRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'));
+        }
+    }
+
+    public function getThirdRoundMatches(Tournament $tournament){
+
+        $thirdRoundMatches = $tournament->matches()
+            ->where('round', 3)
+            ->whereNotNull('first_club')
+            ->whereNotNull('second_club')
+            ->orderBy('start_date_and_time', 'asc')
+            ->paginate(2);
+
+        $isFinalRound = $tournament->matches->last()->round === 3 ? true : false;
+
+        $thirdPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id)->id;
+        $firstPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id - 1)->id;
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.matches.thirdRoundMatches',
+                compact('thirdRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('layouts.elements.matches.thirdRoundMatches',
+                compact('thirdRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'));
+        }
+    }
+
+    public function getFourthRoundMatches(Tournament $tournament){
+
+        $fourthRoundMatches = $tournament->matches()
+            ->where('round', 4)
+            ->whereNotNull('first_club')
+            ->whereNotNull('second_club')
+            ->orderBy('start_date_and_time', 'asc')
+            ->paginate(2);
+
+        $isFinalRound = $tournament->matches->last()->round === 4 ? true : false;
+
+        $thirdPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id)->id;
+        $firstPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id - 1)->id;
+
+        if (request()->ajax()){
+
+            $view = view('layouts.elements.matches.fourthRoundMatches',
+                compact('fourthRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
+            return response()->json($view);
+        }
+        else{
+            return view('layouts.elements.matches.fourthRoundMatches',
+                compact('fourthRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'));
         }
     }
 

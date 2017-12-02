@@ -9,9 +9,25 @@ $(document).on('click', '#tab-trophies', function () {
     getListWithTrophies(url);
 });
 
-$(document).on('click', '.tab-main', function () {
+$(document).on('click', '#tab-matches', function () {
+
+    var tabFirstRoundMatch = $('#tab-match-first-round');
+
+    $('#content-matches').html('');
+    tabFirstRoundMatch.addClass('active');
+
+    var url = tabFirstRoundMatch.attr('href');
+    getListWithMatches(url);
+});
+
+$(document).on('click', '.tab-main-trophies', function () {
     $('#content-trophies').html('');
     $('.tab-trophies').removeClass('active');
+});
+
+$(document).on('click', '.tab-main-matches', function () {
+    $('#content-matches').html('');
+    $('.tab-matches').removeClass('active');
 });
 
 

@@ -31,6 +31,7 @@ $pagination-margin-contract-cards: 20px !default;
 $pagination-margin-search-list: 0px !default;
 $pagination-margin-request-to-join-the-club-cards: 15px !default;
 $pagination-margin-trophy: 10px !default;
+$pagination-margin-match: 10px !default;
 $table-in-jumbotron: 10px 10px !default;
 
 body {
@@ -132,6 +133,9 @@ body {
 }
 .pagination-margin-trophy{
   margin-top: $pagination-margin-trophy;
+}
+.pagination-margin-match{
+  margin-top: $pagination-margin-match;
 }
 .inline-input-label{
   display: inline-block;

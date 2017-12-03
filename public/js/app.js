@@ -127,7 +127,7 @@ function getListWithMatches(url) {
 
             $('#content-matches').html(data);
 
-            var matchesList = $('.matches-list-list');
+            var matchesList = $('.matches-list');
             var paginations = $('.pagination-links');
 
             addAnimation(matchesList, 'fadeIn');

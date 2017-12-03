@@ -93,17 +93,17 @@
                                 <li>
                                     <a href="#tab-main-1" class="badge badge-pill tab-main-matches active" data-toggle="tab">
                                         <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
-                                        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
-                                            Tournament tree/Enter results
-                                        @else
-                                            Tournament tree
-                                        @endif
+                                        Tournament tree
                                     </a>
                                 </li>
                                 <li>
                                     <a id="tab-matches" href="#tab-main-2" class="badge badge-pill" data-toggle="tab">
                                         <i class="fa fa-soccer-ball-o fa-fw" aria-hidden="true"></i>
-                                        Matches
+                                        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
+                                            Matches/Enter results
+                                        @else
+                                            Matches
+                                        @endif
                                     </a>
                                 </li>
                                 <li>
@@ -125,10 +125,7 @@
                             @if(!$tournament->isOpen())
                                 <div class="tab-pane active tournament-tree-view" id="tab-main-1"
                                      href="{{ route('tournaments-tree-view', $tournament->id) }}">
-                                    @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
-                                    @else
-                                        <div class="tournament-tree"></div>
-                                    @endif
+                                    <div class="tournament-tree"></div>
                                 </div>
                                 <div class="tab-pane" id="tab-main-2">
                                     <ul class="nav nav-tabs">

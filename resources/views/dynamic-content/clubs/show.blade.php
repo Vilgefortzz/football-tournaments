@@ -14,7 +14,7 @@
                             {{ $club->tournament_points }}
                         </span>
                     </h1>
-                    @if(Auth::user()->isFootballer())
+                    @if(!Auth::user()->isClubPresident() || !$club->isYourClub())
                         <br><br>
                     @endif
                     <h1 class="text-header text-center">
@@ -128,6 +128,8 @@
                             Won tournaments: {{ $club->won_tournaments }}</h4>
                         <h4 class="font-italic">
                             Tournaments win rate: {{ $club->tournaments_win_rate }}</h4>
+
+                        <hr>
 
                         <h1 class="font-bold font-italic"><i class="fa fa-soccer-ball-o fa-fw"></i>Matches:</h1>
                         <h4 class="font-italic">

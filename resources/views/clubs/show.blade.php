@@ -22,7 +22,7 @@
                                     {{ $club->tournament_points }}
                                 </span>
                             </h1>
-                            @if(Auth::user()->isFootballer())
+                            @if(!Auth::user()->isClubPresident() || !$club->isYourClub())
                                 <br><br>
                             @endif
                             <h1 class="text-header text-center">

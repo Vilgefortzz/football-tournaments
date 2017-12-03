@@ -1,4 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);.btn-flat {
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.btn-flat {
   background-color: white;
   color: black !important;
 }
@@ -1471,6 +1481,10 @@ body {
 
 .inline-input-width {
   width: 200px !important;
+}
+
+.inline-input-result-width {
+  width: 30px !important;
 }
 
 .match-detail {

@@ -42,15 +42,30 @@
             <img src="{{ asset($fourthRoundMatch->second_club_emblem_dir. $fourthRoundMatch->second_club_emblem) }}"
                  width="60" height="60" class="img-fluid rounded-circle">
         </h6>
-        <h5 class="font-bold" style="margin-top: -20px">
-            <span class="badge badge-pill my-color-3">
-                @if($fourthRoundMatch->hasResults())
-                    {{ $fourthRoundMatch->result_first_club }} : {{ $fourthRoundMatch->result_second_club }}
-                @else
-                    --- : ---
-                @endif
-            </span>
-        </h5>
+        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
+            <div class="form-group" style="margin-top: -20px">
+                <div class="input-container">
+                    <span class="badge my-color-3">
+                        <input id="match-result-first-club" type="number" href="{{ route('match-update', $fourthRoundMatch->id) }}"
+                               name="result_first_club" class="inline-input-result-width match-detail"
+                               value="{{ $fourthRoundMatch->result_first_club }}" min="0" style="height: 18px; color: white">:
+                        <input id="match-result-second-club" type="number" href="{{ route('match-update', $fourthRoundMatch->id) }}"
+                               name="result_second_club" class="inline-input-result-width match-detail"
+                               value="{{ $fourthRoundMatch->result_second_club }}" min="0" style="height: 18px; color: white">
+                    </span>
+                </div>
+            </div>
+        @else
+            <h5 class="font-bold" style="margin-top: -20px">
+                <span class="badge badge-pill my-color-3">
+                    @if($fourthRoundMatch->hasResults())
+                        {{ $fourthRoundMatch->result_first_club }} : {{ $fourthRoundMatch->result_second_club }}
+                    @else
+                        --- : ---
+                    @endif
+                </span>
+            </h5>
+        @endif
         <hr>
     @endforeach
 </div>

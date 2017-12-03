@@ -28,6 +28,41 @@ class MatchController extends Controller
                     return response()->json('Match details cannot be updated. Start date or end date is invalid');
                 }
             }
+
+            if ($request->name === 'result_first_club'){
+
+                $result_first_club = $request->value;
+
+                if ($result_first_club >= 0){
+
+                    $match->result_first_club = $result_first_club;
+                    $match->save();
+
+                    return response()->json('Match details were updated');
+                }
+                else{
+
+                    return response()->json('Match details cannot be updated. Result cannot be negative number');
+                }
+            }
+
+            if ($request->name === 'result_second_club'){
+
+                $result_second_club = $request->value;
+
+                if ($result_second_club >= 0){
+
+                    $match->result_second_club = $result_second_club;
+                    $match->save();
+
+                    return response()->json('Match details were updated');
+                }
+                else{
+
+                    return response()->json('Match details cannot be updated. Result cannot be negative number');
+                }
+
+            }
         }
     }
 }

@@ -3,6 +3,8 @@
 
 // My styles
 
+@import "options";
+
 @import "date-time-picker";
 
 @import "flashy";
@@ -144,6 +146,9 @@ body {
 }
 .inline-input-width{
   width: 200px !important;
+}
+.inline-input-result-width{
+  width: 30px !important;
 }
 .match-detail{
   text-align: center

@@ -77,6 +77,7 @@
     <script src="{{ asset('js/tournaments/pagination-ajax.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('js/matches/matches.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/matches/match-update.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/matches/pagination-ajax.js') }}" type="text/javascript"></script>
 
     @if(Auth::check() && Auth::user()->haveClub() && !Auth::user()->isOrganizer())

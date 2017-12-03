@@ -109,6 +109,7 @@ Route::group(['middleware' => 'auth'], function (){
     });
 
     Route::group(['prefix' => 'contracts'], function (){
+
         Route::get('/menu', 'ContractController@menu')->name('contracts-menu');
         Route::post('/{contract}/sign', 'ContractController@sign')
             ->name('contract-sign');
@@ -158,6 +159,7 @@ Route::group(['middleware' => 'auth'], function (){
     });
 
     Route::group(['prefix' => 'tournaments'], function (){
+
         Route::get('/menu', 'TournamentController@menu')->name('tournaments-menu');
 
         Route::get('/{tournament}/show', 'TournamentController@show')
@@ -195,5 +197,10 @@ Route::group(['middleware' => 'auth'], function (){
 
         Route::get('/{tournament}/treeView', 'TournamentController@treeView')
             ->name('tournaments-tree-view');
+    });
+
+    Route::group(['prefix' => 'matches'], function (){
+
+        Route::put('/{match}/update', 'MatchController@update')->name('match-update');
     });
 });

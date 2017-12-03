@@ -137,6 +137,13 @@ function getListWithMatches(url) {
                 removeAnimation(matchesList, 'fadeIn');
                 removeAnimation(paginations, 'fadeIn');
             }, 800);
+
+            var minDate = $('.matches-list').data('tournament-start-date');
+            var maxDate = $('.matches-list').data('tournament-end-date');
+
+            // Date time pickers - init
+            $('.start-date-and-time').bootstrapMaterialDatePicker({weekStart : 1, format : 'DD/MM/YYYY HH:mm',
+                minDate : minDate, maxDate : maxDate});
         }
     });
 }

@@ -50,12 +50,12 @@ class TournamentController extends Controller
         if (request()->ajax()){
 
             $view = view('layouts.elements.matches.firstRoundMatches',
-                compact('firstRoundMatches'))->render();
+                compact('tournament', 'firstRoundMatches'))->render();
             return response()->json($view);
         }
         else{
             return view('layouts.elements.matches.firstRoundMatches',
-                compact('firstRoundMatches'));
+                compact('tournament', 'firstRoundMatches'));
         }
     }
 
@@ -76,12 +76,14 @@ class TournamentController extends Controller
         if (request()->ajax()){
 
             $view = view('layouts.elements.matches.secondRoundMatches',
-                compact('secondRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
+                compact('tournament', 'isFinalRound',
+                    'secondRoundMatches', 'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
             return response()->json($view);
         }
         else{
             return view('layouts.elements.matches.secondRoundMatches',
-                compact('secondRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'));
+                compact('tournament', 'isFinalRound',
+                    'secondRoundMatches', 'thirdPlaceMatchId', 'firstPlaceMatchId'));
         }
     }
 
@@ -102,12 +104,14 @@ class TournamentController extends Controller
         if (request()->ajax()){
 
             $view = view('layouts.elements.matches.thirdRoundMatches',
-                compact('thirdRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
+                compact('tournament', 'isFinalRound',
+                    'thirdRoundMatches', 'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
             return response()->json($view);
         }
         else{
             return view('layouts.elements.matches.thirdRoundMatches',
-                compact('thirdRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'));
+                compact('tournament', 'isFinalRound',
+                    'thirdRoundMatches',  'thirdPlaceMatchId', 'firstPlaceMatchId'));
         }
     }
 
@@ -128,12 +132,14 @@ class TournamentController extends Controller
         if (request()->ajax()){
 
             $view = view('layouts.elements.matches.fourthRoundMatches',
-                compact('fourthRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
+                compact('tournament', 'isFinalRound',
+                    'fourthRoundMatches',  'thirdPlaceMatchId', 'firstPlaceMatchId'))->render();
             return response()->json($view);
         }
         else{
             return view('layouts.elements.matches.fourthRoundMatches',
-                compact('fourthRoundMatches', 'isFinalRound', 'thirdPlaceMatchId', 'firstPlaceMatchId'));
+                compact('tournament', 'isFinalRound',
+                    'fourthRoundMatches', 'thirdPlaceMatchId', 'firstPlaceMatchId'));
         }
     }
 

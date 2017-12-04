@@ -29,6 +29,12 @@
                     {{ $tournament->game_system }}
                 </span>
             </h1>
+            <h1 class="text-display" style="margin-bottom: 0">
+                <span class="badge badge-pill my-color">
+                    <i class="fa fa-soccer-ball-o fa-fw" style="color: gold"></i>
+                    {{ $tournament->completedMatches() }}%
+                </span>
+            </h1>
             <h1 class="text-display">
                 <span class="badge badge-pill my-color">
                     <i class="fa fa-users fa-fw" style="color: limegreen"></i>

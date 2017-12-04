@@ -43,14 +43,17 @@ class MatchController extends Controller
                         if ($match->result_first_club > $match->result_second_club){
                             $match->winner_club_id = $match->first_club_id;
                             $match->loser_club_id = $match->second_club_id;
+                            $match->status = 'completed';
                         }
                         elseif ($match->result_first_club < $match->result_second_club){
                             $match->winner_club_id = $match->second_club_id;
                             $match->loser_club_id = $match->first_club_id;
+                            $match->status = 'completed';
                         }
                         else{
                             $match->winner_club_id = null;
                             $match->loser_club_id = null;
+                            $match->status = 'created';
                         }
 
                         $match->save();
@@ -67,6 +70,7 @@ class MatchController extends Controller
                     $match->result_first_club = null;
                     $match->winner_club_id = null;
                     $match->loser_club_id = null;
+                    $match->status = 'created';
                     $match->save();
 
                     $this->updateMatches($match->tournament);
@@ -92,14 +96,17 @@ class MatchController extends Controller
                         if ($match->result_first_club > $match->result_second_club){
                             $match->winner_club_id = $match->first_club_id;
                             $match->loser_club_id = $match->second_club_id;
+                            $match->status = 'completed';
                         }
                         elseif ($match->result_first_club < $match->result_second_club){
                             $match->winner_club_id = $match->second_club_id;
                             $match->loser_club_id = $match->first_club_id;
+                            $match->status = 'completed';
                         }
                         else{
                             $match->winner_club_id = null;
                             $match->loser_club_id = null;
+                            $match->status = 'created';
                         }
 
                         $match->save();
@@ -116,6 +123,7 @@ class MatchController extends Controller
                     $match->result_second_club = null;
                     $match->winner_club_id = null;
                     $match->loser_club_id = null;
+                    $match->status = 'created';
                     $match->save();
 
                     $this->updateMatches($match->tournament);
@@ -143,12 +151,12 @@ class MatchController extends Controller
             $nextRoundMatches = $tournament->matches->where('round', $j);
             $isFinalRound = $nextRoundMatches->count() === $numberOfRounds ? true : false;
 
-            $winners = array();
+            $winnersAndLosers = array();
             $counter = 0;
 
             foreach ($roundMatches as $roundMatch){
-                $winners[$counter]['winner_club_id'] = $roundMatch->winner_club_id;
-                $winners[$counter]['loser_club_id'] = $roundMatch->loser_club_id;
+                $winnersAndLosers[$counter]['winner_club_id'] = $roundMatch->winner_club_id;
+                $winnersAndLosers[$counter]['loser_club_id'] = $roundMatch->loser_club_id;
 
                 $counter++;
             }
@@ -157,15 +165,15 @@ class MatchController extends Controller
 
                 // Final match
                 $finalMatch = $nextRoundMatches->first();
-                $finalMatch->first_club_id = $winners[0]['winner_club_id'];
-                $finalMatch->second_club_id = $winners[1]['winner_club_id'];
+                $finalMatch->first_club_id = $winnersAndLosers[0]['winner_club_id'];
+                $finalMatch->second_club_id = $winnersAndLosers[1]['winner_club_id'];
 
                 $finalMatch->save();
 
                 // Third place match
                 $thirdPlaceMatch = $nextRoundMatches->last();
-                $thirdPlaceMatch->first_club_id = $winners[0]['loser_club_id'];
-                $thirdPlaceMatch->second_club_id = $winners[1]['loser_club_id'];
+                $thirdPlaceMatch->first_club_id = $winnersAndLosers[0]['loser_club_id'];
+                $thirdPlaceMatch->second_club_id = $winnersAndLosers[1]['loser_club_id'];
 
                 $thirdPlaceMatch->save();
             }
@@ -175,8 +183,8 @@ class MatchController extends Controller
 
                 foreach ($nextRoundMatches as $nextRoundMatch){
 
-                    $nextRoundMatch->first_club_id = $winners[$counter]['winner_club_id'];
-                    $nextRoundMatch->second_club_id = $winners[$counter+1]['winner_club_id'];
+                    $nextRoundMatch->first_club_id = $winnersAndLosers[$counter]['winner_club_id'];
+                    $nextRoundMatch->second_club_id = $winnersAndLosers[$counter+1]['winner_club_id'];
 
                     $nextRoundMatch->save();
                     $counter++;

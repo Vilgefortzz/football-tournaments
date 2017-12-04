@@ -103,4 +103,12 @@ class Tournament extends Model
     public function numberOfFirstRoundMatches(){
         return $this->matches->where('round', 1)->count();
     }
+
+    public function completedMatches(){
+
+        $numberOfCompletedMatches = $this->matches->where('status', 'completed')->count();
+        $numberOfAllMatches = $this->matches->count();
+
+        return $numberOfCompletedMatches/$numberOfAllMatches * 100;
+    }
 }

@@ -30,6 +30,8 @@ class MatchController extends Controller
                 }
             }
 
+            $tournament = $match->tournament;
+
             if ($request->name === 'result_first_club'){
 
                 $result_first_club = intval($request->value);
@@ -44,20 +46,31 @@ class MatchController extends Controller
                             $match->winner_club_id = $match->first_club_id;
                             $match->loser_club_id = $match->second_club_id;
                             $match->status = 'completed';
+
+                            $tournament->in_game_clubs--;
+                            $tournament->eliminated_clubs++;
                         }
                         elseif ($match->result_first_club < $match->result_second_club){
                             $match->winner_club_id = $match->second_club_id;
                             $match->loser_club_id = $match->first_club_id;
                             $match->status = 'completed';
+
+                            $tournament->in_game_clubs--;
+                            $tournament->eliminated_clubs++;
                         }
                         else{
                             $match->winner_club_id = null;
                             $match->loser_club_id = null;
                             $match->status = 'created';
+
+                            $tournament->in_game_clubs++;
+                            $tournament->eliminated_clubs--;
                         }
 
                         $match->save();
                         $this->updateMatches($match->tournament);
+
+                        $tournament->save();
                     }
                     else{
                         $match->save();
@@ -74,6 +87,11 @@ class MatchController extends Controller
                     $match->save();
 
                     $this->updateMatches($match->tournament);
+
+                    $tournament->in_game_clubs++;
+                    $tournament->eliminated_clubs--;
+
+                    $tournament->save();
 
                     return response()->json('Match details were updated');
                 }
@@ -97,20 +115,31 @@ class MatchController extends Controller
                             $match->winner_club_id = $match->first_club_id;
                             $match->loser_club_id = $match->second_club_id;
                             $match->status = 'completed';
+
+                            $tournament->in_game_clubs--;
+                            $tournament->eliminated_clubs++;
                         }
                         elseif ($match->result_first_club < $match->result_second_club){
                             $match->winner_club_id = $match->second_club_id;
                             $match->loser_club_id = $match->first_club_id;
                             $match->status = 'completed';
+
+                            $tournament->in_game_clubs--;
+                            $tournament->eliminated_clubs++;
                         }
                         else{
                             $match->winner_club_id = null;
                             $match->loser_club_id = null;
                             $match->status = 'created';
+
+                            $tournament->in_game_clubs++;
+                            $tournament->eliminated_clubs--;
                         }
 
                         $match->save();
                         $this->updateMatches($match->tournament);
+
+                        $tournament->save();
                     }
                     else{
                         $match->save();
@@ -127,6 +156,11 @@ class MatchController extends Controller
                     $match->save();
 
                     $this->updateMatches($match->tournament);
+
+                    $tournament->in_game_clubs++;
+                    $tournament->eliminated_clubs--;
+
+                    $tournament->save();
 
                     return response()->json('Match details were updated');
                 }

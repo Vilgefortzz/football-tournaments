@@ -42,8 +42,8 @@ class TournamentController extends Controller
 
         $firstRoundMatches = $tournament->matches()
             ->where('round', 1)
-            ->whereNotNull('first_club')
-            ->whereNotNull('second_club')
+            ->whereNotNull('first_club_id')
+            ->whereNotNull('second_club_id')
             ->orderBy('start_date_and_time', 'asc')
             ->paginate(2);
 
@@ -63,8 +63,8 @@ class TournamentController extends Controller
 
         $secondRoundMatches = $tournament->matches()
             ->where('round', 2)
-            ->whereNotNull('first_club')
-            ->whereNotNull('second_club')
+            ->whereNotNull('first_club_id')
+            ->whereNotNull('second_club_id')
             ->orderBy('start_date_and_time', 'asc')
             ->paginate(2);
 
@@ -91,8 +91,8 @@ class TournamentController extends Controller
 
         $thirdRoundMatches = $tournament->matches()
             ->where('round', 3)
-            ->whereNotNull('first_club')
-            ->whereNotNull('second_club')
+            ->whereNotNull('first_club_id')
+            ->whereNotNull('second_club_id')
             ->orderBy('start_date_and_time', 'asc')
             ->paginate(2);
 
@@ -119,8 +119,8 @@ class TournamentController extends Controller
 
         $fourthRoundMatches = $tournament->matches()
             ->where('round', 4)
-            ->whereNotNull('first_club')
-            ->whereNotNull('second_club')
+            ->whereNotNull('first_club_id')
+            ->whereNotNull('second_club_id')
             ->orderBy('start_date_and_time', 'asc')
             ->paginate(2);
 
@@ -438,12 +438,8 @@ class TournamentController extends Controller
             $j = $i+1;
 
             $match = new Match;
-            $match->first_club = $teams->get($i)->name;
-            $match->first_club_emblem_dir = $teams->get($i)->emblem_dir;
-            $match->first_club_emblem = $teams->get($i)->emblem;
-            $match->second_club = $teams->get($j)->name;
-            $match->second_club_emblem_dir = $teams->get($j)->emblem_dir;
-            $match->second_club_emblem = $teams->get($j)->emblem;
+            $match->first_club_id = $teams->get($i)->id;
+            $match->second_club_id = $teams->get($j)->id;
             $match->round = 1;
             $match->tournament_id = $tournamentId;
             $match->save();

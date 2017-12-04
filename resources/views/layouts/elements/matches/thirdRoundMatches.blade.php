@@ -34,12 +34,12 @@
             </h5>
         @endif
         <h6>
-            <img src="{{ asset($thirdRoundMatch->first_club_emblem_dir. $thirdRoundMatch->first_club_emblem) }}"
+            <img src="{{ asset($thirdRoundMatch->getFirstClub()->emblem_dir. $thirdRoundMatch->getFirstClub()->emblem) }}"
                  width="60" height="60" class="img-fluid rounded-circle">
-            {{ $thirdRoundMatch->first_club}}
+            {{ $thirdRoundMatch->getFirstClub()->name}}
             <span class="font-bold">vs</span>
-            {{ $thirdRoundMatch->second_club}}
-            <img src="{{ asset($thirdRoundMatch->second_club_emblem_dir. $thirdRoundMatch->second_club_emblem) }}"
+            {{ $thirdRoundMatch->getSecondClub()->name}}
+            <img src="{{ asset($thirdRoundMatch->getSecondClub()->emblem_dir. $thirdRoundMatch->getSecondClub()->emblem) }}"
                  width="60" height="60" class="img-fluid rounded-circle">
         </h6>
         @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())

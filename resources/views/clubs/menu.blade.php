@@ -60,7 +60,7 @@
                 </h2>
                 <p class="animate-text">
                     @if(Auth::user()->isFootballer())
-                        See all footballers, search and find the right one, see their stats, goals, assists.
+                        See all footballers, search and find the right one.
                     @elseif(Auth::user()->isClubPresident())
                         Try to sign the contracts, search footballer you want - by preferred positions and create
                         the unbeatable team.

@@ -27,14 +27,6 @@
                     @endif
                 </span>
             </h1>
-            <h1 class="text-display">
-                <span class="badge badge-pill my-color">
-                    <i class="fa fa-soccer-ball-o fa-fw" aria-hidden="true"></i>
-                    {{ $requestToJoinTheClub->user->goals }} |
-                    <i class="fa fa-mail-forward fa-fw" aria-hidden="true"></i>
-                    {{ $requestToJoinTheClub->user->assists }}
-                </span>
-            </h1>
             <h1 class="text-display" style="margin-bottom: 0">
                 <span class="badge badge-pill my-color-3">
                     <i class="fa fa-male fa-fw" aria-hidden="true"></i>

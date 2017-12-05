@@ -27,12 +27,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $tournaments_win_rate
  * @property int $trophies_win_rate
  * @property int $goals
- * @property int $assists
+ * @property int $conceded_goals
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Club whereAssists($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Club whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Club whereCompletedTournaments($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Club whereConcededGoals($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Club whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Club whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Club whereEmblem($value)
@@ -133,5 +133,16 @@ class Club extends Model
         $placeOnTheLeaderboard = $clubsLeaderboard->pluck('id')->search($this->id) + 1;
 
         return $placeOnTheLeaderboard;
+    }
+
+    public function goalDifference(){
+
+        $goalDifference = $this->goals - $this->conceded_goals;
+
+        if ($goalDifference > 0){
+            return '+'. $goalDifference;
+        }
+
+        return $goalDifference;
     }
 }

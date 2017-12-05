@@ -14,6 +14,16 @@
                 {{ $club->country }} | {{ $club->city }}
             </span>
         </h1>
+        <h1 class="text-display">
+            <span class="badge badge-pill my-color">
+                <i class="fa fa-futbol-o fa-fw" aria-hidden="true" style="color: gold"></i>
+                {{ $club->goals }} |
+                <i class="fa fa-futbol-o fa-fw" aria-hidden="true" style="color: black"></i>
+                {{ $club->conceded_goals }} |
+                <i class="fa fa-balance-scale fa-fw" aria-hidden="true" style="color: lightgoldenrodyellow"></i>
+                {{ $club->goalDifference() }}
+            </span>
+        </h1>
         @if($club->isYourClub())
             <h1 class="text-display">
              <span class="badge badge-pill my-color-4">
@@ -38,12 +48,6 @@
             </h6>
             <h6 class="animate-text">
                <i class="fa fa-address-card fa-fw"></i> Footballers in club: {{ $club->number_of_footballers }}
-            </h6>
-            <h6 class="animate-text">
-                <i class="fa fa-futbol-o"></i> All Goals: {{ $club->goals }}
-            </h6>
-            <h6 class="animate-text">
-                <i class="fa fa-mail-forward"></i> All Assists: {{ $club->assists }}
             </h6>
             @if(Auth::user()->isFootballer() && !Auth::user()->haveClub())
                 <h5 class="animate-text">

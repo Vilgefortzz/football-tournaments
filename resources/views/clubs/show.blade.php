@@ -32,10 +32,19 @@
                             <h1 class="text-header text-center">
                                 {{ $club->name }}
                             </h1>
-                            <h1 class="text-display text-center" style="margin-bottom: 30px">
+                            <h1 class="text-display text-center" style="margin-bottom: 0">
                                 <span class="badge badge-pill my-color-3">
                                     <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
                                     {{ $club->country }} | {{ $club->city }}
+                                </span>
+                            </h1>
+                            <h1 class="text-display text-center" style="margin-bottom: 30px">
+                                <span class="badge badge-pill my-color">
+                                    <i class="fa fa-futbol-o fa-fw" aria-hidden="true" style="color: gold"></i>
+                                    {{ $club->goals }} |
+                                    <i class="fa fa-futbol-o fa-fw" aria-hidden="true" style="color: black"></i>
+                                    {{ $club->conceded_goals }} |
+                                    Goal difference: {{ $club->goalDifference() }}
                                 </span>
                             </h1>
                             <div class="text-clubs text-center">
@@ -47,12 +56,6 @@
                                 </h6>
                                 <h6 class="animate-text">
                                     <i class="fa fa-address-card fa-fw"></i> Staff in club: {{ $club->number_of_footballers }}
-                                </h6>
-                                <h6 class="animate-text">
-                                    <i class="fa fa-futbol-o"></i> All Goals: {{ $club->goals }}
-                                </h6>
-                                <h6 class="animate-text">
-                                    <i class="fa fa-mail-forward"></i> All Assists: {{ $club->assists }}
                                 </h6>
                             </div>
                         </div>
@@ -94,8 +97,6 @@
                                         <th><i class="fa fa-users fa-fw"></i>Name</th>
                                         <th><i class="fa fa-shield fa-fw"></i>Avatar</th>
                                         <th><i class="fa fa-male fa-fw"></i>Main football position</th>
-                                        <th><i class="fa fa-soccer-ball-o fa-fw"></i>Goals</th>
-                                        <th><i class="fa fa-mail-forward fa-fw"></i>Assists</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -108,8 +109,6 @@
                                                  width="25" height="25">
                                         </td>
                                         <td class="font-bold">{{ $clubPresident->main_football_position }}</td>
-                                        <td class="font-bold">{{ $clubPresident->goals }}</td>
-                                        <td class="font-bold">{{ $clubPresident->assists }}</td>
                                     </tr>
                                     @foreach($footballers as $footballer)
                                         <tr>
@@ -119,8 +118,6 @@
                                                      width="25" height="25">
                                             </td>
                                             <td class="font-bold">{{ $footballer->main_football_position }}</td>
-                                            <td class="font-bold">{{ $footballer->goals }}</td>
-                                            <td class="font-bold">{{ $footballer->assists }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>

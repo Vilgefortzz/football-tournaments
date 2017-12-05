@@ -13,9 +13,6 @@
                 <th><i class="fa fa-flag fa-fw"></i>Country</th>
                 <th><i class="fa fa-flag-o fa-fw"></i>City</th>
                 <th><i class="fa fa-male fa-fw"></i>Main football position</th>
-                <th><i class="fa fa-soccer-ball-o fa-fw"></i>Goals</th>
-                <th><i class="fa fa-mail-forward fa-fw"></i>Assists</th>
-                <th><i class="fa fa-trophy fa-fw"></i>Won Trophies</th>
             </tr>
             </thead>
             <tbody>
@@ -30,9 +27,6 @@
                     <td class="font-bold">{{ $footballer->country }}</td>
                     <td class="font-bold">{{ $footballer->city }}</td>
                     <td class="font-bold">{{ $footballer->main_football_position }}</td>
-                    <td class="font-bold">{{ $footballer->goals }}</td>
-                    <td class="font-bold">{{ $footballer->assists }}</td>
-                    <td class="font-bold">{{ $footballer->won_trophies }}</td>
                 </tr>
             @endforeach
             </tbody>

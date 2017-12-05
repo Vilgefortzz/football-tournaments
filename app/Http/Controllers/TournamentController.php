@@ -68,10 +68,11 @@ class TournamentController extends Controller
             ->orderBy('start_date_and_time', 'asc')
             ->paginate(2);
 
-        $isFinalRound = $tournament->matches->last()->round === 2 ? true : false;
+        $numberOfMatches = $tournament->numberOfMatches();
 
-        $thirdPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id)->id;
-        $firstPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id - 1)->id;
+        $isFinalRound = $tournament->isFinalRound(2);
+        $thirdPlaceMatchId = $tournament->matches->get($numberOfMatches - 1)->id;
+        $firstPlaceMatchId = $tournament->matches->get($numberOfMatches - 2)->id;
 
         if (request()->ajax()){
 
@@ -96,10 +97,11 @@ class TournamentController extends Controller
             ->orderBy('start_date_and_time', 'asc')
             ->paginate(2);
 
-        $isFinalRound = $tournament->matches->last()->round === 3 ? true : false;
+        $numberOfMatches = $tournament->numberOfMatches();
 
-        $thirdPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id)->id;
-        $firstPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id - 1)->id;
+        $isFinalRound = $tournament->isFinalRound(3);
+        $thirdPlaceMatchId = $tournament->matches->get($numberOfMatches - 1)->id;
+        $firstPlaceMatchId = $tournament->matches->get($numberOfMatches - 2)->id;
 
         if (request()->ajax()){
 
@@ -124,10 +126,11 @@ class TournamentController extends Controller
             ->orderBy('start_date_and_time', 'asc')
             ->paginate(2);
 
-        $isFinalRound = $tournament->matches->last()->round === 4 ? true : false;
+        $numberOfMatches = $tournament->numberOfMatches();
 
-        $thirdPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id)->id;
-        $firstPlaceMatchId = $tournament->matches->find($tournament->matches->last()->id - 1)->id;
+        $isFinalRound = $tournament->isFinalRound(4);
+        $thirdPlaceMatchId = $tournament->matches->get($numberOfMatches - 1)->id;
+        $firstPlaceMatchId = $tournament->matches->get($numberOfMatches - 2)->id;
 
         if (request()->ajax()){
 

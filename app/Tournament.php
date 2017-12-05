@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $country
  * @property string $city
  * @property int $tournament_points
- * @property int $number_of_seats
+ * @property string $number_of_seats
  * @property int $number_of_occupied_seats
  * @property int $number_of_available_seats
  * @property int $in_game_clubs
@@ -94,6 +94,10 @@ class Tournament extends Model
 
         $authUserId = Auth::user()->id;
         return $this->user->id == $authUserId ? true : false;
+    }
+
+    public function isFinalRound(int $round){
+        return $this->matches->last()->round === $round ? true : false;
     }
 
     public function numberOfMatches(){

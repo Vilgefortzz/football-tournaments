@@ -189,6 +189,9 @@ Route::group(['middleware' => 'auth'], function (){
         Route::post('/{tournament}/leave', 'TournamentController@leave')
             ->name('tournament-leave');
 
+        Route::post('/{tournament}/close', 'TournamentController@close')
+            ->name('tournament-close');
+
         Route::get('/listAndSearch', 'TournamentController@listAndSearch')
             ->name('tournaments-list-search');
 

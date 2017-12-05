@@ -271,6 +271,22 @@ class TournamentController extends Controller
         }
     }
 
+    public function close(Tournament $tournament){
+
+        if (request()->ajax()){
+            if (Auth::user()->isOrganizer() && $tournament->isYourTournament()
+                && $tournament->isOngoing() && $tournament->areAllMatchesCompleted()){
+
+                $tournament->status = 'closed';
+                $tournament->save();
+
+                return response()->json('You have successfully closed this tournament');
+            }
+
+            return response()->json('Cannot close this tournament');
+        }
+    }
+
     public function treeView(Tournament $tournament){
 
         if (request()->ajax()){

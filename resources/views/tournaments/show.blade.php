@@ -88,6 +88,13 @@
                                             </button>
                                         </h6>
                                     @endif
+                                @elseif(Auth::user()->isOrganizer() && $tournament->isYourTournament()
+                                            && $tournament->isOngoing() && $tournament->areAllMatchesCompleted())
+                                    <h6 class="animate-text">
+                                        <button href="{{ route('tournament-close', $tournament->id) }}" class="btn my-color-3 close-tournament">
+                                            <i class="fa fa-circle fa-lg fa-fw"></i> Close tournament
+                                        </button>
+                                    </h6>
                                 @endif
                             </div>
                         </div>

@@ -111,4 +111,8 @@ class Tournament extends Model
 
         return $numberOfCompletedMatches/$numberOfAllMatches * 100;
     }
+
+    public function areAllMatchesCompleted(){
+        return $this->completedMatches() === 100 ? true : false;
+    }
 }

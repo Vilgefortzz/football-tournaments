@@ -127,6 +127,22 @@ class Club extends Model
         return $this->tournaments->where('status', 'closed')->count();
     }
 
+    public function computeMatchesWinRate(){
+        $this->matches_win_rate = $this->won_matches / $this->played_matches * 100;
+    }
+
+    public function computeTrophiesWinRate(){
+        $this->trophies_win_rate = $this->won_trophies / $this->completed_tournaments * 100;
+    }
+
+    public function computeTournamentsWinRate(){
+       $this->tournaments_win_rate = $this->won_tournaments / $this->completed_tournaments * 100;
+    }
+
+    public function addTournamentPoints(int $tournamentPoints){
+        $this->tournament_points += $tournamentPoints;
+    }
+
     public function placeOnTheLeaderboard(){
 
         $clubsLeaderboard = Club::orderBy('tournament_points', 'desc')->get();

@@ -25,7 +25,11 @@ class TournamentController extends Controller
     public function show(Tournament $tournament){
 
         $clubs = $tournament->clubs;
-        $numberOfRounds = $tournament->matches->last()->round;
+        $numberOfRounds = null;
+
+        if (!$tournament->isOpen()){
+            $numberOfRounds = $tournament->matches->last()->round;
+        }
 
         if (request()->ajax()){
 
@@ -280,6 +284,8 @@ class TournamentController extends Controller
             if (Auth::user()->isOrganizer() && $tournament->isYourTournament()
                 && $tournament->isOngoing() && $tournament->areAllMatchesCompleted()){
 
+                $this->enterStats($tournament);
+
                 $tournament->status = 'closed';
                 $tournament->save();
 
@@ -486,5 +492,68 @@ class TournamentController extends Controller
         $match->round = $tmpRound - 1;
 
         $match->save();
+    }
+
+    private function enterStats(Tournament $tournament){
+
+        $clubs = $tournament->clubs;
+        $matches = $tournament->matches;
+
+        // All clubs
+        foreach ($clubs as $club){
+
+            $playedMatches = $tournament->matches()->where('first_club_id', $club->id)
+                ->orWhere('second_club_id', $club->id)->get();
+
+            $numberOfPlayedMatches = $playedMatches->count();
+            $wonMatches = $tournament->matches()->where('winner_club_id', $club->id)->count();
+
+            $goals = 0;
+            $concededGoals = 0;
+
+            foreach ($playedMatches as $playedMatch){
+
+                if ($playedMatch->first_club_id === $club->id){
+                    $goals += $playedMatch->result_first_club;
+                    $concededGoals += $playedMatch->result_second_club;
+                }
+                else{
+                    $goals += $playedMatch->result_second_club;
+                    $concededGoals += $playedMatch->result_first_club;
+                }
+            }
+
+            $club->played_matches += $numberOfPlayedMatches;
+            $club->completed_tournaments++;
+            $club->won_matches = $wonMatches;
+            $club->computeMatchesWinRate();
+            $club->computeTournamentsWinRate();
+            $club->computeTrophiesWinRate();
+            $club->goals = $goals;
+            $club->conceded_goals = $concededGoals;
+
+            $club->save();
+        }
+
+        // Winners
+        $tournamentClubWithThirdPlace = $clubs->find($matches->get($matches->keys()->last())->winner_club_id);
+        $tournamentClubWithSecondPlace = $clubs->find($matches->get($matches->keys()->last() - 1)->loser_club_id);
+        $tournamentClubWithFirstPlace = $clubs->find($matches->get($matches->keys()->last() - 1)->winner_club_id);
+
+        $tournamentClubWithThirdPlace->won_trophies++;
+        $tournamentClubWithThirdPlace->computeTrophiesWinRate();
+        $tournamentClubWithThirdPlace->save();
+
+        $tournamentClubWithSecondPlace->won_trophies++;
+        $tournamentClubWithSecondPlace->computeTrophiesWinRate();
+        $tournamentClubWithSecondPlace->save();
+
+        $tournamentClubWithFirstPlace->won_tournaments++;
+        $tournamentClubWithFirstPlace->won_trophies++;
+        $tournamentClubWithFirstPlace->computeTournamentsWinRate();
+        $tournamentClubWithFirstPlace->computeTrophiesWinRate();
+        $tournamentClubWithFirstPlace->addTournamentPoints($tournament->tournament_points);
+        $tournamentClubWithFirstPlace->save();
+
     }
 }

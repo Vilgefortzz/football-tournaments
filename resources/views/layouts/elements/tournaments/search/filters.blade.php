@@ -55,7 +55,6 @@
         <i class="fa fa-users fa-lg fa-fw"></i>
         <select id="tournaments-filter-number-of-seats" class="search-select" href="{{ route('tournaments-search') }}">
             <option value="0" selected="selected">Select number of seats</option>
-            <option value="2">2</option>
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16</option>

@@ -44,8 +44,7 @@ class TournamentsTableSeeder extends Seeder
             'tournament_points' => 150,
             'number_of_seats' => '4',
             'number_of_available_seats' => 4,
-            'game_system' => 'single elimination',
-            'user_id' => 5
+            'game_system' => 'single elimination'
         ]);
 
         factory(Tournament::class)->create([
@@ -55,8 +54,8 @@ class TournamentsTableSeeder extends Seeder
             'country' => 'France',
             'city' => 'Paris',
             'tournament_points' => 320,
-            'number_of_seats' => '2',
-            'number_of_available_seats' => 2,
+            'number_of_seats' => '4',
+            'number_of_available_seats' => 4,
             'game_system' => 'single elimination',
         ]);
 

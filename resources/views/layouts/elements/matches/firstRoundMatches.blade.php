@@ -2,7 +2,7 @@
      data-tournament-start-date="{{ \Carbon\Carbon::parse($tournament->start_date)->format('d/m/Y') }}"
      data-tournament-end-date="{{ \Carbon\Carbon::parse($tournament->end_date)->format('d/m/Y') }}">
     @foreach($firstRoundMatches as $firstRoundMatch)
-        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
+        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament() && $tournament->isOngoing())
             <div class="form-group">
                 <div class="input-container">
                     <input id="match-start-date-and-time" type="text" href="{{ route('match-update', $firstRoundMatch->id) }}"
@@ -31,7 +31,7 @@
             <img src="{{ asset($firstRoundMatch->getSecondClub()->emblem_dir. $firstRoundMatch->getSecondClub()->emblem) }}"
                  width="60" height="60" class="img-fluid rounded-circle">
         </h6>
-        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
+        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament() && $tournament->isOngoing())
             <div class="form-group" style="margin-top: -20px">
                 <div class="input-container">
                     <span class="badge my-color-3">

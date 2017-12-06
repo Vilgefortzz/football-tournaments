@@ -64,6 +64,13 @@
                             Start: {{ \Carbon\Carbon::parse($tournament->start_date)->format('d/m/Y') }}
                         </span>
                     </h1>
+                    @if($tournament->areAllMatchesCompleted())
+                        <div class="text-center animate-text">
+                            <button href="{{ route('tournament-close', $tournament->id) }}" class="btn my-color close-tournament">
+                                <i class="fa fa-close fa-lg fa-fw"></i> Close tournament
+                            </button>
+                        </div>
+                    @endif
                 </div>
             @endforeach
             <div class="container pagination-links" style="margin-top: 15px">

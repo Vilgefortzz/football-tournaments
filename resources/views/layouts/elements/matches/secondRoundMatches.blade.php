@@ -13,7 +13,7 @@
                 @endif
             </h5>
         @endif
-        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
+        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament() && $tournament->isOngoing())
             <div class="form-group">
                 <div class="input-container">
                     <input id="match-start-date-and-time" type="text" href="{{ route('match-update', $secondRoundMatch->id) }}"
@@ -42,7 +42,7 @@
             <img src="{{ asset($secondRoundMatch->getSecondClub()->emblem_dir. $secondRoundMatch->getSecondClub()->emblem) }}"
                  width="60" height="60" class="img-fluid rounded-circle">
         </h6>
-        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
+        @if(Auth::user()->isOrganizer() && $tournament->isYourTournament() && $tournament->isOngoing())
             <div class="form-group" style="margin-top: -20px">
                 <div class="input-container">
                     <span class="badge my-color-3">

@@ -73,6 +73,7 @@
 
     <script src="{{ asset('js/tournaments/tournament-join.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/tournaments/tournament-leave.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/tournaments/tournament-close.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/tournaments/search/search-with-filters.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/tournaments/pagination-ajax.js') }}" type="text/javascript"></script>
 

@@ -44,10 +44,15 @@
                     <h1 class="text-header text-center">
                         {{ $tournament->name }}
                     </h1>
-                    <h1 class="text-display text-center" style="margin-bottom: 30px">
+                    <h1 class="text-display text-center" style="margin-bottom: 0">
                         <span class="badge badge-pill my-color-3">
                             <i class="fa fa-flag-o fa-fw" aria-hidden="true"></i>
                             {{ $tournament->country }} | {{ $tournament->city }}
+                        </span>
+                    </h1>
+                    <h1 class="text-display text-center" style="margin-bottom: 30px">
+                        <span class="badge badge-pill my-color">
+                            {{ $tournament->status }}
                         </span>
                     </h1>
                     <div class="text-clubs text-center">
@@ -77,7 +82,7 @@
                         @elseif(Auth::user()->isOrganizer() && $tournament->isYourTournament()
                                  && $tournament->isOngoing() && $tournament->areAllMatchesCompleted())
                             <h6 class="animate-text">
-                                <button href="{{ route('tournament-close', $tournament->id) }}" class="btn my-color-3 close-tournament">
+                                <button href="{{ route('tournament-close', $tournament->id) }}" class="btn my-color close-tournament">
                                     <i class="fa fa-close fa-lg fa-fw"></i> Close tournament
                                 </button>
                             </h6>
@@ -90,7 +95,7 @@
                 <ul class="nav nav-tabs">
                     @if(!$tournament->isOpen())
                         <li>
-                            <a href="#tab-main-1" class="badge badge-pill tab-main-matches active" data-toggle="tab">
+                            <a id="tab-tournament-tree" href="#tab-main-1" class="badge badge-pill tab-main-matches active" data-toggle="tab">
                                 <i class="fa fa-trophy fa-fw" aria-hidden="true"></i>
                                 Tournament tree
                             </a>
@@ -98,7 +103,7 @@
                         <li>
                             <a id="tab-matches" href="#tab-main-2" class="badge badge-pill" data-toggle="tab">
                                 <i class="fa fa-soccer-ball-o fa-fw" aria-hidden="true"></i>
-                                @if(Auth::user()->isOrganizer() && $tournament->isYourTournament())
+                                @if(Auth::user()->isOrganizer() && $tournament->isYourTournament() && $tournament->isOngoing())
                                     Matches/Enter results
                                 @else
                                     Matches

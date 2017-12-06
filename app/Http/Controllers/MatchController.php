@@ -34,7 +34,8 @@ class MatchController extends Controller
 
             if ($request->name === 'result_first_club'){
 
-                $result_first_club = intval($request->value);
+                $result_first_club = $request->value !== null ? intval($request->value) : null;
+                $match->result_first_club = $result_first_club;
 
                 if ($result_first_club !== null && $result_first_club >= 0){
 
@@ -45,26 +46,32 @@ class MatchController extends Controller
                         if ($match->result_first_club > $match->result_second_club){
                             $match->winner_club_id = $match->first_club_id;
                             $match->loser_club_id = $match->second_club_id;
-                            $match->status = 'completed';
 
-                            $tournament->in_game_clubs--;
-                            $tournament->eliminated_clubs++;
+                            if ($match->status !== 'completed'){
+                                $match->status = 'completed';
+                                $tournament->in_game_clubs--;
+                                $tournament->eliminated_clubs++;
+                            }
                         }
                         elseif ($match->result_first_club < $match->result_second_club){
                             $match->winner_club_id = $match->second_club_id;
                             $match->loser_club_id = $match->first_club_id;
-                            $match->status = 'completed';
 
-                            $tournament->in_game_clubs--;
-                            $tournament->eliminated_clubs++;
+                            if ($match->status !== 'completed'){
+                                $match->status = 'completed';
+                                $tournament->in_game_clubs--;
+                                $tournament->eliminated_clubs++;
+                            }
                         }
                         else{
                             $match->winner_club_id = null;
                             $match->loser_club_id = null;
-                            $match->status = 'created';
 
-                            $tournament->in_game_clubs++;
-                            $tournament->eliminated_clubs--;
+                            if ($match->status !== 'created') {
+                                $match->status = 'created';
+                                $tournament->in_game_clubs++;
+                                $tournament->eliminated_clubs--;
+                            }
                         }
 
                         $match->save();
@@ -80,16 +87,17 @@ class MatchController extends Controller
                 }
                 elseif ($result_first_club === null){
 
-                    $match->result_first_club = null;
                     $match->winner_club_id = null;
                     $match->loser_club_id = null;
-                    $match->status = 'created';
+
+                    if ($match->status !== 'created') {
+                        $match->status = 'created';
+                        $tournament->in_game_clubs++;
+                        $tournament->eliminated_clubs--;
+                    }
+
                     $match->save();
-
                     $this->updateMatches($match->tournament);
-
-                    $tournament->in_game_clubs++;
-                    $tournament->eliminated_clubs--;
 
                     $tournament->save();
 
@@ -103,37 +111,42 @@ class MatchController extends Controller
 
             if ($request->name === 'result_second_club'){
 
-                $result_second_club = intval($request->value);
+                $result_second_club = $request->value !== null ? intval($request->value) : null;
+                $match->result_second_club = $result_second_club;
 
                 if ($result_second_club !== null && $result_second_club >= 0){
-
-                    $match->result_second_club = $result_second_club;
 
                     if ($match->result_first_club !== null){
 
                         if ($match->result_first_club > $match->result_second_club){
                             $match->winner_club_id = $match->first_club_id;
                             $match->loser_club_id = $match->second_club_id;
-                            $match->status = 'completed';
 
-                            $tournament->in_game_clubs--;
-                            $tournament->eliminated_clubs++;
+                            if ($match->status !== 'completed'){
+                                $match->status = 'completed';
+                                $tournament->in_game_clubs--;
+                                $tournament->eliminated_clubs++;
+                            }
                         }
                         elseif ($match->result_first_club < $match->result_second_club){
                             $match->winner_club_id = $match->second_club_id;
                             $match->loser_club_id = $match->first_club_id;
-                            $match->status = 'completed';
 
-                            $tournament->in_game_clubs--;
-                            $tournament->eliminated_clubs++;
+                            if ($match->status !== 'completed'){
+                                $match->status = 'completed';
+                                $tournament->in_game_clubs--;
+                                $tournament->eliminated_clubs++;
+                            }
                         }
                         else{
                             $match->winner_club_id = null;
                             $match->loser_club_id = null;
-                            $match->status = 'created';
 
-                            $tournament->in_game_clubs++;
-                            $tournament->eliminated_clubs--;
+                            if ($match->status !== 'created') {
+                                $match->status = 'created';
+                                $tournament->in_game_clubs++;
+                                $tournament->eliminated_clubs--;
+                            }
                         }
 
                         $match->save();
@@ -149,16 +162,17 @@ class MatchController extends Controller
                 }
                 elseif ($result_second_club === null){
 
-                    $match->result_second_club = null;
                     $match->winner_club_id = null;
                     $match->loser_club_id = null;
-                    $match->status = 'created';
+
+                    if ($match->status !== 'created') {
+                        $match->status = 'created';
+                        $tournament->in_game_clubs++;
+                        $tournament->eliminated_clubs--;
+                    }
+
                     $match->save();
-
                     $this->updateMatches($match->tournament);
-
-                    $tournament->in_game_clubs++;
-                    $tournament->eliminated_clubs--;
 
                     $tournament->save();
 

@@ -29,4 +29,14 @@ class Trophy extends Model
     public function club(){
         return $this->belongsTo('App\Club');
     }
+
+    public function generateName($prizeName){
+
+        if ($prizeName){
+            $this->name =  $this->label. ' ( '. $prizeName. ' )';
+        }
+        else{
+            $this->name = $this->label;
+        }
+    }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Club;
 use App\Match;
 use App\Tournament;
+use App\Trophy;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -285,6 +285,7 @@ class TournamentController extends Controller
                 && $tournament->isOngoing() && $tournament->areAllMatchesCompleted()){
 
                 $this->enterStats($tournament);
+                $this->givePrizes($tournament);
 
                 $tournament->status = 'closed';
                 $tournament->save();
@@ -554,6 +555,34 @@ class TournamentController extends Controller
         $tournamentClubWithFirstPlace->computeTrophiesWinRate();
         $tournamentClubWithFirstPlace->addTournamentPoints($tournament->tournament_points);
         $tournamentClubWithFirstPlace->save();
+    }
 
+    private function givePrizes(Tournament $tournament){
+
+        $clubs = $tournament->clubs;
+        $matches = $tournament->matches;
+
+        // Winners
+        $tournamentClubWithThirdPlace = $clubs->find($matches->get($matches->keys()->last())->winner_club_id);
+        $tournamentClubWithSecondPlace = $clubs->find($matches->get($matches->keys()->last() - 1)->loser_club_id);
+        $tournamentClubWithFirstPlace = $clubs->find($matches->get($matches->keys()->last() - 1)->winner_club_id);
+
+        $trophyForThirdPlace = new Trophy;
+        $trophyForThirdPlace->label = 'third place';
+        $trophyForThirdPlace->generateName($tournament->prize_third_place);
+
+        $tournamentClubWithThirdPlace->trophies()->save($trophyForThirdPlace);
+
+        $trophyForSecondPlace = new Trophy;
+        $trophyForSecondPlace->label = 'second place';
+        $trophyForSecondPlace->generateName($tournament->prize_second_place);
+
+        $tournamentClubWithSecondPlace->trophies()->save($trophyForSecondPlace);
+
+        $trophyForFirstPlace = new Trophy;
+        $trophyForFirstPlace->label = 'first place';
+        $trophyForFirstPlace->generateName($tournament->prize_first_place);
+
+        $tournamentClubWithFirstPlace->trophies()->save($trophyForFirstPlace);
     }
 }

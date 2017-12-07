@@ -188,25 +188,72 @@ class ClubController extends Controller
 
     public function clubMenu(Club $club){
 
+        $currentDate = date('Y-m-d H:i');
+        $clubTournaments = $club->tournaments;
+
+        $nextMatch = null;
+
+        foreach ($clubTournaments as $clubTournament){
+
+            $clubTournamentNextMatch = $clubTournament->matches()
+                ->whereNotNull('start_date_and_time')
+                ->orderBy('start_date_and_time')
+                ->where('start_date_and_time', '>', $currentDate)
+                ->first();
+
+            if ($nextMatch !== null && $clubTournamentNextMatch !== null
+                && $clubTournamentNextMatch->start_date_and_time < $nextMatch->start_date_and_time){
+
+                $nextMatch = $clubTournamentNextMatch;
+            }
+            elseif ($nextMatch === null){
+                $nextMatch = $clubTournamentNextMatch;
+            }
+        }
+
         if (request()->ajax()){
 
-            $view = view('dynamic-content.clubs.your-club-menu', compact('club'))->render();
+            $view = view('dynamic-content.clubs.your-club-menu', compact('club', 'nextMatch'))->render();
             return response()->json($view);
         }
         else{
-            return view('clubs.your-club-menu', compact('club'));
+            return view('clubs.your-club-menu', compact('club', 'nextMatch'));
         }
     }
 
     public function clubSubMenu1(Club $club){
 
+        $currentDate = date('Y-m-d H:i');
+        $clubTournaments = $club->tournaments;
+
+        $nextMatch = null;
+
+        foreach ($clubTournaments as $clubTournament){
+
+            $clubTournamentNextMatch = $clubTournament->matches()
+                ->whereNotNull('start_date_and_time')
+                ->orderBy('start_date_and_time')
+                ->where('start_date_and_time', '>', $currentDate)
+                ->first();
+
+            if ($nextMatch !== null && $clubTournamentNextMatch !== null
+                && $clubTournamentNextMatch->start_date_and_time < $nextMatch->start_date_and_time){
+
+                $nextMatch = $clubTournamentNextMatch;
+            }
+            elseif ($nextMatch === null){
+                $nextMatch = $clubTournamentNextMatch;
+            }
+        }
+
         if (request()->ajax()){
 
-            $view = view('layouts.elements.clubs.menu.your-club-menu.sub-menu-1', compact('club'))->render();
+            $view = view('layouts.elements.clubs.menu.your-club-menu.sub-menu-1',
+                compact('club', 'nextMatch'))->render();
             return response()->json($view);
         }
         else{
-            return view('clubs.your-club-menu', compact('club'));
+            return view('clubs.your-club-menu', compact('club', 'nextMatch'));
         }
     }
 

@@ -27,16 +27,15 @@ function generateTournamentTree(url) {
             var teams = [];
             var results = [];
 
-            for (var i=0; i<( data.numberOfRounds + 1 ); i++){
-
+            for (var i=0; i<data.numberOfRounds; i++){
                 results.push([]);
             }
 
             for (var j=0; j<data.numberOfFirstRoundMatches; j++){
 
                 var tmpTeams = [];
-                tmpTeams.push(data.matches[j].first_club);
-                tmpTeams.push(data.matches[j].second_club);
+                tmpTeams.push(data.matches[j].first_club_name);
+                tmpTeams.push(data.matches[j].second_club_name);
 
                 teams.push(tmpTeams);
             }

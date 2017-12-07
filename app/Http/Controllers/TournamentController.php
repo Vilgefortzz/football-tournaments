@@ -306,12 +306,25 @@ class TournamentController extends Controller
             $numberOfFirstRoundMatches = $tournament->numberOfFirstRoundMatches();
 
             $matches = $tournament->matches;
+            $matchesArray = array();
+            $counter = 0;
+
+            foreach ($matches as $match){
+
+                $matchesArray[$counter]['first_club_name'] = $match->getFirstClub()->name;
+                $matchesArray[$counter]['second_club_name'] = $match->getSecondClub()->name;
+                $matchesArray[$counter]['result_first_club'] = $match->result_first_club;
+                $matchesArray[$counter]['result_second_club'] = $match->result_second_club;
+                $matchesArray[$counter]['round'] = $match->round;
+
+                $counter++;
+            }
 
             return response()->json([
                 'numberOfRounds' => $numberOfRounds,
                 'numberOfAllMatches' => $numberOfAllMatches,
                 'numberOfFirstRoundMatches' => $numberOfFirstRoundMatches,
-                'matches' => $matches
+                'matches' => $matchesArray
             ]);
         }
     }

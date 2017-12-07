@@ -126,30 +126,29 @@
                             <div class="tab-pane" id="tab-main-2">
                                 <h1 class="font-bold font-italic"><i class="fa fa-trophy fa-fw"></i>Tournaments:</h1>
                                 <h4 class="font-italic">
-                                    Tournament points: {{ $club->tournament_points }}</h4>
+                                    Tournament points: <span class="font-bold">{{ $club->tournament_points }}</span></h4>
                                 <h4 class="font-italic">
-                                    Completed tournaments: {{ $club->completed_tournaments }}</h4>
+                                    Completed tournaments: <span class="font-bold">{{ $club->completed_tournaments }}</span></h4>
                                 <h4 class="font-italic">
-                                    Won tournaments: {{ $club->won_tournaments }}</h4>
+                                    Won tournaments: <span class="font-bold">{{ $club->won_tournaments }}</span></h4>
                                 <h4 class="font-italic">
-                                    Tournaments win rate: {{ $club->tournaments_win_rate }}</h4>
+                                    Tournaments win rate: <span class="font-bold">{{ $club->tournaments_win_rate }}%</span></h4>
 
                                 <hr>
 
                                 <h1 class="font-bold font-italic"><i class="fa fa-soccer-ball-o fa-fw"></i>Matches:</h1>
                                 <h4 class="font-italic">
-                                    Played matches: {{ $club->played_matches }}</h4>
+                                    Played matches: <span class="font-bold">{{ $club->played_matches }}</span></h4>
                                 <h4 class="font-italic">
-                                    Won matches: {{ $club->won_matches }}</h4>
+                                    Won matches: <span class="font-bold">{{ $club->won_matches }}</span></h4>
                                 <h4 class="font-italic">
-                                    Matches win rate: {{ $club->matches_win_rate }}</h4>
+                                    Matches win rate: <span class="font-bold">{{ $club->matches_win_rate }}%</span></h4>
                             </div>
                             <div class="tab-pane" id="tab-main-3">
                                 <h4 class="font-italic">
-                                    Won trophies: {{ $club->won_trophies }}</h4>
+                                    Won trophies: <span class="font-bold">{{ $club->won_trophies }}</span></h4>
                                 <h4 class="font-italic">
-                                    Trophies win rate: {{ $club->trophies_win_rate }}</h4>
-                                <br>
+                                    Trophies win rate: <span class="font-bold">{{ $club->trophies_win_rate }}%</span></h4>
                                 <ul class="nav nav-tabs">
                                     <li>
                                         <a id="tab-trophy-first-place" href="{{ route('club-trophies-first-place', $club->id) }}"
